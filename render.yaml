@@ -8,13 +8,14 @@ services:
     region: singapore
     buildCommand: pip install -r backend/requirements.txt
     startCommand: cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT
-    healthCheckPath: /api/health
+    healthCheckPath: /healthz
     autoDeploy: true
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.9
+      # 무료 서버는 CPU가 약해 시작 시 자동 수집이 상태 확인을 막음 → 조회 버튼을 누를 때만 수집
       - key: MARKET_SCHEDULER
-        value: "true"
+        value: "false"
       - key: HY_OAS_PUBLIC_EXPORT
         value: "false"
       # 아래 키는 선택 사항입니다. 없으면 비워 두세요(미국·한국 주가는 키 없이도 조회됩니다).

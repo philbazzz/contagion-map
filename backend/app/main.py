@@ -22,7 +22,9 @@ from .models import RateShockRequest, RefinancingRequest
 async def lifespan(_app: FastAPI):
     task = None
     m = service.market()
-    if m.settings.scheduler_enabled:
+    # Render sets RENDER=true. Its small free instance can't serve health checks while the
+    # startup collection runs, so there quotes are collected only when 조회 is pressed.
+    if m.settings.scheduler_enabled and not os.environ.get("RENDER"):
         # checks the last collection time on startup, then every 30 minutes
         task = asyncio.create_task(m.run_forever())
     yield
@@ -43,6 +45,12 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+@app.get("/healthz")
+async def healthz():
+    """Instant liveness probe for hosting platforms (no file / DB / network work)."""
+    return {"ok": True}
 
 
 @app.get("/api/health")
