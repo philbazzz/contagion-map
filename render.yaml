@@ -1,0 +1,32 @@
+# Render Blueprint — CONTAGION 시세 서버 (GitHub Pages의 Market 조회 버튼이 호출)
+# Render 대시보드 → New → Blueprint → 이 저장소 선택. API 키는 생성 화면에서 입력합니다(코드에 넣지 마세요).
+services:
+  - type: web
+    name: contagion-api
+    runtime: python
+    plan: free
+    region: singapore
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: MARKET_SCHEDULER
+        value: "true"
+      - key: HY_OAS_PUBLIC_EXPORT
+        value: "false"
+      # 아래 키는 선택 사항입니다. 없으면 비워 두세요(미국·한국 주가는 키 없이도 조회됩니다).
+      - key: FRED_API_KEY
+        sync: false
+      - key: FINNHUB_API_KEY
+        sync: false
+      - key: DATA_GO_KR_SERVICE_KEY
+        sync: false
+      - key: KOREAEXIM_API_KEY
+        sync: false
+      - key: VASTAI_API_KEY
+        sync: false
+      - key: OPEN_DART_API_KEY
+        sync: false

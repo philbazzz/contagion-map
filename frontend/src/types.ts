@@ -400,6 +400,8 @@ export type SimResult = RefiResult | RateShockResult;
 export interface Api {
   /** http = FastAPI; static = GitHub Pages / vite preview; local = embedded demo bundle */
   kind: "http" | "static" | "local";
+  /** static build connected to a live quote server (VITE_LIVE_API) */
+  live?: boolean;
   health(): Promise<{ status: string; nodes: number; edges: number; as_of: string }>;
   network(): Promise<Network>;
   stats(origin: string): Promise<NetworkStats>;

@@ -588,7 +588,7 @@ export default function App({ api }: { api: Api }) {
     const seq = ++quotesSeq.current;
     setQuotesBusy(true);
     if (ecosystem === "datacenter_pf") {
-      const req = api.kind === "http"
+      const req = (api.kind === "http" || api.live)
         ? api.refreshQuotes({ ecosystem: "datacenter_pf" })
         : loadPfBundle().then((b) => b.quotes);
       req
@@ -627,7 +627,7 @@ export default function App({ api }: { api: Api }) {
       else setToast(q.refresh_detail || "시세 조회 완료 (가격 변동 없어도 정상일 수 있음)");
     };
     if (ecosystem === "datacenter_pf") {
-      const req = api.kind === "http"
+      const req = (api.kind === "http" || api.live)
         ? api.refreshQuotes({ ecosystem: "datacenter_pf" })
         : loadPfBundle().then((b) => ({
             ...b.quotes,
@@ -885,7 +885,7 @@ export default function App({ api }: { api: Api }) {
         <MarketPanel
           market={activeMarket}
           isDemo={api.kind === "local"}
-          snapshotOnly={api.kind === "static"}
+          snapshotOnly={api.kind === "static" && !api.live}
           onClose={() => setMarketOpen(false)}
           refreshing={refreshing}
           onRefresh={() => {

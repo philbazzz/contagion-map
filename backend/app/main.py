@@ -5,6 +5,7 @@ Run:  uvicorn app.main:app --reload --port 8000   (from the backend folder)
 from __future__ import annotations
 
 import asyncio
+import os
 from contextlib import asynccontextmanager
 from typing import Optional
 
@@ -31,9 +32,14 @@ async def lifespan(_app: FastAPI):
 
 app = FastAPI(title="CONTAGION — Financial Risk Universe API", version="0.5.1", lifespan=lifespan)
 
+# Local dev + the public GitHub Pages site. Extra origins: ALLOWED_ORIGINS="https://a.com,https://b.com"
+_ORIGINS = ["http://localhost:5173", "http://127.0.0.1:5173", "http://localhost:4173", "http://127.0.0.1:4173",
+            "https://philbazzz.github.io"]
+_ORIGINS += [o.strip().rstrip("/") for o in os.environ.get("ALLOWED_ORIGINS", "").split(",") if o.strip()]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_origins=_ORIGINS,
     allow_methods=["*"],
     allow_headers=["*"],
 )
