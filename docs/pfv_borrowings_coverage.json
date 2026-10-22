@@ -1,0 +1,1391 @@
+{
+  "verification_date": "2026-10-22",
+  "inventory_count": 66,
+  "coverage_count": 66,
+  "by_status": {
+    "Report unavailable": 44,
+    "Reviewed and mapped": 20,
+    "Reviewed — no outstanding borrowings disclosed": 2
+  },
+  "policy": [
+    "당기말 only for ACTIVE exposure",
+    "전기말 never presented as current",
+    "facility totals not assigned to each syndicate member",
+    "unnamed groups remain facility_context",
+    "honest gaps: unavailable vs unnamed vs not yet carefully mapped"
+  ],
+  "coverage": [
+    {
+      "pfv_spc": "에이원브리즈",
+      "node_id": "a1_breeze",
+      "visibility": "visible",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "에이원리빙",
+      "node_id": "a1_living",
+      "visibility": "visible",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "안산그린에너지피에프브이",
+      "node_id": "ansan_green_energy_pfv",
+      "visibility": "visible",
+      "latest_report_reviewed": "안산그린에너지피에프브이 감사보고서 (2025.12)",
+      "reporting_date": "2025-12-31",
+      "filing_date": "20260406",
+      "borrowings_note_reviewed": true,
+      "named_lenders_found": [
+        "kb_capital (57.7778억)",
+        "nh_inv_sec (11.5556억)",
+        "thek_savings (11.5556억)",
+        "nh_federation (231.1111억)",
+        "hana_alt_geongungoong_1 (11.5556억)",
+        "nh_inv_sec (11.5556억)",
+        "fund_kb_re_loan_pe2 (80.8889억)",
+        "db_ins (231.1111억)",
+        "hana_alt_geongungoong_2 (46.2222억)",
+        "hyundai_capital (57.7778억)",
+        "shinhan_capital (23.1111억)",
+        "nh_capital (11.5556억)",
+        "lotte_ins (23.1111억)",
+        "fund_aip_re2 (80.8889억)",
+        "shinhan_core_re_loan_ii (99.3778억)",
+        "shinhan_core_re_loan_iv (39.2889억)",
+        "shinhan_capital (11.5556억)"
+      ],
+      "relationships_mapped": [
+        "dart_loan_kb_capital_ansan_green_ta1",
+        "dart_loan_nh_inv_ansan_green_ta1",
+        "dart_loan_thek_ansan_green_ta1",
+        "dart_loan_nh_federation_ansan_green_ta1",
+        "dart_loan_hana_alt_gg1_ansan_green_ta1",
+        "dart_loan_nh_inv_ansan_green_ta2",
+        "dart_loan_fund_kb_re2_ansan_green_ta2",
+        "dart_loan_db_ins_ansan_green_ta2",
+        "dart_loan_hana_alt_gg2_ansan_green_ta2",
+        "dart_loan_hyundai_capital_ansan_green_ta2",
+        "dart_loan_shinhan_capital_a_ansan_green_ta2",
+        "dart_loan_nh_capital_ansan_green_ta2",
+        "dart_loan_lotte_ins_ansan_green_ta2",
+        "dart_loan_fund_aip_re2_ansan_green_tb",
+        "dart_loan_shinhan_core_ii_ansan_green_tb",
+        "dart_loan_shinhan_core_iv_ansan_green_tb",
+        "dart_loan_shinhan_capital_ansan_green_tb"
+      ],
+      "unresolved_gaps": [],
+      "status": "Reviewed and mapped"
+    },
+    {
+      "pfv_spc": "APLD ELN-01 LLC",
+      "node_id": "apld_eln_01",
+      "visibility": "visible",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "APLD HPC Holdings LLC",
+      "node_id": "apld_hpc_holdings",
+      "visibility": "visible",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "블루드래곤제칠차",
+      "node_id": "blue_dragon7_spc",
+      "visibility": "visible",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "블루리본디벨롭먼트",
+      "node_id": "blueribbon_dev",
+      "visibility": "visible",
+      "latest_report_reviewed": "감사보고서 (2025.12)",
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": true,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [],
+      "status": "Reviewed — no outstanding borrowings disclosed"
+    },
+    {
+      "pfv_spc": "부천공간제일차",
+      "node_id": "bucheon_space1_spc",
+      "visibility": "visible",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "북항아이디씨피에프브이",
+      "node_id": "bukhang_idc_pfv",
+      "visibility": "visible",
+      "latest_report_reviewed": "북항아이디씨피에프브이 감사보고서 (2025.12)",
+      "reporting_date": "2025-12-31",
+      "filing_date": "20260408",
+      "borrowings_note_reviewed": true,
+      "named_lenders_found": [
+        "hj_heavy (248.0억)",
+        "a1_breeze (129.0억)",
+        "icecream_media (50.0억)",
+        "a1_living (80.0억)",
+        "the_ym_korea (5.0억)",
+        "meritz_fire (258.0억)",
+        "meritz_capital (258.0억)",
+        "jt_savings (30.0억)",
+        "daol_savings (100.0억)",
+        "artic_nh_lp (50.0억)",
+        "acuon_savings (40.0억)",
+        "acuon_capital (40.0억)"
+      ],
+      "relationships_mapped": [
+        "dart_loan_hj_heavy_bukhang",
+        "dart_loan_a1_breeze_bukhang",
+        "dart_loan_icecream_bukhang",
+        "dart_loan_a1_living_bukhang",
+        "dart_loan_theym_bukhang",
+        "dart_loan_meritz_fire_bukhang",
+        "dart_loan_meritz_capital_bukhang",
+        "dart_loan_jt_bukhang",
+        "dart_loan_daol_bukhang",
+        "dart_loan_artic_bukhang",
+        "dart_loan_acuon_sav_bukhang",
+        "dart_loan_acuon_cap_bukhang"
+      ],
+      "unresolved_gaps": [],
+      "status": "Reviewed and mapped"
+    },
+    {
+      "pfv_spc": "부산에코델타그린데이터센터피에프브이",
+      "node_id": "busan_ecodelta_pfv",
+      "visibility": "visible",
+      "latest_report_reviewed": "부산에코델타그린데이터센터피에프브이 감사보고서 (2025.12)",
+      "reporting_date": "2025-12-31",
+      "filing_date": "20260413",
+      "borrowings_note_reviewed": true,
+      "named_lenders_found": [
+        "ibk_capital (202.1373억)"
+      ],
+      "relationships_mapped": [
+        "dart_loan_ibk_capital_busan_ecodelta"
+      ],
+      "unresolved_gaps": [],
+      "status": "Reviewed and mapped"
+    },
+    {
+      "pfv_spc": "캄스퀘어제일차",
+      "node_id": "camsquare_first_spc",
+      "visibility": "visible",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "캄스퀘어안산데이터센터PFV",
+      "node_id": "camsquare_pfv",
+      "visibility": "visible",
+      "latest_report_reviewed": "캄스퀘어안산데이터센터피에프브이 감사보고서 (2025.12)",
+      "reporting_date": "2025-12-31",
+      "filing_date": "20260413",
+      "borrowings_note_reviewed": true,
+      "named_lenders_found": [
+        "camsquare_first_spc (200.8억)",
+        "hyundai_capital (162.0억)",
+        "kb_ins (113.4억)",
+        "military_mutual (113.4억)",
+        "db_life (81.0억)",
+        "yk_ansan_d1 (37.3억)",
+        "kb_capital (48.6억)",
+        "woori_finance_capital (48.6억)",
+        "hyundai_commercial (48.6억)",
+        "hana_capital (32.4억)",
+        "welcome_savings (19.5억)",
+        "shinhan_capital (16.2억)"
+      ],
+      "relationships_mapped": [
+        "dart_loan_camsquare1_camsquare",
+        "dart_loan_hyundai_capital_camsquare",
+        "dart_loan_kb_ins_camsquare",
+        "dart_loan_military_mutual_camsquare",
+        "dart_loan_db_life_camsquare",
+        "dart_loan_yk_ansan_camsquare",
+        "dart_loan_kb_capital_camsquare",
+        "dart_loan_woori_fin_capital_camsquare",
+        "dart_loan_hyundai_commercial_camsquare",
+        "dart_loan_hana_capital_camsquare",
+        "dart_loan_welcome_savings_camsquare",
+        "dart_loan_shinhan_capital_camsquare"
+      ],
+      "unresolved_gaps": [],
+      "status": "Reviewed and mapped"
+    },
+    {
+      "pfv_spc": "캄스퀘어제이차",
+      "node_id": "camsquare_second_spc",
+      "visibility": "visible",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "캄스퀘어서리데이터센터PFV",
+      "node_id": "camsquare_seori_pfv",
+      "visibility": "visible",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "캄스퀘어제삼차",
+      "node_id": "camsquare_third_spc",
+      "visibility": "visible",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "캄스퀘어용인데이터센터PFV",
+      "node_id": "camsquare_yongin_pfv",
+      "visibility": "visible",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "캡스톤메타IDC피에프브이",
+      "node_id": "capstone_meta_idc_pfv",
+      "visibility": "visible",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "케이스퀘어부산장림데이터센터피에프브이",
+      "node_id": "casequare_busan_jangnim_pfv",
+      "visibility": "visible",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "케이스퀘어에코송파피에프브이",
+      "node_id": "casequare_eco_songpa_pfv",
+      "visibility": "visible",
+      "latest_report_reviewed": "케이스퀘어에코송파피에프브이 감사보고서 (2025.12)",
+      "reporting_date": "2025-12-31",
+      "filing_date": null,
+      "borrowings_note_reviewed": true,
+      "named_lenders_found": [
+        "astom_1st_spc (420.0억)",
+        "suhyup_bank (500.0억)",
+        "korea_inv_sec (100.0억)",
+        "nh_life (300.0억)",
+        "shinhan_capital (50.0억)",
+        "frenchshine_1st_spc (100.0억)",
+        "korea_inv_capital (200.0억)",
+        "kb_sec (150.0억)",
+        "sedna_1st_spc (310.0억)",
+        "dayna_1st_spc (530.0억)",
+        "themis_1st_spc (100.0억)"
+      ],
+      "relationships_mapped": [
+        "dart_loan_astom1_eco_songpa",
+        "dart_loan_suhyup_eco_songpa",
+        "dart_loan_kis_eco_songpa",
+        "dart_loan_nh_life_eco_songpa",
+        "dart_loan_shinhan_capital_eco_songpa",
+        "dart_loan_frenchshine1_eco_songpa",
+        "dart_loan_ki_capital_eco_songpa",
+        "dart_loan_kb_sec_eco_songpa",
+        "dart_loan_sedna1_eco_songpa",
+        "dart_loan_dayna1_eco_songpa",
+        "dart_loan_themis1_eco_songpa"
+      ],
+      "unresolved_gaps": [],
+      "status": "Reviewed and mapped"
+    },
+    {
+      "pfv_spc": "케이스퀘어마누스데이터센터구로피에프브이",
+      "node_id": "casequare_manus_guro_pfv",
+      "visibility": "visible",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "케이스퀘어데이터센터PFV",
+      "node_id": "casequare_pfv",
+      "visibility": "visible",
+      "latest_report_reviewed": "케이스퀘어데이터센터피에프브이 감사보고서 (2025.12)",
+      "reporting_date": "2025-12-31",
+      "filing_date": "20260409",
+      "borrowings_note_reviewed": true,
+      "named_lenders_found": [
+        "kyobo_life (492.0억)",
+        "kyobo_life (492.0억)",
+        "hana_bank (296.0억)",
+        "samsung_fire (836.0억)",
+        "hanwha_life (983.0억)",
+        "thek_savings (99.0억)",
+        "shinhan_capital (198.0억)",
+        "bluecorner_capital (50.0억)",
+        "kw_tg4_spc (300.0억)"
+      ],
+      "relationships_mapped": [
+        "dart_loan_kyobo_life_gen_casequare",
+        "dart_loan_kyobo_life_spec_casequare",
+        "dart_loan_hana_casequare",
+        "dart_loan_samsung_fire_casequare",
+        "dart_loan_hanwha_life_casequare",
+        "dart_loan_thek_savings_casequare",
+        "dart_loan_shinhan_capital_casequare",
+        "dart_loan_bluecorner_casequare",
+        "dart_loan_kw_tg4_casequare"
+      ],
+      "unresolved_gaps": [],
+      "status": "Reviewed and mapped"
+    },
+    {
+      "pfv_spc": "케이스퀘어용산피에프브이",
+      "node_id": "casequare_yongsan_pfv",
+      "visibility": "visible",
+      "latest_report_reviewed": "케이스퀘어용산피에프브이 감사보고서 (2025.12)",
+      "reporting_date": "2025-12-31",
+      "filing_date": null,
+      "borrowings_note_reviewed": true,
+      "named_lenders_found": [
+        "bnk_sum_23rd_spc (1900.0억)",
+        "welcome_savings (120.0억)",
+        "incheon_savings (50.0억)",
+        "samjung_savings (70.0억)",
+        "osb_savings (100.0억)",
+        "minguk_savings (20.0억)",
+        "geumhwa_savings (40.0억)",
+        "namyang_savings (50.0억)",
+        "imoa_savings (100.0억)",
+        "inseong_savings (50.0억)",
+        "thek_savings (50.0억)",
+        "sky_savings (30.0억)",
+        "anyang_savings (50.0억)",
+        "union_savings (50.0억)",
+        "yungchang_savings (20.0억)",
+        "jt_savings (70.0억)",
+        "seram_savings (30.0억)",
+        "db_savings (100.0억)",
+        "sangsangin_savings (50.0억)",
+        "ok_savings (110.0억)",
+        "woori_savings (20.0억)",
+        "hanwha_savings (35.0억)",
+        "kiwoom_savings (30.0억)",
+        "acuon_savings (80.0억)",
+        "cham_savings (45.0억)",
+        "yeongjin_savings (25.0억)",
+        "jt_chinae_savings (80.0억)",
+        "nh_savings (50.0억)",
+        "kis_savings (110.0억)",
+        "burim_savings (50.0억)",
+        "osung_savings (8.0억)",
+        "snt_savings (20.0억)"
+      ],
+      "relationships_mapped": [
+        "dart_loan_bnk_sum23_yongsan",
+        "dart_loan_welcome_yongsan",
+        "dart_loan_incheon_sav_yongsan",
+        "dart_loan_samjung_sav_yongsan",
+        "dart_loan_osb_yongsan",
+        "dart_loan_minguk_sav_yongsan",
+        "dart_loan_geumhwa_sav_yongsan",
+        "dart_loan_namyang_sav_yongsan",
+        "dart_loan_imoa_yongsan",
+        "dart_loan_inseong_sav_yongsan",
+        "dart_loan_thek_yongsan",
+        "dart_loan_sky_sav_yongsan",
+        "dart_loan_anyang_sav_yongsan",
+        "dart_loan_union_sav_yongsan",
+        "dart_loan_yungchang_sav_yongsan",
+        "dart_loan_jt_yongsan",
+        "dart_loan_seram_yongsan",
+        "dart_loan_db_sav_yongsan",
+        "dart_loan_sangsangin_yongsan",
+        "dart_loan_ok_yongsan",
+        "dart_loan_woori_sav_yongsan",
+        "dart_loan_hanwha_sav_yongsan",
+        "dart_loan_kiwoom_sav_yongsan",
+        "dart_loan_acuon_yongsan",
+        "dart_loan_cham_sav_yongsan",
+        "dart_loan_yeongjin_sav_yongsan",
+        "dart_loan_jt_chinae_yongsan",
+        "dart_loan_nh_sav_yongsan",
+        "dart_loan_kis_sav_yongsan",
+        "dart_loan_burim_sav_yongsan",
+        "dart_loan_osung_yongsan",
+        "dart_loan_snt_sav_yongsan"
+      ],
+      "unresolved_gaps": [],
+      "status": "Reviewed and mapped"
+    },
+    {
+      "pfv_spc": "청라아이디씨피에프브이",
+      "node_id": "cheongna_idc_pfv",
+      "visibility": "visible",
+      "latest_report_reviewed": "청라아이디씨피에프브이 감사보고서 (2025.12)",
+      "reporting_date": "2025-12-31",
+      "filing_date": "20260413",
+      "borrowings_note_reviewed": true,
+      "named_lenders_found": [
+        "shinhan_capital (290.0억)",
+        "shinhan_sec (200.0억)",
+        "wonchang_idc (100.0억)",
+        "gps23_spc (310.0억)",
+        "ido (50.0억)",
+        "ido (232.396억)"
+      ],
+      "relationships_mapped": [
+        "dart_loan_shinhan_capital_cheongna",
+        "dart_loan_shinhan_sec_cheongna",
+        "dart_loan_wonchang_cheongna",
+        "dart_loan_gps23_cheongna",
+        "dart_loan_ido_cheongna_bridge",
+        "dart_loan_ido_cheongna_shareholder"
+      ],
+      "unresolved_gaps": [],
+      "status": "Reviewed and mapped"
+    },
+    {
+      "pfv_spc": "코어사이언티픽 Finance I",
+      "node_id": "corz_finance_i",
+      "visibility": "visible",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "디씨아이티와이부천피에프브이",
+      "node_id": "dcity_bucheon_pfv",
+      "visibility": "visible",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "디씨아이티와이인천피에프브이",
+      "node_id": "dcity_incheon_pfv",
+      "visibility": "visible",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "디씨케이원",
+      "node_id": "dck1",
+      "visibility": "visible",
+      "latest_report_reviewed": "디씨케이원 감사보고서 (2025.12)",
+      "reporting_date": "2025-12-31",
+      "filing_date": null,
+      "borrowings_note_reviewed": true,
+      "named_lenders_found": [
+        "ibk_bank (1100.0억)",
+        "kdb (1100.0억)",
+        "db_ins (715.0억)",
+        "hyundai_marine (275.0억)",
+        "kb_ins (247.5억)",
+        "kb_bank (192.5억)",
+        "ibk_capital (137.5억)",
+        "ing_bank (357.5억)",
+        "ca_cib (275.0억)",
+        "ibk_bank (155.0억)",
+        "kdb (155.0억)",
+        "db_ins (101.0억)",
+        "hyundai_marine (39.0억)",
+        "kb_ins (35.0억)",
+        "kb_bank (27.0억)",
+        "ibk_capital (19.0억)",
+        "ing_bank (50.0억)",
+        "ca_cib (39.0억)"
+      ],
+      "relationships_mapped": [
+        "dart_loan_ibk_dck1_t1",
+        "dart_loan_kdb_dck1_t1",
+        "dart_loan_db_ins_dck1_t1",
+        "dart_loan_hyundai_marine_dck1_t1",
+        "dart_loan_kb_ins_dck1_t1",
+        "dart_loan_kb_bank_dck1_t1",
+        "dart_loan_ibk_capital_dck1_t1",
+        "dart_loan_ing_dck1_t1",
+        "dart_loan_ca_cib_dck1_t1",
+        "dart_loan_ibk_dck1_t2",
+        "dart_loan_kdb_dck1_t2",
+        "dart_loan_db_ins_dck1_t2",
+        "dart_loan_hyundai_marine_dck1_t2",
+        "dart_loan_kb_ins_dck1_t2",
+        "dart_loan_kb_bank_dck1_t2",
+        "dart_loan_ibk_capital_dck1_t2",
+        "dart_loan_ing_dck1_t2",
+        "dart_loan_ca_cib_dck1_t2"
+      ],
+      "unresolved_gaps": [],
+      "status": "Reviewed and mapped"
+    },
+    {
+      "pfv_spc": "디토피에프브이",
+      "node_id": "dito_pfv",
+      "visibility": "visible",
+      "latest_report_reviewed": "디토피에프브이 감사보고서 (2025.12)",
+      "reporting_date": "2025-12-31",
+      "filing_date": "20260410",
+      "borrowings_note_reviewed": true,
+      "named_lenders_found": [
+        "ibk_bank (1500.0억)",
+        "kdb (1000.0억)",
+        "ibk_bank (250.0억)"
+      ],
+      "relationships_mapped": [
+        "dart_loan_ibk_dito_senior",
+        "dart_loan_kdb_dito_senior",
+        "dart_loan_ibk_dito_fixed"
+      ],
+      "unresolved_gaps": [],
+      "status": "Reviewed and mapped"
+    },
+    {
+      "pfv_spc": "동해에이아이제3캠퍼스",
+      "node_id": "donghae_ai_campus3",
+      "visibility": "visible",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "엣지코어피에프브이",
+      "node_id": "edgecore_pfv",
+      "visibility": "visible",
+      "latest_report_reviewed": "엣지코어피에프브이 감사보고서 (2025.12)",
+      "reporting_date": "2025-12-31",
+      "filing_date": "20260403",
+      "borrowings_note_reviewed": true,
+      "named_lenders_found": [
+        "kb_ins (207.0억)",
+        "hyundai_marine (76.0억)",
+        "msedc1_spc (37.0억)",
+        "msedc2_spc (500.0억)"
+      ],
+      "relationships_mapped": [
+        "dart_loan_kb_ins_edgecore",
+        "dart_loan_hyundai_marine_edgecore",
+        "dart_loan_msedc1_edgecore",
+        "dart_loan_msedc2_edgecore"
+      ],
+      "unresolved_gaps": [],
+      "status": "Reviewed and mapped"
+    },
+    {
+      "pfv_spc": "에포크피에프브이",
+      "node_id": "epoch_pfv",
+      "visibility": "visible",
+      "latest_report_reviewed": "에포크피에프브이 감사보고서 (2025.12)",
+      "reporting_date": "2025-12-31",
+      "filing_date": "20260331",
+      "borrowings_note_reviewed": true,
+      "named_lenders_found": [
+        "ibk_bank (1200.0억)",
+        "kdb (425.0억)",
+        "kb_bank (300.0억)",
+        "woori_bank (425.0억)",
+        "hana_bank (425.0억)",
+        "nh_bank (425.0억)",
+        "ibk_bank (265.0억)"
+      ],
+      "relationships_mapped": [
+        "dart_loan_ibk_epoch_a",
+        "dart_loan_kdb_epoch_a",
+        "dart_loan_kb_epoch_a",
+        "dart_loan_woori_epoch_a",
+        "dart_loan_hana_epoch_a",
+        "dart_loan_nh_epoch_a",
+        "dart_loan_ibk_epoch_b1"
+      ],
+      "unresolved_gaps": [],
+      "status": "Reviewed and mapped"
+    },
+    {
+      "pfv_spc": "파인디씨피에프브이",
+      "node_id": "fine_dc_pfv",
+      "visibility": "visible",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "갤럭시 Helios II",
+      "node_id": "galaxy_helios_ii",
+      "visibility": "visible",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "가온해제오차",
+      "node_id": "gaon_haeje5_spc",
+      "visibility": "visible",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "가산디씨제이브이",
+      "node_id": "gasan_dc_jv",
+      "visibility": "visible",
+      "latest_report_reviewed": "가산디씨제이브이 감사보고서 (2025.12)",
+      "reporting_date": "2025-12-31",
+      "filing_date": null,
+      "borrowings_note_reviewed": true,
+      "named_lenders_found": [
+        "bnp_paribas (500.0억)",
+        "mufg (500.0억)",
+        "ca_cib (650.0억)",
+        "nh_inv_sec (1350.0억)"
+      ],
+      "relationships_mapped": [
+        "dart_loan_bnp_gasan_jv",
+        "dart_loan_mufg_gasan_jv",
+        "dart_loan_ca_cib_gasan_jv",
+        "dart_loan_nh_inv_gasan_jv"
+      ],
+      "unresolved_gaps": [],
+      "status": "Reviewed and mapped"
+    },
+    {
+      "pfv_spc": "가산디씨에스엘원",
+      "node_id": "gasan_dc_sl1",
+      "visibility": "visible",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "가산-eDC 시행법인(명칭 미공개)",
+      "node_id": "gasan_edc_spv",
+      "visibility": "visible",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "가산랜드마크데이터센터피에프브이",
+      "node_id": "gasan_landmark_pfv",
+      "visibility": "visible",
+      "latest_report_reviewed": "가산랜드마크데이터센터피에프브이 감사보고서 (2025.12)",
+      "reporting_date": "2025-12-31",
+      "filing_date": null,
+      "borrowings_note_reviewed": true,
+      "named_lenders_found": [
+        "kdb (1000.0억)",
+        "im_bank (300.0억)",
+        "kb_bank (200.0억)",
+        "bnk_kyongnam (200.0억)",
+        "hana_bank (200.0억)",
+        "suhyup_bank (100.0억)"
+      ],
+      "relationships_mapped": [
+        "dart_loan_kdb_gasan_landmark",
+        "dart_loan_im_bank_gasan_landmark",
+        "dart_loan_kb_gasan_landmark",
+        "dart_loan_bnk_kyongnam_gasan_landmark",
+        "dart_loan_hana_gasan_landmark",
+        "dart_loan_suhyup_gasan_landmark"
+      ],
+      "unresolved_gaps": [],
+      "status": "Reviewed and mapped"
+    },
+    {
+      "pfv_spc": "가야피에프브이",
+      "node_id": "gaya_pfv",
+      "visibility": "visible",
+      "latest_report_reviewed": "가야피에프브이 감사보고서 (2025.12)",
+      "reporting_date": "2025-12-31",
+      "filing_date": "20260408",
+      "borrowings_note_reviewed": true,
+      "named_lenders_found": [
+        "kb_bank (1190.0억)",
+        "ubob_seoul (795.0억)",
+        "hyundai_marine (100.0억)",
+        "hyundai_marine (300.0억)"
+      ],
+      "relationships_mapped": [
+        "dart_loan_kb_gaya_tla",
+        "dart_loan_ubob_gaya_tla",
+        "dart_loan_hyundai_marine_gaya_tla",
+        "dart_loan_hyundai_marine_gaya_tlb"
+      ],
+      "unresolved_gaps": [],
+      "status": "Reviewed and mapped"
+    },
+    {
+      "pfv_spc": "쥐피에스23제일차",
+      "node_id": "gps23_spc",
+      "visibility": "visible",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "그린디지털인프라",
+      "node_id": "green_digital_infra",
+      "visibility": "visible",
+      "latest_report_reviewed": "그린디지털인프라 감사보고서 (2025.12)",
+      "reporting_date": "2025-12-31",
+      "filing_date": null,
+      "borrowings_note_reviewed": true,
+      "named_lenders_found": [
+        "kb_bank (800.0억)",
+        "kyobo_life (1500.0억)",
+        "shinhan_bank (1000.0억)",
+        "hyundai_marine (300.0억)",
+        "kb_ins (400.0억)",
+        "kb_bank (200.0억)",
+        "kyobo_life (500.0억)",
+        "hyundai_marine (150.0억)",
+        "kb_ins (100.0억)",
+        "mkif (4000.0억)"
+      ],
+      "relationships_mapped": [
+        "dart_loan_kb_gdi_tra",
+        "dart_loan_kyobo_gdi_tra",
+        "dart_loan_shinhan_gdi_tra",
+        "dart_loan_hyundai_marine_gdi_tra",
+        "dart_loan_kb_ins_gdi_tra",
+        "dart_loan_kb_gdi_trb",
+        "dart_loan_kyobo_gdi_trb",
+        "dart_loan_hyundai_marine_gdi_trb",
+        "dart_loan_kb_ins_gdi_trb",
+        "dart_loan_mkif_gdi_sub"
+      ],
+      "unresolved_gaps": [],
+      "status": "Reviewed and mapped"
+    },
+    {
+      "pfv_spc": "하나데이터센터제일차",
+      "node_id": "hana_dc_1st_spc",
+      "visibility": "visible",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "하남엣지센터피에프브이",
+      "node_id": "hanam_edge_pfv",
+      "visibility": "visible",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "한화투자증권 SPC(명칭 미공개)",
+      "node_id": "hanwha_sec_spc_yongin",
+      "visibility": "visible",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "케펠데이터센터안산피에프브이",
+      "node_id": "keppel_ansan_pfv",
+      "visibility": "visible",
+      "latest_report_reviewed": "케펠데이터센터안산피에프브이 감사보고서 (2025.12)",
+      "reporting_date": "2025-12-31",
+      "filing_date": "20260330",
+      "borrowings_note_reviewed": true,
+      "named_lenders_found": [
+        "shinhan_capital (50.0억)",
+        "shinhan_sec (60.0억)",
+        "shinyoung (210.0억)"
+      ],
+      "relationships_mapped": [
+        "dart_loan_shinhan_capital_keppel_ansan",
+        "dart_loan_shinhan_sec_keppel_ansan",
+        "dart_loan_shinyoung_keppel_ansan"
+      ],
+      "unresolved_gaps": [],
+      "status": "Reviewed and mapped"
+    },
+    {
+      "pfv_spc": "코람코시화데이터센터피에프브이",
+      "node_id": "koramco_siheung_pfv",
+      "visibility": "visible",
+      "latest_report_reviewed": "감사보고서 (2025.12)",
+      "reporting_date": null,
+      "filing_date": "20260413",
+      "borrowings_note_reviewed": true,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [],
+      "status": "Reviewed — no outstanding borrowings disclosed"
+    },
+    {
+      "pfv_spc": "케이더블유투금제사차",
+      "node_id": "kw_tg4_spc",
+      "visibility": "visible",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "마그나피에프브이",
+      "node_id": "magna_pfv",
+      "visibility": "visible",
+      "latest_report_reviewed": "마그나피에프브이 감사보고서 (2025.12)",
+      "reporting_date": "2025-12-31",
+      "filing_date": "20260406",
+      "borrowings_note_reviewed": true,
+      "named_lenders_found": [
+        "kb_bank (99.0억)",
+        "shinhan_bank (134.0억)",
+        "hana_bank (83.0억)",
+        "ibk_bank (99.0억)",
+        "hanwha_life (232.0억)"
+      ],
+      "relationships_mapped": [
+        "dart_loan_kb_magna",
+        "dart_loan_shinhan_magna",
+        "dart_loan_hana_magna",
+        "dart_loan_ibk_magna",
+        "dart_loan_hanwha_life_magna"
+      ],
+      "unresolved_gaps": [],
+      "status": "Reviewed and mapped"
+    },
+    {
+      "pfv_spc": "마운틴리치제일차",
+      "node_id": "mountain_rich",
+      "visibility": "visible",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "엠에스이디씨제일차",
+      "node_id": "msedc1_spc",
+      "visibility": "visible",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "엠에스이디씨제이차",
+      "node_id": "msedc2_spc",
+      "visibility": "visible",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "퍼시픽써니 시행 SPC(법인명 미확인)",
+      "node_id": "pacific_sunny_spv",
+      "visibility": "visible",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "퍼시픽피치피에프브이",
+      "node_id": "peach_pfv",
+      "visibility": "visible",
+      "latest_report_reviewed": "퍼시픽피치피에프브이 감사보고서 (2025.12)",
+      "reporting_date": "2025-12-31",
+      "filing_date": "20260401",
+      "borrowings_note_reviewed": true,
+      "named_lenders_found": [
+        "ibk_bank (258.3억)",
+        "hyundai_capital (155.0억)",
+        "hana_capital (25.8억)",
+        "db_ins (206.6억)",
+        "heungkuk_fire (129.1억)",
+        "kdb (258.3억)",
+        "kb_capital (51.7억)",
+        "bccard (51.7억)",
+        "kyobo_life (387.4억)",
+        "kyobo_life (387.4억)",
+        "saemaul_federation (800.7억)",
+        "hyundai_capital (77.3억)",
+        "hana_capital (25.8억)",
+        "kb_capital (25.8억)",
+        "bccard (77.3억)",
+        "shinhan_capital (25.8억)",
+        "jb_woori_capital (51.5억)",
+        "shinhan_sec (51.5억)"
+      ],
+      "relationships_mapped": [
+        "dart_loan_ibk_peach_a",
+        "dart_loan_hyundai_capital_peach_a",
+        "dart_loan_hana_capital_peach_a",
+        "dart_loan_db_ins_peach_a",
+        "dart_loan_heungkuk_fire_peach_a",
+        "dart_loan_kdb_peach_a",
+        "dart_loan_kb_capital_peach_a",
+        "dart_loan_bccard_peach_a",
+        "dart_loan_kyobo_life_gen_peach_a",
+        "dart_loan_kyobo_life_spec_peach_a",
+        "dart_loan_saemaul_peach_a",
+        "dart_loan_hyundai_capital_peach_b",
+        "dart_loan_hana_capital_peach_b",
+        "dart_loan_kb_capital_peach_b",
+        "dart_loan_bccard_peach_b",
+        "dart_loan_shinhan_capital_peach_b",
+        "dart_loan_jb_woori_capital_peach_b",
+        "dart_loan_shinhan_sec_peach_b"
+      ],
+      "unresolved_gaps": [],
+      "status": "Reviewed and mapped"
+    },
+    {
+      "pfv_spc": "포항 AI Factory 시행법인(명칭 미공개)",
+      "node_id": "pohang_aif_spc",
+      "visibility": "visible",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "알이씨데이터센터",
+      "node_id": "rec_datacenter",
+      "visibility": "visible",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "더엣지영등포피에프브이(주)",
+      "node_id": "seed:b04",
+      "visibility": "no_map_node",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "신영식사피에프브이(주)",
+      "node_id": "seed:b11",
+      "visibility": "no_map_node",
+      "latest_report_reviewed": "감사보고서 (2020.12)",
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "아이비케이부산에이아이데이터센터(주)",
+      "node_id": "seed:b12",
+      "visibility": "no_map_node",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "에이아이팩토리포항피에프브이(주)",
+      "node_id": "seed:b14",
+      "visibility": "no_map_node",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "케이인더스트리피에프브이(주)",
+      "node_id": "seed:b19",
+      "visibility": "no_map_node",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "하양에너지발전(주)",
+      "node_id": "seed:b28",
+      "visibility": "no_map_node",
+      "latest_report_reviewed": "하양에너지발전 감사보고서 (2025.12)",
+      "reporting_date": "2025-12-31",
+      "filing_date": null,
+      "borrowings_note_reviewed": true,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "주석6 당기말 단기차입금 44.5억(관련당사자) 확인했으나 DC PFV 미확정·맵 노드 없음(visibility=no_map_node)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "신영문봉피에프브이",
+      "node_id": "shinyoung_munbong_pfv",
+      "visibility": "visible",
+      "latest_report_reviewed": "신영문봉피에프브이 감사보고서 (2025.12)",
+      "reporting_date": "2025-12-31",
+      "filing_date": "20260401",
+      "borrowings_note_reviewed": true,
+      "named_lenders_found": [
+        "bdh_1st_spc (200.0억)",
+        "kis_savings (120.0억)",
+        "louis_alpha_1st_spc (60.0억)",
+        "goryo_savings (90.0억)",
+        "seram_savings (20.0억)",
+        "db_capital (50.0억)",
+        "welcome_savings (30.0억)",
+        "kiwoom_fni (40.0억)",
+        "daol_savings (10.0억)",
+        "acuon_savings (40.0억)",
+        "eco_capital (10.0억)",
+        "nh_inv_sec (200.0억)"
+      ],
+      "relationships_mapped": [
+        "dart_loan_bdh1_shinyoung",
+        "dart_loan_kis_savings_shinyoung",
+        "dart_loan_louis_alpha1_shinyoung",
+        "dart_loan_goryo_savings_shinyoung",
+        "dart_loan_seram_savings_shinyoung",
+        "dart_loan_db_capital_shinyoung",
+        "dart_loan_welcome_savings_shinyoung",
+        "dart_loan_kiwoom_fni_shinyoung",
+        "dart_loan_daol_savings_shinyoung",
+        "dart_loan_acuon_savings_shinyoung",
+        "dart_loan_eco_capital_shinyoung",
+        "dart_loan_nh_inv_shinyoung"
+      ],
+      "unresolved_gaps": [],
+      "status": "Reviewed and mapped"
+    },
+    {
+      "pfv_spc": "SK증권 SPC(명칭 미공개)",
+      "node_id": "sk_sec_spc_yongin",
+      "visibility": "visible",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "와이케이안산디원",
+      "node_id": "yk_ansan_d1",
+      "visibility": "visible",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "용인덕성데이터센터피에프브이",
+      "node_id": "yongin_deokseong_pfv",
+      "visibility": "visible",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    },
+    {
+      "pfv_spc": "용인지곡동데이터센터(브릿지 참조)",
+      "node_id": "yongin_jigok_dc_bridge_ref",
+      "visibility": "visible",
+      "latest_report_reviewed": null,
+      "reporting_date": null,
+      "filing_date": null,
+      "borrowings_note_reviewed": false,
+      "named_lenders_found": [],
+      "relationships_mapped": [],
+      "unresolved_gaps": [
+        "DART 감사/정기보고서 rcept 미확보 또는 비대상(해외·미공개법인)"
+      ],
+      "status": "Report unavailable"
+    }
+  ]
+}

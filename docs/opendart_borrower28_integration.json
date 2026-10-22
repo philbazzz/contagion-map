@@ -1,0 +1,79 @@
+{
+  "verification_date": "2026-10-22",
+  "added_nodes": [
+    "gaya_pfv",
+    "dito_pfv",
+    "shinyoung_munbong_pfv",
+    "ansan_green_energy_pfv",
+    "epoch_pfv"
+  ],
+  "updated_nodes": [
+    "bukhang_idc_pfv",
+    "busan_ecodelta_pfv",
+    "camsquare_pfv",
+    "casequare_busan_jangnim_pfv",
+    "casequare_pfv",
+    "cheongna_idc_pfv",
+    "dcity_bucheon_pfv",
+    "edgecore_pfv",
+    "fine_dc_pfv",
+    "gasan_dc_sl1",
+    "keppel_ansan_pfv",
+    "koramco_siheung_pfv",
+    "magna_pfv",
+    "peach_pfv",
+    "yongin_deokseong_pfv"
+  ],
+  "added_sources": [
+    "dart_audit_gaya_pfv_20260408000296",
+    "dart_audit_keppel_ansan_pfv_20260330000663",
+    "dart_audit_dito_pfv_20260410001996",
+    "dart_audit_magna_pfv_20260406003595",
+    "dart_audit_bukhang_idc_pfv_20260408000471",
+    "dart_audit_busan_ecodelta_pfv_20260410003722",
+    "dart_audit_shinyoung_munbong_pfv_20260401001427",
+    "dart_audit_ansan_green_energy_pfv_20260406003916",
+    "dart_audit_epoch_pfv_20260331002059",
+    "dart_audit_edgecore_pfv_20260403003710",
+    "dart_audit_cheongna_idc_pfv_20260413000174",
+    "dart_audit_casequare_pfv_20260409001042",
+    "dart_audit_koramco_siheung_pfv_20260413002815",
+    "dart_audit_camsquare_pfv_20260413002070",
+    "dart_audit_peach_pfv_20260401001191"
+  ],
+  "skipped": [
+    {
+      "id": "b04",
+      "reason": "법인코드·맵노드 모두 없음 — 엣지/노드 미작성"
+    },
+    {
+      "id": "b11",
+      "reason": "유사명 제외 — 신영식사 법인 미확정"
+    },
+    {
+      "id": "b12",
+      "reason": "법인코드·맵노드 모두 없음 — 엣지/노드 미작성"
+    },
+    {
+      "id": "b14",
+      "reason": "법인코드·맵노드 모두 없음 — 엣지/노드 미작성"
+    },
+    {
+      "id": "b19",
+      "reason": "법인코드·맵노드 모두 없음 — 엣지/노드 미작성"
+    },
+    {
+      "id": "b28",
+      "reason": "에너지발전 — DC PFV로 반영 제외"
+    }
+  ],
+  "edges_added": [],
+  "edges_updated": [],
+  "policy": [
+    "No lender edges from snippet co-occurrence",
+    "No equal-split of syndicate totals",
+    "Unknown balances stay unknown",
+    "하양에너지발전 excluded as non-DC",
+    "신영식사 lookalike excluded"
+  ]
+}

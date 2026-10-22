@@ -1,0 +1,143 @@
+{
+  "added": [
+    "dart_loan_ibk_dito_senior",
+    "dart_loan_kdb_dito_senior",
+    "dart_loan_ibk_dito_fixed",
+    "dart_loan_ibk_capital_busan_ecodelta",
+    "dart_loan_kb_ins_edgecore",
+    "dart_loan_hyundai_marine_edgecore",
+    "dart_loan_shinhan_capital_keppel_ansan",
+    "dart_loan_shinhan_sec_keppel_ansan",
+    "dart_loan_shinhan_capital_cheongna",
+    "dart_loan_shinhan_sec_cheongna",
+    "dart_loan_kb_magna",
+    "dart_loan_shinhan_magna",
+    "dart_loan_hana_magna",
+    "dart_loan_ibk_magna",
+    "dart_facility_keppel_ansan_nonghyup_group"
+  ],
+  "replaced": [],
+  "skipped_missing_node": [],
+  "rows": [
+    {
+      "source_counterparty": "중소기업은행",
+      "borrower": "dito_pfv",
+      "disclosed_amount": "1500억 outstanding",
+      "reporting_date": "2025-12-31",
+      "relationship_id": "dart_loan_ibk_dito_senior",
+      "mapping_status": "mapped_active"
+    },
+    {
+      "source_counterparty": "한국산업은행",
+      "borrower": "dito_pfv",
+      "disclosed_amount": "1000억 outstanding",
+      "reporting_date": "2025-12-31",
+      "relationship_id": "dart_loan_kdb_dito_senior",
+      "mapping_status": "mapped_active"
+    },
+    {
+      "source_counterparty": "중소기업은행",
+      "borrower": "dito_pfv",
+      "disclosed_amount": "250억 outstanding",
+      "reporting_date": "2025-12-31",
+      "relationship_id": "dart_loan_ibk_dito_fixed",
+      "mapping_status": "mapped_active"
+    },
+    {
+      "source_counterparty": "IBK캐피탈",
+      "borrower": "busan_ecodelta_pfv",
+      "disclosed_amount": "202.137억 outstanding",
+      "reporting_date": "2025-12-31",
+      "relationship_id": "dart_loan_ibk_capital_busan_ecodelta",
+      "mapping_status": "mapped_active"
+    },
+    {
+      "source_counterparty": "KB손해보험",
+      "borrower": "edgecore_pfv",
+      "disclosed_amount": "207억 outstanding",
+      "reporting_date": "2025-12-31",
+      "relationship_id": "dart_loan_kb_ins_edgecore",
+      "mapping_status": "mapped_active"
+    },
+    {
+      "source_counterparty": "현대해상화재보험",
+      "borrower": "edgecore_pfv",
+      "disclosed_amount": "76억 outstanding",
+      "reporting_date": "2025-12-31",
+      "relationship_id": "dart_loan_hyundai_marine_edgecore",
+      "mapping_status": "mapped_active"
+    },
+    {
+      "source_counterparty": "신한캐피탈",
+      "borrower": "keppel_ansan_pfv",
+      "disclosed_amount": "50억 outstanding",
+      "reporting_date": "2025-12-31",
+      "relationship_id": "dart_loan_shinhan_capital_keppel_ansan",
+      "mapping_status": "mapped_active"
+    },
+    {
+      "source_counterparty": "신한투자증권",
+      "borrower": "keppel_ansan_pfv",
+      "disclosed_amount": "60억 outstanding",
+      "reporting_date": "2025-12-31",
+      "relationship_id": "dart_loan_shinhan_sec_keppel_ansan",
+      "mapping_status": "mapped_active"
+    },
+    {
+      "source_counterparty": "신한캐피탈",
+      "borrower": "cheongna_idc_pfv",
+      "disclosed_amount": "290억 outstanding",
+      "reporting_date": "2025-12-31",
+      "relationship_id": "dart_loan_shinhan_capital_cheongna",
+      "mapping_status": "mapped_active"
+    },
+    {
+      "source_counterparty": "신한투자증권",
+      "borrower": "cheongna_idc_pfv",
+      "disclosed_amount": "200억 outstanding",
+      "reporting_date": "2025-12-31",
+      "relationship_id": "dart_loan_shinhan_sec_cheongna",
+      "mapping_status": "mapped_active"
+    },
+    {
+      "source_counterparty": "KB국민은행",
+      "borrower": "magna_pfv",
+      "disclosed_amount": "99억 outstanding",
+      "reporting_date": "2025-12-31",
+      "relationship_id": "dart_loan_kb_magna",
+      "mapping_status": "mapped_active"
+    },
+    {
+      "source_counterparty": "신한은행",
+      "borrower": "magna_pfv",
+      "disclosed_amount": "134억 outstanding",
+      "reporting_date": "2025-12-31",
+      "relationship_id": "dart_loan_shinhan_magna",
+      "mapping_status": "mapped_active"
+    },
+    {
+      "source_counterparty": "하나은행",
+      "borrower": "magna_pfv",
+      "disclosed_amount": "83억 outstanding",
+      "reporting_date": "2025-12-31",
+      "relationship_id": "dart_loan_hana_magna",
+      "mapping_status": "mapped_active"
+    },
+    {
+      "source_counterparty": "중소기업은행",
+      "borrower": "magna_pfv",
+      "disclosed_amount": "99억 outstanding",
+      "reporting_date": "2025-12-31",
+      "relationship_id": "dart_loan_ibk_magna",
+      "mapping_status": "mapped_active"
+    },
+    {
+      "source_counterparty": "가평군농업협동조합 외 7곳",
+      "borrower": "keppel_ansan_pfv",
+      "disclosed_amount": "200억 group short-term",
+      "reporting_date": "2025-12-31",
+      "relationship_id": "dart_facility_keppel_ansan_nonghyup_group",
+      "mapping_status": "mapped_facility_context_individual_allocations_unknown"
+    }
+  ]
+}

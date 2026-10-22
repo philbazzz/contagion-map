@@ -1,0 +1,30 @@
+{
+  "added": [
+    "dart_loan_msedc1_edgecore",
+    "dart_loan_msedc2_edgecore",
+    "dart_loan_shinyoung_keppel_ansan",
+    "dart_loan_wonchang_cheongna",
+    "dart_loan_gps23_cheongna",
+    "dart_loan_ido_cheongna_bridge",
+    "dart_loan_ido_cheongna_shareholder",
+    "dart_loan_hanwha_life_magna"
+  ],
+  "replaced": [
+    "dart_loan_ibk_dito_senior",
+    "dart_loan_kdb_dito_senior",
+    "dart_loan_ibk_dito_fixed",
+    "dart_loan_ibk_capital_busan_ecodelta",
+    "dart_loan_kb_ins_edgecore",
+    "dart_loan_hyundai_marine_edgecore",
+    "dart_loan_shinhan_capital_keppel_ansan",
+    "dart_loan_shinhan_sec_keppel_ansan",
+    "dart_facility_keppel_ansan_nonghyup_group",
+    "dart_loan_shinhan_capital_cheongna",
+    "dart_loan_shinhan_sec_cheongna",
+    "dart_loan_kb_magna",
+    "dart_loan_shinhan_magna",
+    "dart_loan_hana_magna",
+    "dart_loan_ibk_magna"
+  ],
+  "rows": 23
+}

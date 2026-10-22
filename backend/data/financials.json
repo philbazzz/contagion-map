@@ -1,0 +1,1173 @@
+{
+ "company": "coreweave",
+ "as_of": "2026-06-30",
+ "filing": "S_10Q2",
+ "currency_unit": "USD million",
+ "notes": [
+  "원금은 2026.6.30 기준 10-Q 공시값이며, 그 이후 상환·인출은 반영되지 않았습니다.",
+  "유효이자율은 10-Q가 반올림해 공시한 값(정수 %)이며 할인·발행비용 상각을 포함합니다.",
+  "변동금리 차입금의 표면금리 = SOFR + 가산금리. SOFR는 시장 관측값으로 사용자가 수정할 수 있습니다."
+ ],
+ "totals": {
+  "principal_usd_m": 35551,
+  "recourse_net_usd_m": 31405,
+  "nonrecourse_net_usd_m": 3663,
+  "source_ids": [
+   "S_10Q2"
+  ]
+ },
+ "maturities": [
+  {
+   "period": "2026 잔여",
+   "usd_m": 4413
+  },
+  {
+   "period": "2027",
+   "usd_m": 6184
+  },
+  {
+   "period": "2028",
+   "usd_m": 4416
+  },
+  {
+   "period": "2029",
+   "usd_m": 2421
+  },
+  {
+   "period": "2030",
+   "usd_m": 3221
+  },
+  {
+   "period": "2031 이후",
+   "usd_m": 14896
+  }
+ ],
+ "metrics": [
+  {
+   "id": "contractual_interest_6m",
+   "label": "계약상 이자비용",
+   "value_usd_m": 1075,
+   "period": "2026 상반기(6개월)",
+   "source_ids": [
+    "S_10Q2"
+   ]
+  },
+  {
+   "id": "interest_expense_6m",
+   "label": "이자비용(자본화 차감 후)",
+   "value_usd_m": 985,
+   "period": "2026 상반기(6개월)",
+   "source_ids": [
+    "S_10Q2"
+   ]
+  },
+  {
+   "id": "cash_interest_6m",
+   "label": "현금 이자 지급액",
+   "value_usd_m": 806,
+   "period": "2026 상반기(6개월)",
+   "source_ids": [
+    "S_10Q2"
+   ]
+  },
+  {
+   "id": "ocf_6m",
+   "label": "영업현금흐름",
+   "value_usd_m": 3663,
+   "period": "2026 상반기(6개월)",
+   "source_ids": [
+    "S_10Q2"
+   ]
+  },
+  {
+   "id": "capex_6m",
+   "label": "설비투자(CAPEX)",
+   "value_usd_m": 14117,
+   "period": "2026 상반기(6개월)",
+   "source_ids": [
+    "S_10Q2"
+   ]
+  },
+  {
+   "id": "cash",
+   "label": "현금 및 현금성자산",
+   "value_usd_m": 5524,
+   "period": "2026.6.30 시점",
+   "source_ids": [
+    "S_10Q2"
+   ]
+  },
+  {
+   "id": "rpo",
+   "label": "수주잔고(RPO)",
+   "value_usd_m": 103700,
+   "period": "2026.6.30 시점",
+   "source_ids": [
+    "S_10Q2"
+   ]
+  }
+ ],
+ "instruments": [
+  {
+   "id": "ddtl_1",
+   "name": "DDTL 1.0",
+   "kind": "term_loan",
+   "currency": "USD",
+   "principal_usd_m": 1300,
+   "principal_as_of": "2026-06-30",
+   "principal_note": "",
+   "commitment_usd_m": 2300,
+   "effective_rate_pct": 15.0,
+   "effective_rate_status": "VERIFIED",
+   "rate_type": "floating",
+   "coupon_pct": null,
+   "spread_pct": 9.62,
+   "base_rate": "SOFR",
+   "floor_pct": null,
+   "rate_status": "INFERRED",
+   "rate_note": "가산금리 9.62%는 2차 출처(원공시 미확인)",
+   "maturity": "2028-03-28",
+   "maturity_status": "VERIFIED",
+   "borrower": null,
+   "borrower_status": "UNKNOWN",
+   "recourse": true,
+   "amortization": "분기 분할상환, 2028.3.28 최종 상환(balloon)",
+   "collateral": "",
+   "customer": null,
+   "signed": "2023-08",
+   "participants": [
+    {
+     "entity": "magnetar",
+     "roles": [
+      "Lead Lender"
+     ],
+     "status": "VERIFIED"
+    },
+    {
+     "entity": "blackstone",
+     "roles": [
+      "Lead Lender (Tactical Opportunities)"
+     ],
+     "status": "VERIFIED"
+    },
+    {
+     "entity": "coatue",
+     "roles": [
+      "Lender"
+     ],
+     "status": "VERIFIED"
+    },
+    {
+     "entity": "digitalbridge",
+     "roles": [
+      "Lender"
+     ],
+     "status": "VERIFIED"
+    },
+    {
+     "entity": "blackrock",
+     "roles": [
+      "Lender"
+     ],
+     "status": "VERIFIED"
+    },
+    {
+     "entity": "pimco",
+     "roles": [
+      "Lender"
+     ],
+     "status": "VERIFIED"
+    },
+    {
+     "entity": "carlyle",
+     "roles": [
+      "Lender"
+     ],
+     "status": "VERIFIED"
+    }
+   ],
+   "source_ids": [
+    "S_10Q1_2025",
+    "S_10Q2",
+    "S_650",
+    "S_AMCOMPUTE",
+    "S_REUTERS_MS"
+   ]
+  },
+  {
+   "id": "ddtl_2",
+   "name": "DDTL 2.0",
+   "kind": "term_loan",
+   "currency": "USD",
+   "principal_usd_m": 3190,
+   "principal_as_of": "2026-06-30",
+   "principal_note": "",
+   "commitment_usd_m": 7600,
+   "effective_rate_pct": 11.0,
+   "effective_rate_status": "VERIFIED",
+   "rate_type": "floating",
+   "coupon_pct": null,
+   "spread_pct": null,
+   "base_rate": "SOFR",
+   "floor_pct": null,
+   "rate_status": "UNKNOWN",
+   "rate_note": "가산금리는 고객 신용등급별 차등(2차 출처: SOFR+6.00~13.00%) — 단일값 미확인",
+   "maturity": "2030-08",
+   "maturity_status": "VERIFIED",
+   "borrower": null,
+   "borrower_status": "UNKNOWN",
+   "recourse": true,
+   "amortization": "2025.10부터 분기 상환, 대출별 인출 후 5년 최종 상환",
+   "collateral": "",
+   "customer": null,
+   "signed": "2024-05",
+   "participants": [
+    {
+     "entity": "blackstone",
+     "roles": [
+      "Lead Lender"
+     ],
+     "status": "VERIFIED"
+    },
+    {
+     "entity": "magnetar",
+     "roles": [
+      "Co-Lead Lender"
+     ],
+     "status": "VERIFIED"
+    },
+    {
+     "entity": "coatue",
+     "roles": [
+      "Lender"
+     ],
+     "status": "VERIFIED"
+    },
+    {
+     "entity": "carlyle",
+     "roles": [
+      "Lender"
+     ],
+     "status": "VERIFIED"
+    },
+    {
+     "entity": "cdpq",
+     "roles": [
+      "Lender"
+     ],
+     "status": "VERIFIED"
+    },
+    {
+     "entity": "digitalbridge",
+     "roles": [
+      "Lender"
+     ],
+     "status": "VERIFIED"
+    },
+    {
+     "entity": "blackrock",
+     "roles": [
+      "Lender"
+     ],
+     "status": "VERIFIED"
+    },
+    {
+     "entity": "eldridge",
+     "roles": [
+      "Lender"
+     ],
+     "status": "VERIFIED"
+    },
+    {
+     "entity": "great_elm",
+     "roles": [
+      "Lender"
+     ],
+     "status": "VERIFIED"
+    }
+   ],
+   "source_ids": [
+    "S_10Q1_2025",
+    "S_10Q2",
+    "S_650",
+    "S_AMCOMPUTE",
+    "S_REUTERS_MS"
+   ]
+  },
+  {
+   "id": "ddtl_2_1",
+   "name": "DDTL 2.1",
+   "kind": "term_loan",
+   "currency": "USD",
+   "principal_usd_m": 3000,
+   "principal_as_of": "2026-06-30",
+   "principal_note": "",
+   "commitment_usd_m": null,
+   "effective_rate_pct": 9.0,
+   "effective_rate_status": "VERIFIED",
+   "rate_type": "floating",
+   "coupon_pct": null,
+   "spread_pct": 4.25,
+   "base_rate": "SOFR",
+   "floor_pct": null,
+   "rate_status": "INFERRED",
+   "rate_note": "가산금리 4.25%는 2차 출처(원공시 미확인)",
+   "maturity": "2031-03",
+   "maturity_status": "VERIFIED",
+   "borrower": null,
+   "borrower_status": "UNKNOWN",
+   "recourse": true,
+   "amortization": "",
+   "collateral": "",
+   "customer": null,
+   "signed": "2025-09",
+   "participants": [],
+   "source_ids": [
+    "S_10Q2",
+    "S_AMCOMPUTE"
+   ]
+  },
+  {
+   "id": "ddtl_3",
+   "name": "DDTL 3.0",
+   "kind": "term_loan",
+   "currency": "USD",
+   "principal_usd_m": 2215,
+   "principal_as_of": "2026-06-30",
+   "principal_note": "",
+   "commitment_usd_m": 2600,
+   "effective_rate_pct": 9.0,
+   "effective_rate_status": "VERIFIED",
+   "rate_type": "floating",
+   "coupon_pct": null,
+   "spread_pct": 4.0,
+   "base_rate": "SOFR",
+   "floor_pct": null,
+   "rate_status": "VERIFIED",
+   "rate_note": "",
+   "maturity": "2030-08-21",
+   "maturity_status": "VERIFIED",
+   "borrower": "CoreWeave Compute Acquisition Co. VII, LLC",
+   "borrower_status": "INFERRED",
+   "recourse": true,
+   "amortization": "",
+   "collateral": "CCAC VII의 실질적 전 자산",
+   "customer": "openai",
+   "signed": "2025-07",
+   "participants": [
+    {
+     "entity": "morgan_stanley",
+     "roles": [
+      "Joint Bookrunner",
+      "Joint Lead Arranger"
+     ],
+     "status": "VERIFIED"
+    },
+    {
+     "entity": "mufg",
+     "roles": [
+      "Joint Bookrunner",
+      "Joint Lead Arranger"
+     ],
+     "status": "VERIFIED"
+    },
+    {
+     "entity": "goldman",
+     "roles": [
+      "Joint Lead Arranger"
+     ],
+     "status": "VERIFIED"
+    },
+    {
+     "entity": "jpmorgan",
+     "roles": [
+      "Lender (Syndicate)"
+     ],
+     "status": "VERIFIED"
+    },
+    {
+     "entity": "wells_fargo",
+     "roles": [
+      "Lender (Syndicate)"
+     ],
+     "status": "VERIFIED"
+    },
+    {
+     "entity": "bbva",
+     "roles": [
+      "Lender (Syndicate)"
+     ],
+     "status": "VERIFIED"
+    },
+    {
+     "entity": "credit_agricole",
+     "roles": [
+      "Lender (Syndicate)"
+     ],
+     "status": "VERIFIED"
+    },
+    {
+     "entity": "smbc",
+     "roles": [
+      "Lender (Syndicate)"
+     ],
+     "status": "VERIFIED"
+    },
+    {
+     "entity": "pnc",
+     "roles": [
+      "Lender (Syndicate)"
+     ],
+     "status": "VERIFIED"
+    },
+    {
+     "entity": "societe_generale",
+     "roles": [
+      "Lender (Syndicate)"
+     ],
+     "status": "VERIFIED"
+    }
+   ],
+   "source_ids": [
+    "S_DDTL3",
+    "S_10Q2"
+   ]
+  },
+  {
+   "id": "ddtl_4",
+   "name": "DDTL 4.0",
+   "kind": "term_loan",
+   "currency": "USD",
+   "principal_usd_m": 2837,
+   "principal_as_of": "2026-06-30",
+   "principal_note": "",
+   "commitment_usd_m": 8500,
+   "effective_rate_pct": 7.0,
+   "effective_rate_status": "VERIFIED",
+   "rate_type": "floating",
+   "coupon_pct": null,
+   "spread_pct": 2.25,
+   "base_rate": "SOFR",
+   "floor_pct": null,
+   "rate_status": "VERIFIED",
+   "rate_note": "변동금리분 SOFR+2.25%, 고정금리분 약 5.9% (보도자료). 차입자는 담보 제공 법인 CCAC VIII로 추정",
+   "maturity": "2032-03",
+   "maturity_status": "VERIFIED",
+   "borrower": "CoreWeave Compute Acquisition Co. VIII, LLC",
+   "borrower_status": "INFERRED",
+   "recourse": false,
+   "amortization": "약정 종료 후 월 분할상환, 잔액 만기 일시상환",
+   "collateral": "CCAC VIII 지분 및 실질적 전 자산 (비소구, 제한적 보증)",
+   "customer": null,
+   "signed": "2026-03",
+   "participants": [
+    {
+     "entity": "mufg",
+     "roles": [
+      "Co-Structuring Agent",
+      "Joint Bookrunner"
+     ],
+     "status": "VERIFIED"
+    },
+    {
+     "entity": "morgan_stanley",
+     "roles": [
+      "Co-Structuring Agent",
+      "Joint Bookrunner"
+     ],
+     "status": "VERIFIED"
+    },
+    {
+     "entity": "goldman",
+     "roles": [
+      "Coordinating Lead Arranger"
+     ],
+     "status": "VERIFIED"
+    },
+    {
+     "entity": "jpmorgan",
+     "roles": [
+      "Coordinating Lead Arranger"
+     ],
+     "status": "VERIFIED"
+    },
+    {
+     "entity": "blackstone",
+     "roles": [
+      "Anchor Investor"
+     ],
+     "status": "VERIFIED"
+    }
+   ],
+   "source_ids": [
+    "S_10Q2",
+    "S_DDTL4"
+   ]
+  },
+  {
+   "id": "ddtl_5",
+   "name": "DDTL 5.0",
+   "kind": "term_loan",
+   "currency": "USD",
+   "principal_usd_m": 1101,
+   "principal_as_of": "2026-06-30",
+   "principal_note": "",
+   "commitment_usd_m": 3100,
+   "effective_rate_pct": 9.0,
+   "effective_rate_status": "VERIFIED",
+   "rate_type": "floating",
+   "coupon_pct": null,
+   "spread_pct": 4.5,
+   "base_rate": "SOFR",
+   "floor_pct": 0.0,
+   "rate_status": "VERIFIED",
+   "rate_note": "SOFR(하한 0%)+4.50% 또는 기준금리+3.50%, 미인출 수수료 0.50% (8-K). 분할상환 일정 미확인",
+   "maturity": "2031-11-15",
+   "maturity_status": "VERIFIED",
+   "borrower": "CoreWeave Financing DDTL V, LLC",
+   "borrower_status": "VERIFIED",
+   "recourse": true,
+   "amortization": "",
+   "collateral": "자회사 지분 및 실질적 전 자산, CoreWeave Inc. 보증",
+   "customer": null,
+   "signed": "2026-05",
+   "participants": [
+    {
+     "entity": "morgan_stanley",
+     "roles": [
+      "Administrative Agent",
+      "Coordinating Lead Arranger",
+      "Joint Bookrunner"
+     ],
+     "status": "VERIFIED"
+    },
+    {
+     "entity": "mufg",
+     "roles": [
+      "Coordinating Lead Arranger",
+      "Joint Bookrunner"
+     ],
+     "status": "VERIFIED"
+    },
+    {
+     "entity": "us_bank",
+     "roles": [
+      "Collateral Agent",
+      "Depositary Bank"
+     ],
+     "status": "VERIFIED"
+    }
+   ],
+   "source_ids": [
+    "S_DDTL5",
+    "S_10Q2"
+   ]
+  },
+  {
+   "id": "ddtl_5_5",
+   "name": "DDTL 5.5",
+   "kind": "term_loan",
+   "currency": "USD",
+   "principal_usd_m": null,
+   "principal_as_of": "2026-06-30",
+   "principal_note": "2026.8.7 체결 — 6.30 기준 잔액 없음, 이후 인출액 미공시",
+   "commitment_usd_m": 2600,
+   "effective_rate_pct": null,
+   "effective_rate_status": "UNKNOWN",
+   "rate_type": "floating",
+   "coupon_pct": null,
+   "spread_pct": 5.5,
+   "base_rate": "SOFR",
+   "floor_pct": 0.0,
+   "rate_status": "VERIFIED",
+   "rate_note": "Term SOFR(하한 0%)+5.50% 또는 기준금리+4.50%",
+   "maturity": "2031-09-01",
+   "maturity_status": "VERIFIED",
+   "borrower": "CoreWeave Financing DDTL V-V, LLC",
+   "borrower_status": "VERIFIED",
+   "recourse": true,
+   "amortization": "",
+   "collateral": "차입자·자회사 자산 및 지분 100% 질권, CoreWeave Inc. 보증",
+   "customer": null,
+   "signed": "2026-08",
+   "participants": [
+    {
+     "entity": "jpmorgan",
+     "roles": [
+      "Administrative Agent",
+      "Joint Lead Arranger",
+      "Joint Bookrunner",
+      "Syndication Agent"
+     ],
+     "status": "VERIFIED"
+    },
+    {
+     "entity": "mufg",
+     "roles": [
+      "Joint Lead Arranger",
+      "Joint Bookrunner",
+      "Syndication Agent"
+     ],
+     "status": "VERIFIED"
+    },
+    {
+     "entity": "us_bank",
+     "roles": [
+      "Collateral Agent",
+      "Depositary Bank"
+     ],
+     "status": "VERIFIED"
+    }
+   ],
+   "source_ids": [
+    "S_DDTL55"
+   ]
+  },
+  {
+   "id": "rcf",
+   "name": "Revolving Credit Facility",
+   "kind": "revolver",
+   "currency": "USD",
+   "principal_usd_m": 0,
+   "principal_as_of": "2026-06-30",
+   "principal_note": "",
+   "commitment_usd_m": 2500,
+   "effective_rate_pct": 7.0,
+   "effective_rate_status": "VERIFIED",
+   "rate_type": "floating",
+   "coupon_pct": null,
+   "spread_pct": null,
+   "base_rate": "SOFR",
+   "floor_pct": null,
+   "rate_status": "UNKNOWN",
+   "rate_note": "2025.11 증액 시 가산금리 미공개 (2024 최초 조건 SOFR+1.75%는 변경 가능성)",
+   "maturity": "2029-11",
+   "maturity_status": "VERIFIED",
+   "borrower": null,
+   "borrower_status": "UNKNOWN",
+   "recourse": true,
+   "amortization": "미인출 수수료 0.25%",
+   "collateral": "",
+   "customer": null,
+   "signed": "2024-10",
+   "participants": [
+    {
+     "entity": "jpmorgan",
+     "roles": [
+      "Lead Bank"
+     ],
+     "status": "VERIFIED"
+    },
+    {
+     "entity": "goldman",
+     "roles": [
+      "Lead Bank"
+     ],
+     "status": "VERIFIED"
+    },
+    {
+     "entity": "morgan_stanley",
+     "roles": [
+      "Lead Bank"
+     ],
+     "status": "VERIFIED"
+    },
+    {
+     "entity": "mufg",
+     "roles": [
+      "Lead Bank"
+     ],
+     "status": "VERIFIED"
+    },
+    {
+     "entity": "citi",
+     "roles": [
+      "Participant"
+     ],
+     "status": "VERIFIED"
+    },
+    {
+     "entity": "credit_agricole",
+     "roles": [
+      "Participant"
+     ],
+     "status": "VERIFIED"
+    },
+    {
+     "entity": "deutsche_bank",
+     "roles": [
+      "Participant"
+     ],
+     "status": "VERIFIED"
+    },
+    {
+     "entity": "smbc",
+     "roles": [
+      "Participant"
+     ],
+     "status": "VERIFIED"
+    },
+    {
+     "entity": "wells_fargo",
+     "roles": [
+      "Participant"
+     ],
+     "status": "VERIFIED"
+    },
+    {
+     "entity": "barclays",
+     "roles": [
+      "Participant (2024 최초 $650M, 현재 참여 미확인)"
+     ],
+     "status": "INFERRED"
+    },
+    {
+     "entity": "jefferies",
+     "roles": [
+      "Participant (2024 최초 $650M, 현재 참여 미확인)"
+     ],
+     "status": "INFERRED"
+    },
+    {
+     "entity": "mizuho",
+     "roles": [
+      "Participant (2024 최초 $650M, 현재 참여 미확인)"
+     ],
+     "status": "INFERRED"
+    }
+   ],
+   "source_ids": [
+    "S_10Q2",
+    "S_650",
+    "S_RCF25"
+   ]
+  },
+  {
+   "id": "notes_2030",
+   "name": "2030 Senior Notes 9.250%",
+   "kind": "senior_notes",
+   "currency": "USD",
+   "principal_usd_m": 2000,
+   "principal_as_of": "2026-06-30",
+   "principal_note": "",
+   "commitment_usd_m": null,
+   "effective_rate_pct": 10.0,
+   "effective_rate_status": "VERIFIED",
+   "rate_type": "fixed",
+   "coupon_pct": 9.25,
+   "spread_pct": null,
+   "base_rate": null,
+   "floor_pct": null,
+   "rate_status": "VERIFIED",
+   "rate_note": "",
+   "maturity": "2030-06-01",
+   "maturity_status": "VERIFIED",
+   "borrower": null,
+   "borrower_status": "UNKNOWN",
+   "recourse": true,
+   "amortization": "만기 일시상환, 반기 이자",
+   "collateral": "무담보 (CoreWeave Cash Management LLC 보증)",
+   "customer": null,
+   "signed": "2025-05",
+   "participants": [],
+   "source_ids": [
+    "S_NOTES2030",
+    "S_10Q2"
+   ]
+  },
+  {
+   "id": "notes_2031_900",
+   "name": "2031 Senior Notes 9.000%",
+   "kind": "senior_notes",
+   "currency": "USD",
+   "principal_usd_m": 1750,
+   "principal_as_of": "2026-06-30",
+   "principal_note": "",
+   "commitment_usd_m": null,
+   "effective_rate_pct": 10.0,
+   "effective_rate_status": "VERIFIED",
+   "rate_type": "fixed",
+   "coupon_pct": 9.0,
+   "spread_pct": null,
+   "base_rate": null,
+   "floor_pct": null,
+   "rate_status": "VERIFIED",
+   "rate_note": "",
+   "maturity": "2031-02-01",
+   "maturity_status": "VERIFIED",
+   "borrower": null,
+   "borrower_status": "UNKNOWN",
+   "recourse": true,
+   "amortization": "만기 일시상환, 반기 이자",
+   "collateral": "무담보 (일부 자회사 보증)",
+   "customer": null,
+   "signed": "2025-07",
+   "participants": [],
+   "source_ids": [
+    "S_NOTES2031",
+    "S_10Q2"
+   ]
+  },
+  {
+   "id": "notes_2031_975",
+   "name": "2031 Senior Notes 9.750%",
+   "kind": "senior_notes",
+   "currency": "USD",
+   "principal_usd_m": 2750,
+   "principal_as_of": "2026-06-30",
+   "principal_note": "",
+   "commitment_usd_m": null,
+   "effective_rate_pct": 10.0,
+   "effective_rate_status": "VERIFIED",
+   "rate_type": "fixed",
+   "coupon_pct": 9.75,
+   "spread_pct": null,
+   "base_rate": null,
+   "floor_pct": null,
+   "rate_status": "VERIFIED",
+   "rate_note": "",
+   "maturity": "2031-10-01",
+   "maturity_status": "VERIFIED",
+   "borrower": null,
+   "borrower_status": "UNKNOWN",
+   "recourse": true,
+   "amortization": "만기 일시상환, 반기 이자",
+   "collateral": "무담보",
+   "customer": null,
+   "signed": "2026-04",
+   "participants": [],
+   "source_ids": [
+    "S_10Q2"
+   ]
+  },
+  {
+   "id": "notes_2032_9625",
+   "name": "2032 Senior Notes 9.625%",
+   "kind": "senior_notes",
+   "currency": "USD",
+   "principal_usd_m": 1250,
+   "principal_as_of": "2026-06-30",
+   "principal_note": "",
+   "commitment_usd_m": null,
+   "effective_rate_pct": 10.0,
+   "effective_rate_status": "VERIFIED",
+   "rate_type": "fixed",
+   "coupon_pct": 9.625,
+   "spread_pct": null,
+   "base_rate": null,
+   "floor_pct": null,
+   "rate_status": "VERIFIED",
+   "rate_note": "",
+   "maturity": "2032-07-15",
+   "maturity_status": "VERIFIED",
+   "borrower": null,
+   "borrower_status": "UNKNOWN",
+   "recourse": true,
+   "amortization": "만기 일시상환, 반기 이자",
+   "collateral": "무담보",
+   "customer": null,
+   "signed": "2026-06",
+   "participants": [],
+   "source_ids": [
+    "S_10Q2"
+   ]
+  },
+  {
+   "id": "notes_2032_eur",
+   "name": "2032 EUR Senior Notes 8.50% (€2.0B)",
+   "kind": "senior_notes",
+   "currency": "EUR",
+   "principal_usd_m": 2279,
+   "principal_as_of": "2026-06-30",
+   "principal_note": "€20억 — 2026.6.30 미 달러 환산 22억 7,900만 달러, 통화스와프로 헤지(10-Q)",
+   "commitment_usd_m": null,
+   "effective_rate_pct": 9.0,
+   "effective_rate_status": "VERIFIED",
+   "rate_type": "fixed",
+   "coupon_pct": 8.5,
+   "spread_pct": null,
+   "base_rate": null,
+   "floor_pct": null,
+   "rate_status": "VERIFIED",
+   "rate_note": "",
+   "maturity": "2032-07-15",
+   "maturity_status": "VERIFIED",
+   "borrower": null,
+   "borrower_status": "UNKNOWN",
+   "recourse": true,
+   "amortization": "만기 일시상환, 반기 이자",
+   "collateral": "무담보",
+   "customer": null,
+   "signed": "2026-06",
+   "participants": [],
+   "source_ids": [
+    "S_10Q2"
+   ]
+  },
+  {
+   "id": "conv_2031",
+   "name": "2031 Convertible Senior Notes",
+   "kind": "convertible",
+   "currency": "USD",
+   "principal_usd_m": 2588,
+   "principal_as_of": "2026-06-30",
+   "principal_note": "",
+   "commitment_usd_m": null,
+   "effective_rate_pct": 2.0,
+   "effective_rate_status": "VERIFIED",
+   "rate_type": "fixed",
+   "coupon_pct": 1.75,
+   "spread_pct": null,
+   "base_rate": null,
+   "floor_pct": null,
+   "rate_status": "INFERRED",
+   "rate_note": "표면금리 1.75%는 2차 출처, 유효이자율 2%는 10-Q",
+   "maturity": "2031-12",
+   "maturity_status": "VERIFIED",
+   "borrower": null,
+   "borrower_status": "UNKNOWN",
+   "recourse": true,
+   "amortization": "",
+   "collateral": "무담보",
+   "customer": null,
+   "signed": "2025-12",
+   "participants": [],
+   "source_ids": [
+    "S_10Q2",
+    "S_AMCOMPUTE"
+   ]
+  },
+  {
+   "id": "conv_2032",
+   "name": "2032 Convertible Senior Notes 1.75%",
+   "kind": "convertible",
+   "currency": "USD",
+   "principal_usd_m": 4000,
+   "principal_as_of": "2026-06-30",
+   "principal_note": "",
+   "commitment_usd_m": null,
+   "effective_rate_pct": 2.0,
+   "effective_rate_status": "VERIFIED",
+   "rate_type": "fixed",
+   "coupon_pct": 1.75,
+   "spread_pct": null,
+   "base_rate": null,
+   "floor_pct": null,
+   "rate_status": "VERIFIED",
+   "rate_note": "",
+   "maturity": "2032-10-01",
+   "maturity_status": "VERIFIED",
+   "borrower": null,
+   "borrower_status": "UNKNOWN",
+   "recourse": true,
+   "amortization": "",
+   "collateral": "무담보, 반기 이자",
+   "customer": null,
+   "signed": "2026-04",
+   "participants": [],
+   "source_ids": [
+    "S_10Q2"
+   ]
+  },
+  {
+   "id": "conv_2033",
+   "name": "2033 Convertible Senior Notes 2.875%",
+   "kind": "convertible",
+   "currency": "USD",
+   "principal_usd_m": null,
+   "principal_as_of": "2026-06-30",
+   "principal_note": "2026.9 발행 37억 달러(+초과배정 옵션 최대 5억 달러) — 6.30 이후, 최종 발행액은 원공시 미확인",
+   "commitment_usd_m": null,
+   "effective_rate_pct": null,
+   "effective_rate_status": "UNKNOWN",
+   "rate_type": "fixed",
+   "coupon_pct": 2.875,
+   "spread_pct": null,
+   "base_rate": null,
+   "floor_pct": null,
+   "rate_status": "VERIFIED",
+   "rate_note": "",
+   "maturity": "2033",
+   "maturity_status": "VERIFIED",
+   "borrower": null,
+   "borrower_status": "UNKNOWN",
+   "recourse": true,
+   "amortization": "",
+   "collateral": "무담보",
+   "customer": null,
+   "signed": "2026-09",
+   "participants": [],
+   "source_ids": [
+    "S_CONV2033"
+   ]
+  },
+  {
+   "id": "oem_recourse",
+   "name": "OEM·소프트웨어 라이선스 금융 (소구)",
+   "kind": "vendor_financing",
+   "currency": "USD",
+   "principal_usd_m": 4220,
+   "principal_as_of": "2026-06-30",
+   "principal_note": "",
+   "commitment_usd_m": null,
+   "effective_rate_pct": 11.0,
+   "effective_rate_status": "VERIFIED",
+   "rate_type": "unknown",
+   "coupon_pct": null,
+   "spread_pct": null,
+   "base_rate": null,
+   "floor_pct": null,
+   "rate_status": "UNKNOWN",
+   "rate_note": "개별 계약 금리 미공시 — 유효이자율만 공시",
+   "maturity": null,
+   "maturity_status": "UNKNOWN",
+   "borrower": null,
+   "borrower_status": "UNKNOWN",
+   "recourse": true,
+   "amortization": "",
+   "collateral": "",
+   "customer": null,
+   "signed": null,
+   "participants": [],
+   "source_ids": [
+    "S_10Q2"
+   ]
+  },
+  {
+   "id": "oem_nonrecourse",
+   "name": "OEM·소프트웨어 라이선스 금융 (비소구)",
+   "kind": "vendor_financing",
+   "currency": "USD",
+   "principal_usd_m": 882,
+   "principal_as_of": "2026-06-30",
+   "principal_note": "",
+   "commitment_usd_m": null,
+   "effective_rate_pct": 9.0,
+   "effective_rate_status": "VERIFIED",
+   "rate_type": "unknown",
+   "coupon_pct": null,
+   "spread_pct": null,
+   "base_rate": null,
+   "floor_pct": null,
+   "rate_status": "UNKNOWN",
+   "rate_note": "개별 계약 금리 미공시 — 유효이자율만 공시",
+   "maturity": null,
+   "maturity_status": "UNKNOWN",
+   "borrower": null,
+   "borrower_status": "UNKNOWN",
+   "recourse": false,
+   "amortization": "",
+   "collateral": "",
+   "customer": null,
+   "signed": null,
+   "participants": [],
+   "source_ids": [
+    "S_10Q2"
+   ]
+  },
+  {
+   "id": "magnetar_loan",
+   "name": "Magnetar Loan (MagAI Ventures)",
+   "kind": "other_loan",
+   "currency": "USD",
+   "principal_usd_m": 189,
+   "principal_as_of": "2026-06-30",
+   "principal_note": "",
+   "commitment_usd_m": null,
+   "effective_rate_pct": 12.0,
+   "effective_rate_status": "VERIFIED",
+   "rate_type": "unknown",
+   "coupon_pct": null,
+   "spread_pct": null,
+   "base_rate": null,
+   "floor_pct": null,
+   "rate_status": "UNKNOWN",
+   "rate_note": "표면금리 미공시 — 유효이자율 12%",
+   "maturity": "2029-01",
+   "maturity_status": "VERIFIED",
+   "borrower": null,
+   "borrower_status": "UNKNOWN",
+   "recourse": true,
+   "amortization": "",
+   "collateral": "",
+   "customer": null,
+   "signed": null,
+   "participants": [
+    {
+     "entity": "magnetar",
+     "roles": [
+      "Lender"
+     ],
+     "status": "VERIFIED"
+    }
+   ],
+   "source_ids": [
+    "S_10Q2"
+   ]
+  }
+ ],
+ "market_inputs": {
+  "sofr_pct": 3.88,
+  "sofr_date": "2026-10-16",
+  "sofr_source_id": "S_SOFR"
+ },
+ "reference": {
+  "nvidia_revenue_fy2026_usd_m": 215900,
+  "nvidia_dc_revenue_fy2026_usd_m": 193700,
+  "nvidia_period": "FY2026 (2026.1.25 종료)",
+  "nvidia_source_id": "S_NVDA_FY26"
+ },
+ "commercial": {
+  "rpo_usd_m": 103700,
+  "rpo_as_of": "2026-06-30",
+  "rpo_buckets": [
+   {
+    "label": "~2028.6 (24개월)",
+    "pct": 41
+   },
+   {
+    "label": "2028.7~2030.6 (25~48개월)",
+    "pct": 39
+   },
+   {
+    "label": "2030.7~ (49~78개월)",
+    "pct": 20
+   }
+  ],
+  "rpo_source_id": "S_10Q2",
+  "post_q2_commitments_usd_m": 25000,
+  "post_q2_note": "2026년 3분기 초 순신규 약정 250억 달러 이상 — 6.30 RPO 미포함, 3~6개월 단기 계약 위주",
+  "post_q2_source_id": "S_CAPACITY",
+  "contracted_power_gw": 4.2,
+  "active_power_gw": 1.5,
+  "power_note": "계약 전력 4.2GW (2026.8.11), 가동 전력 1.5GW (2026.6.30)",
+  "power_source_ids": [
+   "S_CAPACITY",
+   "S_Q2"
+  ],
+  "concentration": [
+   {
+    "customer": "고객 A",
+    "q2_3m_pct": 36,
+    "h1_6m_pct": 40
+   },
+   {
+    "customer": "고객 B",
+    "q2_3m_pct": 26,
+    "h1_6m_pct": 23
+   },
+   {
+    "customer": "고객 C",
+    "q2_3m_pct": 10,
+    "h1_6m_pct": null
+   }
+  ],
+  "concentration_note": "10-Q는 고객을 익명으로 표기 (이름 특정 불가)",
+  "concentration_source_id": "S_10Q2_CONC",
+  "lease_operating_undiscounted_usd_m": 29135,
+  "lease_finance_undiscounted_usd_m": 235,
+  "lease_not_commenced_usd_m": 35500,
+  "lease_note": "미개시 임차 355억 달러는 2026~2029 개시, 7~16년",
+  "lease_source_id": "S_10Q2_LEASE"
+ }
+}

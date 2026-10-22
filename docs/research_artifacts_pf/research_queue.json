@@ -1,0 +1,40 @@
+{
+  "as_of": "2026-10-21",
+  "items": [
+    {
+      "cluster": "포항 AI Factory",
+      "status": "research_queue",
+      "note": "대주·차주 법인 교차검증 전 확정 그래프 미편입"
+    },
+    {
+      "cluster": "고양 삼송",
+      "status": "research_queue",
+      "note": "이지스·LG CNS·네이버클라우드·대주단 — 필지·차주 확인 필요"
+    },
+    {
+      "cluster": "인천 원창동",
+      "status": "research_queue",
+      "note": "이도·청라IDC PFV·신한·현대엔지니어링"
+    },
+    {
+      "cluster": "인천 도화동",
+      "status": "research_queue",
+      "note": "산은인프라·IBK증권 — 차주 미확정"
+    },
+    {
+      "cluster": "용인 덕성리",
+      "status": "research_queue",
+      "note": "와이드크릭·Warburg·삼성물산"
+    },
+    {
+      "cluster": "인천 부평 Digital Edge vs ESR/STACK",
+      "status": "research_queue",
+      "note": "프로젝트 분리 유지 — 동일 시군구로 병합 금지"
+    },
+    {
+      "cluster": "안산 복수 프로젝트",
+      "status": "research_queue",
+      "note": "글로벌클라우드/메타/캄스퀘어/코람코·DCI/Keppel 분리"
+    }
+  ]
+}

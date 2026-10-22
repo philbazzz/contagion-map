@@ -1,0 +1,300 @@
+{
+ "as_of": "2026-10-19",
+ "note": "상업 계약 장부. 금액은 공시·발표 기준(대부분 '최대' 또는 '약'). 계약별 잔여 금액은 공시되지 않음.",
+ "contracts": [
+  {
+   "id": "openai_2503",
+   "counterparty": "openai",
+   "kind": "customer",
+   "title": "OpenAI 연산 계약 (최초)",
+   "signed": "2025-03",
+   "value_usd_m": 11900,
+   "value_basis": "최대(up to)",
+   "term_end": null,
+   "term_note": "기간 미공시",
+   "history": [],
+   "detail": "OpenAI가 3.5억 달러 규모 CoreWeave 주식을 받는 거래와 함께 체결.",
+   "remaining_note": "계약별 잔여 미공시",
+   "status": "VERIFIED",
+   "source_ids": [
+    "S_OPENAI65",
+    "S_REUTERS_MS"
+   ]
+  },
+  {
+   "id": "openai_2505",
+   "counterparty": "openai",
+   "kind": "customer",
+   "title": "OpenAI 연산 계약 (1차 확대)",
+   "signed": "2025-05",
+   "value_usd_m": 4000,
+   "value_basis": "최대(up to)",
+   "term_end": "2029",
+   "term_note": "2029년까지 지급 (Reuters)",
+   "history": [],
+   "detail": "",
+   "remaining_note": "계약별 잔여 미공시",
+   "status": "VERIFIED",
+   "source_ids": [
+    "S_OPENAI65",
+    "S_REUTERS_MS"
+   ]
+  },
+  {
+   "id": "openai_2509",
+   "counterparty": "openai",
+   "kind": "customer",
+   "title": "OpenAI 연산 계약 (2차 확대)",
+   "signed": "2025-09-25",
+   "value_usd_m": 6500,
+   "value_basis": "최대(up to)",
+   "term_end": null,
+   "term_note": "기간 미공시",
+   "history": [],
+   "detail": "누적 계약가치 최대 약 224억 달러.",
+   "remaining_note": "계약별 잔여 미공시",
+   "status": "VERIFIED",
+   "source_ids": [
+    "S_OPENAI65"
+   ]
+  },
+  {
+   "id": "meta_2509",
+   "counterparty": "meta",
+   "kind": "customer",
+   "title": "Meta Order Form (MSA 2023.12.10)",
+   "signed": "2025-09-25",
+   "value_usd_m": 14200,
+   "value_basis": "초기 약정 최대(up to approx.)",
+   "term_end": "2031-12-14",
+   "term_note": "2032년까지 대폭 확대 옵션",
+   "history": [],
+   "detail": "인도·서비스 가용성 요건 충족 조건, 귀책 사유 시 해지 가능.",
+   "remaining_note": "계약별 잔여 미공시",
+   "status": "VERIFIED",
+   "source_ids": [
+    "S_META142"
+   ]
+  },
+  {
+   "id": "meta_2604",
+   "counterparty": "meta",
+   "kind": "customer",
+   "title": "Meta 확대 계약",
+   "signed": "2026-04-09",
+   "value_usd_m": 21000,
+   "value_basis": "약(approximately)",
+   "term_end": "2032-12",
+   "term_note": "2032년 12월까지 용량 제공",
+   "history": [],
+   "detail": "",
+   "remaining_note": "계약별 잔여 미공시",
+   "status": "VERIFIED",
+   "source_ids": [
+    "S_META21"
+   ]
+  },
+  {
+   "id": "nvidia_capacity",
+   "counterparty": "nvidia",
+   "kind": "backstop",
+   "title": "NVIDIA 용량 매입 약정 (Order Form)",
+   "signed": "2025-09-09",
+   "value_usd_m": 6300,
+   "value_basis": "초기 계약가치",
+   "term_end": "2032-04-13",
+   "term_note": "",
+   "history": [],
+   "detail": "CoreWeave 고객이 쓰지 않은 잔여(미판매) 용량을 NVIDIA가 매입할 의무. 30일 서면 통지로 위반 시 해지 가능.",
+   "remaining_note": "실제 매입액은 미판매 용량에 따라 달라짐 · 미공시",
+   "status": "VERIFIED",
+   "source_ids": [
+    "S_NV_ORDER"
+   ]
+  },
+  {
+   "id": "jane_2604",
+   "counterparty": "jane_street",
+   "kind": "customer",
+   "title": "Jane Street AI 클라우드 계약",
+   "signed": "2026-04-15",
+   "value_usd_m": 6000,
+   "value_basis": "약(approximately)",
+   "term_end": null,
+   "term_note": "기간 미공시",
+   "history": [],
+   "detail": "별도로 주당 109달러에 10억 달러 지분 투자.",
+   "remaining_note": "계약별 잔여 미공시",
+   "status": "VERIFIED",
+   "source_ids": [
+    "S_JANE"
+   ]
+  },
+  {
+   "id": "anthropic_2604",
+   "counterparty": "anthropic",
+   "kind": "customer",
+   "title": "Anthropic 다년 계약",
+   "signed": "2026-04-10",
+   "value_usd_m": null,
+   "value_basis": "미공시",
+   "term_end": null,
+   "term_note": "다년 (기간 미공시), 2026년 하반기부터 단계적 가동",
+   "history": [],
+   "detail": "",
+   "remaining_note": "미공시",
+   "status": "VERIFIED",
+   "source_ids": [
+    "S_ANTHROPIC"
+   ]
+  },
+  {
+   "id": "microsoft_msa",
+   "counterparty": "microsoft",
+   "kind": "customer",
+   "title": "Microsoft 클라우드 계약",
+   "signed": null,
+   "value_usd_m": null,
+   "value_basis": "미공시",
+   "term_end": null,
+   "term_note": "",
+   "history": [],
+   "detail": "FY2025 매출의 약 67% (10-K). 2026년 분기 공시는 고객을 익명(A·B·C)으로 표기해 Microsoft 비중을 특정할 수 없음.",
+   "remaining_note": "미공시",
+   "status": "VERIFIED",
+   "source_ids": [
+    "S_10K",
+    "S_10Q2_CONC"
+   ]
+  },
+  {
+   "id": "hrt_2026",
+   "counterparty": "hudson_river",
+   "kind": "customer",
+   "title": "Hudson River Trading 계약 확대",
+   "signed": "2026-08",
+   "value_usd_m": null,
+   "value_basis": "미공시 ('수십억 달러' 보도)",
+   "term_end": null,
+   "term_note": "",
+   "history": [],
+   "detail": "2026년 2분기 실적 발표에 관계 확대 고객으로 명시.",
+   "remaining_note": "미공시",
+   "status": "VERIFIED",
+   "source_ids": [
+    "S_Q2",
+    "S_HRT"
+   ]
+  },
+  {
+   "id": "corz_lease",
+   "counterparty": "core_scientific",
+   "kind": "lease",
+   "title": "Core Scientific 데이터센터 임차 (6개 사이트)",
+   "signed": "2025-02-26",
+   "value_usd_m": 10200,
+   "value_basis": "임대인 기준 총 계약매출",
+   "term_end": null,
+   "term_note": "12년 계약 (5년 연장 옵션 2회), 개시일별로 상이",
+   "history": [],
+   "detail": "약 590MW. 덴턴 사이트 70MW 확장분 12억 달러 포함.",
+   "remaining_note": "계약별 잔여 미공시",
+   "status": "VERIFIED",
+   "source_ids": [
+    "S_CORZ"
+   ]
+  },
+  {
+   "id": "apld_lease",
+   "counterparty": "applied_digital",
+   "kind": "lease",
+   "title": "Applied Digital 엘런데일(ND) 임차 2건",
+   "signed": "2025-06-02",
+   "value_usd_m": 7000,
+   "value_basis": "임대인 기준 예상 총매출 (확정 아님)",
+   "term_end": null,
+   "term_note": "약 15년, 첫 100MW 2025년 4분기 가동 예정",
+   "history": [],
+   "detail": "250MW. Polaris Forge / Macquarie preferred equity partnership disclosed separately.",
+   "remaining_note": "계약별 잔여 미공시",
+   "status": "VERIFIED",
+   "source_ids": [
+    "S_APLD",
+    "S_APLD_MACQ"
+   ]
+  },
+  {
+   "id": "glxy_helios_lease",
+   "counterparty": "galaxy_digital",
+   "kind": "lease",
+   "title": "Galaxy Helios 캠퍼스 임차 (Phases I–III)",
+   "signed": "2025-04",
+   "value_usd_m": null,
+   "value_basis": "총 계약매출 미공시 — 회사는 평균 연간 수익 10억 달러 이상 예상",
+   "term_end": null,
+   "term_note": "15년 + 5년 연장 옵션 2회, Phase별 개시",
+   "history": [],
+   "detail": "합계 526MW critical IT load (133+260+133). Phase I 2026 H1 인도.",
+   "remaining_note": "계약별 잔여 미공시",
+   "status": "VERIFIED",
+   "source_ids": [
+    "S_GLXY_10K25",
+    "S_GLXY_HELIOS"
+   ]
+  },
+  {
+   "id": "corz_finance_i_notes",
+   "counterparty": "corz_finance_i",
+   "kind": "lease",
+   "title": "Core Scientific Finance I LLC $3.3B Senior Secured Notes due 2031",
+   "signed": "2026-05-06",
+   "value_usd_m": 3300,
+   "value_basis": "액면 원금",
+   "term_end": "2031",
+   "term_note": "7.750% · 자회사 보증 · 모회사 notes 미보증 · 완공보증",
+   "history": [],
+   "detail": "담보: Issuer/Subsidiary Guarantor 자산 및 특정 Core Scientific 권리. CoreWeave 임차 HPC 사이트.",
+   "remaining_note": "잔액 스케줄은 indenture 대조",
+   "status": "VERIFIED",
+   "source_ids": [
+    "S_CORZ_FINANCE_I"
+   ]
+  },
+  {
+   "id": "glxy_helios_ii_notes",
+   "counterparty": "galaxy_helios_ii",
+   "kind": "lease",
+   "title": "Galaxy Helios Data Centers II LLC senior secured notes (reported)",
+   "signed": "2026-07",
+   "value_usd_m": 3500,
+   "value_basis": "시장 보도 액면 — Galaxy IR/indenture로 확정 권장",
+   "term_end": "2031",
+   "term_note": "보고 쿠폰 9.875%",
+   "history": [],
+   "detail": "Phase II campus; CoreWeave lease credit support reported.",
+   "remaining_note": "INFERRED pending primary indenture",
+   "status": "INFERRED",
+   "source_ids": [
+    "S_GLXY_HELIOS_II_NOTES"
+   ]
+  },
+  {
+   "id": "wyfi_nscale_lease",
+   "counterparty": "nscale",
+   "kind": "lease",
+   "title": "WhiteFiber NC-1 Nscale 40MW colocation",
+   "signed": "2025-12-18",
+   "value_usd_m": 865,
+   "value_basis": "임대인 기준 10년 TCV (전기 등 제외)",
+   "term_end": null,
+   "term_note": "10년 · 연 3% 에스컬레이터",
+   "history": [],
+   "detail": "2×20MW phases; RFS 목표 2026.4–5.",
+   "remaining_note": "계약별 잔여 미공시",
+   "status": "VERIFIED",
+   "source_ids": [
+    "S_WYFI_NSCALE"
+   ]
+  }
+ ]
+}

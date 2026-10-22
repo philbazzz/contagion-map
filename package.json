@@ -1,0 +1,10 @@
+{
+  "name": "contagion",
+  "private": true,
+  "description": "Contagion Map — root scripts. Prefer start.bat on Windows.",
+  "scripts": {
+    "start": "node scripts/dev-start.mjs",
+    "quotes:pf": "backend/.venv/Scripts/python.exe scripts/fetch_pf_quotes.py",
+    "quotes:semi": "backend/.venv/Scripts/python.exe scripts/fetch_quotes_snapshot.py --out frontend/public/data/quotes.json"
+  }
+}

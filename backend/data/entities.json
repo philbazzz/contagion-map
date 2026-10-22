@@ -1,0 +1,4133 @@
+{
+ "meta": {
+  "name": "CONTAGION — Multi-center AI Infrastructure Contagion Map",
+  "as_of": "2026-10-20",
+  "currency_unit": "USD million",
+  "disclaimer": "관계·수치는 공시·공식 발표·신뢰 가능 보도로 확인된 값입니다. CoreWeave는 상세 차입 공시가 있는 한 노드이며, 선택 기업이 네트워크 분석의 초점이 됩니다. 금리 충격의 금액 계산은 공시된 변동금리 잔액이 있는 경우에 한정하며, 관계가 곧 손실을 뜻하지 않습니다.",
+  "status_legend": {
+   "VERIFIED": "공식 공시 또는 회사 발표로 확인",
+   "INFERRED": "공개자료 기반 추론 또는 2차 출처",
+   "ASSUMED": "사용자가 시나리오에서 정한 값",
+   "UNKNOWN": "공개자료로 확인되지 않음"
+  }
+ },
+ "entities": [
+  {
+   "id": "coreweave",
+   "name": "CoreWeave",
+   "name_ko": "코어위브",
+   "group": "ai_infra",
+   "sector": "AI 클라우드 / GPU 인프라",
+   "entity_type": "company",
+   "role": "충격 발생 기업 · 차입자",
+   "description": "GPU 기반 AI 클라우드 사업자. 2026.6.30 기준 차입금 원금 355억 5,100만 달러(10-Q).",
+   "listed": true,
+   "ticker": "CRWV",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 12,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_10Q2"
+   ],
+   "key_drivers": [
+    "차입금 차환 금리",
+    "고객 계약 기반 현금흐름",
+    "GPU 설비투자(CAPEX)"
+   ]
+  },
+  {
+   "id": "nvidia",
+   "name": "NVIDIA",
+   "name_ko": "엔비디아",
+   "group": "semiconductor",
+   "sector": "반도체 · GPU",
+   "entity_type": "company",
+   "role": "GPU 공급사 · 지분 투자자 · 용량 매입 약정",
+   "description": "CoreWeave에 GPU를 공급하고 지분을 보유. FY2026 매출 2,159억 달러.",
+   "listed": true,
+   "ticker": "NVDA",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 10,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_NV_EQ",
+    "S_NV_BACKSTOP",
+    "S_NVDA_FY26"
+   ],
+   "key_drivers": [
+    "AI 데이터센터 GPU 수요",
+    "고객 집중도"
+   ]
+  },
+  {
+   "id": "sk_hynix",
+   "name": "SK hynix",
+   "name_ko": "SK하이닉스",
+   "group": "semiconductor",
+   "sector": "반도체 · HBM",
+   "entity_type": "company",
+   "role": "HBM·AI 메모리 허브 · NVIDIA 핵심 공급 · 장비 생태계",
+   "description": "FY2025 매출 97.15조·영업이익 47.21조 원. NVIDIA 메모리 공급(10-K) 및 다년 기술 파트너십. ASML EUV·한미반도체 TC본더·주성엔지니어링 등 장비 조달. CoreWeave와 직접 계약 미확인.",
+   "listed": true,
+   "ticker": "000660",
+   "exchange": "KOSPI",
+   "quote_currency": "KRW",
+   "listing_note": null,
+   "display_size": 11,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_SKH_FY25",
+    "S_SKH_CFS_FY25",
+    "S_NVDA_10K_FY26_MFG",
+    "S_SKH_ASML_EUV",
+    "S_HANMI_DART_SKH_2025"
+   ],
+   "key_drivers": [
+    "HBM 공급·수율",
+    "NVIDIA·AI 수요",
+    "EUV·후공정 장비",
+    "설비투자"
+   ]
+  },
+  {
+   "id": "tsmc",
+   "name": "TSMC",
+   "name_ko": "TSMC",
+   "group": "semiconductor",
+   "sector": "반도체 · 파운드리",
+   "entity_type": "company",
+   "role": "NVIDIA GPU 위탁생산 (산업 구조 추론)",
+   "description": "NVIDIA GPU 생산·패키징. CoreWeave와 직접 계약 미확인. 표시 종목은 NYSE ADR(TSM).",
+   "listed": true,
+   "ticker": "TSM",
+   "exchange": "NYSE",
+   "quote_currency": "USD",
+   "listing_note": "NYSE 상장 ADR (본주: TWSE 2330)",
+   "display_size": 8,
+   "source_status": "INFERRED",
+   "source_ids": [
+    "S_HBM"
+   ],
+   "key_drivers": [
+    "첨단 패키징(CoWoS) 수요"
+   ]
+  },
+  {
+   "id": "dell",
+   "name": "Dell Technologies",
+   "name_ko": "델 테크놀로지스",
+   "group": "server",
+   "sector": "서버 · 하드웨어",
+   "entity_type": "company",
+   "role": "AI 서버 랙 공급사",
+   "description": "GB300 NVL72 랙 서버를 CoreWeave에 납품.",
+   "listed": true,
+   "ticker": "DELL",
+   "exchange": "NYSE",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 7,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_DELL"
+   ],
+   "key_drivers": [
+    "AI 서버 주문"
+   ]
+  },
+  {
+   "id": "microsoft",
+   "name": "Microsoft",
+   "name_ko": "마이크로소프트",
+   "group": "customer",
+   "sector": "클라우드 · 소프트웨어",
+   "entity_type": "company",
+   "role": "Azure hyperscaler · OpenAI investor/partner · NVIDIA GPU cloud",
+   "description": "Azure AI 인프라 + OpenAI 지분·클라우드 약정. CoreWeave 고객이기도 하나 독립적으로 OpenAI·NVIDIA 축의 중심.",
+   "listed": true,
+   "ticker": "MSFT",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 9,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_MSFT_OAI_2025",
+    "S_10K",
+    "S_MSFT_NV_AZURE"
+   ],
+   "key_drivers": [
+    "AI 연산 조달 전략"
+   ]
+  },
+  {
+   "id": "openai",
+   "name": "OpenAI",
+   "name_ko": "오픈AI",
+   "group": "customer",
+   "sector": "AI 모델",
+   "entity_type": "company",
+   "role": "고객 (누적 계약 최대 약 224억 달러) · 주주",
+   "description": "2025년 3차례 계약, 누적 최대 약 224억 달러.",
+   "listed": false,
+   "ticker": null,
+   "exchange": null,
+   "quote_currency": null,
+   "listing_note": null,
+   "display_size": 8,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_OPENAI65",
+    "S_REUTERS_SYN"
+   ],
+   "key_drivers": [
+    "연산 수요",
+    "자금 조달"
+   ]
+  },
+  {
+   "id": "meta",
+   "name": "Meta Platforms",
+   "name_ko": "메타",
+   "group": "customer",
+   "sector": "인터넷 플랫폼",
+   "entity_type": "company",
+   "role": "AI lab / infra operator · NVIDIA GPU customer · CoreWeave customer",
+   "description": "Meta는 CoreWeave 고객인 동시에 NVIDIA AI 인프라의 대규모 수요자.",
+   "listed": true,
+   "ticker": "META",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 8,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_META_NV",
+    "S_10Q1",
+    "S_META21"
+   ],
+   "key_drivers": [
+    "AI 추론 수요"
+   ]
+  },
+  {
+   "id": "anthropic",
+   "name": "Anthropic",
+   "name_ko": "앤트로픽",
+   "group": "customer",
+   "sector": "AI 모델",
+   "entity_type": "company",
+   "role": "고객 (다년 계약 보도)",
+   "description": "2026.4 다년 계약 보도. 계약 금액 미공개.",
+   "listed": false,
+   "ticker": null,
+   "exchange": null,
+   "quote_currency": null,
+   "listing_note": null,
+   "display_size": 6,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_REUTERS_SYN"
+   ],
+   "key_drivers": []
+  },
+  {
+   "id": "jane_street",
+   "name": "Jane Street",
+   "name_ko": "제인스트리트",
+   "group": "customer",
+   "sector": "트레이딩",
+   "entity_type": "company",
+   "role": "고객 (약 60억 달러) · 지분 투자자 (10억 달러)",
+   "description": "2026.4 약 60억 달러 이용 계약과 주당 109달러 10억 달러 지분 투자.",
+   "listed": false,
+   "ticker": null,
+   "exchange": null,
+   "quote_currency": null,
+   "listing_note": null,
+   "display_size": 6,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_JANE"
+   ],
+   "key_drivers": []
+  },
+  {
+   "id": "core_scientific",
+   "name": "Core Scientific",
+   "name_ko": "코어 사이언티픽",
+   "group": "datacenter",
+   "sector": "데이터센터 운영",
+   "entity_type": "company",
+   "role": "데이터센터 임대인 (약 590MW) · Finance I SPV",
+   "description": "CoreWeave 대상 ~590MW/$10.2B. 자회사 Core Scientific Finance I LLC가 $3.3B 담보사채 발행(모회사 notes 미보증·완공보증).",
+   "listed": true,
+   "ticker": "CORZ",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 6,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_CORZ",
+    "S_CORZ_FINANCE_I"
+   ],
+   "key_drivers": []
+  },
+  {
+   "id": "applied_digital",
+   "name": "Applied Digital",
+   "name_ko": "어플라이드 디지털",
+   "group": "datacenter",
+   "sector": "데이터센터 운영",
+   "entity_type": "company",
+   "role": "데이터센터 임대인 · Polaris Forge / Macquarie",
+   "description": "Ellendale 등 CoreWeave 임차. Macquarie 우선주 시설 최대 $5B(최초 $112.5M).",
+   "listed": true,
+   "ticker": "APLD",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 6,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_APLD",
+    "S_APLD_MACQ"
+   ],
+   "key_drivers": []
+  },
+  {
+   "id": "galaxy_digital",
+   "name": "Galaxy Digital",
+   "name_ko": "갤럭시 디지털",
+   "group": "datacenter",
+   "sector": "데이터센터 · 디지털자산",
+   "entity_type": "company",
+   "role": "Helios 캠퍼스 임대인 (526MW · CoreWeave)",
+   "description": "Helios 526MW critical IT to CoreWeave. Helios II SPV 프로젝트 금융(보고).",
+   "listed": true,
+   "ticker": "GLXY",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 6,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_GLXY_10K25",
+    "S_GLXY_HELIOS",
+    "S_GLXY_HELIOS_II_NOTES"
+   ],
+   "key_drivers": []
+  },
+  {
+   "id": "cipher_digital",
+   "name": "Cipher Digital",
+   "name_ko": "사이퍼 디지털",
+   "group": "datacenter",
+   "sector": "AI·HPC 데이터센터",
+   "entity_type": "company",
+   "role": "HPC 호스팅 · 비트코인→AI 전환",
+   "description": "구 Cipher Mining. Odessa·Black Pearl·Barber Lake 등 HPC 호스팅 개발. Fluidstack/하이퍼스케일러 임차. 대규모 선순위담보채·전환사채.",
+   "listed": true,
+   "ticker": "CIFR",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_CIFR_10Q1",
+    "S_CIFR_10Q2"
+   ],
+   "key_drivers": [
+    "project_financing",
+    "capex_funding"
+   ]
+  },
+  {
+   "id": "whitefiber",
+   "name": "WhiteFiber",
+   "name_ko": "화이트파이버",
+   "group": "datacenter",
+   "sector": "AI 데이터센터 · GPU 클라우드",
+   "entity_type": "company",
+   "role": "AI 코로케이션 · 클라우드",
+   "description": "2025.8 Nasdaq IPO. NC-1에 Nscale 40MW/~$865M 계약. YE2025 무차입 후 2026.1 $230M 전환사채.",
+   "listed": true,
+   "ticker": "WYFI",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 4,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_WYFI_FY25",
+    "S_WYFI_NSCALE"
+   ],
+   "key_drivers": [
+    "construction_financing",
+    "tenant_concentration"
+   ]
+  },
+  {
+   "id": "terawulf",
+   "name": "TeraWulf",
+   "name_ko": "테라울프",
+   "group": "datacenter",
+   "sector": "AI·HPC 데이터센터",
+   "entity_type": "company",
+   "role": "HPC 리스 · Fluidstack/Google 신용보강",
+   "description": "비트코인→HPC. Fluidstack 장기 리스(Google 신용보강). 2026.6.30 현금 ~$2.62B, LT debt ~$3.02B, ST converts ~$1.10B.",
+   "listed": true,
+   "ticker": "WULF",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_WULF_10Q2"
+   ],
+   "key_drivers": [
+    "refinancing",
+    "project_debt"
+   ]
+  },
+  {
+   "id": "iren",
+   "name": "IREN",
+   "name_ko": "아이렌",
+   "group": "ai_infra",
+   "sector": "AI 클라우드 · 데이터센터",
+   "entity_type": "company",
+   "role": "AI Cloud · GPU 금융",
+   "description": "비트코인→AI Cloud. GPU 금융·선수금에 의존하는 확장. H1'26 비교 기준 현금·부채 규모 큼(연구 합성).",
+   "listed": true,
+   "ticker": "IREN",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_IREN_FY26",
+    "S_ACIS_NBIS_IREN"
+   ],
+   "key_drivers": [
+    "gpu_financing",
+    "external_funding"
+   ]
+  },
+  {
+   "id": "nscale",
+   "name": "Nscale",
+   "name_ko": "엔스케일",
+   "group": "ai_infra",
+   "sector": "AI 인프라 (비상장)",
+   "entity_type": "company",
+   "role": "비상장 AI 하이퍼스케일러",
+   "description": "유럽계 AI 인프라. Series B $1.1B·Pre-IPO convert $3.36B 공시. 공개 연결재무제표 부족 → 정량 스트레스 미검증.",
+   "listed": false,
+   "ticker": null,
+   "exchange": null,
+   "quote_currency": null,
+   "listing_note": "Private Company",
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_NSCALE_B",
+    "S_NSCALE_PREIPO",
+    "S_WYFI_NSCALE"
+   ],
+   "key_drivers": [
+    "private_funding",
+    "gpu_commitments"
+   ]
+  },
+  {
+   "id": "nebius",
+   "name": "Nebius",
+   "name_ko": "네비우스",
+   "group": "ai_infra",
+   "sector": "AI 클라우드 · 인프라",
+   "entity_type": "company",
+   "role": "AI 클라우드 (구 Yandex 클라우드 계열)",
+   "description": "Nasdaq NBIS. 자본집약·추가 조달 필요를 20-F에 명시. H1'26 현금·부채 비교치 큼.",
+   "listed": true,
+   "ticker": "NBIS",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 6,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_NBIS_20F25",
+    "S_ACIS_NBIS_IREN"
+   ],
+   "key_drivers": [
+    "external_funding",
+    "capex"
+   ]
+  },
+  {
+   "id": "soluna",
+   "name": "Soluna Holdings",
+   "name_ko": "솔루나",
+   "group": "datacenter",
+   "sector": "재생에너지 연동 데이터센터",
+   "entity_type": "company",
+   "role": "소규모 데이터센터 개발",
+   "description": "2026.6.30 현금 $113.4M, 유동부채성 차입 $30.1M, LT debt $3.0M — 상대적 저레버리지.",
+   "listed": true,
+   "ticker": "SLNH",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 3,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_SLNH_10Q2"
+   ],
+   "key_drivers": [
+    "liquidity"
+   ]
+  },
+  {
+   "id": "hut8",
+   "name": "Hut 8",
+   "name_ko": "헛8",
+   "group": "datacenter",
+   "sector": "디지털 인프라 · AI 데이터센터",
+   "entity_type": "company",
+   "role": "프로젝트 파이낸스 (River Bend · Beacon Point)",
+   "description": "River Bend $3.25B / Beacon Point $4.25B IG 선순위담보채(자회사). Fluidstack+Google 백스톱. 모회사 일반 소구 부채 축소.",
+   "listed": true,
+   "ticker": "HUT",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_HUT_10Q2",
+    "S_HUT_Q2_PR"
+   ],
+   "key_drivers": [
+    "project_finance",
+    "nonrecourse"
+   ]
+  },
+  {
+   "id": "corz_finance_i",
+   "name": "Core Scientific Finance I LLC",
+   "name_ko": "코어사이언티픽 Finance I",
+   "group": "project_finance",
+   "sector": "프로젝트 파이낸스 SPV",
+   "entity_type": "spv",
+   "role": "CORZ HPC 자산 담보 발행체",
+   "description": "$3.3B 7.750% senior secured notes due 2031. 자회사 보증. Core Scientific 모회사는 notes 미보증(완공보증만). CoreWeave 임차 자산 담보.",
+   "listed": false,
+   "ticker": null,
+   "exchange": null,
+   "quote_currency": null,
+   "listing_note": "Project finance SPV (unlisted)",
+   "display_size": 4,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_CORZ_FINANCE_I",
+    "S_CORZ"
+   ],
+   "key_drivers": [
+    "single_tenant",
+    "secured_notes"
+   ]
+  },
+  {
+   "id": "galaxy_helios_ii",
+   "name": "Galaxy Helios Data Centers II LLC",
+   "name_ko": "갤럭시 Helios II",
+   "group": "project_finance",
+   "sector": "프로젝트 파이낸스 SPV",
+   "entity_type": "spv",
+   "role": "Helios Phase II 발행체",
+   "description": "Helios Phase II 단일자산 SPV. CoreWeave 15년 리스가 주요 신용지지. 모회사 완공보증 보고·notes 미보증(시장 보도).",
+   "listed": false,
+   "ticker": null,
+   "exchange": null,
+   "quote_currency": null,
+   "listing_note": "Project finance SPV (unlisted)",
+   "display_size": 4,
+   "source_status": "INFERRED",
+   "source_ids": [
+    "S_GLXY_HELIOS_II_NOTES",
+    "S_GLXY_10K25",
+    "S_GLXY_HELIOS"
+   ],
+   "key_drivers": [
+    "single_tenant",
+    "secured_notes"
+   ]
+  },
+  {
+   "id": "blackstone",
+   "name": "Blackstone",
+   "name_ko": "블랙스톤",
+   "group": "financial",
+   "sector": "금융기관",
+   "entity_type": "asset_manager",
+   "role": "DDTL 4.0 앵커 투자자 · 초기 DDTL 대주(2차 출처)",
+   "description": "Blackstone Credit & Insurance가 DDTL 4.0 앵커.",
+   "listed": true,
+   "ticker": "BX",
+   "exchange": "NYSE",
+   "quote_currency": "USD",
+   "listing_note": "상장 모회사 Blackstone Inc. 기준",
+   "display_size": 8,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_DDTL4",
+    "S_650"
+   ],
+   "key_drivers": []
+  },
+  {
+   "id": "macquarie",
+   "name": "Macquarie Asset Management",
+   "name_ko": "맥쿼리 자산운용",
+   "group": "financial",
+   "sector": "금융기관 · 인프라 펀드",
+   "entity_type": "asset_manager",
+   "role": "APLD HPC 우선주 파트너 (최대 \\)",
+   "description": "Applied Digital Polaris Forge 우선주 시설 최대 \\. 최초 \\.5M 인출(2025.10).",
+   "listed": true,
+   "ticker": "MQG",
+   "exchange": "ASX",
+   "quote_currency": "AUD",
+   "listing_note": "ASX-listed parent; MAM funds are separate vehicles",
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_APLD_MACQ"
+   ],
+   "key_drivers": []
+  },
+  {
+   "id": "magnetar",
+   "name": "Magnetar",
+   "name_ko": "마그네타",
+   "group": "financial",
+   "sector": "금융기관",
+   "entity_type": "asset_manager",
+   "role": "대주 (Magnetar Loan) · 주주",
+   "description": "MagAI Ventures 대출 잔액 1억 8,900만 달러(2026.6.30).",
+   "listed": false,
+   "ticker": null,
+   "exchange": null,
+   "quote_currency": null,
+   "listing_note": null,
+   "display_size": 7,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_10Q2",
+    "S_MAGNETAR"
+   ],
+   "key_drivers": []
+  },
+  {
+   "id": "morgan_stanley",
+   "name": "Morgan Stanley",
+   "name_ko": "모건스탠리",
+   "group": "financial",
+   "sector": "금융기관",
+   "entity_type": "bank",
+   "role": "DDTL 5.0 행정 에이전트 · DDTL 3.0/4.0 주관 · 리볼버 주도",
+   "description": "DDTL 5.0 행정 에이전트 · DDTL 3.0/4.0 주관 · 리볼버 주도",
+   "listed": true,
+   "ticker": "MS",
+   "exchange": "NYSE",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 8,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_DDTL5",
+    "S_DDTL3",
+    "S_DDTL4",
+    "S_RCF25"
+   ],
+   "key_drivers": []
+  },
+  {
+   "id": "mufg",
+   "name": "MUFG",
+   "name_ko": "미쓰비시UFJ",
+   "group": "financial",
+   "sector": "금융기관",
+   "entity_type": "bank",
+   "role": "DDTL 4.0 행정 에이전트 · DDTL 3.0/5.0/5.5 주관 · 리볼버 주도",
+   "description": "DDTL 4.0 행정 에이전트 · DDTL 3.0/5.0/5.5 주관 · 리볼버 주도",
+   "listed": true,
+   "ticker": "8306",
+   "exchange": "TSE",
+   "quote_currency": "JPY",
+   "listing_note": "상장 모회사 Mitsubishi UFJ Financial Group 기준",
+   "display_size": 8,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_10Q2",
+    "S_DDTL3",
+    "S_DDTL5",
+    "S_DDTL55",
+    "S_RCF25"
+   ],
+   "key_drivers": []
+  },
+  {
+   "id": "jpmorgan",
+   "name": "JPMorgan",
+   "name_ko": "JP모건",
+   "group": "financial",
+   "sector": "금융기관",
+   "entity_type": "bank",
+   "role": "DDTL 5.5 행정 에이전트 · DDTL 4.0 주선 · 리볼버 주도",
+   "description": "DDTL 5.5 행정 에이전트 · DDTL 4.0 주선 · 리볼버 주도",
+   "listed": true,
+   "ticker": "JPM",
+   "exchange": "NYSE",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 8,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_DDTL55",
+    "S_DDTL4",
+    "S_DDTL3",
+    "S_RCF25"
+   ],
+   "key_drivers": []
+  },
+  {
+   "id": "goldman",
+   "name": "Goldman Sachs",
+   "name_ko": "골드만삭스",
+   "group": "financial",
+   "sector": "금융기관",
+   "entity_type": "bank",
+   "role": "DDTL 3.0/4.0 주선 · 리볼버 주도",
+   "description": "DDTL 3.0/4.0 주선 · 리볼버 주도",
+   "listed": true,
+   "ticker": "GS",
+   "exchange": "NYSE",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 7,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_DDTL3",
+    "S_DDTL4",
+    "S_RCF25"
+   ],
+   "key_drivers": []
+  },
+  {
+   "id": "wells_fargo",
+   "name": "Wells Fargo",
+   "name_ko": "웰스파고",
+   "group": "financial",
+   "sector": "금융기관",
+   "entity_type": "bank",
+   "role": "DDTL 3.0 신디케이트 · 리볼버 참여",
+   "description": "DDTL 3.0 신디케이트 · 리볼버 참여",
+   "listed": true,
+   "ticker": "WFC",
+   "exchange": "NYSE",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 6,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_DDTL3",
+    "S_RCF25"
+   ],
+   "key_drivers": []
+  },
+  {
+   "id": "bbva",
+   "name": "BBVA",
+   "name_ko": "BBVA",
+   "group": "financial",
+   "sector": "금융기관",
+   "entity_type": "bank",
+   "role": "DDTL 3.0 신디케이트",
+   "description": "DDTL 3.0 신디케이트",
+   "listed": true,
+   "ticker": "BBVA",
+   "exchange": "BME",
+   "quote_currency": "EUR",
+   "listing_note": "스페인 BME 본주",
+   "display_size": 6,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_DDTL3"
+   ],
+   "key_drivers": []
+  },
+  {
+   "id": "credit_agricole",
+   "name": "Crédit Agricole",
+   "name_ko": "크레디아그리콜",
+   "group": "financial",
+   "sector": "금융기관",
+   "entity_type": "bank",
+   "role": "DDTL 3.0 신디케이트 · 리볼버 참여",
+   "description": "DDTL 3.0 신디케이트 · 리볼버 참여",
+   "listed": true,
+   "ticker": "ACA",
+   "exchange": "Euronext Paris",
+   "quote_currency": "EUR",
+   "listing_note": "상장사 Crédit Agricole S.A. 기준",
+   "display_size": 6,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_DDTL3",
+    "S_RCF25"
+   ],
+   "key_drivers": []
+  },
+  {
+   "id": "smbc",
+   "name": "SMBC",
+   "name_ko": "미쓰이스미토모은행",
+   "group": "financial",
+   "sector": "금융기관",
+   "entity_type": "bank",
+   "role": "DDTL 3.0 신디케이트 · 리볼버 참여",
+   "description": "DDTL 3.0 신디케이트 · 리볼버 참여",
+   "listed": true,
+   "ticker": "8316",
+   "exchange": "TSE",
+   "quote_currency": "JPY",
+   "listing_note": "상장 모회사 Sumitomo Mitsui Financial Group 기준",
+   "display_size": 6,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_DDTL3",
+    "S_RCF25"
+   ],
+   "key_drivers": []
+  },
+  {
+   "id": "pnc",
+   "name": "PNC",
+   "name_ko": "PNC",
+   "group": "financial",
+   "sector": "금융기관",
+   "entity_type": "bank",
+   "role": "DDTL 3.0 신디케이트",
+   "description": "DDTL 3.0 신디케이트",
+   "listed": true,
+   "ticker": "PNC",
+   "exchange": "NYSE",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 6,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_DDTL3"
+   ],
+   "key_drivers": []
+  },
+  {
+   "id": "societe_generale",
+   "name": "Société Générale",
+   "name_ko": "소시에테제네랄",
+   "group": "financial",
+   "sector": "금융기관",
+   "entity_type": "bank",
+   "role": "DDTL 3.0 신디케이트",
+   "description": "DDTL 3.0 신디케이트",
+   "listed": true,
+   "ticker": "GLE",
+   "exchange": "Euronext Paris",
+   "quote_currency": "EUR",
+   "listing_note": null,
+   "display_size": 6,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_DDTL3"
+   ],
+   "key_drivers": []
+  },
+  {
+   "id": "citi",
+   "name": "Citi",
+   "name_ko": "씨티",
+   "group": "financial",
+   "sector": "금융기관",
+   "entity_type": "bank",
+   "role": "리볼버 참여",
+   "description": "리볼버 참여",
+   "listed": true,
+   "ticker": "C",
+   "exchange": "NYSE",
+   "quote_currency": "USD",
+   "listing_note": "상장 모회사 Citigroup 기준",
+   "display_size": 6,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_RCF25"
+   ],
+   "key_drivers": []
+  },
+  {
+   "id": "deutsche_bank",
+   "name": "Deutsche Bank",
+   "name_ko": "도이치은행",
+   "group": "financial",
+   "sector": "금융기관",
+   "entity_type": "bank",
+   "role": "리볼버 참여",
+   "description": "리볼버 참여",
+   "listed": true,
+   "ticker": "DBK",
+   "exchange": "XETRA",
+   "quote_currency": "EUR",
+   "listing_note": null,
+   "display_size": 6,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_RCF25"
+   ],
+   "key_drivers": []
+  },
+  {
+   "id": "us_bank",
+   "name": "U.S. Bank",
+   "name_ko": "US뱅크",
+   "group": "financial",
+   "sector": "금융기관",
+   "entity_type": "bank",
+   "role": "DDTL 5.0/5.5 담보 에이전트 · 예치 은행",
+   "description": "대출 보유자가 아닌 담보 관리 역할.",
+   "listed": true,
+   "ticker": "USB",
+   "exchange": "NYSE",
+   "quote_currency": "USD",
+   "listing_note": "상장 모회사 U.S. Bancorp 기준",
+   "display_size": 6,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_DDTL5",
+    "S_DDTL55"
+   ],
+   "key_drivers": []
+  },
+  {
+   "id": "coatue",
+   "name": "Coatue",
+   "name_ko": "코투",
+   "group": "financial",
+   "sector": "금융기관",
+   "entity_type": "investment_firm",
+   "role": "DDTL 1.0·2.0 대출 참여 (Reuters)",
+   "description": "2023.8 23억 달러·2024.5 75억 달러 GPU 담보대출 참여기관.",
+   "listed": false,
+   "ticker": null,
+   "exchange": null,
+   "quote_currency": null,
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_REUTERS_MS"
+   ],
+   "key_drivers": []
+  },
+  {
+   "id": "blackrock",
+   "name": "BlackRock",
+   "name_ko": "블랙록",
+   "group": "financial",
+   "sector": "금융기관",
+   "entity_type": "asset_manager",
+   "role": "DDTL 1.0·2.0 대출 참여 (Reuters)",
+   "description": "2023·2024 GPU 담보대출 참여기관.",
+   "listed": true,
+   "ticker": "BLK",
+   "exchange": "NYSE",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_REUTERS_MS"
+   ],
+   "key_drivers": []
+  },
+  {
+   "id": "pimco",
+   "name": "PIMCO",
+   "name_ko": "핌코",
+   "group": "financial",
+   "sector": "금융기관",
+   "entity_type": "asset_manager",
+   "role": "DDTL 1.0 대출 참여 (Reuters)",
+   "description": "2023.8 GPU 담보대출 참여기관.",
+   "listed": true,
+   "ticker": "ALV",
+   "exchange": "XETRA",
+   "quote_currency": "EUR",
+   "listing_note": "상장 모회사 Allianz SE 기준",
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_REUTERS_MS"
+   ],
+   "key_drivers": []
+  },
+  {
+   "id": "carlyle",
+   "name": "Carlyle",
+   "name_ko": "칼라일",
+   "group": "financial",
+   "sector": "금융기관",
+   "entity_type": "asset_manager",
+   "role": "DDTL 1.0·2.0 대출 참여 (Reuters)",
+   "description": "2023·2024 GPU 담보대출 참여기관.",
+   "listed": true,
+   "ticker": "CG",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_REUTERS_MS"
+   ],
+   "key_drivers": []
+  },
+  {
+   "id": "digitalbridge",
+   "name": "DigitalBridge Credit",
+   "name_ko": "디지털브릿지",
+   "group": "financial",
+   "sector": "금융기관",
+   "entity_type": "asset_manager",
+   "role": "DDTL 1.0·2.0 대출 참여 (Reuters)",
+   "description": "2023·2024 GPU 담보대출 참여기관.",
+   "listed": false,
+   "ticker": null,
+   "exchange": null,
+   "quote_currency": null,
+   "listing_note": "모회사 DigitalBridge Group은 2026.9.30 SoftBank 인수 완료로 비상장",
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_REUTERS_MS",
+    "S_DBRG"
+   ],
+   "key_drivers": []
+  },
+  {
+   "id": "cdpq",
+   "name": "CDPQ",
+   "name_ko": "케벡주연기금",
+   "group": "financial",
+   "sector": "금융기관",
+   "entity_type": "pension_fund",
+   "role": "DDTL 2.0 대출 참여 (Reuters)",
+   "description": "2024.5 75억 달러 GPU 담보대출 참여기관 (캐나다 퀘벡 연기금).",
+   "listed": false,
+   "ticker": null,
+   "exchange": null,
+   "quote_currency": null,
+   "listing_note": "공적 연기금",
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_REUTERS_MS"
+   ],
+   "key_drivers": []
+  },
+  {
+   "id": "eldridge",
+   "name": "Eldridge Industries",
+   "name_ko": "엘드리지",
+   "group": "financial",
+   "sector": "금융기관",
+   "entity_type": "investment_firm",
+   "role": "DDTL 2.0 대출 참여 (Reuters)",
+   "description": "2024.5 GPU 담보대출 참여기관.",
+   "listed": false,
+   "ticker": null,
+   "exchange": null,
+   "quote_currency": null,
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_REUTERS_MS"
+   ],
+   "key_drivers": []
+  },
+  {
+   "id": "great_elm",
+   "name": "Great Elm Capital",
+   "name_ko": "그레이트엘름",
+   "group": "financial",
+   "sector": "금융기관",
+   "entity_type": "bdc",
+   "role": "DDTL 2.0 대출 참여 (Reuters)",
+   "description": "2024.5 GPU 담보대출 참여기관.",
+   "listed": true,
+   "ticker": "GECC",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 4,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_REUTERS_MS"
+   ],
+   "key_drivers": []
+  },
+  {
+   "id": "barclays",
+   "name": "Barclays",
+   "name_ko": "바클레이즈",
+   "group": "financial",
+   "sector": "금융기관",
+   "entity_type": "bank",
+   "role": "리볼버 최초 참여 (2024)",
+   "description": "2024.10 6.5억 달러 리볼버 참여. 2025.11 증액 공시에는 이름 없음.",
+   "listed": true,
+   "ticker": "BARC",
+   "exchange": "LSE",
+   "quote_currency": "GBP",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_650"
+   ],
+   "key_drivers": []
+  },
+  {
+   "id": "jefferies",
+   "name": "Jefferies",
+   "name_ko": "제프리스",
+   "group": "financial",
+   "sector": "금융기관",
+   "entity_type": "bank",
+   "role": "리볼버 최초 참여 (2024)",
+   "description": "2024.10 6.5억 달러 리볼버 참여. 2025.11 증액 공시에는 이름 없음.",
+   "listed": true,
+   "ticker": "JEF",
+   "exchange": "NYSE",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_650"
+   ],
+   "key_drivers": []
+  },
+  {
+   "id": "mizuho",
+   "name": "Mizuho",
+   "name_ko": "미즈호",
+   "group": "financial",
+   "sector": "금융기관",
+   "entity_type": "bank",
+   "role": "리볼버 최초 참여 (2024)",
+   "description": "2024.10 6.5억 달러 리볼버 참여. 2025.11 증액 공시에는 이름 없음.",
+   "listed": true,
+   "ticker": "8411",
+   "exchange": "TSE",
+   "quote_currency": "JPY",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_650"
+   ],
+   "key_drivers": []
+  },
+  {
+   "id": "hudson_river",
+   "name": "Hudson River Trading",
+   "name_ko": "허드슨리버트레이딩",
+   "group": "customer",
+   "sector": "퀀트 트레이딩",
+   "entity_type": "company",
+   "role": "클라우드 고객 (2026.2분기 확대)",
+   "description": "2026년 2분기 실적 발표에서 관계 확대 고객으로 명시. 계약 금액은 미공시.",
+   "listed": false,
+   "ticker": null,
+   "exchange": null,
+   "quote_currency": null,
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_Q2",
+    "S_HRT"
+   ],
+   "key_drivers": []
+  },
+  {
+   "id": "alphabet",
+   "name": "Alphabet",
+   "name_ko": "알파벳",
+   "group": "customer",
+   "sector": "클라우드 · 검색",
+   "entity_type": "company",
+   "role": "Google Cloud hyperscaler · NVIDIA GPU customer",
+   "description": "Google Cloud NVIDIA GPU VM + 자체 TPU. CoreWeave 고객 관계와 별도로 NVIDIA 공급망의 수요 중심.",
+   "listed": true,
+   "ticker": "GOOGL",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 8,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_GOOG_NV",
+    "S_GOOG_CW"
+   ],
+   "key_drivers": [
+    "AI 클라우드 수요",
+    "OpenAI 관련 용량"
+   ]
+  },
+  {
+   "id": "amazon",
+   "name": "Amazon",
+   "name_ko": "아마존",
+   "group": "customer",
+   "sector": "클라우드 · 이커머스",
+   "entity_type": "company",
+   "role": "AWS hyperscaler · NVIDIA GPU customer (multi-million GPU deployments)",
+   "description": "AWS는 NVIDIA GPU를 대규모로 배치(2026–28 발표). CoreWeave와 직접 상업 계약은 미확인이나, NVIDIA를 통한 산업 생태계에서 중심 노드.",
+   "listed": true,
+   "ticker": "AMZN",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 7,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S1_COMP",
+    "S_AWS_NVDA_1M",
+    "S_AWS_NVDA_2M"
+   ],
+   "key_drivers": [
+    "AWS AI 인프라"
+   ]
+  },
+  {
+   "id": "oracle",
+   "name": "Oracle",
+   "name_ko": "오라클",
+   "group": "customer",
+   "sector": "클라우드 · 소프트웨어",
+   "entity_type": "company",
+   "role": "OCI hyperscaler · NVIDIA GPU cloud capacity",
+   "description": "OCI가 NVIDIA GPU 슈퍼클러스터를 확장. CoreWeave와 직접 계약은 미확인.",
+   "listed": true,
+   "ticker": "ORCL",
+   "exchange": "NYSE",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 6,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S1_COMP",
+    "S_ORCL_NV"
+   ],
+   "key_drivers": [
+    "OCI AI 인프라"
+   ]
+  },
+  {
+   "id": "amd",
+   "name": "AMD",
+   "name_ko": "AMD",
+   "group": "semiconductor",
+   "sector": "반도체 · GPU",
+   "entity_type": "company",
+   "role": "AI accelerator vendor · TSMC foundry customer · NVIDIA competitor",
+   "description": "AI 가속기에서 NVIDIA와 경쟁. 선단 파운드리는 TSMC 의존(fabless).",
+   "listed": true,
+   "ticker": "AMD",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 7,
+   "source_status": "INFERRED",
+   "source_ids": [
+    "S_AMD_NV",
+    "S_AMD_TSMC"
+   ],
+   "key_drivers": [
+    "AI 가속기 수요"
+   ]
+  },
+  {
+   "id": "samsung",
+   "name": "Samsung Electronics",
+   "name_ko": "삼성전자",
+   "group": "semiconductor",
+   "sector": "반도체 · HBM",
+   "entity_type": "company",
+   "role": "글로벌 메모리·파운드리 허브 · NVIDIA/하이퍼스케일러 공급",
+   "description": "FY2025 매출 333.6조 원. DS(메모리·Foundry·System LSI) + DX. NVIDIA 10-K상 파운드리·메모리 공급사; 사업보고서상 Apple·Alphabet 등 5대 매출처; Tesla 파운드리 장기 수주.",
+   "listed": true,
+   "ticker": "005930",
+   "exchange": "KOSPI",
+   "quote_currency": "KRW",
+   "listing_note": null,
+   "display_size": 11,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_SMSN_BR_FY25",
+    "S_SMSN_FY25",
+    "S_NVDA_10K_FY26_MFG",
+    "S_NVDA_SMSN_AIF"
+   ],
+   "key_drivers": [
+    "HBM·DRAM 공급",
+    "Foundry 수주",
+    "하이퍼스케일러 메모리 수요",
+    "설비투자(EUV)"
+   ]
+  },
+  {
+   "id": "apple",
+   "name": "Apple",
+   "name_ko": "애플",
+   "group": "customer",
+   "sector": "소비자 전자 · 반도체 설계",
+   "entity_type": "company",
+   "role": "TSMC 주요 파운드리 고객 (모바일·PC SoC)",
+   "description": "자체 설계 칩(A/M 시리즈)을 TSMC에 위탁 생산. AI 인프라 GPU 생태계와는 별도 축이지만 TSMC 고객 집중도 분석에 필수.",
+   "listed": true,
+   "ticker": "AAPL",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 8,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_APPLE_TSMC"
+   ],
+   "key_drivers": [
+    "모바일·PC SoC 수요",
+    "TSMC 선단 공정 배정"
+   ]
+  },
+  {
+   "id": "broadcom",
+   "name": "Broadcom",
+   "name_ko": "브로드컴",
+   "group": "semiconductor",
+   "sector": "반도체 · 네트워킹·맞춤 ASIC",
+   "entity_type": "company",
+   "role": "맞춤 AI 가속기·네트워킹 칩 공급 (하이퍼스케일러)",
+   "description": "하이퍼스케일러향 맞춤 ASIC·네트워킹 실리콘. TSMC 등 파운드리에 위탁. CoreWeave와 직접 계약은 미확인.",
+   "listed": true,
+   "ticker": "AVGO",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 8,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_TSMC_NV_CNBC"
+   ],
+   "key_drivers": [
+    "맞춤 AI ASIC",
+    "네트워킹 실리콘"
+   ]
+  },
+  {
+   "id": "micron",
+   "name": "Micron Technology",
+   "name_ko": "마이크론",
+   "group": "semiconductor",
+   "sector": "반도체 · HBM·DRAM",
+   "entity_type": "company",
+   "role": "NVIDIA HBM/메모리 공급사 (10-K 명시)",
+   "description": "NVIDIA 10-K가 메모리 구매처로 SK hynix·Micron·Samsung을 명시.",
+   "listed": true,
+   "ticker": "MU",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 7,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_NVDA_10K_FY26"
+   ],
+   "key_drivers": [
+    "HBM 공급",
+    "AI 서버 메모리 수요"
+   ]
+  },
+  {
+   "id": "asml",
+   "name": "ASML",
+   "name_ko": "ASML",
+   "group": "semiconductor",
+   "sector": "반도체 장비 · EUV",
+   "entity_type": "company",
+   "role": "선단 리소그래피 장비 공급 (TSMC 등 파운드리)",
+   "description": "EUV 노광 사실상 독점. TSMC 외 SK하이닉스가 FY2026 공시로 ~11.95조 원 EUV 취득을 명시. Samsung도 EUV 핵심 수요처이나 개별 계약액은 미공시.",
+   "listed": true,
+   "ticker": "ASML",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": "Nasdaq ADR (본주: Euronext Amsterdam)",
+   "display_size": 7,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_ASML_TSMC",
+    "S_SKH_ASML_EUV"
+   ],
+   "key_drivers": [
+    "EUV 장비 납기",
+    "파운드리 CAPEX 사이클"
+   ]
+  },
+  {
+   "id": "smci",
+   "name": "Super Micro Computer",
+   "name_ko": "슈퍼마이크로",
+   "group": "server",
+   "sector": "서버 · GPU 시스템",
+   "entity_type": "company",
+   "role": "NVIDIA GPU 서버·랙 시스템 OEM",
+   "description": "AI GPU 서버·액침/공랭 시스템 조립·공급. 하이퍼스케일·엔터프라이즈 고객에 NVIDIA 플랫폼 기반 시스템 제공.",
+   "listed": true,
+   "ticker": "SMCI",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 7,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_SMCI_NV"
+   ],
+   "key_drivers": [
+    "GPU 서버 수요",
+    "NVIDIA 플랫폼 채택"
+   ]
+  },
+  {
+   "id": "hpe",
+   "name": "Hewlett Packard Enterprise",
+   "name_ko": "HPE",
+   "group": "server",
+   "sector": "서버 · 하이브리드 클라우드",
+   "entity_type": "company",
+   "role": "엔터프라이즈·AI 서버/슈퍼컴퓨팅",
+   "description": "NVIDIA 협력 AI 시스템·그린레이크. CoreWeave와 직접 계약 미확인.",
+   "listed": true,
+   "ticker": "HPE",
+   "exchange": "NYSE",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 6,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_SMCI_NV"
+   ],
+   "key_drivers": [
+    "엔터프라이즈 AI 인프라"
+   ]
+  },
+  {
+   "id": "arista",
+   "name": "Arista Networks",
+   "name_ko": "아리스타",
+   "group": "server",
+   "sector": "데이터센터 네트워킹",
+   "entity_type": "company",
+   "role": "AI/클라우드 이더넷 스위칭",
+   "description": "하이퍼스케일·AI 클러스터용 고속 이더넷. 고객명은 종종 비공시.",
+   "listed": true,
+   "ticker": "ANET",
+   "exchange": "NYSE",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 6,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_ARISTA_DC"
+   ],
+   "key_drivers": [
+    "AI 클러스터 네트워킹"
+   ]
+  },
+  {
+   "id": "equinix",
+   "name": "Equinix",
+   "name_ko": "에퀴닉스",
+   "group": "datacenter",
+   "sector": "코로케이션 · 상호접속",
+   "entity_type": "company",
+   "role": "글로벌 IBX 데이터센터·상호접속",
+   "description": "클라우드·네트워크·엔터프라이즈가 모이는 상호접속 허브. 개별 하이퍼스케일 계약액은 보통 비공시.",
+   "listed": true,
+   "ticker": "EQIX",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 7,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_EQIX_HYPER"
+   ],
+   "key_drivers": [
+    "상호접속 수요",
+    "AI 엣지·클라우드 인접 배치"
+   ]
+  },
+  {
+   "id": "digital_realty",
+   "name": "Digital Realty",
+   "name_ko": "디지털 리얼티",
+   "group": "datacenter",
+   "sector": "데이터센터 REIT",
+   "entity_type": "company",
+   "role": "하이퍼스케일·엔터프라이즈 데이터센터",
+   "description": "대규모 데이터센터 임대·개발. 전력·냉각 제약이 AI 수요와 연동.",
+   "listed": true,
+   "ticker": "DLR",
+   "exchange": "NYSE",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 6,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_EQIX_HYPER"
+   ],
+   "key_drivers": [
+    "하이퍼스케일 임대",
+    "전력 확보"
+   ]
+  },
+  {
+   "id": "vertiv",
+   "name": "Vertiv",
+   "name_ko": "버티브",
+   "group": "datacenter",
+   "sector": "데이터센터 전력·냉각 장비",
+   "entity_type": "company",
+   "role": "UPS·냉각·전원 인프라 공급",
+   "description": "AI 고밀도 랙용 열관리·전력 장비. 데이터센터 CAPEX 사이클에 민감.",
+   "listed": true,
+   "ticker": "VRT",
+   "exchange": "NYSE",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 6,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_VERTIV_DC"
+   ],
+   "key_drivers": [
+    "고밀도 냉각",
+    "데이터센터 CAPEX"
+   ]
+  },
+  {
+   "id": "eaton",
+   "name": "Eaton",
+   "name_ko": "이튼",
+   "group": "datacenter",
+   "sector": "전력 관리 · 전기 장비",
+   "entity_type": "company",
+   "role": "데이터센터·산업 전력 인프라",
+   "description": "배전·UPS·전기 인프라. AI 데이터센터 전력 확장과 연계된 장비 수요.",
+   "listed": true,
+   "ticker": "ETN",
+   "exchange": "NYSE",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_VERTIV_DC"
+   ],
+   "key_drivers": [
+    "전력 인프라 투자"
+   ]
+  },
+  {
+   "id": "schneider",
+   "name": "Schneider Electric",
+   "name_ko": "슈나이더 일렉트릭",
+   "group": "datacenter",
+   "sector": "에너지 관리 · 자동화",
+   "entity_type": "company",
+   "role": "데이터센터 전력·냉각·DCIM",
+   "description": "데이터센터 전력·냉각·소프트웨어. Euronext 본주.",
+   "listed": true,
+   "ticker": "SBGSY",
+   "exchange": "OTC",
+   "quote_currency": "USD",
+   "listing_note": "ADR (본주: Euronext Paris SU)",
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_VERTIV_DC"
+   ],
+   "key_drivers": [
+    "데이터센터 전력·냉각"
+   ]
+  },
+  {
+   "id": "foxconn",
+   "name": "Hon Hai (Foxconn)",
+   "name_ko": "폭스콘",
+   "group": "server",
+   "sector": "전자 제조 · 서버 ODM",
+   "entity_type": "company",
+   "role": "NVIDIA 제품 조립·테스트 ODM (10-K 명시)",
+   "description": "NVIDIA 10-K가 최종 제품 조립·테스트 협력사로 Hon Hai 등을 명시.",
+   "listed": true,
+   "ticker": "HNHPF",
+   "exchange": "OTC",
+   "quote_currency": "USD",
+   "listing_note": "ADR (본주: TWSE 2317)",
+   "display_size": 6,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_NVDA_10K_FY26"
+   ],
+   "key_drivers": [
+    "GPU 시스템 제조 용량"
+   ]
+  },
+  {
+   "id": "wistron",
+   "name": "Wistron",
+   "name_ko": "위스트론",
+   "group": "server",
+   "sector": "전자 제조 · 서버 ODM",
+   "entity_type": "company",
+   "role": "NVIDIA 제품 조립·테스트 ODM (10-K 명시)",
+   "description": "NVIDIA 10-K가 조립·테스트 협력사로 Wistron을 명시.",
+   "listed": true,
+   "ticker": "WISTF",
+   "exchange": "OTC",
+   "quote_currency": "USD",
+   "listing_note": "해외 OTC (본주: TWSE 3231)",
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_NVDA_10K_FY26"
+   ],
+   "key_drivers": [
+    "서버 ODM 용량"
+   ]
+  },
+  {
+   "id": "hanmi_semi",
+   "name": "Hanmi Semiconductor",
+   "name_ko": "한미반도체",
+   "group": "semiconductor",
+   "sector": "반도체 장비 · HBM TC 본더",
+   "entity_type": "company",
+   "role": "HBM 제조용 TC 본더 장비",
+   "description": "HBM TC 본더 선도. DART상 SK하이닉스·Micron 공급 확인(2025.05 SKH TC본더 ~428억 원 등). Samsung 확정 계약 공시는 미확인(논의 보도만).",
+   "listed": true,
+   "ticker": "042700",
+   "exchange": "KOSPI",
+   "quote_currency": "KRW",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_HANMI_DART_SKH",
+    "S_HANMI_DART_SKH_2025",
+    "S_HANMI_DART_MICRON"
+   ],
+   "key_drivers": [
+    "HBM CAPEX",
+    "TC 본더 수주"
+   ]
+  },
+  {
+   "id": "isu_petasys",
+   "name": "Isu Petasys",
+   "name_ko": "이수페타시스",
+   "group": "semiconductor",
+   "sector": "고다층 PCB · 서버/네트워크",
+   "entity_type": "company",
+   "role": "고다층 PCB (AI 서버·네트워크 보드)",
+   "description": "고다층 PCB 제조. AI 서버·네트워크 보드 수요와 연동되나, NVIDIA 등 특정 하이퍼스케일과의 단일계약은 본 데이터셋에 미확인.",
+   "listed": true,
+   "ticker": "007660",
+   "exchange": "KOSPI",
+   "quote_currency": "KRW",
+   "listing_note": null,
+   "display_size": 4,
+   "source_status": "VERIFIED",
+   "source_ids": [],
+   "key_drivers": [
+    "AI 서버 PCB 수요"
+   ]
+  },
+  {
+   "id": "ls_electric",
+   "name": "LS ELECTRIC",
+   "name_ko": "LS일렉트릭",
+   "group": "datacenter",
+   "sector": "전력기기 · 배전",
+   "entity_type": "company",
+   "role": "AI 데이터센터 전력·배전 설비",
+   "description": "DART 공시: 자회사 LS ELECTRIC AMERICA를 통해 미국 Big Tech 데이터센터 전력설비 공급 (계약상대 상호는 미공시).",
+   "listed": true,
+   "ticker": "010120",
+   "exchange": "KOSPI",
+   "quote_currency": "KRW",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_LSE_BIGTECH_DC"
+   ],
+   "key_drivers": [
+    "북미 AI DC 전력 수주",
+    "배전 시스템"
+   ]
+  },
+  {
+   "id": "hd_hyundai_electric",
+   "name": "HD Hyundai Electric",
+   "name_ko": "HD현대일렉트릭",
+   "group": "datacenter",
+   "sector": "변압기 · 전력기기",
+   "entity_type": "company",
+   "role": "전력기기·변압기 (데이터센터 전력망)",
+   "description": "변압기·전력기기. AI/데이터센터 전력 인프라 수요 수혜 후보이나, 본 맵에는 특정 하이퍼스케일 계약 엣지를 부여하지 않음(미확인).",
+   "listed": true,
+   "ticker": "267260",
+   "exchange": "KOSPI",
+   "quote_currency": "KRW",
+   "listing_note": null,
+   "display_size": 4,
+   "source_status": "VERIFIED",
+   "source_ids": [],
+   "key_drivers": [
+    "전력기기 수주"
+   ]
+  },
+  {
+   "id": "hyosung_heavy",
+   "name": "Hyosung Heavy Industries",
+   "name_ko": "효성중공업",
+   "group": "datacenter",
+   "sector": "중전기 · 변압기",
+   "entity_type": "company",
+   "role": "초고압 변압기·중전기",
+   "description": "초고압 변압기 등. AI 데이터센터 전력 수요와 산업적으로 연관되나 특정 상대방 계약은 미확인으로 엣지 미생성.",
+   "listed": true,
+   "ticker": "298040",
+   "exchange": "KOSPI",
+   "quote_currency": "KRW",
+   "listing_note": null,
+   "display_size": 4,
+   "source_status": "VERIFIED",
+   "source_ids": [],
+   "key_drivers": [
+    "변압기 수주"
+   ]
+  },
+  {
+   "id": "doosan_enerbility",
+   "name": "Doosan Enerbility",
+   "name_ko": "두산에너빌리티",
+   "group": "datacenter",
+   "sector": "발전 · 원전 · 에너지",
+   "entity_type": "company",
+   "role": "발전·원전 기자재 (전력 공급망)",
+   "description": "발전·원전 기자재. AI 데이터센터 전력 수요와 간접 연관 가능하나 특정 데이터센터 계약 엣지는 미확인.",
+   "listed": true,
+   "ticker": "034020",
+   "exchange": "KOSPI",
+   "quote_currency": "KRW",
+   "listing_note": null,
+   "display_size": 4,
+   "source_status": "VERIFIED",
+   "source_ids": [],
+   "key_drivers": [
+    "원전·발전 CAPEX"
+   ]
+  },
+  {
+   "id": "sk_telecom",
+   "name": "SK Telecom",
+   "name_ko": "SK텔레콤",
+   "group": "customer",
+   "sector": "통신 · AI 클라우드",
+   "entity_type": "company",
+   "role": "국내 AI Cloud / GPUaaS",
+   "description": "NVIDIA Blackwell 기반 소버린 AI 인프라·GPUaaS. NVIDIA DSX AI Cloud 구축 계획(공식 보도).",
+   "listed": true,
+   "ticker": "017670",
+   "exchange": "KOSPI",
+   "quote_currency": "KRW",
+   "listing_note": "ADR: SKM (NYSE) — 본 맵 시세는 KOSPI 본주 기준",
+   "display_size": 6,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_SKT_NVDA_2026",
+    "S_SKT_BLACKWELL"
+   ],
+   "key_drivers": [
+    "GPUaaS",
+    "NVIDIA 인프라"
+   ]
+  },
+  {
+   "id": "naver",
+   "name": "NAVER",
+   "name_ko": "네이버",
+   "group": "customer",
+   "sector": "인터넷 · 클라우드 · AI",
+   "entity_type": "company",
+   "role": "국내 AI 데이터센터 · 클라우드",
+   "description": "각 세종 등 AI 데이터센터. NVIDIA 보도에서 DSX AI factory 확장(GPU/전력 규모)이 언급됨. 계약 USD는 미공시.",
+   "listed": true,
+   "ticker": "035420",
+   "exchange": "KOSPI",
+   "quote_currency": "KRW",
+   "listing_note": null,
+   "display_size": 6,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_NVDA_KR_SUMMIT"
+   ],
+   "key_drivers": [
+    "AI 데이터센터",
+    "GPU 클러스터"
+   ]
+  },
+  {
+   "id": "samsung_sds",
+   "name": "Samsung SDS",
+   "name_ko": "삼성SDS",
+   "group": "customer",
+   "sector": "IT 서비스 · 클라우드",
+   "entity_type": "company",
+   "role": "기업 클라우드 · GPUaaS",
+   "description": "삼성 클라우드 플랫폼 GPUaaS 등. 국가 GPU 사업 운영사로 보도됨. NVIDIA와의 특정 공급계약액은 본 데이터셋에 미수록.",
+   "listed": true,
+   "ticker": "018260",
+   "exchange": "KOSPI",
+   "quote_currency": "KRW",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "INFERRED",
+   "source_ids": [],
+   "key_drivers": [
+    "기업 AI 클라우드"
+   ]
+  },
+  {
+   "id": "kt",
+   "name": "KT",
+   "name_ko": "KT",
+   "group": "customer",
+   "sector": "통신 · 클라우드",
+   "entity_type": "company",
+   "role": "국내 통신·클라우드 / GPUaaS",
+   "description": "K GPUaaS 등 NVIDIA GPU 기반 서비스 보도. 특정 구매계약액·상대 공시는 본 맵에 미확인으로 엣지 제한.",
+   "listed": true,
+   "ticker": "030200",
+   "exchange": "KOSPI",
+   "quote_currency": "KRW",
+   "listing_note": null,
+   "display_size": 4,
+   "source_status": "INFERRED",
+   "source_ids": [],
+   "key_drivers": [
+    "GPUaaS"
+   ]
+  },
+  {
+   "id": "lg_electronics",
+   "name": "LG Electronics",
+   "name_ko": "LG전자",
+   "group": "server",
+   "sector": "가전 · B2B · 전장",
+   "entity_type": "company",
+   "role": "B2B·전장 (AI 인프라 간접)",
+   "description": "AI 인프라 핵심 공급망 외곽. NVIDIA 등과의 직접 인프라 계약은 본 데이터셋에서 확인하지 않음.",
+   "listed": true,
+   "ticker": "066570",
+   "exchange": "KOSPI",
+   "quote_currency": "KRW",
+   "listing_note": null,
+   "display_size": 4,
+   "source_status": "VERIFIED",
+   "source_ids": [],
+   "key_drivers": [
+    "B2B"
+   ]
+  },
+  {
+   "id": "qualcomm",
+   "name": "Qualcomm",
+   "name_ko": "퀄컴",
+   "group": "semiconductor",
+   "sector": "반도체 · 모바일 AP / 모뎀",
+   "entity_type": "company",
+   "role": "Samsung DX 모바일 AP 주요 매입처 (사업보고서)",
+   "description": "삼성전자 FY2025 사업보고서 DX 부문 모바일AP 솔루션 주요 매입처로 Qualcomm·MediaTek을 명시.",
+   "listed": true,
+   "ticker": "QCOM",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 7,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_SMSN_BR_FY25"
+   ],
+   "key_drivers": [
+    "스마트폰 AP 수요",
+    "삼성·OEM 조달"
+   ]
+  },
+  {
+   "id": "tesla",
+   "name": "Tesla",
+   "name_ko": "테슬라",
+   "group": "customer",
+   "sector": "자동차 · AI/자율주행 반도체 수요",
+   "entity_type": "company",
+   "role": "Samsung Foundry 위탁생산 발주처 (수주 공시)",
+   "description": "삼성전자 FY2025 사업보고서 수주: DS Foundry–Tesla 반도체 위탁생산 계약(2025.07.26–2033.12.31) 총액 USD 16,544 million.",
+   "listed": true,
+   "ticker": "TSLA",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 7,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_SMSN_BR_FY25"
+   ],
+   "key_drivers": [
+    "자동차 반도체 수요",
+    "파운드리 장기 계약"
+   ]
+  },
+  {
+   "id": "jusung_eng",
+   "name": "Jusung Engineering",
+   "name_ko": "주성엔지니어링",
+   "group": "semiconductor",
+   "sector": "반도체 장비 · ALD/CVD",
+   "entity_type": "company",
+   "role": "SK하이닉스 반도체 제조장비 공급사 (DART)",
+   "description": "KOSDAQ 상장 반도체 장비사. FY2025 사업보고서에 SK하이닉스 공급계약 이력(2024.07 KRW 194억 등)을 기재.",
+   "listed": true,
+   "ticker": "036930",
+   "exchange": "KOSDAQ",
+   "quote_currency": "KRW",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_JUSUNG_DART_SKH"
+   ],
+   "key_drivers": [
+    "메모리 장비 CAPEX",
+    "SK하이닉스 투자 사이클"
+   ]
+  },
+  {
+   "id": "lam_research",
+   "name": "Lam Research",
+   "name_ko": "램리서치",
+   "group": "semiconductor",
+   "sector": "반도체 장비",
+   "entity_type": "company",
+   "role": "전공정 장비",
+   "listed": true,
+   "ticker": "LRCX",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 6,
+   "description": "Etch and deposition equipment for memory/logic fabs.",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_SKH_BR_FY25"
+   ],
+   "key_drivers": [
+    "메모리 CAPEX"
+   ]
+  },
+  {
+   "id": "amkor",
+   "name": "Amkor Technology",
+   "name_ko": "앰코테크놀로지",
+   "group": "semiconductor",
+   "sector": "OSAT · 패키징",
+   "entity_type": "company",
+   "role": "첨단 패키징 / OSAT",
+   "listed": true,
+   "ticker": "AMKR",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 6,
+   "description": "Outsourced semiconductor assembly and test; HBM packaging adjacency.",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_SKH_BR_FY25"
+   ],
+   "key_drivers": [
+    "HBM 패키징 수요"
+   ]
+  },
+  {
+   "id": "synopsys",
+   "name": "Synopsys",
+   "name_ko": "시놉시스",
+   "group": "semiconductor",
+   "sector": "EDA",
+   "entity_type": "company",
+   "role": "EDA / IP",
+   "listed": true,
+   "ticker": "SNPS",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "description": "Electronic design automation and semiconductor IP.",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_NVDA_10K_FY26"
+   ],
+   "key_drivers": [
+    "설계 도구 수요"
+   ]
+  },
+  {
+   "id": "marvell",
+   "name": "Marvell Technology",
+   "name_ko": "마벨 테크놀로지",
+   "name_en": "Marvell Technology",
+   "group": "semiconductor",
+   "sector": "Semiconductor · custom/networking",
+   "entity_type": "company",
+   "role": "custom/networking",
+   "roles": [
+    "custom",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "MRVL",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "custom/networking"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 216066561411.8827,
+   "market_cap_krw": 286026761771536.25,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "macom",
+   "name": "MACOM Technology Solutions",
+   "name_ko": "MACOM",
+   "name_en": "MACOM Technology Solutions",
+   "group": "semiconductor",
+   "sector": "Semiconductor · custom/networking",
+   "entity_type": "company",
+   "role": "custom/networking",
+   "roles": [
+    "custom",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "MTSI",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "custom/networking"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 20080208328.472595,
+   "market_cap_krw": 26581979767531.875,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "maxlinear",
+   "name": "MaxLinear",
+   "name_ko": "맥스리니어",
+   "name_en": "MaxLinear",
+   "group": "semiconductor",
+   "sector": "Semiconductor · custom/networking",
+   "entity_type": "company",
+   "role": "custom/networking",
+   "roles": [
+    "custom",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "MXL",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "custom/networking"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 6666856664.151558,
+   "market_cap_krw": 8825518443861.28,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "semtech",
+   "name": "Semtech",
+   "name_ko": "셈텍",
+   "name_en": "Semtech",
+   "group": "semiconductor",
+   "sector": "Semiconductor · custom/networking",
+   "entity_type": "company",
+   "role": "custom/networking",
+   "roles": [
+    "custom",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "SMTC",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "custom/networking"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 12710949976.392792,
+   "market_cap_krw": 16826628965770.498,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "wdc",
+   "name": "Western Digital",
+   "name_ko": "웨스턴디지털",
+   "name_en": "Western Digital",
+   "group": "semiconductor",
+   "sector": "Semiconductor · memory/storage",
+   "entity_type": "company",
+   "role": "memory/storage",
+   "roles": [
+    "memory",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "WDC",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "memory/storage"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 136373456103.7055,
+   "market_cap_krw": 180529822782612.44,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "lattice",
+   "name": "Lattice Semiconductor",
+   "name_ko": "래티스 세미컨덕터",
+   "name_en": "Lattice Semiconductor",
+   "group": "semiconductor",
+   "sector": "Semiconductor · FPGA",
+   "entity_type": "company",
+   "role": "FPGA",
+   "roles": [
+    "FPGA",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "LSCC",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "FPGA"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 15255472035.65039,
+   "market_cap_krw": 20195041921990.508,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "microchip",
+   "name": "Microchip Technology",
+   "name_ko": "마이크로칩",
+   "name_en": "Microchip Technology",
+   "group": "semiconductor",
+   "sector": "Semiconductor · embedded",
+   "entity_type": "company",
+   "role": "embedded",
+   "roles": [
+    "embedded",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "MCHP",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "embedded"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 41187208383.78449,
+   "market_cap_krw": 54523216195245.4,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "ambarella",
+   "name": "Ambarella",
+   "name_ko": "앰바렐라",
+   "name_en": "Ambarella",
+   "group": "semiconductor",
+   "sector": "Semiconductor · edge AI",
+   "entity_type": "company",
+   "role": "edge AI",
+   "roles": [
+    "edge AI",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "AMBA",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "edge AI"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 2790592240.5030212,
+   "market_cap_krw": 3694158211063.004,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "synaptics",
+   "name": "Synaptics",
+   "name_ko": "시냅틱스",
+   "name_en": "Synaptics",
+   "group": "semiconductor",
+   "sector": "Semiconductor · edge AI",
+   "entity_type": "company",
+   "role": "edge AI",
+   "roles": [
+    "edge AI",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "SYNA",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "edge AI"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 4664119078.03492,
+   "market_cap_krw": 6174314376503.998,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "silabs",
+   "name": "Silicon Laboratories",
+   "name_ko": "실리콘랩스",
+   "name_en": "Silicon Laboratories",
+   "group": "semiconductor",
+   "sector": "Semiconductor · edge AI",
+   "entity_type": "company",
+   "role": "edge AI",
+   "roles": [
+    "edge AI",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "SLAB",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "edge AI"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 7377391060.754547,
+   "market_cap_krw": 9766116800495.6,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "ti",
+   "name": "Texas Instruments",
+   "name_ko": "텍사스 인스트루먼트",
+   "name_en": "Texas Instruments",
+   "group": "semiconductor",
+   "sector": "Semiconductor · analog",
+   "entity_type": "company",
+   "role": "analog",
+   "roles": [
+    "analog",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "TXN",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "analog"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 253681941102.2757,
+   "market_cap_krw": 335821626721232.4,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "adi",
+   "name": "Analog Devices",
+   "name_ko": "아날로그 디바이스",
+   "name_en": "Analog Devices",
+   "group": "semiconductor",
+   "sector": "Semiconductor · analog",
+   "entity_type": "company",
+   "role": "analog",
+   "roles": [
+    "analog",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "ADI",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "analog"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 192396711963.14423,
+   "market_cap_krw": 254692850845187.25,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "diodes",
+   "name": "Diodes Incorporated",
+   "name_ko": "다이오즈",
+   "name_en": "Diodes Incorporated",
+   "group": "semiconductor",
+   "sector": "Semiconductor · analog",
+   "entity_type": "company",
+   "role": "analog",
+   "roles": [
+    "analog",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "DIOD",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "analog"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 3932355061.84227,
+   "market_cap_krw": 5205612460923.798,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "cirrus",
+   "name": "Cirrus Logic",
+   "name_ko": "시러스 로직",
+   "name_en": "Cirrus Logic",
+   "group": "semiconductor",
+   "sector": "Semiconductor · analog",
+   "entity_type": "company",
+   "role": "analog",
+   "roles": [
+    "analog",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "CRUS",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "analog"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 5553526812.052673,
+   "market_cap_krw": 7351703475461.85,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "mps",
+   "name": "Monolithic Power Systems",
+   "name_ko": "모놀리식 파워",
+   "name_en": "Monolithic Power Systems",
+   "group": "semiconductor",
+   "sector": "Semiconductor · power",
+   "entity_type": "company",
+   "role": "power",
+   "roles": [
+    "power",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "MPWR",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "power"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 61366829340.08789,
+   "market_cap_krw": 81236797409256.72,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "power_integrations",
+   "name": "Power Integrations",
+   "name_ko": "파워 인테그레이션스",
+   "name_en": "Power Integrations",
+   "group": "semiconductor",
+   "sector": "Semiconductor · power",
+   "entity_type": "company",
+   "role": "power",
+   "roles": [
+    "power",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "POWI",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "power"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 2624368875.2647095,
+   "market_cap_krw": 3474113375901.079,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "onsemi",
+   "name": "onsemi",
+   "name_ko": "온세미",
+   "name_en": "onsemi",
+   "group": "semiconductor",
+   "sector": "Semiconductor · power",
+   "entity_type": "company",
+   "role": "power",
+   "roles": [
+    "power",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "ON",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "power"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 29440274584.355507,
+   "market_cap_krw": 38972742242034.7,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "aos",
+   "name": "Alpha and Omega Semiconductor",
+   "name_ko": "알파앤오메가",
+   "name_en": "Alpha and Omega Semiconductor",
+   "group": "semiconductor",
+   "sector": "Semiconductor · power",
+   "entity_type": "company",
+   "role": "power",
+   "roles": [
+    "power",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "AOSL",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "power"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 697925805.9388409,
+   "market_cap_krw": 923907229906.505,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "vishay",
+   "name": "Vishay Intertechnology",
+   "name_ko": "비쉐이",
+   "name_en": "Vishay Intertechnology",
+   "group": "semiconductor",
+   "sector": "Semiconductor · power",
+   "entity_type": "company",
+   "role": "power",
+   "roles": [
+    "power",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "VSH",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "power"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 4382042754.382393,
+   "market_cap_krw": 5800904548997.413,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "wolfspeed",
+   "name": "Wolfspeed",
+   "name_ko": "울프스피드",
+   "name_en": "Wolfspeed",
+   "group": "semiconductor",
+   "sector": "Semiconductor · power",
+   "entity_type": "company",
+   "role": "power",
+   "roles": [
+    "power",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "WOLF",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "power"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 1243868371.5,
+   "market_cap_krw": 1646620560096.5933,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "navitas",
+   "name": "Navitas Semiconductor",
+   "name_ko": "나비타스",
+   "name_en": "Navitas Semiconductor",
+   "group": "semiconductor",
+   "sector": "Semiconductor · power",
+   "entity_type": "company",
+   "role": "power",
+   "roles": [
+    "power",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "NVTS",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "power"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 2294734800.1458206,
+   "market_cap_krw": 3037747070723.114,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "allegro",
+   "name": "Allegro MicroSystems",
+   "name_ko": "알레그로",
+   "name_en": "Allegro MicroSystems",
+   "group": "semiconductor",
+   "sector": "Semiconductor · auto/sensors",
+   "entity_type": "company",
+   "role": "auto/sensors",
+   "roles": [
+    "auto",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "ALGM",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "auto/sensors"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 6320893351.417305,
+   "market_cap_krw": 8367535656582.61,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "indie",
+   "name": "indie Semiconductor",
+   "name_ko": "인디 세미컨덕터",
+   "name_en": "indie Semiconductor",
+   "group": "semiconductor",
+   "sector": "Semiconductor · auto/sensors",
+   "entity_type": "company",
+   "role": "auto/sensors",
+   "roles": [
+    "auto",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "INDI",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "auto/sensors"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 424210265.838158,
+   "market_cap_krw": 561565324384.6086,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "astera",
+   "name": "Astera Labs",
+   "name_ko": "아스테라 랩스",
+   "name_en": "Astera Labs",
+   "group": "semiconductor",
+   "sector": "Semiconductor · interconnect/IP",
+   "entity_type": "company",
+   "role": "interconnect/IP",
+   "roles": [
+    "interconnect",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "ALAB",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "interconnect/IP"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 49408555501.461914,
+   "market_cap_krw": 65406553617301.97,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "credo",
+   "name": "Credo Technology",
+   "name_ko": "크레도",
+   "name_en": "Credo Technology",
+   "group": "semiconductor",
+   "sector": "Semiconductor · interconnect/IP",
+   "entity_type": "company",
+   "role": "interconnect/IP",
+   "roles": [
+    "interconnect",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "CRDO",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "interconnect/IP"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 32235632423.72928,
+   "market_cap_krw": 42673209105412.98,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "rambus",
+   "name": "Rambus",
+   "name_ko": "램버스",
+   "name_en": "Rambus",
+   "group": "semiconductor",
+   "sector": "Semiconductor · interconnect/IP",
+   "entity_type": "company",
+   "role": "interconnect/IP",
+   "roles": [
+    "interconnect",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "RMBS",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "interconnect/IP"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 10024021150.660873,
+   "market_cap_krw": 13269699350596.684,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "arteris",
+   "name": "Arteris",
+   "name_ko": "아터리스",
+   "name_en": "Arteris",
+   "group": "semiconductor",
+   "sector": "Semiconductor · interconnect/IP",
+   "entity_type": "company",
+   "role": "interconnect/IP",
+   "roles": [
+    "interconnect",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "AIP",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "interconnect/IP"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 971245546.7700233,
+   "market_cap_krw": 1285725180297.9683,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "sitime",
+   "name": "SiTime",
+   "name_ko": "사이타임",
+   "name_en": "SiTime",
+   "group": "semiconductor",
+   "sector": "Semiconductor · timing/MEMS",
+   "entity_type": "company",
+   "role": "timing/MEMS",
+   "roles": [
+    "timing",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "SITM",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "timing/MEMS"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 14948612265.466309,
+   "market_cap_krw": 19788824014831.812,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "knowles",
+   "name": "Knowles",
+   "name_ko": "노울스",
+   "name_en": "Knowles",
+   "group": "semiconductor",
+   "sector": "Semiconductor · timing/MEMS",
+   "entity_type": "company",
+   "role": "timing/MEMS",
+   "roles": [
+    "timing",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "KN",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "timing/MEMS"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 2931282362.254837,
+   "market_cap_krw": 3880402392832.548,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "coherent",
+   "name": "Coherent",
+   "name_ko": "코히런트",
+   "name_en": "Coherent",
+   "group": "semiconductor",
+   "sector": "Semiconductor · optical",
+   "entity_type": "company",
+   "role": "optical",
+   "roles": [
+    "optical",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "COHR",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "optical"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 45648644879.786224,
+   "market_cap_krw": 60429221388562.4,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "lumentum",
+   "name": "Lumentum Holdings",
+   "name_ko": "루멘텀",
+   "name_en": "Lumentum Holdings",
+   "group": "semiconductor",
+   "sector": "Semiconductor · optical",
+   "entity_type": "company",
+   "role": "optical",
+   "roles": [
+    "optical",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "LITE",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "optical"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 74505305773.1582,
+   "market_cap_krw": 98629381639812.61,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "aoi",
+   "name": "Applied Optoelectronics",
+   "name_ko": "어플라이드 옵토일렉트로닉스",
+   "name_en": "Applied Optoelectronics",
+   "group": "semiconductor",
+   "sector": "Semiconductor · optical",
+   "entity_type": "company",
+   "role": "optical",
+   "roles": [
+    "optical",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "AAOI",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "optical"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 6515708436.480598,
+   "market_cap_krw": 8625429925648.513,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "globalfoundries",
+   "name": "GlobalFoundries",
+   "name_ko": "글로벌파운드리즈",
+   "name_en": "GlobalFoundries",
+   "group": "semiconductor",
+   "sector": "Semiconductor · foundry",
+   "entity_type": "company",
+   "role": "foundry",
+   "roles": [
+    "foundry",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "GFS",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "foundry"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 26204247591.421383,
+   "market_cap_krw": 34688921942651.133,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "cadence",
+   "name": "Cadence Design Systems",
+   "name_ko": "케이던스",
+   "name_en": "Cadence Design Systems",
+   "group": "semiconductor",
+   "sector": "Semiconductor · EDA",
+   "entity_type": "company",
+   "role": "EDA",
+   "roles": [
+    "EDA",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "CDNS",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "EDA"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 88089957565.30762,
+   "market_cap_krw": 116612608366392.53,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "applied_materials",
+   "name": "Applied Materials",
+   "name_ko": "어플라이드 머티어리얼즈",
+   "name_en": "Applied Materials",
+   "group": "semiconductor",
+   "sector": "Semiconductor · equipment",
+   "entity_type": "company",
+   "role": "equipment",
+   "roles": [
+    "equipment",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "AMAT",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "equipment"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 321391101184.86194,
+   "market_cap_krw": 425454338391848.25,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "veeco",
+   "name": "Veeco Instruments",
+   "name_ko": "비코",
+   "name_en": "Veeco Instruments",
+   "group": "semiconductor",
+   "sector": "Semiconductor · equipment",
+   "entity_type": "company",
+   "role": "equipment",
+   "roles": [
+    "equipment",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "VECO",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "equipment"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 2724548036.1447144,
+   "market_cap_krw": 3606729551195.669,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "acm_research",
+   "name": "ACM Research",
+   "name_ko": "ACM 리서치",
+   "name_en": "ACM Research",
+   "group": "semiconductor",
+   "sector": "Semiconductor · equipment",
+   "entity_type": "company",
+   "role": "equipment",
+   "roles": [
+    "equipment",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "ACMR",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "equipment"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 3827919748.3942566,
+   "market_cap_krw": 5067362033254.948,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "axcelis",
+   "name": "Axcelis Technologies",
+   "name_ko": "액셀리스",
+   "name_en": "Axcelis Technologies",
+   "group": "semiconductor",
+   "sector": "Semiconductor · equipment",
+   "entity_type": "company",
+   "role": "equipment",
+   "roles": [
+    "equipment",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "ACLS",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "equipment"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 3487446562.1942825,
+   "market_cap_krw": 4616647020795.551,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "kla",
+   "name": "KLA",
+   "name_ko": "KLA",
+   "name_en": "KLA",
+   "group": "semiconductor",
+   "sector": "Semiconductor · metrology",
+   "entity_type": "company",
+   "role": "metrology",
+   "roles": [
+    "metrology",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "KLAC",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "metrology"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 211071757184.69476,
+   "market_cap_krw": 279414689688517.6,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "onto",
+   "name": "Onto Innovation",
+   "name_ko": "온토 이노베이션",
+   "name_en": "Onto Innovation",
+   "group": "semiconductor",
+   "sector": "Semiconductor · metrology",
+   "entity_type": "company",
+   "role": "metrology",
+   "roles": [
+    "metrology",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "ONTO",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "metrology"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 10777685886.519653,
+   "market_cap_krw": 14267393220719.207,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "teradyne",
+   "name": "Teradyne",
+   "name_ko": "테라다인",
+   "name_en": "Teradyne",
+   "group": "semiconductor",
+   "sector": "Semiconductor · test",
+   "entity_type": "company",
+   "role": "test",
+   "roles": [
+    "test",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "TER",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "test"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 52622732469.96307,
+   "market_cap_krw": 69661449071987.91,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "cohu",
+   "name": "Cohu",
+   "name_ko": "코후",
+   "name_en": "Cohu",
+   "group": "semiconductor",
+   "sector": "Semiconductor · test",
+   "entity_type": "company",
+   "role": "test",
+   "roles": [
+    "test",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "COHU",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "test"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 2496629035.875988,
+   "market_cap_krw": 3305012648926.8457,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "aehr",
+   "name": "Aehr Test Systems",
+   "name_ko": "에어 테스트",
+   "name_en": "Aehr Test Systems",
+   "group": "semiconductor",
+   "sector": "Semiconductor · test",
+   "entity_type": "company",
+   "role": "test",
+   "roles": [
+    "test",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "AEHR",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "test"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 2024565311.3579636,
+   "market_cap_krw": 2680099392607.141,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "formfactor",
+   "name": "FormFactor",
+   "name_ko": "폼팩터",
+   "name_en": "FormFactor",
+   "group": "semiconductor",
+   "sector": "Semiconductor · test",
+   "entity_type": "company",
+   "role": "test",
+   "roles": [
+    "test",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "FORM",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "test"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 8413601844.094467,
+   "market_cap_krw": 11137842313850.137,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "keysight",
+   "name": "Keysight Technologies",
+   "name_ko": "키사이트",
+   "name_en": "Keysight Technologies",
+   "group": "semiconductor",
+   "sector": "Semiconductor · test",
+   "entity_type": "company",
+   "role": "test",
+   "roles": [
+    "test",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "KEYS",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "test"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 56888984612.65488,
+   "market_cap_krw": 75309071162612.36,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "bruker",
+   "name": "Bruker",
+   "name_ko": "브루커",
+   "name_en": "Bruker",
+   "group": "semiconductor",
+   "sector": "Semiconductor · test",
+   "entity_type": "company",
+   "role": "test",
+   "roles": [
+    "test",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "BRKR",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "test"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 8521456590.376373,
+   "market_cap_krw": 11280619352643.736,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "thermo_fisher",
+   "name": "Thermo Fisher Scientific",
+   "name_ko": "써모피셔",
+   "name_en": "Thermo Fisher Scientific",
+   "group": "semiconductor",
+   "sector": "Semiconductor · test",
+   "entity_type": "company",
+   "role": "test",
+   "roles": [
+    "test",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "TMO",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "test"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 254153190172.41333,
+   "market_cap_krw": 336445461546198.06,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "mks",
+   "name": "MKS Instruments",
+   "name_ko": "MKS",
+   "name_en": "MKS Instruments",
+   "group": "semiconductor",
+   "sector": "Semiconductor · subsystems",
+   "entity_type": "company",
+   "role": "subsystems",
+   "roles": [
+    "subsystems",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "MKSI",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "subsystems"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 14276771154.849518,
+   "market_cap_krw": 18899447444764.617,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "advanced_energy",
+   "name": "Advanced Energy Industries",
+   "name_ko": "어드밴스드 에너지",
+   "name_en": "Advanced Energy Industries",
+   "group": "semiconductor",
+   "sector": "Semiconductor · subsystems",
+   "entity_type": "company",
+   "role": "subsystems",
+   "roles": [
+    "subsystems",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "AEIS",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "subsystems"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 9598088180.851501,
+   "market_cap_krw": 12705853527854.729,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "ichor",
+   "name": "Ichor Holdings",
+   "name_ko": "아이커",
+   "name_en": "Ichor Holdings",
+   "group": "semiconductor",
+   "sector": "Semiconductor · subsystems",
+   "entity_type": "company",
+   "role": "subsystems",
+   "roles": [
+    "subsystems",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "ICHR",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "subsystems"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 1581692073.5248146,
+   "market_cap_krw": 2093828211796.261,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "ultra_clean",
+   "name": "Ultra Clean Holdings",
+   "name_ko": "울트라 클린",
+   "name_en": "Ultra Clean Holdings",
+   "group": "semiconductor",
+   "sector": "Semiconductor · subsystems",
+   "entity_type": "company",
+   "role": "subsystems",
+   "roles": [
+    "subsystems",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "UCTT",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "subsystems"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 2334936371.7125473,
+   "market_cap_krw": 3090965510717.805,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "enpro",
+   "name": "Enpro",
+   "name_ko": "엔프로",
+   "name_en": "Enpro",
+   "group": "semiconductor",
+   "sector": "Semiconductor · subsystems",
+   "entity_type": "company",
+   "role": "subsystems",
+   "roles": [
+    "subsystems",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "NPO",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "subsystems"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 6128890537.61618,
+   "market_cap_krw": 8113364244200.71,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "entegris",
+   "name": "Entegris",
+   "name_ko": "엔테그리스",
+   "name_en": "Entegris",
+   "group": "semiconductor",
+   "sector": "Semiconductor · materials",
+   "entity_type": "company",
+   "role": "materials",
+   "roles": [
+    "materials",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "ENTG",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "materials"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 21835119067.382812,
+   "market_cap_krw": 28905113123145.03,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "photronics",
+   "name": "Photronics",
+   "name_ko": "포트로닉스",
+   "name_en": "Photronics",
+   "group": "semiconductor",
+   "sector": "Semiconductor · materials",
+   "entity_type": "company",
+   "role": "materials",
+   "roles": [
+    "materials",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "PLAB",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "materials"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 1688498969.052393,
+   "market_cap_krw": 2235218116198.8584,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "axt",
+   "name": "AXT",
+   "name_ko": "AXT",
+   "name_en": "AXT",
+   "group": "semiconductor",
+   "sector": "Semiconductor · materials",
+   "entity_type": "company",
+   "role": "materials",
+   "roles": [
+    "materials",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "AXTI",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "materials"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 3743574683.085678,
+   "market_cap_krw": 4955706875955.376,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "element_solutions",
+   "name": "Element Solutions",
+   "name_ko": "엘리먼트 솔루션스",
+   "name_en": "Element Solutions",
+   "group": "semiconductor",
+   "sector": "Semiconductor · materials",
+   "entity_type": "company",
+   "role": "materials",
+   "roles": [
+    "materials",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "ESI",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "materials"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 8692454456.16861,
+   "market_cap_krw": 11506984624080.445,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "rogers",
+   "name": "Rogers Corporation",
+   "name_ko": "로저스",
+   "name_en": "Rogers Corporation",
+   "group": "semiconductor",
+   "sector": "Semiconductor · materials",
+   "entity_type": "company",
+   "role": "materials",
+   "roles": [
+    "materials",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "ROG",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "materials"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 2444566867.7261353,
+   "market_cap_krw": 3236093269318.0737,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "materion",
+   "name": "Materion",
+   "name_ko": "매터리온",
+   "name_en": "Materion",
+   "group": "semiconductor",
+   "sector": "Semiconductor · materials",
+   "entity_type": "company",
+   "role": "materials",
+   "roles": [
+    "materials",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "MTRN",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "materials"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 4986532009.592438,
+   "market_cap_krw": 6601121403764.78,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "dow",
+   "name": "Dow",
+   "name_ko": "다우",
+   "name_en": "Dow",
+   "group": "semiconductor",
+   "sector": "Semiconductor · materials",
+   "entity_type": "company",
+   "role": "materials",
+   "roles": [
+    "materials",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "DOW",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "materials"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 22168636806.361557,
+   "market_cap_krw": 29346620583855.742,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "air_products",
+   "name": "Air Products and Chemicals",
+   "name_ko": "에어프로덕츠",
+   "name_en": "Air Products and Chemicals",
+   "group": "semiconductor",
+   "sector": "Semiconductor · materials",
+   "entity_type": "company",
+   "role": "materials",
+   "roles": [
+    "materials",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "APD",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "materials"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 67380184677.237854,
+   "market_cap_krw": 89197217305919.16,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "corning",
+   "name": "Corning",
+   "name_ko": "코닝",
+   "name_en": "Corning",
+   "group": "semiconductor",
+   "sector": "Semiconductor · materials",
+   "entity_type": "company",
+   "role": "materials",
+   "roles": [
+    "materials",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "GLW",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "materials"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 113927215926.31258,
+   "market_cap_krw": 150815713621375.2,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "arrow",
+   "name": "Arrow Electronics",
+   "name_ko": "애로우 일렉트로닉스",
+   "name_en": "Arrow Electronics",
+   "group": "semiconductor",
+   "sector": "Semiconductor · distribution",
+   "entity_type": "company",
+   "role": "distribution",
+   "roles": [
+    "distribution",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "ARW",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "distribution"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 10941102192.547546,
+   "market_cap_krw": 14483722098859.32,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "avnet",
+   "name": "Avnet",
+   "name_ko": "애브넷",
+   "name_en": "Avnet",
+   "group": "semiconductor",
+   "sector": "Semiconductor · distribution",
+   "entity_type": "company",
+   "role": "distribution",
+   "roles": [
+    "distribution",
+    "us_listed"
+   ],
+   "description": "미국 상장사. 시총 필터(KRW 5000억↑) 통과. FX·시총 스냅샷: _us_mcap_eligibility.json. CoreWeave와 직접 계약이 확인되지 않으면 엣지를 만들지 않습니다.",
+   "listed": true,
+   "ticker": "AVT",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 5,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "distribution"
+   ],
+   "region": "US",
+   "country": "US",
+   "market_cap_usd": 7488123757.656189,
+   "market_cap_krw": 9912703641652.521,
+   "mcap_as_of": "2026-10-21T04:48:14.586348+00:00"
+  },
+  {
+   "id": "intel",
+   "name": "Intel",
+   "name_ko": "인텔",
+   "name_en": "Intel",
+   "group": "semiconductor",
+   "sector": "반도체 · CPU/파운드리",
+   "entity_type": "company",
+   "role": "CPU · 파운드리",
+   "description": "미국 상장. 시총 필터 통과. CoreWeave 직접 계약 미확인 시 엣지 없음.",
+   "listed": true,
+   "ticker": "INTC",
+   "exchange": "Nasdaq",
+   "quote_currency": "USD",
+   "listing_note": null,
+   "display_size": 8,
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "key_drivers": [
+    "CPU",
+    "foundry"
+   ]
+  }
+ ]
+}

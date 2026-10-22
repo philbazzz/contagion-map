@@ -1,0 +1,157 @@
+{
+ "passed": true,
+ "errors": [],
+ "checks": [
+  {
+   "check": "edge endpoints exist",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "unique edge ids",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "unique node ids",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "every v6 relation has a source",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "every v6 relation has a URL",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "no zero placeholder amounts",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "commitment sum ('camsquare_ansan', 'main_pf')",
+   "pass": true,
+   "detail": "8340.0 vs 8340"
+  },
+  {
+   "check": "commitment sum ('casequare_gasan', 'refinancing')",
+   "pass": true,
+   "detail": "3800.0 vs 3800"
+  },
+  {
+   "check": "commitment sum ('magna_deogi', 'refinancing')",
+   "pass": true,
+   "detail": "2730.0 vs 2730"
+  },
+  {
+   "check": "commitment sum ('bucheon_peach_dc', 'main_pf')",
+   "pass": true,
+   "detail": "5900.0 vs 5900"
+  },
+  {
+   "check": "commitment sum ('bupyeong_digital_edge', 'refinancing')",
+   "pass": true,
+   "detail": "8000.0 vs 8000"
+  },
+  {
+   "check": "commitment sum ('gasan_stt_seoul1', 'refinancing')",
+   "pass": true,
+   "detail": "2300.0 vs 2300"
+  },
+  {
+   "check": "commitment sum ('yeongdeungpo_yedc', 'main_pf')",
+   "pass": true,
+   "detail": "2200.0 vs 2200"
+  },
+  {
+   "check": "commitment sum ('hanam_mkif_dc', 'refinancing')",
+   "pass": true,
+   "detail": "5150.0 vs 5150"
+  },
+  {
+   "check": "drawn sum ('camsquare_ansan', 'main_pf')",
+   "pass": true,
+   "detail": "1351.0 vs 1351.0"
+  },
+  {
+   "check": "drawn sum ('casequare_gasan', 'refinancing')",
+   "pass": true,
+   "detail": "3746.0 vs 3746"
+  },
+  {
+   "check": "drawn sum ('magna_deogi', 'refinancing')",
+   "pass": true,
+   "detail": "908.0 vs 908"
+  },
+  {
+   "check": "drawn sum ('bucheon_peach_dc', 'main_pf')",
+   "pass": true,
+   "detail": "3047.0 vs 3047"
+  },
+  {
+   "check": "drawn sum ('bupyeong_digital_edge', 'refinancing')",
+   "pass": true,
+   "detail": "5020.0 vs 5020"
+  },
+  {
+   "check": "drawn sum ('yeongdeungpo_yedc', 'main_pf')",
+   "pass": true,
+   "detail": "820.0 vs 820"
+  },
+  {
+   "check": "arranger amounts typed as context/fee",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "no syndicate total copied to each lender",
+   "pass": true,
+   "detail": "{}"
+  },
+  {
+   "check": "repaid relations use historical amount types",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "no receivable typed as contract value",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "contingent obligations have trigger",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "no factual CoreWeave–Korea PF edge",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "v6 relations attach to vehicle/borrower (no peer-to-peer)",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "distinct projects kept separate",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "hidden nodes not on map",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "counts": {
+  "nodes": 291,
+  "edges": 483,
+  "v6_relations": 382,
+  "hidden_nodes": 70
+ }
+}

@@ -1,0 +1,156 @@
+{
+  "checks": [
+    {
+      "id": "no_zero_for_undisclosed",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "id": "magna_no_full_facility_per_lender",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "id": "magna_named_lenders_ge_8",
+      "ok": true,
+      "detail": 8
+    },
+    {
+      "id": "casequare_lenders_with_amounts",
+      "ok": true,
+      "detail": 11
+    },
+    {
+      "id": "institution_across_projects",
+      "ok": true,
+      "detail": {
+        "nh_bank": [
+          "casequare_gasan",
+          "magna_deogi"
+        ],
+        "hyundai_capital": [
+          "casequare_gasan",
+          "magna_deogi"
+        ],
+        "shinhan_capital": [
+          "casequare_gasan",
+          "magna_deogi"
+        ],
+        "hana_sec": [
+          "magna_deogi",
+          "yeongdeungpo_yedc"
+        ],
+        "hana_bank": [
+          "bucheon_samjeong_ai",
+          "gwangju_fine_dc",
+          "magna_deogi"
+        ],
+        "ibk": [
+          "bucheon_samjeong_ai",
+          "magna_deogi"
+        ],
+        "kb_bank": [
+          "gwangju_fine_dc",
+          "magna_deogi"
+        ]
+      }
+    },
+    {
+      "id": "camsquare_abstb_path",
+      "ok": true,
+      "detail": {
+        "spc": true,
+        "support": true
+      }
+    },
+    {
+      "id": "yuanta_mountain_credit_support",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "id": "daewoo_contingent_guarantee",
+      "ok": true,
+      "detail": "guarantee_limit"
+    },
+    {
+      "id": "undisclosed_amount_edges",
+      "ok": true,
+      "detail": 17
+    },
+    {
+      "id": "kiwoom_underwrite_typed",
+      "ok": true,
+      "detail": "underwrite_commitment"
+    }
+  ],
+  "passed": true,
+  "counts": {
+    "nodes": 235,
+    "edges": 143,
+    "financial_edges": 62,
+    "institutions_with_finance_edges": 34,
+    "projects_financing_disclosed": 13,
+    "magna_lenders": 8,
+    "casequare_loan_edges": 11
+  },
+  "by_institution_group": {
+    "kr_bank": 12,
+    "kr_insurance": 2,
+    "kr_securities": 10,
+    "kr_savings": 1,
+    "kr_construction": 5,
+    "kr_cooperative": 1,
+    "financial": 1,
+    "kr_am": 2
+  },
+  "by_financing_stage": {
+    "unset": 17,
+    "equity": 8,
+    "main_pf": 30,
+    "operating_refinancing": 2,
+    "bridge": 2,
+    "construction": 1,
+    "securitization": 2
+  },
+  "by_amount_type": {
+    "unset": 20,
+    "equity_investment": 8,
+    "institution_commitment": 25,
+    "credit_support_limit": 2,
+    "underwrite_commitment": 2,
+    "facility_total_context": 4,
+    "guarantee_limit": 1
+  },
+  "multi_project_institutions_sample": {
+    "nh_bank": [
+      "casequare_gasan",
+      "magna_deogi"
+    ],
+    "hyundai_capital": [
+      "casequare_gasan",
+      "magna_deogi"
+    ],
+    "shinhan_capital": [
+      "casequare_gasan",
+      "magna_deogi"
+    ],
+    "hana_sec": [
+      "magna_deogi",
+      "yeongdeungpo_yedc"
+    ],
+    "hana_bank": [
+      "bucheon_samjeong_ai",
+      "gwangju_fine_dc",
+      "magna_deogi"
+    ],
+    "ibk": [
+      "bucheon_samjeong_ai",
+      "magna_deogi"
+    ],
+    "kb_bank": [
+      "gwangju_fine_dc",
+      "magna_deogi"
+    ]
+  }
+}

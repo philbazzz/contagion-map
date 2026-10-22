@@ -1,0 +1,809 @@
+{
+  "verification_date": "2026-10-21",
+  "audit_complete": false,
+  "opendart_api_configured": true,
+  "filings_inspected": 0,
+  "reporting_periods": "2018–latest (planned; API key required for live pull)",
+  "securities_firms_reviewed": [
+    {
+      "legal_name": "한국투자증권",
+      "in_map": true,
+      "node_id": "korea_inv_sec",
+      "edges": 6,
+      "active_economic": 3,
+      "arranger_only": 3,
+      "repaid_or_historical": 0,
+      "notes": ""
+    },
+    {
+      "legal_name": "KB증권",
+      "in_map": true,
+      "node_id": "kb_sec",
+      "edges": 4,
+      "active_economic": 1,
+      "arranger_only": 3,
+      "repaid_or_historical": 0,
+      "notes": ""
+    },
+    {
+      "legal_name": "메리츠증권",
+      "in_map": true,
+      "node_id": "meritz_sec",
+      "edges": 1,
+      "active_economic": 0,
+      "arranger_only": 1,
+      "repaid_or_historical": 0,
+      "notes": ""
+    },
+    {
+      "legal_name": "NH투자증권",
+      "in_map": true,
+      "node_id": "nh_inv_sec",
+      "edges": 6,
+      "active_economic": 3,
+      "arranger_only": 3,
+      "repaid_or_historical": 0,
+      "notes": ""
+    },
+    {
+      "legal_name": "미래에셋증권",
+      "in_map": true,
+      "node_id": "mirae_asset_sec",
+      "edges": 0,
+      "active_economic": 0,
+      "arranger_only": 0,
+      "repaid_or_historical": 0,
+      "notes": ""
+    },
+    {
+      "legal_name": "삼성증권",
+      "in_map": true,
+      "node_id": "samsung_sec",
+      "edges": 6,
+      "active_economic": 2,
+      "arranger_only": 4,
+      "repaid_or_historical": 0,
+      "notes": ""
+    },
+    {
+      "legal_name": "신한투자증권",
+      "in_map": true,
+      "node_id": "shinhan_sec",
+      "edges": 8,
+      "active_economic": 7,
+      "arranger_only": 1,
+      "repaid_or_historical": 0,
+      "notes": ""
+    },
+    {
+      "legal_name": "하나증권",
+      "in_map": true,
+      "node_id": "hana_sec",
+      "edges": 4,
+      "active_economic": 1,
+      "arranger_only": 3,
+      "repaid_or_historical": 0,
+      "notes": ""
+    },
+    {
+      "legal_name": "대신증권",
+      "in_map": true,
+      "node_id": "daishin_sec",
+      "edges": 0,
+      "active_economic": 0,
+      "arranger_only": 0,
+      "repaid_or_historical": 0,
+      "notes": ""
+    },
+    {
+      "legal_name": "키움증권",
+      "in_map": true,
+      "node_id": "kiwoom_sec",
+      "edges": 3,
+      "active_economic": 1,
+      "arranger_only": 2,
+      "repaid_or_historical": 0,
+      "notes": ""
+    },
+    {
+      "legal_name": "IBK투자증권",
+      "in_map": true,
+      "node_id": "ibk_sec",
+      "edges": 3,
+      "active_economic": 2,
+      "arranger_only": 1,
+      "repaid_or_historical": 0,
+      "notes": ""
+    },
+    {
+      "legal_name": "현대차증권",
+      "in_map": true,
+      "node_id": "hyundai_motor_sec",
+      "edges": 5,
+      "active_economic": 2,
+      "arranger_only": 3,
+      "repaid_or_historical": 0,
+      "notes": ""
+    },
+    {
+      "legal_name": "SK증권",
+      "in_map": true,
+      "node_id": "sk_sec",
+      "edges": 1,
+      "active_economic": 0,
+      "arranger_only": 1,
+      "repaid_or_historical": 0,
+      "notes": ""
+    },
+    {
+      "legal_name": "교보증권",
+      "in_map": true,
+      "node_id": "kyobo_sec",
+      "edges": 1,
+      "active_economic": 0,
+      "arranger_only": 1,
+      "repaid_or_historical": 0,
+      "notes": ""
+    },
+    {
+      "legal_name": "유안타증권",
+      "in_map": true,
+      "node_id": "yuanta_sec",
+      "edges": 2,
+      "active_economic": 0,
+      "arranger_only": 2,
+      "repaid_or_historical": 0,
+      "notes": ""
+    },
+    {
+      "legal_name": "한화투자증권",
+      "in_map": true,
+      "node_id": "hanwha_inv_sec",
+      "edges": 3,
+      "active_economic": 2,
+      "arranger_only": 1,
+      "repaid_or_historical": 0,
+      "notes": ""
+    },
+    {
+      "legal_name": "다올투자증권",
+      "in_map": true,
+      "node_id": "daol_sec",
+      "edges": 1,
+      "active_economic": 0,
+      "arranger_only": 1,
+      "repaid_or_historical": 0,
+      "notes": ""
+    },
+    {
+      "legal_name": "LS증권",
+      "in_map": true,
+      "node_id": "ls_sec",
+      "edges": 1,
+      "active_economic": 1,
+      "arranger_only": 0,
+      "repaid_or_historical": 0,
+      "notes": ""
+    },
+    {
+      "legal_name": "신영증권",
+      "in_map": true,
+      "node_id": "shinyoung_sec",
+      "edges": 0,
+      "active_economic": 0,
+      "arranger_only": 0,
+      "repaid_or_historical": 0,
+      "notes": ""
+    },
+    {
+      "legal_name": "DB증권",
+      "in_map": true,
+      "node_id": "db_sec",
+      "edges": 0,
+      "active_economic": 0,
+      "arranger_only": 0,
+      "repaid_or_historical": 0,
+      "notes": ""
+    },
+    {
+      "legal_name": "유진투자증권",
+      "in_map": true,
+      "node_id": "eugene_inv_sec",
+      "edges": 3,
+      "active_economic": 2,
+      "arranger_only": 1,
+      "repaid_or_historical": 0,
+      "notes": ""
+    },
+    {
+      "legal_name": "iM증권",
+      "in_map": true,
+      "node_id": "im_sec",
+      "edges": 0,
+      "active_economic": 0,
+      "arranger_only": 0,
+      "repaid_or_historical": 0,
+      "notes": ""
+    },
+    {
+      "legal_name": "BNK투자증권",
+      "in_map": true,
+      "node_id": "bnk_sec",
+      "edges": 0,
+      "active_economic": 0,
+      "arranger_only": 0,
+      "repaid_or_historical": 0,
+      "notes": ""
+    },
+    {
+      "legal_name": "부국증권",
+      "in_map": true,
+      "node_id": "bookook_sec",
+      "edges": 0,
+      "active_economic": 0,
+      "arranger_only": 0,
+      "repaid_or_historical": 0,
+      "notes": ""
+    },
+    {
+      "legal_name": "케이프투자증권",
+      "in_map": true,
+      "node_id": "cape_sec",
+      "edges": 0,
+      "active_economic": 0,
+      "arranger_only": 0,
+      "repaid_or_historical": 0,
+      "notes": ""
+    }
+  ],
+  "additional_securities_in_map": [
+    {
+      "id": "woori_inv_sec",
+      "name_ko": "우리투자증권",
+      "name": "우리투자증권"
+    },
+    {
+      "id": "shinhan_dc_dev_fund",
+      "name_ko": "신한데이터센터개발일반사모혼합자산투자신탁",
+      "name": "Shinhan DC Development Fund"
+    },
+    {
+      "id": "korea_value_dc_fund",
+      "name_ko": "한국밸류K-리더스데이터센터일반사모투자신탁",
+      "name": "Korea Value K-Leaders DC Fund"
+    },
+    {
+      "id": "fine_partners_dc_fund",
+      "name_ko": "파인앤파트너스데이터센터개발블라인드펀드",
+      "name": "Fine & Partners DC Blind Fund"
+    }
+  ],
+  "confirmed_active_relationships": [
+    {
+      "firm": "한국투자증권",
+      "edge_id": "v6_gr_eq_korea_inv_sec",
+      "role": "EQUITY_INVESTMENT",
+      "amount_krw_eok": null,
+      "amount_type": "equity_paid_in",
+      "exposure_status": "ACTIVE_AMOUNT_UNKNOWN",
+      "project_id": "guro_gaebong_dc",
+      "source_url": "https://dealsite.co.kr/articles/131096"
+    },
+    {
+      "firm": "한국투자증권",
+      "edge_id": "dart_eq_korea_inv_sec_capstone_meta",
+      "role": "EQUITY_INVESTMENT",
+      "amount_krw_eok": 9.5,
+      "amount_type": "equity_paid_in",
+      "exposure_status": "ACTIVE_CONFIRMED",
+      "project_id": "capstone_meta_idc",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260930000623"
+    },
+    {
+      "firm": "한국투자증권",
+      "edge_id": "dart_eq_kis_value_dc_fund",
+      "role": "EQUITY_INVESTMENT",
+      "amount_krw_eok": 28.22,
+      "amount_type": "equity_paid_in",
+      "exposure_status": "ACTIVE_CONFIRMED",
+      "project_id": null,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260930000623"
+    },
+    {
+      "firm": "KB증권",
+      "edge_id": "v6_hs_loan_kb_sec",
+      "role": "CORPORATE_LOAN",
+      "amount_krw_eok": null,
+      "amount_type": "institution_commitment",
+      "exposure_status": "ACTIVE_AMOUNT_UNKNOWN",
+      "project_id": "gasan_stt_seoul1",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260406002356"
+    },
+    {
+      "firm": "NH투자증권",
+      "edge_id": "v6_kp_capinc_nh_inv_sec",
+      "role": "EQUITY_INVESTMENT",
+      "amount_krw_eok": 100.0,
+      "amount_type": "equity_subscription",
+      "exposure_status": "ACTIVE_AMOUNT_UNKNOWN",
+      "project_id": "keppel_ansan",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260610000269"
+    },
+    {
+      "firm": "NH투자증권",
+      "edge_id": "v6_glm_eq_nh_inv_sec",
+      "role": "EQUITY_INVESTMENT",
+      "amount_krw_eok": null,
+      "amount_type": "equity_paid_in",
+      "exposure_status": "ACTIVE_AMOUNT_UNKNOWN",
+      "project_id": "gasan_stt_seoul1",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260406003009"
+    },
+    {
+      "firm": "NH투자증권",
+      "edge_id": "v6_gj_loan_nh_inv_sec",
+      "role": "PROJECT_LOAN",
+      "amount_krw_eok": 1350,
+      "amount_type": "outstanding",
+      "exposure_status": "ACTIVE_CONFIRMED",
+      "project_id": "gasan_dci_sel1",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260406000434"
+    },
+    {
+      "firm": "삼성증권",
+      "edge_id": "pf_samsung_camsquare_abstb_support",
+      "role": "CREDIT_ENHANCEMENT",
+      "amount_krw_eok": 6800.0,
+      "amount_type": "credit_support_limit",
+      "exposure_status": "ACTIVE_AMOUNT_UNKNOWN",
+      "project_id": "camsquare_ansan",
+      "source_url": "https://dealsitetv.com/articles/128941"
+    },
+    {
+      "firm": "삼성증권",
+      "edge_id": "pf_samsung_sec_camsquare_equity",
+      "role": "EQUITY_INVESTMENT",
+      "amount_krw_eok": null,
+      "amount_type": "equity_investment",
+      "exposure_status": "ACTIVE_AMOUNT_UNKNOWN",
+      "project_id": "camsquare_ansan",
+      "source_url": "https://dealsitetv.com/articles/128941"
+    },
+    {
+      "firm": "신한투자증권",
+      "edge_id": "pf_shinhan_jukjeon_eq",
+      "role": "EQUITY_SPONSOR",
+      "amount_krw_eok": null,
+      "amount_type": null,
+      "exposure_status": "ACTIVE_AMOUNT_UNKNOWN",
+      "project_id": "yongin_jukjeon_pacific",
+      "source_url": "https://marketinsight.hankyung.com/article/202408229028r"
+    },
+    {
+      "firm": "신한투자증권",
+      "edge_id": "v6_kp_eq_shinhan_sec",
+      "role": "EQUITY_INVESTMENT",
+      "amount_krw_eok": null,
+      "amount_type": "equity_paid_in",
+      "exposure_status": "ACTIVE_AMOUNT_UNKNOWN",
+      "project_id": "keppel_ansan",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260330000663"
+    },
+    {
+      "firm": "신한투자증권",
+      "edge_id": "v6_kp_bridge_shinhan_sec",
+      "role": "PROJECT_LOAN",
+      "amount_krw_eok": 60,
+      "amount_type": "institution_commitment",
+      "exposure_status": "ACTIVE_CONFIRMED",
+      "project_id": "keppel_ansan",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260330000663"
+    },
+    {
+      "firm": "신한투자증권",
+      "edge_id": "v6_cn_bridge_shinhan_sec",
+      "role": "PROJECT_LOAN",
+      "amount_krw_eok": 200,
+      "amount_type": "outstanding",
+      "exposure_status": "ACTIVE_CONFIRMED",
+      "project_id": "incheon_wonchang_dc",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260413000174"
+    },
+    {
+      "firm": "신한투자증권",
+      "edge_id": "v6_pc_B_shinhan_sec",
+      "role": "PROJECT_LOAN",
+      "amount_krw_eok": 100,
+      "amount_type": "institution_commitment",
+      "exposure_status": "ACTIVE_CONFIRMED",
+      "project_id": "bucheon_peach_dc",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260401001191"
+    },
+    {
+      "firm": "신한투자증권",
+      "edge_id": "v6_pc_eq_shinhan_sec",
+      "role": "EQUITY_INVESTMENT",
+      "amount_krw_eok": 110.5,
+      "amount_type": "equity_par_value",
+      "exposure_status": "ACTIVE_AMOUNT_UNKNOWN",
+      "project_id": "bucheon_peach_dc",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260401001191"
+    },
+    {
+      "firm": "신한투자증권",
+      "edge_id": "dart_commit_shinhan_dc_fund",
+      "role": "LIQUIDITY_COMMITMENT",
+      "amount_krw_eok": 71.0,
+      "amount_type": "purchase_commitment",
+      "exposure_status": "ACTIVE_AMOUNT_UNKNOWN",
+      "project_id": null,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260908000410"
+    },
+    {
+      "firm": "하나증권",
+      "edge_id": "v6_mg_eq_hana_sec",
+      "role": "EQUITY_INVESTMENT",
+      "amount_krw_eok": null,
+      "amount_type": "equity_paid_in",
+      "exposure_status": "ACTIVE_AMOUNT_UNKNOWN",
+      "project_id": "magna_deogi",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260406003595"
+    },
+    {
+      "firm": "키움증권",
+      "edge_id": "dart_eq_kiwoom_casequare_jangnim",
+      "role": "EQUITY_INVESTMENT",
+      "amount_krw_eok": null,
+      "amount_type": null,
+      "exposure_status": "ACTIVE_AMOUNT_UNKNOWN",
+      "project_id": "casequare_busan_jangnim",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260813001767"
+    },
+    {
+      "firm": "IBK투자증권",
+      "edge_id": "v6_bed_eq_ibk_sec",
+      "role": "EQUITY_INVESTMENT",
+      "amount_krw_eok": 17.85,
+      "amount_type": "equity_paid_in",
+      "exposure_status": "ACTIVE_CONFIRMED",
+      "project_id": "busan_ecodelta_dc",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814003650"
+    },
+    {
+      "firm": "IBK투자증권",
+      "edge_id": "dart_eq_ibk_sec_capstone_meta",
+      "role": "EQUITY_INVESTMENT",
+      "amount_krw_eok": 9.5,
+      "amount_type": "equity_paid_in",
+      "exposure_status": "ACTIVE_CONFIRMED",
+      "project_id": "capstone_meta_idc",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814003650"
+    },
+    {
+      "firm": "현대차증권",
+      "edge_id": "dart_commit_hyundai_fine_dc_fund",
+      "role": "LIQUIDITY_COMMITMENT",
+      "amount_krw_eok": 30.0,
+      "amount_type": "purchase_commitment",
+      "exposure_status": "ACTIVE_AMOUNT_UNKNOWN",
+      "project_id": null,
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260515001656"
+    },
+    {
+      "firm": "현대차증권",
+      "edge_id": "dart_rel_hyundai_casequare_yongsan",
+      "role": "EQUITY_INVESTMENT",
+      "amount_krw_eok": null,
+      "amount_type": null,
+      "exposure_status": "ACTIVE_AMOUNT_UNKNOWN",
+      "project_id": "casequare_yongsan",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814002170"
+    },
+    {
+      "firm": "한화투자증권",
+      "edge_id": "dart_eq_hanwha_camsquare_seori",
+      "role": "EQUITY_INVESTMENT",
+      "amount_krw_eok": 29.95,
+      "amount_type": "equity_paid_in",
+      "exposure_status": "ACTIVE_CONFIRMED",
+      "project_id": "camsquare_seori",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260813001503"
+    },
+    {
+      "firm": "한화투자증권",
+      "edge_id": "dart_commit_hanwha_yongin_jigok",
+      "role": "LIQUIDITY_COMMITMENT",
+      "amount_krw_eok": 280.0,
+      "amount_type": "purchase_commitment",
+      "exposure_status": "ACTIVE_AMOUNT_UNKNOWN",
+      "project_id": "yongin_jigok_dc",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260514000990"
+    },
+    {
+      "firm": "LS증권",
+      "edge_id": "dart_bond_ls_camsquare_ansan",
+      "role": "ABS_HOLDING",
+      "amount_krw_eok": null,
+      "amount_type": null,
+      "exposure_status": "ACTIVE_AMOUNT_UNKNOWN",
+      "project_id": "camsquare_ansan",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260813001273"
+    },
+    {
+      "firm": "유진투자증권",
+      "edge_id": "v6_ka_eq_eugene",
+      "role": "EQUITY_INVESTMENT",
+      "amount_krw_eok": 15,
+      "amount_type": "equity_paid_in",
+      "exposure_status": "ACTIVE_CONFIRMED",
+      "project_id": "camsquare_ansan",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260413002070"
+    },
+    {
+      "firm": "유진투자증권",
+      "edge_id": "dart_eq_eugene_casequare_manus_guro",
+      "role": "EQUITY_INVESTMENT",
+      "amount_krw_eok": 5.0,
+      "amount_type": "equity_paid_in",
+      "exposure_status": "ACTIVE_CONFIRMED",
+      "project_id": "casequare_manus_guro",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814003025"
+    }
+  ],
+  "historical_or_arranger_relationships": [
+    {
+      "firm": "한국투자증권",
+      "edge_id": "v6_cq_old_korea_inv_sec",
+      "role": "PROJECT_LOAN",
+      "status": "FULLY_REPAID"
+    },
+    {
+      "firm": "한국투자증권",
+      "edge_id": "v6_kp_fund_trustee",
+      "role": "TRUST_SERVICES",
+      "status": "ACTIVE_AMOUNT_UNKNOWN"
+    },
+    {
+      "firm": "한국투자증권",
+      "edge_id": "v6_ge_arr_kis",
+      "role": "ARRANGER",
+      "status": "HISTORICAL_ONLY"
+    },
+    {
+      "firm": "KB증권",
+      "edge_id": "v6_glm_trustee_kb",
+      "role": "TRUST_SERVICES",
+      "status": "ACTIVE_AMOUNT_UNKNOWN"
+    },
+    {
+      "firm": "KB증권",
+      "edge_id": "v6_dk_trustee_kb",
+      "role": "TRUST_SERVICES",
+      "status": "FULLY_REPAID"
+    },
+    {
+      "firm": "KB증권",
+      "edge_id": "dart_eq_kb_casequare_songpa_disposed",
+      "role": "EQUITY_INVESTMENT",
+      "status": "HISTORICAL_ONLY"
+    },
+    {
+      "firm": "메리츠증권",
+      "edge_id": "v6_bh_arr_meritz",
+      "role": "ARRANGER",
+      "status": "HISTORICAL_ONLY"
+    },
+    {
+      "firm": "NH투자증권",
+      "edge_id": "v6_bed_loan_nhis_hist",
+      "role": "PROJECT_LOAN",
+      "status": "FULLY_REPAID"
+    },
+    {
+      "firm": "NH투자증권",
+      "edge_id": "v6_bed_trust_nhis",
+      "role": "TRUST_SERVICES",
+      "status": "ACTIVE_AMOUNT_UNKNOWN"
+    },
+    {
+      "firm": "NH투자증권",
+      "edge_id": "v6_kp_arr_nhis",
+      "role": "ARRANGER",
+      "status": "HISTORICAL_ONLY"
+    },
+    {
+      "firm": "삼성증권",
+      "edge_id": "pf_samsung_sec_camsquare",
+      "role": "ARRANGER",
+      "status": "HISTORICAL_ONLY"
+    },
+    {
+      "firm": "삼성증권",
+      "edge_id": "v6_ka_rel_samsung_spc2",
+      "role": "ABS_SPONSOR",
+      "status": "ACTIVE_AMOUNT_UNKNOWN"
+    },
+    {
+      "firm": "삼성증권",
+      "edge_id": "v6_ka_rel_samsung_spc3",
+      "role": "ABS_SPONSOR",
+      "status": "ACTIVE_AMOUNT_UNKNOWN"
+    },
+    {
+      "firm": "삼성증권",
+      "edge_id": "v6_ka_fee_samsung",
+      "role": "ARRANGER",
+      "status": "HISTORICAL_ONLY"
+    },
+    {
+      "firm": "신한투자증권",
+      "edge_id": "v6_wc_arr_shinhan",
+      "role": "ARRANGER",
+      "status": "HISTORICAL_ONLY"
+    },
+    {
+      "firm": "하나증권",
+      "edge_id": "pf_hana_sec_edgecore",
+      "role": "ARRANGER",
+      "status": "HISTORICAL_ONLY"
+    },
+    {
+      "firm": "하나증권",
+      "edge_id": "v6_mg_arranger_hana",
+      "role": "ARRANGER",
+      "status": "HISTORICAL_ONLY"
+    },
+    {
+      "firm": "하나증권",
+      "edge_id": "dart_abs_hana_dc_1st",
+      "role": "ABS_SPONSOR",
+      "status": "HISTORICAL_ONLY"
+    },
+    {
+      "firm": "키움증권",
+      "edge_id": "pf_kiwoom_refin",
+      "role": "REFINANCING_UNDERWRITE",
+      "status": "HISTORICAL_ONLY"
+    },
+    {
+      "firm": "키움증권",
+      "edge_id": "v6_cq_refi_kiwoom_spc",
+      "role": "ABS_SPONSOR",
+      "status": "ACTIVE_AMOUNT_UNKNOWN"
+    },
+    {
+      "firm": "IBK투자증권",
+      "edge_id": "v6_dh_arr_ibkis",
+      "role": "ARRANGER",
+      "status": "HISTORICAL_ONLY"
+    },
+    {
+      "firm": "현대차증권",
+      "edge_id": "pf_hyundai_motor_sec_fine_arranger",
+      "role": "ARRANGER",
+      "status": "HISTORICAL_ONLY"
+    },
+    {
+      "firm": "현대차증권",
+      "edge_id": "pf_hyundai_motor_sec_fine_underwrite",
+      "role": "REFINANCING_UNDERWRITE",
+      "status": "HISTORICAL_ONLY"
+    },
+    {
+      "firm": "현대차증권",
+      "edge_id": "v6_ph_hyundai_motor_sec_financial_advisor",
+      "role": "FINANCIAL_ADVISOR",
+      "status": "HISTORICAL_ONLY"
+    },
+    {
+      "firm": "SK증권",
+      "edge_id": "v6_cy_sponsor_sk",
+      "role": "ABS_SPONSOR",
+      "status": "ACTIVE_AMOUNT_UNKNOWN"
+    },
+    {
+      "firm": "교보증권",
+      "edge_id": "v6_he_arr_kyobo",
+      "role": "ARRANGER",
+      "status": "HISTORICAL_ONLY"
+    },
+    {
+      "firm": "유안타증권",
+      "edge_id": "pf_yuanta_mountain",
+      "role": "CREDIT_ENHANCEMENT",
+      "status": "FULLY_REPAID"
+    },
+    {
+      "firm": "유안타증권",
+      "edge_id": "dart_arr_yuanta_camsquare_ansan_abs",
+      "role": "FINANCING_ARRANGEMENT",
+      "status": "HISTORICAL_ONLY"
+    },
+    {
+      "firm": "한화투자증권",
+      "edge_id": "v6_cy_sponsor_hanwha",
+      "role": "ABS_SPONSOR",
+      "status": "ACTIVE_AMOUNT_UNKNOWN"
+    },
+    {
+      "firm": "다올투자증권",
+      "edge_id": "v6_bh_arr_daol",
+      "role": "ARRANGER",
+      "status": "HISTORICAL_ONLY"
+    },
+    {
+      "firm": "유진투자증권",
+      "edge_id": "v6_ds_arr_eugene_inv_sec",
+      "role": "ARRANGER",
+      "status": "HISTORICAL_ONLY"
+    }
+  ],
+  "unknown_balances": [
+    {
+      "firm": "한국투자증권",
+      "edge_id": "v6_gr_eq_korea_inv_sec",
+      "role": "EQUITY_INVESTMENT"
+    },
+    {
+      "firm": "KB증권",
+      "edge_id": "v6_hs_loan_kb_sec",
+      "role": "CORPORATE_LOAN"
+    },
+    {
+      "firm": "NH투자증권",
+      "edge_id": "v6_glm_eq_nh_inv_sec",
+      "role": "EQUITY_INVESTMENT"
+    },
+    {
+      "firm": "삼성증권",
+      "edge_id": "pf_samsung_sec_camsquare_equity",
+      "role": "EQUITY_INVESTMENT"
+    },
+    {
+      "firm": "신한투자증권",
+      "edge_id": "pf_shinhan_jukjeon_eq",
+      "role": "EQUITY_SPONSOR"
+    },
+    {
+      "firm": "신한투자증권",
+      "edge_id": "v6_kp_eq_shinhan_sec",
+      "role": "EQUITY_INVESTMENT"
+    },
+    {
+      "firm": "하나증권",
+      "edge_id": "v6_mg_eq_hana_sec",
+      "role": "EQUITY_INVESTMENT"
+    },
+    {
+      "firm": "키움증권",
+      "edge_id": "dart_eq_kiwoom_casequare_jangnim",
+      "role": "EQUITY_INVESTMENT"
+    },
+    {
+      "firm": "현대차증권",
+      "edge_id": "dart_rel_hyundai_casequare_yongsan",
+      "role": "EQUITY_INVESTMENT"
+    },
+    {
+      "firm": "LS증권",
+      "edge_id": "dart_bond_ls_camsquare_ansan",
+      "role": "ABS_HOLDING"
+    }
+  ],
+  "missing_from_map": [],
+  "projects_in_database": 173,
+  "network_nodes": 311,
+  "network_edges": 497,
+  "limitations": [
+    "OPEN_DART_API_KEY unset or empty → live DART full-text / notes search not executed this run.",
+    "Existing edges remain news/DART-metadata sourced; arrangement amounts are tagged HISTORICAL_ONLY / shock_eligible=false.",
+    "Absence from latest disclosure is NOT treated as repayment (Case E → UNVERIFIED).",
+    "No fabricated lender shares from facility totals."
+  ],
+  "remaining_work": [
+    "Set OPEN_DART_API_KEY and run disclosure keyword crawl for all 25+ firms (2018–latest).",
+    "Reconcile bridge→mortgage refinancing successor creditors with explicit evidence.",
+    "Cross-check borrower/SPC filings for each ACTIVE_AMOUNT_UNKNOWN loan.",
+    "Investigate missing firms: (none)"
+  ]
+}

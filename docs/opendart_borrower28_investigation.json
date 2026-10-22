@@ -1,0 +1,2210 @@
+{
+  "verification_date": "2026-10-22",
+  "borrower_count": 28,
+  "by_classification": {
+    "일부 확인, 추가 정보 부족": 4,
+    "법인·맵 노드 확인 · 감사보고서 미게시(소액공모 공시만) · 해산사유 공시 확인": 1,
+    "법인 및 데이터센터 관련 공시 확인 · 본문 키워드 확보(잔액 수동확정 전) · 시드명 다올1호=케펠안산 개명": 1,
+    "검색했으나 관련 공시 미확인": 4,
+    "법인·맵 노드 확인 · 공시 본문 잔액은 추가 검증": 2,
+    "법인 및 데이터센터 관련 공시 확인 · 본문 키워드 확보(잔액 수동확정 전)": 9,
+    "일부 확인, 추가 정보 부족(금융 공시 제목만)": 1,
+    "검색했으나 관련 공시 미확인(동명이인·유사명 제외)": 1,
+    "법인 후보 확인 · 최근 공시 목록 없음": 2,
+    "맵 노드 존재 · DART 법인코드 미확정": 2,
+    "동명이인·사업 불일치 등으로 반영 제외(에너지발전 등 DC 미확인)": 1
+  },
+  "opendart_configured": true,
+  "method": [
+    "corp_codes_index loaded once (local name match; lookalikes not merged)",
+    "disclosure_list 2018→today title scan (dc/fin hints)",
+    "reverse title search on major securities when borrower filings scarce",
+    "Amounts / outstanding balances NOT invented — body verification required before edge write"
+  ],
+  "results": [
+    {
+      "id": "b01",
+      "seed_name": "가야피에프브이(주)",
+      "queries": [
+        "가야피에프브이",
+        "가야PFV"
+      ],
+      "corp_candidates": [
+        {
+          "query": "가야피에프브이",
+          "corp_code": "01748611",
+          "corp_name": "가야피에프브이",
+          "stock_code": null,
+          "modify_date": "20260410"
+        }
+      ],
+      "primary_corp": {
+        "query": "가야피에프브이",
+        "corp_code": "01748611",
+        "corp_name": "가야피에프브이",
+        "stock_code": null,
+        "modify_date": "20260410"
+      },
+      "map_nodes": [],
+      "disclosures": {
+        "status": "000",
+        "filing_count": 3,
+        "dc_title_hits": 0,
+        "fin_title_hits": 0,
+        "recent": [
+          {
+            "rcept_no": "20260408000296",
+            "report_nm": "감사보고서 (2025.12)",
+            "rcept_dt": "20260408",
+            "corp_name": "가야피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260408000296"
+          },
+          {
+            "rcept_no": "20250409000491",
+            "report_nm": "감사보고서 (2024.12)",
+            "rcept_dt": "20250409",
+            "corp_name": "가야피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250409000491"
+          },
+          {
+            "rcept_no": "20240411002965",
+            "report_nm": "감사보고서 (2023.12)",
+            "rcept_dt": "20240411",
+            "corp_name": "가야피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20240411002965"
+          }
+        ]
+      },
+      "reverse_hits": [],
+      "classification": "일부 확인, 추가 정보 부족",
+      "notes": [
+        "감사보고서 본문 키워드 12건 (rcept 20260408000296) — 잔액 확정 전 엣지 미작성"
+      ]
+    },
+    {
+      "id": "b02",
+      "seed_name": "가산디씨에스엘원(주)",
+      "queries": [
+        "가산디씨에스엘원",
+        "가산디씨에스엘원주식회사"
+      ],
+      "corp_candidates": [
+        {
+          "query": "가산디씨에스엘원",
+          "corp_code": "01583041",
+          "corp_name": "가산디씨에스엘원",
+          "stock_code": null,
+          "modify_date": "20230220"
+        }
+      ],
+      "primary_corp": {
+        "query": "가산디씨에스엘원",
+        "corp_code": "01583041",
+        "corp_name": "가산디씨에스엘원",
+        "stock_code": null,
+        "modify_date": "20230220"
+      },
+      "map_nodes": [
+        {
+          "id": "gasan_dc_sl1",
+          "name_ko": "가산디씨에스엘원",
+          "group": "project_finance",
+          "entity_type": "company",
+          "matched_query": "가산디씨에스엘원"
+        }
+      ],
+      "disclosures": {
+        "status": "000",
+        "filing_count": 29,
+        "dc_title_hits": 0,
+        "fin_title_hits": 0,
+        "recent": [
+          {
+            "rcept_no": "20251002000141",
+            "report_nm": "해산사유발생",
+            "rcept_dt": "20251002",
+            "corp_name": "가산디씨에스엘원",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20251002000141"
+          },
+          {
+            "rcept_no": "20250829001858",
+            "report_nm": "[기재정정]대규모기업집단현황공시[분기별공시(개별회사용)]",
+            "rcept_dt": "20250829",
+            "corp_name": "가산디씨에스엘원",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250829001858"
+          },
+          {
+            "rcept_no": "20250829001178",
+            "report_nm": "대규모기업집단현황공시[분기별공시(개별회사용)]",
+            "rcept_dt": "20250829",
+            "corp_name": "가산디씨에스엘원",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250829001178"
+          },
+          {
+            "rcept_no": "20250814000417",
+            "report_nm": "지급수단별ㆍ지급기간별지급금액및분쟁조정기구에관한사항",
+            "rcept_dt": "20250814",
+            "corp_name": "가산디씨에스엘원",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250814000417"
+          },
+          {
+            "rcept_no": "20250602000858",
+            "report_nm": "대규모기업집단현황공시[연1회공시및1/4분기용(개별회사)]",
+            "rcept_dt": "20250602",
+            "corp_name": "가산디씨에스엘원",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250602000858"
+          },
+          {
+            "rcept_no": "20250228001149",
+            "report_nm": "대규모기업집단현황공시[분기별공시(개별회사용)]",
+            "rcept_dt": "20250228",
+            "corp_name": "가산디씨에스엘원",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250228001149"
+          },
+          {
+            "rcept_no": "20250211000336",
+            "report_nm": "지급수단별ㆍ지급기간별지급금액및분쟁조정기구에관한사항",
+            "rcept_dt": "20250211",
+            "corp_name": "가산디씨에스엘원",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250211000336"
+          },
+          {
+            "rcept_no": "20241129001148",
+            "report_nm": "대규모기업집단현황공시[분기별공시(개별회사용)]",
+            "rcept_dt": "20241129",
+            "corp_name": "가산디씨에스엘원",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20241129001148"
+          },
+          {
+            "rcept_no": "20240830000801",
+            "report_nm": "대규모기업집단현황공시[분기별공시(개별회사용)]",
+            "rcept_dt": "20240830",
+            "corp_name": "가산디씨에스엘원",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20240830000801"
+          },
+          {
+            "rcept_no": "20240813000033",
+            "report_nm": "지급수단별ㆍ지급기간별지급금액및분쟁조정기구에관한사항",
+            "rcept_dt": "20240813",
+            "corp_name": "가산디씨에스엘원",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20240813000033"
+          },
+          {
+            "rcept_no": "20240531001672",
+            "report_nm": "대규모기업집단현황공시[연1회공시및1/4분기용(개별회사)]",
+            "rcept_dt": "20240531",
+            "corp_name": "가산디씨에스엘원",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20240531001672"
+          },
+          {
+            "rcept_no": "20240229002282",
+            "report_nm": "[기재정정]대규모기업집단현황공시[분기별공시(개별회사용)]",
+            "rcept_dt": "20240229",
+            "corp_name": "가산디씨에스엘원",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20240229002282"
+          },
+          {
+            "rcept_no": "20240229001032",
+            "report_nm": "대규모기업집단현황공시[분기별공시(개별회사용)]",
+            "rcept_dt": "20240229",
+            "corp_name": "가산디씨에스엘원",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20240229001032"
+          },
+          {
+            "rcept_no": "20240214000261",
+            "report_nm": "지급수단별ㆍ지급기간별지급금액및분쟁조정기구에관한사항",
+            "rcept_dt": "20240214",
+            "corp_name": "가산디씨에스엘원",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20240214000261"
+          },
+          {
+            "rcept_no": "20231130000492",
+            "report_nm": "대규모기업집단현황공시[분기별공시(개별회사용)]",
+            "rcept_dt": "20231130",
+            "corp_name": "가산디씨에스엘원",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20231130000492"
+          },
+          {
+            "rcept_no": "20230831000508",
+            "report_nm": "대규모기업집단현황공시[분기별공시(개별회사용)]",
+            "rcept_dt": "20230831",
+            "corp_name": "가산디씨에스엘원",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20230831000508"
+          },
+          {
+            "rcept_no": "20230809000404",
+            "report_nm": "지급수단별ㆍ지급기간별지급금액및분쟁조정기구에관한사항",
+            "rcept_dt": "20230809",
+            "corp_name": "가산디씨에스엘원",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20230809000404"
+          },
+          {
+            "rcept_no": "20230531001242",
+            "report_nm": "대규모기업집단현황공시[연1회공시및1/4분기용(개별회사)]",
+            "rcept_dt": "20230531",
+            "corp_name": "가산디씨에스엘원",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20230531001242"
+          },
+          {
+            "rcept_no": "20230228001977",
+            "report_nm": "대규모기업집단현황공시[분기별공시(개별회사용)]",
+            "rcept_dt": "20230228",
+            "corp_name": "가산디씨에스엘원",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20230228001977"
+          },
+          {
+            "rcept_no": "20221130000503",
+            "report_nm": "대규모기업집단현황공시[분기별공시(개별회사용)]",
+            "rcept_dt": "20221130",
+            "corp_name": "가산디씨에스엘원",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20221130000503"
+          }
+        ]
+      },
+      "reverse_hits": [],
+      "classification": "법인·맵 노드 확인 · 감사보고서 미게시(소액공모 공시만) · 해산사유 공시 확인",
+      "notes": [
+        "DART 목록에 감사보고서 제목 없음(소액공모/주요사항보고 위주). 2025-10 해산사유발생 공시 있음 — 상태 추가확인 필요"
+      ]
+    },
+    {
+      "id": "b03",
+      "seed_name": "다올데이터센터1호피에프브이(주)",
+      "queries": [
+        "다올데이터센터1호피에프브이",
+        "다올데이터센터1호",
+        "다올데이터센터제1호"
+      ],
+      "corp_candidates": [
+        {
+          "corp_code": "01665798",
+          "corp_name": "케펠데이터센터안산피에프브이",
+          "query": "케펠데이터센터안산피에프브이"
+        }
+      ],
+      "primary_corp": {
+        "corp_code": "01665798",
+        "corp_name": "케펠데이터센터안산피에프브이",
+        "query": "케펠데이터센터안산피에프브이",
+        "stock_code": null,
+        "modify_date": null
+      },
+      "map_nodes": [
+        {
+          "id": "keppel_ansan_pfv",
+          "name_ko": "케펠데이터센터안산피에프브이",
+          "group": "project_finance",
+          "entity_type": "spv",
+          "matched_query": "케펠데이터센터안산"
+        }
+      ],
+      "disclosures": {
+        "status": "000",
+        "filing_count": 55,
+        "recent": [
+          {
+            "rcept_no": "20260610000272",
+            "report_nm": "최대주주등의주식보유변동",
+            "rcept_dt": "20260610"
+          },
+          {
+            "rcept_no": "20260610000269",
+            "report_nm": "유상증자결정",
+            "rcept_dt": "20260610"
+          },
+          {
+            "rcept_no": "20260529000397",
+            "report_nm": "대규모기업집단현황공시[연1회공시및1/4분기용(개별회사)]",
+            "rcept_dt": "20260529"
+          },
+          {
+            "rcept_no": "20260401000278",
+            "report_nm": "특수관계인으로부터자금차입",
+            "rcept_dt": "20260401"
+          },
+          {
+            "rcept_no": "20260330000663",
+            "report_nm": "감사보고서 (2025.12)",
+            "rcept_dt": "20260330"
+          },
+          {
+            "rcept_no": "20260224000321",
+            "report_nm": "대규모기업집단현황공시[분기별공시(개별회사용)]",
+            "rcept_dt": "20260224"
+          },
+          {
+            "rcept_no": "20260210000201",
+            "report_nm": "지급수단별ㆍ지급기간별지급금액및분쟁조정기구에관한사항",
+            "rcept_dt": "20260210"
+          },
+          {
+            "rcept_no": "20251125000191",
+            "report_nm": "대규모기업집단현황공시[분기별공시(개별회사용)]",
+            "rcept_dt": "20251125"
+          },
+          {
+            "rcept_no": "20251103000198",
+            "report_nm": "동일인등출자계열회사와의상품ㆍ용역거래변경",
+            "rcept_dt": "20251103"
+          },
+          {
+            "rcept_no": "20251002000006",
+            "report_nm": "특수관계인으로부터자금차입",
+            "rcept_dt": "20251002"
+          },
+          {
+            "rcept_no": "20251002000005",
+            "report_nm": "특수관계인으로부터받은담보",
+            "rcept_dt": "20251002"
+          },
+          {
+            "rcept_no": "20250911000187",
+            "report_nm": "비유동자산취득결정",
+            "rcept_dt": "20250911"
+          },
+          {
+            "rcept_no": "20250828000390",
+            "report_nm": "대규모기업집단현황공시[분기별공시(개별회사용)]",
+            "rcept_dt": "20250828"
+          },
+          {
+            "rcept_no": "20250827000292",
+            "report_nm": "특수관계인으로부터받은담보",
+            "rcept_dt": "20250827"
+          },
+          {
+            "rcept_no": "20250812000165",
+            "report_nm": "지급수단별ㆍ지급기간별지급금액및분쟁조정기구에관한사항",
+            "rcept_dt": "20250812"
+          },
+          {
+            "rcept_no": "20250626000027",
+            "report_nm": "동일인등출자계열회사와의상품ㆍ용역거래",
+            "rcept_dt": "20250626"
+          },
+          {
+            "rcept_no": "20250530001109",
+            "report_nm": "대규모기업집단현황공시[연1회공시및1/4분기용(개별회사)]",
+            "rcept_dt": "20250530"
+          },
+          {
+            "rcept_no": "20250403003019",
+            "report_nm": "감사보고서 (2024.12)",
+            "rcept_dt": "20250403"
+          },
+          {
+            "rcept_no": "20250226000836",
+            "report_nm": "대규모기업집단현황공시[분기별공시(개별회사용)]",
+            "rcept_dt": "20250226"
+          },
+          {
+            "rcept_no": "20250213000450",
+            "report_nm": "지급수단별ㆍ지급기간별지급금액및분쟁조정기구에관한사항",
+            "rcept_dt": "20250213"
+          }
+        ]
+      },
+      "reverse_hits": [],
+      "classification": "법인 및 데이터센터 관련 공시 확인 · 본문 키워드 확보(잔액 수동확정 전) · 시드명 다올1호=케펠안산 개명",
+      "notes": [
+        "alias resolved: 케펠데이터센터안산피에프브이",
+        "감사보고서 본문 키워드 12건 (rcept 20260330000663) — 잔액 확정 전 엣지 미작성"
+      ]
+    },
+    {
+      "id": "b04",
+      "seed_name": "더엣지영등포피에프브이(주)",
+      "queries": [
+        "더엣지영등포피에프브이",
+        "더엣지영등포"
+      ],
+      "corp_candidates": [],
+      "primary_corp": null,
+      "map_nodes": [],
+      "disclosures": {
+        "status": "skipped",
+        "filing_count": 0,
+        "recent": []
+      },
+      "reverse_hits": [],
+      "classification": "검색했으나 관련 공시 미확인",
+      "notes": []
+    },
+    {
+      "id": "b05",
+      "seed_name": "디씨아이티와이부천피에프브이(주)",
+      "queries": [
+        "디씨아이티와이부천피에프브이",
+        "디씨아이티와이부천"
+      ],
+      "corp_candidates": [
+        {
+          "query": "디씨아이티와이부천피에프브이",
+          "corp_code": "01971228",
+          "corp_name": "디씨아이티와이부천피에프브이",
+          "stock_code": null,
+          "modify_date": "20251217"
+        }
+      ],
+      "primary_corp": {
+        "query": "디씨아이티와이부천피에프브이",
+        "corp_code": "01971228",
+        "corp_name": "디씨아이티와이부천피에프브이",
+        "stock_code": null,
+        "modify_date": "20251217"
+      },
+      "map_nodes": [
+        {
+          "id": "dcity_bucheon_pfv",
+          "name_ko": "디씨아이티와이부천피에프브이",
+          "group": "project_finance",
+          "entity_type": "spv",
+          "matched_query": "디씨아이티와이부천피에프브이"
+        }
+      ],
+      "disclosures": {
+        "status": "000",
+        "filing_count": 8,
+        "dc_title_hits": 0,
+        "fin_title_hits": 1,
+        "recent": [
+          {
+            "rcept_no": "20260831000982",
+            "report_nm": "대규모기업집단현황공시[분기별공시(개별회사용)]",
+            "rcept_dt": "20260831",
+            "corp_name": "디씨아이티와이부천피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260831000982"
+          },
+          {
+            "rcept_no": "20260814002119",
+            "report_nm": "지급수단별ㆍ지급기간별지급금액및분쟁조정기구에관한사항",
+            "rcept_dt": "20260814",
+            "corp_name": "디씨아이티와이부천피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814002119"
+          },
+          {
+            "rcept_no": "20260601000637",
+            "report_nm": "대규모기업집단현황공시[연1회공시및1/4분기용(개별회사)]",
+            "rcept_dt": "20260601",
+            "corp_name": "디씨아이티와이부천피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260601000637"
+          },
+          {
+            "rcept_no": "20260512000740",
+            "report_nm": "특수관계인으로부터받은담보",
+            "rcept_dt": "20260512",
+            "corp_name": "디씨아이티와이부천피에프브이",
+            "dc_hint": false,
+            "fin_hint": true,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260512000740"
+          },
+          {
+            "rcept_no": "20260408001372",
+            "report_nm": "특수관계인의유상증자참여",
+            "rcept_dt": "20260408",
+            "corp_name": "디씨아이티와이부천피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260408001372"
+          },
+          {
+            "rcept_no": "20260227008671",
+            "report_nm": "대규모기업집단현황공시[분기별공시(개별회사용)]",
+            "rcept_dt": "20260227",
+            "corp_name": "디씨아이티와이부천피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260227008671"
+          },
+          {
+            "rcept_no": "20260121000453",
+            "report_nm": "특수관계인으로부터부동산매수",
+            "rcept_dt": "20260121",
+            "corp_name": "디씨아이티와이부천피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260121000453"
+          },
+          {
+            "rcept_no": "20260121000445",
+            "report_nm": "특수관계인의유상증자참여",
+            "rcept_dt": "20260121",
+            "corp_name": "디씨아이티와이부천피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260121000445"
+          }
+        ]
+      },
+      "reverse_hits": [],
+      "classification": "법인·맵 노드 확인 · 공시 본문 잔액은 추가 검증",
+      "notes": []
+    },
+    {
+      "id": "b06",
+      "seed_name": "디토피에프브이(주)",
+      "queries": [
+        "디토피에프브이"
+      ],
+      "corp_candidates": [
+        {
+          "query": "디토피에프브이",
+          "corp_code": "01635344",
+          "corp_name": "디토피에프브이",
+          "stock_code": null,
+          "modify_date": "20230215"
+        }
+      ],
+      "primary_corp": {
+        "query": "디토피에프브이",
+        "corp_code": "01635344",
+        "corp_name": "디토피에프브이",
+        "stock_code": null,
+        "modify_date": "20230215"
+      },
+      "map_nodes": [],
+      "disclosures": {
+        "status": "000",
+        "filing_count": 4,
+        "dc_title_hits": 0,
+        "fin_title_hits": 0,
+        "recent": [
+          {
+            "rcept_no": "20260410001996",
+            "report_nm": "감사보고서 (2025.12)",
+            "rcept_dt": "20260410",
+            "corp_name": "디토피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260410001996"
+          },
+          {
+            "rcept_no": "20250411002703",
+            "report_nm": "감사보고서 (2024.12)",
+            "rcept_dt": "20250411",
+            "corp_name": "디토피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250411002703"
+          },
+          {
+            "rcept_no": "20240404001257",
+            "report_nm": "감사보고서 (2023.12)",
+            "rcept_dt": "20240404",
+            "corp_name": "디토피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20240404001257"
+          },
+          {
+            "rcept_no": "20230407000512",
+            "report_nm": "감사보고서 (2022.12)",
+            "rcept_dt": "20230407",
+            "corp_name": "디토피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20230407000512"
+          }
+        ]
+      },
+      "reverse_hits": [],
+      "classification": "일부 확인, 추가 정보 부족",
+      "notes": [
+        "감사보고서 본문 키워드 12건 (rcept 20260410001996) — 잔액 확정 전 엣지 미작성"
+      ]
+    },
+    {
+      "id": "b07",
+      "seed_name": "마그나피에프브이(주)",
+      "queries": [
+        "마그나피에프브이"
+      ],
+      "corp_candidates": [
+        {
+          "query": "마그나피에프브이",
+          "corp_code": "01717675",
+          "corp_name": "마그나피에프브이",
+          "stock_code": null,
+          "modify_date": "20240329"
+        }
+      ],
+      "primary_corp": {
+        "query": "마그나피에프브이",
+        "corp_code": "01717675",
+        "corp_name": "마그나피에프브이",
+        "stock_code": null,
+        "modify_date": "20240329"
+      },
+      "map_nodes": [
+        {
+          "id": "magna_pfv",
+          "name_ko": "마그나피에프브이",
+          "group": "project_finance",
+          "entity_type": "spv",
+          "matched_query": "마그나피에프브이"
+        }
+      ],
+      "disclosures": {
+        "status": "000",
+        "filing_count": 53,
+        "dc_title_hits": 0,
+        "fin_title_hits": 14,
+        "recent": [
+          {
+            "rcept_no": "20260916000524",
+            "report_nm": "동일인등출자계열회사와의상품ㆍ용역거래변경",
+            "rcept_dt": "20260916",
+            "corp_name": "마그나피에프브이",
+            "dc_hint": false,
+            "fin_hint": true,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260916000524"
+          },
+          {
+            "rcept_no": "20260831001167",
+            "report_nm": "대규모기업집단현황공시[분기별공시(개별회사용)]",
+            "rcept_dt": "20260831",
+            "corp_name": "마그나피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260831001167"
+          },
+          {
+            "rcept_no": "20260831000766",
+            "report_nm": "동일인등출자계열회사와의상품ㆍ용역거래변경",
+            "rcept_dt": "20260831",
+            "corp_name": "마그나피에프브이",
+            "dc_hint": false,
+            "fin_hint": true,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260831000766"
+          },
+          {
+            "rcept_no": "20260814003086",
+            "report_nm": "지급수단별ㆍ지급기간별지급금액및분쟁조정기구에관한사항",
+            "rcept_dt": "20260814",
+            "corp_name": "마그나피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814003086"
+          },
+          {
+            "rcept_no": "20260814002160",
+            "report_nm": "동일인등출자계열회사와의상품ㆍ용역거래변경",
+            "rcept_dt": "20260814",
+            "corp_name": "마그나피에프브이",
+            "dc_hint": false,
+            "fin_hint": true,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814002160"
+          },
+          {
+            "rcept_no": "20260601001888",
+            "report_nm": "대규모기업집단현황공시[연1회공시및1/4분기용(개별회사)]",
+            "rcept_dt": "20260601",
+            "corp_name": "마그나피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260601001888"
+          },
+          {
+            "rcept_no": "20260513000569",
+            "report_nm": "동일인등출자계열회사와의상품ㆍ용역거래변경",
+            "rcept_dt": "20260513",
+            "corp_name": "마그나피에프브이",
+            "dc_hint": false,
+            "fin_hint": true,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260513000569"
+          },
+          {
+            "rcept_no": "20260406003595",
+            "report_nm": "감사보고서 (2025.12)",
+            "rcept_dt": "20260406",
+            "corp_name": "마그나피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260406003595"
+          },
+          {
+            "rcept_no": "20260227008592",
+            "report_nm": "대규모기업집단현황공시[분기별공시(개별회사용)]",
+            "rcept_dt": "20260227",
+            "corp_name": "마그나피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260227008592"
+          },
+          {
+            "rcept_no": "20260212001704",
+            "report_nm": "동일인등출자계열회사와의상품ㆍ용역거래",
+            "rcept_dt": "20260212",
+            "corp_name": "마그나피에프브이",
+            "dc_hint": false,
+            "fin_hint": true,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260212001704"
+          },
+          {
+            "rcept_no": "20260212001696",
+            "report_nm": "동일인등출자계열회사와의상품ㆍ용역거래",
+            "rcept_dt": "20260212",
+            "corp_name": "마그나피에프브이",
+            "dc_hint": false,
+            "fin_hint": true,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260212001696"
+          },
+          {
+            "rcept_no": "20260212001679",
+            "report_nm": "동일인등출자계열회사와의상품ㆍ용역거래변경",
+            "rcept_dt": "20260212",
+            "corp_name": "마그나피에프브이",
+            "dc_hint": false,
+            "fin_hint": true,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260212001679"
+          },
+          {
+            "rcept_no": "20260212000993",
+            "report_nm": "지급수단별ㆍ지급기간별지급금액및분쟁조정기구에관한사항",
+            "rcept_dt": "20260212",
+            "corp_name": "마그나피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260212000993"
+          },
+          {
+            "rcept_no": "20251128001698",
+            "report_nm": "대규모기업집단현황공시[분기별공시(개별회사용)]",
+            "rcept_dt": "20251128",
+            "corp_name": "마그나피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20251128001698"
+          },
+          {
+            "rcept_no": "20251113000493",
+            "report_nm": "동일인등출자계열회사와의상품ㆍ용역거래변경",
+            "rcept_dt": "20251113",
+            "corp_name": "마그나피에프브이",
+            "dc_hint": false,
+            "fin_hint": true,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20251113000493"
+          },
+          {
+            "rcept_no": "20250905000489",
+            "report_nm": "[기재정정]비유동자산취득결정",
+            "rcept_dt": "20250905",
+            "corp_name": "마그나피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250905000489"
+          },
+          {
+            "rcept_no": "20250829001686",
+            "report_nm": "대규모기업집단현황공시[분기별공시(개별회사용)]",
+            "rcept_dt": "20250829",
+            "corp_name": "마그나피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250829001686"
+          },
+          {
+            "rcept_no": "20250813001220",
+            "report_nm": "동일인등출자계열회사와의상품ㆍ용역거래변경",
+            "rcept_dt": "20250813",
+            "corp_name": "마그나피에프브이",
+            "dc_hint": false,
+            "fin_hint": true,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250813001220"
+          },
+          {
+            "rcept_no": "20250813001102",
+            "report_nm": "지급수단별ㆍ지급기간별지급금액및분쟁조정기구에관한사항",
+            "rcept_dt": "20250813",
+            "corp_name": "마그나피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250813001102"
+          },
+          {
+            "rcept_no": "20250709000274",
+            "report_nm": "[기재정정]비유동자산취득결정",
+            "rcept_dt": "20250709",
+            "corp_name": "마그나피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250709000274"
+          }
+        ]
+      },
+      "reverse_hits": [],
+      "classification": "법인 및 데이터센터 관련 공시 확인 · 본문 키워드 확보(잔액 수동확정 전)",
+      "notes": [
+        "감사보고서 본문 키워드 12건 (rcept 20260406003595) — 잔액 확정 전 엣지 미작성"
+      ]
+    },
+    {
+      "id": "b08",
+      "seed_name": "북항아이디씨피에프브이(주)",
+      "queries": [
+        "북항아이디씨피에프브이",
+        "북항아이디씨"
+      ],
+      "corp_candidates": [
+        {
+          "query": "북항아이디씨피에프브이",
+          "corp_code": "01843749",
+          "corp_name": "북항아이디씨피에프브이",
+          "stock_code": null,
+          "modify_date": "20240510"
+        }
+      ],
+      "primary_corp": {
+        "query": "북항아이디씨피에프브이",
+        "corp_code": "01843749",
+        "corp_name": "북항아이디씨피에프브이",
+        "stock_code": null,
+        "modify_date": "20240510"
+      },
+      "map_nodes": [
+        {
+          "id": "bukhang_idc_pfv",
+          "name_ko": "북항아이디씨피에프브이",
+          "group": "project_finance",
+          "entity_type": "spv",
+          "matched_query": "북항아이디씨피에프브이"
+        }
+      ],
+      "disclosures": {
+        "status": "000",
+        "filing_count": 2,
+        "dc_title_hits": 0,
+        "fin_title_hits": 0,
+        "recent": [
+          {
+            "rcept_no": "20260408000471",
+            "report_nm": "감사보고서 (2025.12)",
+            "rcept_dt": "20260408",
+            "corp_name": "북항아이디씨피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260408000471"
+          },
+          {
+            "rcept_no": "20250401003611",
+            "report_nm": "감사보고서 (2024.12)",
+            "rcept_dt": "20250401",
+            "corp_name": "북항아이디씨피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250401003611"
+          }
+        ]
+      },
+      "reverse_hits": [],
+      "classification": "법인 및 데이터센터 관련 공시 확인 · 본문 키워드 확보(잔액 수동확정 전)",
+      "notes": [
+        "감사보고서 본문 키워드 12건 (rcept 20260408000471) — 잔액 확정 전 엣지 미작성"
+      ]
+    },
+    {
+      "id": "b09",
+      "seed_name": "부산에코델타그린데이터센터PFV",
+      "queries": [
+        "부산에코델타그린데이터센터",
+        "에코델타그린데이터센터"
+      ],
+      "corp_candidates": [
+        {
+          "query": "부산에코델타그린데이터센터",
+          "corp_code": "01915587",
+          "corp_name": "부산에코델타그린데이터센터피에프브이",
+          "stock_code": null,
+          "modify_date": "20250502"
+        }
+      ],
+      "primary_corp": {
+        "query": "부산에코델타그린데이터센터",
+        "corp_code": "01915587",
+        "corp_name": "부산에코델타그린데이터센터피에프브이",
+        "stock_code": null,
+        "modify_date": "20250502"
+      },
+      "map_nodes": [
+        {
+          "id": "busan_ecodelta_pfv",
+          "name_ko": "부산에코델타그린데이터센터피에프브이",
+          "group": "project_finance",
+          "entity_type": "spv",
+          "matched_query": "부산에코델타그린데이터센터"
+        }
+      ],
+      "disclosures": {
+        "status": "000",
+        "filing_count": 1,
+        "dc_title_hits": 0,
+        "fin_title_hits": 0,
+        "recent": [
+          {
+            "rcept_no": "20260410003722",
+            "report_nm": "감사보고서 (2025.12)",
+            "rcept_dt": "20260413",
+            "corp_name": "부산에코델타그린데이터센터피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260410003722"
+          }
+        ]
+      },
+      "reverse_hits": [],
+      "classification": "법인 및 데이터센터 관련 공시 확인 · 본문 키워드 확보(잔액 수동확정 전)",
+      "notes": [
+        "감사보고서 본문 키워드 12건 (rcept 20260410003722) — 잔액 확정 전 엣지 미작성"
+      ]
+    },
+    {
+      "id": "b10",
+      "seed_name": "신영문봉PFV",
+      "queries": [
+        "신영문봉피에프브이",
+        "신영문봉PFV",
+        "신영문봉"
+      ],
+      "corp_candidates": [
+        {
+          "query": "신영문봉피에프브이",
+          "corp_code": "01692525",
+          "corp_name": "신영문봉피에프브이",
+          "stock_code": null,
+          "modify_date": "20240409"
+        }
+      ],
+      "primary_corp": {
+        "query": "신영문봉피에프브이",
+        "corp_code": "01692525",
+        "corp_name": "신영문봉피에프브이",
+        "stock_code": null,
+        "modify_date": "20240409"
+      },
+      "map_nodes": [],
+      "disclosures": {
+        "status": "000",
+        "filing_count": 4,
+        "dc_title_hits": 0,
+        "fin_title_hits": 1,
+        "recent": [
+          {
+            "rcept_no": "20260401001427",
+            "report_nm": "감사보고서 (2025.12)",
+            "rcept_dt": "20260401",
+            "corp_name": "신영문봉피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260401001427"
+          },
+          {
+            "rcept_no": "20250404002262",
+            "report_nm": "감사보고서 (2024.12)",
+            "rcept_dt": "20250404",
+            "corp_name": "신영문봉피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250404002262"
+          },
+          {
+            "rcept_no": "20230227004944",
+            "report_nm": "대규모기업집단현황공시[분기별공시(개별회사용)]",
+            "rcept_dt": "20230227",
+            "corp_name": "신영문봉피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20230227004944"
+          },
+          {
+            "rcept_no": "20221123000190",
+            "report_nm": "특수관계인으로부터자금차입",
+            "rcept_dt": "20221123",
+            "corp_name": "신영문봉피에프브이",
+            "dc_hint": false,
+            "fin_hint": true,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20221123000190"
+          }
+        ]
+      },
+      "reverse_hits": [],
+      "classification": "일부 확인, 추가 정보 부족(금융 공시 제목만)",
+      "notes": [
+        "감사보고서 본문 키워드 12건 (rcept 20260401001427) — 잔액 확정 전 엣지 미작성"
+      ]
+    },
+    {
+      "id": "b11",
+      "seed_name": "신영식사피에프브이(주)",
+      "queries": [
+        "신영식사피에프브이",
+        "신영식사"
+      ],
+      "corp_candidates": [
+        {
+          "query": "신영식사피에프브이",
+          "corp_code": "01358922",
+          "corp_name": "신영피에프브이제2호",
+          "stock_code": null,
+          "modify_date": "20210226"
+        },
+        {
+          "query": "신영식사피에프브이",
+          "corp_code": "01713439",
+          "corp_name": "신영식사피에프브이",
+          "stock_code": null,
+          "modify_date": "20240412"
+        },
+        {
+          "query": "신영식사피에프브이",
+          "corp_code": "01615058",
+          "corp_name": "신영피에프브이제3호",
+          "stock_code": null,
+          "modify_date": "20260303"
+        },
+        {
+          "query": "신영식사피에프브이",
+          "corp_code": "01358931",
+          "corp_name": "신영피에프브이제1호",
+          "stock_code": null,
+          "modify_date": "20260303"
+        }
+      ],
+      "primary_corp": null,
+      "map_nodes": [
+        {
+          "id": "shinyoung",
+          "name_ko": "신영",
+          "group": "datacenter",
+          "entity_type": "company",
+          "matched_query": "신영식사"
+        },
+        {
+          "id": "shinyoung_sec",
+          "name_ko": "신영증권",
+          "group": "kr_securities",
+          "entity_type": "financial",
+          "matched_query": "신영식사"
+        }
+      ],
+      "disclosures": {
+        "status": "000",
+        "filing_count": 2,
+        "dc_title_hits": 0,
+        "fin_title_hits": 0,
+        "recent": [
+          {
+            "rcept_no": "20210310000200",
+            "report_nm": "감사보고서 (2020.12)",
+            "rcept_dt": "20210310",
+            "corp_name": "신영피에프브이제2호",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20210310000200"
+          },
+          {
+            "rcept_no": "20200407001443",
+            "report_nm": "감사보고서 (2019.12)",
+            "rcept_dt": "20200407",
+            "corp_name": "신영피에프브이제2호",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20200407001443"
+          }
+        ]
+      },
+      "reverse_hits": [],
+      "classification": "검색했으나 관련 공시 미확인(동명이인·유사명 제외)",
+      "notes": [
+        "lookalike rejected: primary was 신영피에프브이제2호 — not 신영식사"
+      ]
+    },
+    {
+      "id": "b12",
+      "seed_name": "아이비케이부산에이아이데이터센터(주)",
+      "queries": [
+        "아이비케이부산에이아이데이터센터",
+        "IBK부산에이아이데이터센터"
+      ],
+      "corp_candidates": [],
+      "primary_corp": null,
+      "map_nodes": [],
+      "disclosures": {
+        "status": "skipped",
+        "filing_count": 0,
+        "recent": []
+      },
+      "reverse_hits": [],
+      "classification": "검색했으나 관련 공시 미확인",
+      "notes": []
+    },
+    {
+      "id": "b13",
+      "seed_name": "안산그린에너지피에프브이(주)",
+      "queries": [
+        "안산그린에너지피에프브이",
+        "안산그린에너지"
+      ],
+      "corp_candidates": [
+        {
+          "query": "안산그린에너지피에프브이",
+          "corp_code": "01843299",
+          "corp_name": "안산그린에너지피에프브이",
+          "stock_code": null,
+          "modify_date": "20240510"
+        },
+        {
+          "query": "안산그린에너지",
+          "corp_code": "01781908",
+          "corp_name": "안산그린에너지",
+          "stock_code": null,
+          "modify_date": "20250509"
+        }
+      ],
+      "primary_corp": {
+        "query": "안산그린에너지피에프브이",
+        "corp_code": "01843299",
+        "corp_name": "안산그린에너지피에프브이",
+        "stock_code": null,
+        "modify_date": "20240510"
+      },
+      "map_nodes": [],
+      "disclosures": {
+        "status": "000",
+        "filing_count": 2,
+        "dc_title_hits": 0,
+        "fin_title_hits": 0,
+        "recent": [
+          {
+            "rcept_no": "20260406003916",
+            "report_nm": "감사보고서 (2025.12)",
+            "rcept_dt": "20260406",
+            "corp_name": "안산그린에너지피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260406003916"
+          },
+          {
+            "rcept_no": "20250403002304",
+            "report_nm": "감사보고서 (2024.12)",
+            "rcept_dt": "20250403",
+            "corp_name": "안산그린에너지피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250403002304"
+          }
+        ]
+      },
+      "reverse_hits": [],
+      "classification": "일부 확인, 추가 정보 부족",
+      "notes": [
+        "감사보고서 본문 키워드 12건 (rcept 20260406003916) — 잔액 확정 전 엣지 미작성"
+      ]
+    },
+    {
+      "id": "b14",
+      "seed_name": "에이아이팩토리포항피에프브이(주)",
+      "queries": [
+        "에이아이팩토리포항피에프브이",
+        "에이아이팩토리포항"
+      ],
+      "corp_candidates": [],
+      "primary_corp": null,
+      "map_nodes": [],
+      "disclosures": {
+        "status": "skipped",
+        "filing_count": 0,
+        "recent": []
+      },
+      "reverse_hits": [],
+      "classification": "검색했으나 관련 공시 미확인",
+      "notes": []
+    },
+    {
+      "id": "b15",
+      "seed_name": "에포크피에프브이(주)",
+      "queries": [
+        "에포크피에프브이"
+      ],
+      "corp_candidates": [
+        {
+          "query": "에포크피에프브이",
+          "corp_code": "01592526",
+          "corp_name": "에포크피에프브이",
+          "stock_code": null,
+          "modify_date": "20230210"
+        }
+      ],
+      "primary_corp": {
+        "query": "에포크피에프브이",
+        "corp_code": "01592526",
+        "corp_name": "에포크피에프브이",
+        "stock_code": null,
+        "modify_date": "20230210"
+      },
+      "map_nodes": [],
+      "disclosures": {
+        "status": "000",
+        "filing_count": 5,
+        "dc_title_hits": 0,
+        "fin_title_hits": 0,
+        "recent": [
+          {
+            "rcept_no": "20260331002059",
+            "report_nm": "감사보고서 (2025.12)",
+            "rcept_dt": "20260331",
+            "corp_name": "에포크피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260331002059"
+          },
+          {
+            "rcept_no": "20250331000936",
+            "report_nm": "감사보고서 (2024.12)",
+            "rcept_dt": "20250331",
+            "corp_name": "에포크피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250331000936"
+          },
+          {
+            "rcept_no": "20240401000336",
+            "report_nm": "감사보고서 (2023.12)",
+            "rcept_dt": "20240401",
+            "corp_name": "에포크피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20240401000336"
+          },
+          {
+            "rcept_no": "20230407000112",
+            "report_nm": "감사보고서 (2022.12)",
+            "rcept_dt": "20230407",
+            "corp_name": "에포크피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20230407000112"
+          },
+          {
+            "rcept_no": "20220406001914",
+            "report_nm": "감사보고서 (2021.12)",
+            "rcept_dt": "20220406",
+            "corp_name": "에포크피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20220406001914"
+          }
+        ]
+      },
+      "reverse_hits": [],
+      "classification": "일부 확인, 추가 정보 부족",
+      "notes": [
+        "감사보고서 본문 키워드 12건 (rcept 20260331002059) — 잔액 확정 전 엣지 미작성"
+      ]
+    },
+    {
+      "id": "b16",
+      "seed_name": "엣지코어피에프브이(주)",
+      "queries": [
+        "엣지코어피에프브이"
+      ],
+      "corp_candidates": [
+        {
+          "query": "엣지코어피에프브이",
+          "corp_code": "01878833",
+          "corp_name": "엣지코어피에프브이",
+          "stock_code": null,
+          "modify_date": "20250227"
+        }
+      ],
+      "primary_corp": {
+        "query": "엣지코어피에프브이",
+        "corp_code": "01878833",
+        "corp_name": "엣지코어피에프브이",
+        "stock_code": null,
+        "modify_date": "20250227"
+      },
+      "map_nodes": [
+        {
+          "id": "edgecore_pfv",
+          "name_ko": "엣지코어피에프브이",
+          "group": "project_finance",
+          "entity_type": "spv",
+          "matched_query": "엣지코어피에프브이"
+        }
+      ],
+      "disclosures": {
+        "status": "000",
+        "filing_count": 15,
+        "dc_title_hits": 0,
+        "fin_title_hits": 3,
+        "recent": [
+          {
+            "rcept_no": "20260831000561",
+            "report_nm": "대규모기업집단현황공시[분기별공시(개별회사용)]",
+            "rcept_dt": "20260831",
+            "corp_name": "엣지코어피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260831000561"
+          },
+          {
+            "rcept_no": "20260813000968",
+            "report_nm": "지급수단별ㆍ지급기간별지급금액및분쟁조정기구에관한사항",
+            "rcept_dt": "20260813",
+            "corp_name": "엣지코어피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260813000968"
+          },
+          {
+            "rcept_no": "20260601001708",
+            "report_nm": "[기재정정]대규모기업집단현황공시[연1회공시및1/4분기용(개별회사)]",
+            "rcept_dt": "20260601",
+            "corp_name": "엣지코어피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260601001708"
+          },
+          {
+            "rcept_no": "20260529000569",
+            "report_nm": "대규모기업집단현황공시[연1회공시및1/4분기용(개별회사)]",
+            "rcept_dt": "20260529",
+            "corp_name": "엣지코어피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260529000569"
+          },
+          {
+            "rcept_no": "20260403003710",
+            "report_nm": "감사보고서 (2025.12)",
+            "rcept_dt": "20260403",
+            "corp_name": "엣지코어피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260403003710"
+          },
+          {
+            "rcept_no": "20260227006973",
+            "report_nm": "대규모기업집단현황공시[분기별공시(개별회사용)]",
+            "rcept_dt": "20260227",
+            "corp_name": "엣지코어피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260227006973"
+          },
+          {
+            "rcept_no": "20260213001670",
+            "report_nm": "지급수단별ㆍ지급기간별지급금액및분쟁조정기구에관한사항",
+            "rcept_dt": "20260213",
+            "corp_name": "엣지코어피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260213001670"
+          },
+          {
+            "rcept_no": "20251128001150",
+            "report_nm": "대규모기업집단현황공시[분기별공시(개별회사용)]",
+            "rcept_dt": "20251128",
+            "corp_name": "엣지코어피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20251128001150"
+          },
+          {
+            "rcept_no": "20250930000490",
+            "report_nm": "동일인등출자계열회사와의상품ㆍ용역거래",
+            "rcept_dt": "20250930",
+            "corp_name": "엣지코어피에프브이",
+            "dc_hint": false,
+            "fin_hint": true,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250930000490"
+          },
+          {
+            "rcept_no": "20250924000440",
+            "report_nm": "특수관계인으로부터받은담보",
+            "rcept_dt": "20250924",
+            "corp_name": "엣지코어피에프브이",
+            "dc_hint": false,
+            "fin_hint": true,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250924000440"
+          },
+          {
+            "rcept_no": "20250924000433",
+            "report_nm": "특수관계인에대한담보제공",
+            "rcept_dt": "20250924",
+            "corp_name": "엣지코어피에프브이",
+            "dc_hint": false,
+            "fin_hint": true,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250924000433"
+          },
+          {
+            "rcept_no": "20250829001219",
+            "report_nm": "대규모기업집단현황공시[분기별공시(개별회사용)]",
+            "rcept_dt": "20250829",
+            "corp_name": "엣지코어피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250829001219"
+          },
+          {
+            "rcept_no": "20250530001915",
+            "report_nm": "대규모기업집단현황공시[연1회공시및1/4분기용(개별회사)]",
+            "rcept_dt": "20250530",
+            "corp_name": "엣지코어피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250530001915"
+          },
+          {
+            "rcept_no": "20250228004630",
+            "report_nm": "대규모기업집단현황공시[분기별공시(개별회사용)]",
+            "rcept_dt": "20250228",
+            "corp_name": "엣지코어피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250228004630"
+          },
+          {
+            "rcept_no": "20250212001117",
+            "report_nm": "지급수단별ㆍ지급기간별지급금액및분쟁조정기구에관한사항",
+            "rcept_dt": "20250213",
+            "corp_name": "엣지코어피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250212001117"
+          }
+        ]
+      },
+      "reverse_hits": [],
+      "classification": "법인 및 데이터센터 관련 공시 확인 · 본문 키워드 확보(잔액 수동확정 전)",
+      "notes": [
+        "감사보고서 본문 키워드 12건 (rcept 20260403003710) — 잔액 확정 전 엣지 미작성"
+      ]
+    },
+    {
+      "id": "b17",
+      "seed_name": "용인덕성데이터센터피에프브이(주)",
+      "queries": [
+        "용인덕성데이터센터피에프브이",
+        "용인덕성데이터센터"
+      ],
+      "corp_candidates": [
+        {
+          "query": "용인덕성데이터센터피에프브이",
+          "corp_code": "02010269",
+          "corp_name": "용인덕성데이터센터피에프브이",
+          "stock_code": null,
+          "modify_date": "20260417"
+        }
+      ],
+      "primary_corp": {
+        "query": "용인덕성데이터센터피에프브이",
+        "corp_code": "02010269",
+        "corp_name": "용인덕성데이터센터피에프브이",
+        "stock_code": null,
+        "modify_date": "20260417"
+      },
+      "map_nodes": [
+        {
+          "id": "yongin_deokseong_pfv",
+          "name_ko": "용인덕성데이터센터피에프브이",
+          "group": "project_finance",
+          "entity_type": "spv",
+          "matched_query": "용인덕성데이터센터피에프브이"
+        }
+      ],
+      "disclosures": {
+        "status": "013",
+        "filing_count": 0,
+        "dc_title_hits": 0,
+        "fin_title_hits": 0,
+        "recent": []
+      },
+      "reverse_hits": [],
+      "classification": "법인 후보 확인 · 최근 공시 목록 없음",
+      "notes": []
+    },
+    {
+      "id": "b18",
+      "seed_name": "청라아이디씨피에프브이(주)",
+      "queries": [
+        "청라아이디씨피에프브이",
+        "청라아이디씨"
+      ],
+      "corp_candidates": [
+        {
+          "query": "청라아이디씨피에프브이",
+          "corp_code": "01742060",
+          "corp_name": "청라아이디씨피에프브이",
+          "stock_code": null,
+          "modify_date": "20230512"
+        }
+      ],
+      "primary_corp": {
+        "query": "청라아이디씨피에프브이",
+        "corp_code": "01742060",
+        "corp_name": "청라아이디씨피에프브이",
+        "stock_code": null,
+        "modify_date": "20230512"
+      },
+      "map_nodes": [
+        {
+          "id": "cheongna_idc_pfv",
+          "name_ko": "청라아이디씨피에프브이",
+          "group": "project_finance",
+          "entity_type": "spv",
+          "matched_query": "청라아이디씨피에프브이"
+        }
+      ],
+      "disclosures": {
+        "status": "000",
+        "filing_count": 3,
+        "dc_title_hits": 0,
+        "fin_title_hits": 0,
+        "recent": [
+          {
+            "rcept_no": "20260413000174",
+            "report_nm": "감사보고서 (2025.12)",
+            "rcept_dt": "20260413",
+            "corp_name": "청라아이디씨피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260413000174"
+          },
+          {
+            "rcept_no": "20250411003240",
+            "report_nm": "감사보고서 (2024.12)",
+            "rcept_dt": "20250411",
+            "corp_name": "청라아이디씨피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250411003240"
+          },
+          {
+            "rcept_no": "20240412000739",
+            "report_nm": "감사보고서 (2023.12)",
+            "rcept_dt": "20240412",
+            "corp_name": "청라아이디씨피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20240412000739"
+          }
+        ]
+      },
+      "reverse_hits": [],
+      "classification": "법인 및 데이터센터 관련 공시 확인 · 본문 키워드 확보(잔액 수동확정 전)",
+      "notes": [
+        "감사보고서 본문 키워드 12건 (rcept 20260413000174) — 잔액 확정 전 엣지 미작성"
+      ]
+    },
+    {
+      "id": "b19",
+      "seed_name": "케이인더스트리피에프브이(주)",
+      "queries": [
+        "케이인더스트리피에프브이"
+      ],
+      "corp_candidates": [],
+      "primary_corp": null,
+      "map_nodes": [],
+      "disclosures": {
+        "status": "skipped",
+        "filing_count": 0,
+        "recent": []
+      },
+      "reverse_hits": [],
+      "classification": "검색했으나 관련 공시 미확인",
+      "notes": []
+    },
+    {
+      "id": "b20",
+      "seed_name": "케이스퀘어데이터센터피에프브이(주)",
+      "queries": [
+        "케이스퀘어데이터센터피에프브이",
+        "케이스퀘어데이터센터PFV",
+        "케이스퀘어데이터센터"
+      ],
+      "corp_candidates": [
+        {
+          "query": "케이스퀘어데이터센터피에프브이",
+          "corp_code": "01613005",
+          "corp_name": "케이스퀘어데이터센터피에프브이",
+          "stock_code": null,
+          "modify_date": "20260303"
+        }
+      ],
+      "primary_corp": {
+        "query": "케이스퀘어데이터센터피에프브이",
+        "corp_code": "01613005",
+        "corp_name": "케이스퀘어데이터센터피에프브이",
+        "stock_code": null,
+        "modify_date": "20260303"
+      },
+      "map_nodes": [
+        {
+          "id": "casequare_pfv",
+          "name_ko": "케이스퀘어데이터센터PFV",
+          "group": "project_finance",
+          "entity_type": "spv",
+          "matched_query": "케이스퀘어데이터센터PFV"
+        }
+      ],
+      "disclosures": {
+        "status": "000",
+        "filing_count": 4,
+        "dc_title_hits": 0,
+        "fin_title_hits": 0,
+        "recent": [
+          {
+            "rcept_no": "20260409001042",
+            "report_nm": "감사보고서 (2025.12)",
+            "rcept_dt": "20260409",
+            "corp_name": "케이스퀘어데이터센터피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260409001042"
+          },
+          {
+            "rcept_no": "20250414001211",
+            "report_nm": "감사보고서 (2024.12)",
+            "rcept_dt": "20250414",
+            "corp_name": "케이스퀘어데이터센터피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250414001211"
+          },
+          {
+            "rcept_no": "20240405001851",
+            "report_nm": "감사보고서 (2023.12)",
+            "rcept_dt": "20240405",
+            "corp_name": "케이스퀘어데이터센터피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20240405001851"
+          },
+          {
+            "rcept_no": "20230414000611",
+            "report_nm": "감사보고서 (2022.12)",
+            "rcept_dt": "20230414",
+            "corp_name": "케이스퀘어데이터센터피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20230414000611"
+          }
+        ]
+      },
+      "reverse_hits": [],
+      "classification": "법인 및 데이터센터 관련 공시 확인 · 본문 키워드 확보(잔액 수동확정 전)",
+      "notes": [
+        "감사보고서 본문 키워드 12건 (rcept 20260409001042) — 잔액 확정 전 엣지 미작성"
+      ]
+    },
+    {
+      "id": "b21",
+      "seed_name": "케이스퀘어부산장림데이터센터피에프브이(주)",
+      "queries": [
+        "케이스퀘어부산장림데이터센터피에프브이",
+        "케이스퀘어부산장림"
+      ],
+      "corp_candidates": [
+        {
+          "query": "케이스퀘어부산장림데이터센터피에프브이",
+          "corp_code": "01987122",
+          "corp_name": "케이스퀘어부산장림데이터센터피에프브이",
+          "stock_code": null,
+          "modify_date": "20260210"
+        }
+      ],
+      "primary_corp": {
+        "query": "케이스퀘어부산장림데이터센터피에프브이",
+        "corp_code": "01987122",
+        "corp_name": "케이스퀘어부산장림데이터센터피에프브이",
+        "stock_code": null,
+        "modify_date": "20260210"
+      },
+      "map_nodes": [
+        {
+          "id": "casequare_busan_jangnim_pfv",
+          "name_ko": "케이스퀘어부산장림데이터센터피에프브이",
+          "group": "project_finance",
+          "entity_type": "spv",
+          "matched_query": "케이스퀘어부산장림데이터센터피에프브이"
+        }
+      ],
+      "disclosures": {
+        "status": "000",
+        "filing_count": 5,
+        "dc_title_hits": 0,
+        "fin_title_hits": 0,
+        "recent": [
+          {
+            "rcept_no": "20260831000052",
+            "report_nm": "대규모기업집단현황공시[분기별공시(개별회사용)]",
+            "rcept_dt": "20260831",
+            "corp_name": "케이스퀘어부산장림데이터센터피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260831000052"
+          },
+          {
+            "rcept_no": "20260805000129",
+            "report_nm": "지급수단별ㆍ지급기간별지급금액및분쟁조정기구에관한사항",
+            "rcept_dt": "20260805",
+            "corp_name": "케이스퀘어부산장림데이터센터피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260805000129"
+          },
+          {
+            "rcept_no": "20260601000707",
+            "report_nm": "대규모기업집단현황공시[연1회공시및1/4분기용(개별회사)]",
+            "rcept_dt": "20260601",
+            "corp_name": "케이스퀘어부산장림데이터센터피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260601000707"
+          },
+          {
+            "rcept_no": "20260227007040",
+            "report_nm": "대규모기업집단현황공시[분기별공시(개별회사용)]",
+            "rcept_dt": "20260227",
+            "corp_name": "케이스퀘어부산장림데이터센터피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260227007040"
+          },
+          {
+            "rcept_no": "20260212000287",
+            "report_nm": "지급수단별ㆍ지급기간별지급금액및분쟁조정기구에관한사항",
+            "rcept_dt": "20260212",
+            "corp_name": "케이스퀘어부산장림데이터센터피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260212000287"
+          }
+        ]
+      },
+      "reverse_hits": [],
+      "classification": "법인·맵 노드 확인 · 공시 본문 잔액은 추가 검증",
+      "notes": []
+    },
+    {
+      "id": "b22",
+      "seed_name": "코람코시화데이터센터피에프브이(주)",
+      "queries": [
+        "코람코시화데이터센터피에프브이",
+        "코람코시화데이터센터"
+      ],
+      "corp_candidates": [
+        {
+          "query": "코람코시화데이터센터피에프브이",
+          "corp_code": "01835324",
+          "corp_name": "코람코시화데이터센터피에프브이",
+          "stock_code": null,
+          "modify_date": "20240426"
+        }
+      ],
+      "primary_corp": {
+        "query": "코람코시화데이터센터피에프브이",
+        "corp_code": "01835324",
+        "corp_name": "코람코시화데이터센터피에프브이",
+        "stock_code": null,
+        "modify_date": "20240426"
+      },
+      "map_nodes": [
+        {
+          "id": "koramco_siheung_pfv",
+          "name_ko": "코람코시화데이터센터피에프브이",
+          "group": "project_finance",
+          "entity_type": "spv",
+          "matched_query": "코람코시화데이터센터피에프브이"
+        }
+      ],
+      "disclosures": {
+        "status": "000",
+        "filing_count": 2,
+        "dc_title_hits": 0,
+        "fin_title_hits": 0,
+        "recent": [
+          {
+            "rcept_no": "20260413002815",
+            "report_nm": "감사보고서 (2025.12)",
+            "rcept_dt": "20260413",
+            "corp_name": "코람코시화데이터센터피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260413002815"
+          },
+          {
+            "rcept_no": "20250403001092",
+            "report_nm": "감사보고서 (2024.12)",
+            "rcept_dt": "20250403",
+            "corp_name": "코람코시화데이터센터피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250403001092"
+          }
+        ]
+      },
+      "reverse_hits": [],
+      "classification": "법인 및 데이터센터 관련 공시 확인 · 본문 키워드 확보(잔액 수동확정 전)",
+      "notes": [
+        "감사보고서 본문 키워드 12건 (rcept 20260413002815) — 잔액 확정 전 엣지 미작성"
+      ]
+    },
+    {
+      "id": "b23",
+      "seed_name": "캄스퀘어안산데이터센터피에프브이(주)",
+      "queries": [
+        "캄스퀘어안산데이터센터피에프브이",
+        "캄스퀘어안산",
+        "캠스퀘어안산"
+      ],
+      "corp_candidates": [
+        {
+          "query": "캄스퀘어안산데이터센터피에프브이",
+          "corp_code": "01800683",
+          "corp_name": "캄스퀘어안산데이터센터피에프브이",
+          "stock_code": null,
+          "modify_date": "20240430"
+        }
+      ],
+      "primary_corp": {
+        "query": "캄스퀘어안산데이터센터피에프브이",
+        "corp_code": "01800683",
+        "corp_name": "캄스퀘어안산데이터센터피에프브이",
+        "stock_code": null,
+        "modify_date": "20240430"
+      },
+      "map_nodes": [
+        {
+          "id": "camsquare_pfv",
+          "name_ko": "캄스퀘어안산데이터센터PFV",
+          "group": "project_finance",
+          "entity_type": "spv",
+          "matched_query": "캄스퀘어안산"
+        }
+      ],
+      "disclosures": {
+        "status": "000",
+        "filing_count": 2,
+        "dc_title_hits": 0,
+        "fin_title_hits": 0,
+        "recent": [
+          {
+            "rcept_no": "20260413002070",
+            "report_nm": "감사보고서 (2025.12)",
+            "rcept_dt": "20260413"
+          },
+          {
+            "rcept_no": "20250404004127",
+            "report_nm": "감사보고서 (2024.12)",
+            "rcept_dt": "20250407"
+          }
+        ]
+      },
+      "reverse_hits": [],
+      "classification": "법인 및 데이터센터 관련 공시 확인 · 본문 키워드 확보(잔액 수동확정 전)",
+      "notes": [
+        "감사보고서 본문 키워드 12건 (rcept 20260413002070) — 잔액 확정 전 엣지 미작성"
+      ]
+    },
+    {
+      "id": "b24",
+      "seed_name": "캄스퀘어용인데이터센터피에프브이(주)",
+      "queries": [
+        "캄스퀘어용인데이터센터피에프브이",
+        "캄스퀘어용인",
+        "캠스퀘어용인"
+      ],
+      "corp_candidates": [],
+      "primary_corp": null,
+      "map_nodes": [
+        {
+          "id": "camsquare_yongin_pfv",
+          "name_ko": "캄스퀘어용인데이터센터PFV",
+          "group": "project_finance",
+          "entity_type": "spv",
+          "matched_query": "캄스퀘어용인"
+        }
+      ],
+      "disclosures": {
+        "status": "skipped",
+        "filing_count": 0,
+        "recent": []
+      },
+      "reverse_hits": [],
+      "classification": "맵 노드 존재 · DART 법인코드 미확정",
+      "notes": []
+    },
+    {
+      "id": "b25",
+      "seed_name": "파인디씨피에프브이(주)",
+      "queries": [
+        "파인디씨피에프브이"
+      ],
+      "corp_candidates": [
+        {
+          "query": "파인디씨피에프브이",
+          "corp_code": "01992513",
+          "corp_name": "파인디씨피에프브이",
+          "stock_code": null,
+          "modify_date": "20260306"
+        }
+      ],
+      "primary_corp": {
+        "query": "파인디씨피에프브이",
+        "corp_code": "01992513",
+        "corp_name": "파인디씨피에프브이",
+        "stock_code": null,
+        "modify_date": "20260306"
+      },
+      "map_nodes": [
+        {
+          "id": "fine_dc_pfv",
+          "name_ko": "파인디씨피에프브이",
+          "group": "project_finance",
+          "entity_type": "spv",
+          "matched_query": "파인디씨피에프브이"
+        }
+      ],
+      "disclosures": {
+        "status": "013",
+        "filing_count": 0,
+        "dc_title_hits": 0,
+        "fin_title_hits": 0,
+        "recent": []
+      },
+      "reverse_hits": [],
+      "classification": "법인 후보 확인 · 최근 공시 목록 없음",
+      "notes": []
+    },
+    {
+      "id": "b26",
+      "seed_name": "퍼시픽피치피에프브이(주)",
+      "queries": [
+        "퍼시픽피치피에프브이"
+      ],
+      "corp_candidates": [
+        {
+          "query": "퍼시픽피치피에프브이",
+          "corp_code": "01640090",
+          "corp_name": "퍼시픽피치피에프브이",
+          "stock_code": null,
+          "modify_date": "20230214"
+        }
+      ],
+      "primary_corp": {
+        "query": "퍼시픽피치피에프브이",
+        "corp_code": "01640090",
+        "corp_name": "퍼시픽피치피에프브이",
+        "stock_code": null,
+        "modify_date": "20230214"
+      },
+      "map_nodes": [
+        {
+          "id": "peach_pfv",
+          "name_ko": "퍼시픽피치피에프브이",
+          "group": "project_finance",
+          "entity_type": "spv",
+          "matched_query": "퍼시픽피치피에프브이"
+        }
+      ],
+      "disclosures": {
+        "status": "000",
+        "filing_count": 4,
+        "dc_title_hits": 0,
+        "fin_title_hits": 0,
+        "recent": [
+          {
+            "rcept_no": "20260401001191",
+            "report_nm": "감사보고서 (2025.12)",
+            "rcept_dt": "20260401",
+            "corp_name": "퍼시픽피치피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260401001191"
+          },
+          {
+            "rcept_no": "20250410001491",
+            "report_nm": "감사보고서 (2024.12)",
+            "rcept_dt": "20250410",
+            "corp_name": "퍼시픽피치피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250410001491"
+          },
+          {
+            "rcept_no": "20240402003308",
+            "report_nm": "감사보고서 (2023.12)",
+            "rcept_dt": "20240402",
+            "corp_name": "퍼시픽피치피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20240402003308"
+          },
+          {
+            "rcept_no": "20230404003110",
+            "report_nm": "감사보고서 (2022.12)",
+            "rcept_dt": "20230404",
+            "corp_name": "퍼시픽피치피에프브이",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20230404003110"
+          }
+        ]
+      },
+      "reverse_hits": [],
+      "classification": "법인 및 데이터센터 관련 공시 확인 · 본문 키워드 확보(잔액 수동확정 전)",
+      "notes": [
+        "감사보고서 본문 키워드 12건 (rcept 20260401001191) — 잔액 확정 전 엣지 미작성"
+      ]
+    },
+    {
+      "id": "b27",
+      "seed_name": "하남엣지센터피에프브이(주)",
+      "queries": [
+        "하남엣지센터피에프브이",
+        "하남엣지센터"
+      ],
+      "corp_candidates": [],
+      "primary_corp": null,
+      "map_nodes": [
+        {
+          "id": "hanam_edge_pfv",
+          "name_ko": "하남엣지센터피에프브이",
+          "group": "project_finance",
+          "entity_type": "spv",
+          "matched_query": "하남엣지센터피에프브이"
+        }
+      ],
+      "disclosures": {
+        "status": "skipped",
+        "filing_count": 0,
+        "recent": []
+      },
+      "reverse_hits": [],
+      "classification": "맵 노드 존재 · DART 법인코드 미확정",
+      "notes": []
+    },
+    {
+      "id": "b28",
+      "seed_name": "하양에너지발전(주)",
+      "queries": [
+        "하양에너지발전",
+        "하양에너지발전주식회사"
+      ],
+      "corp_candidates": [
+        {
+          "query": "하양에너지발전",
+          "corp_code": "01736962",
+          "corp_name": "하양에너지발전",
+          "stock_code": null,
+          "modify_date": "20230511"
+        }
+      ],
+      "primary_corp": {
+        "query": "하양에너지발전",
+        "corp_code": "01736962",
+        "corp_name": "하양에너지발전",
+        "stock_code": null,
+        "modify_date": "20230511"
+      },
+      "map_nodes": [],
+      "disclosures": {
+        "status": "000",
+        "filing_count": 3,
+        "dc_title_hits": 0,
+        "fin_title_hits": 0,
+        "recent": [
+          {
+            "rcept_no": "20260410002411",
+            "report_nm": "감사보고서 (2025.12)",
+            "rcept_dt": "20260410",
+            "corp_name": "하양에너지발전",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260410002411"
+          },
+          {
+            "rcept_no": "20250414001182",
+            "report_nm": "감사보고서 (2024.12)",
+            "rcept_dt": "20250414",
+            "corp_name": "하양에너지발전",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250414001182"
+          },
+          {
+            "rcept_no": "20240411003773",
+            "report_nm": "감사보고서 (2023.12)",
+            "rcept_dt": "20240411",
+            "corp_name": "하양에너지발전",
+            "dc_hint": false,
+            "fin_hint": false,
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20240411003773"
+          }
+        ]
+      },
+      "reverse_hits": [],
+      "classification": "동명이인·사업 불일치 등으로 반영 제외(에너지발전 등 DC 미확인)",
+      "notes": [
+        "법인명에 에너지발전 포함 — DC PFV로 자동 확정하지 않음",
+        "감사보고서 본문 키워드 12건 (rcept 20260410002411) — 잔액 확정 전 엣지 미작성"
+      ]
+    }
+  ],
+  "body_scan_date": "2026-10-22",
+  "body_scan_file": "docs/opendart_borrower28_body_hits.json"
+}

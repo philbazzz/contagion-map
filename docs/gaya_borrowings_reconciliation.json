@@ -1,0 +1,112 @@
+{
+  "borrower": "가야피에프브이",
+  "node_id": "gaya_pfv",
+  "rcept": "20260408000296",
+  "reporting_date": "2025-12-31",
+  "filing_date": "2026-04-08",
+  "source_note": "주석 12 차입금",
+  "pipeline_failure": "opendart_borrower28_body_scan.py stopped after max_snips=12 keyword hits in the balance sheet / accounting policy section; note-12 lender table was never parsed. Integration then recorded '대주 개별 배분은 본 발췌에서 미확인' and skipped PROJECT_LOAN edges.",
+  "rows": [
+    {
+      "source_counterparty": "KB국민은행",
+      "disclosed_amount": "1190억 outstanding principal (gross)",
+      "basis": "주석12 당기말 원금(=약정한도)",
+      "reporting_date": "2025-12-31",
+      "graph_entity": "kb_bank",
+      "relationship_id": "dart_loan_kb_gaya_tla",
+      "mapping_status": "mapped_active",
+      "gap": null
+    },
+    {
+      "source_counterparty": "대화은행 서울지점",
+      "disclosed_amount": "795억 outstanding principal (gross)",
+      "basis": "주석12 당기말 원금(=약정한도)",
+      "reporting_date": "2025-12-31",
+      "graph_entity": "ubob_seoul",
+      "relationship_id": "dart_loan_ubob_gaya_tla",
+      "mapping_status": "mapped_active",
+      "gap": null
+    },
+    {
+      "source_counterparty": "현대해상화재보험",
+      "disclosed_amount": "100억 outstanding principal (gross)",
+      "basis": "주석12 당기말 원금(=약정한도)",
+      "reporting_date": "2025-12-31",
+      "graph_entity": "hyundai_marine",
+      "relationship_id": "dart_loan_hyundai_marine_gaya_tla",
+      "mapping_status": "mapped_active",
+      "gap": null
+    },
+    {
+      "source_counterparty": "현대해상화재보험",
+      "disclosed_amount": "300억 outstanding principal (gross)",
+      "basis": "주석12 당기말 원금(=약정한도)",
+      "reporting_date": "2025-12-31",
+      "graph_entity": "hyundai_marine",
+      "relationship_id": "dart_loan_hyundai_marine_gaya_tlb",
+      "mapping_status": "mapped_active",
+      "gap": null
+    },
+    {
+      "source_counterparty": "신용협동조합중앙회",
+      "disclosed_amount": "500억 prior-period principal",
+      "basis": "주석12 전기말 — 2025.12 차환",
+      "reporting_date": "2024-12-31",
+      "graph_entity": "shinhyup_federation",
+      "relationship_id": "dart_loan_shinhyup_gaya_facility_prior",
+      "mapping_status": "mapped_refinanced_excluded_from_shock",
+      "gap": null
+    },
+    {
+      "source_counterparty": "하나은행",
+      "disclosed_amount": "300억 prior-period principal",
+      "basis": "주석12 전기말 — 2025.12 차환",
+      "reporting_date": "2024-12-31",
+      "graph_entity": "hana_bank",
+      "relationship_id": "dart_loan_hana_bank_gaya_facility_prior",
+      "mapping_status": "mapped_refinanced_excluded_from_shock",
+      "gap": null
+    },
+    {
+      "source_counterparty": "하나캐피탈",
+      "disclosed_amount": "300억 prior-period principal",
+      "basis": "주석12 전기말 — 2025.12 차환",
+      "reporting_date": "2024-12-31",
+      "graph_entity": "hana_capital",
+      "relationship_id": "dart_loan_hana_capital_gaya_facility_prior",
+      "mapping_status": "mapped_refinanced_excluded_from_shock",
+      "gap": null
+    },
+    {
+      "source_counterparty": "(시설 합계 / 현재가치할인차금)",
+      "disclosed_amount": "원금 2385억 / 장부가 2353.03억",
+      "basis": "주석12 소계·할인차금",
+      "reporting_date": "2025-12-31",
+      "graph_entity": "facility_context",
+      "relationship_id": "dart_facility_gaya_term_loan_2025",
+      "mapping_status": "mapped_facility_context_not_shock_eligible",
+      "gap": "할인차금은 대주별 미배분"
+    },
+    {
+      "source_counterparty": "지급보증약정 (주석(*) 문구)",
+      "disclosed_amount": "undisclosed",
+      "basis": "신규 금융약정에 지급보증약정 포함 — 보증인·한도 미기재",
+      "reporting_date": "2025-12-31",
+      "graph_entity": null,
+      "relationship_id": null,
+      "mapping_status": "unmapped",
+      "gap": "보증 상대방·한도가 표에 없어 엣지 미작성"
+    }
+  ],
+  "added_edge_ids": [],
+  "replaced_edge_ids": [
+    "dart_loan_kb_gaya_tla",
+    "dart_loan_ubob_gaya_tla",
+    "dart_loan_hyundai_marine_gaya_tla",
+    "dart_loan_hyundai_marine_gaya_tlb",
+    "dart_loan_shinhyup_gaya_facility_prior",
+    "dart_loan_hana_bank_gaya_facility_prior",
+    "dart_loan_hana_capital_gaya_facility_prior",
+    "dart_facility_gaya_term_loan_2025"
+  ]
+}

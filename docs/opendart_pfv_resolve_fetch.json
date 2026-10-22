@@ -1,0 +1,357 @@
+{
+  "results": [
+    {
+      "id": "a1_breeze",
+      "name": "에이원브리즈",
+      "status": "corp_unresolved"
+    },
+    {
+      "id": "a1_living",
+      "name": "에이원리빙",
+      "status": "corp_unresolved"
+    },
+    {
+      "id": "ansan_green_energy_pfv",
+      "corp_code": "01843299",
+      "rcept_no": "20260406003916",
+      "status": "already_cached"
+    },
+    {
+      "id": "apld_eln_01",
+      "status": "skip_non_dart_target"
+    },
+    {
+      "id": "apld_hpc_holdings",
+      "status": "skip_non_dart_target"
+    },
+    {
+      "id": "blue_dragon7_spc",
+      "corp_code": "01934148",
+      "status": "no_usable_filing",
+      "filing_count": 0
+    },
+    {
+      "id": "blueribbon_dev",
+      "name": "블루리본디벨롭먼트",
+      "corp_code": "01693083",
+      "corp_name_resolved": "블루리본디벨롭먼트",
+      "rcept_no": "20260406002845",
+      "report_nm": "감사보고서 (2025.12)",
+      "rcept_dt": "20260406",
+      "status": "fetched"
+    },
+    {
+      "id": "bucheon_space1_spc",
+      "name": "부천공간제일차",
+      "status": "corp_unresolved"
+    },
+    {
+      "id": "bukhang_idc_pfv",
+      "corp_code": "01843749",
+      "rcept_no": "20260408000471",
+      "status": "already_cached"
+    },
+    {
+      "id": "busan_ecodelta_pfv",
+      "corp_code": "01915587",
+      "rcept_no": "20260410003722",
+      "status": "already_cached"
+    },
+    {
+      "id": "camsquare_first_spc",
+      "name": "캄스퀘어제일차",
+      "status": "corp_unresolved"
+    },
+    {
+      "id": "camsquare_pfv",
+      "corp_code": "01800683",
+      "rcept_no": "20260413002070",
+      "status": "already_cached"
+    },
+    {
+      "id": "camsquare_second_spc",
+      "name": "캄스퀘어제이차",
+      "status": "corp_unresolved"
+    },
+    {
+      "id": "camsquare_seori_pfv",
+      "name": "캄스퀘어서리데이터센터PFV",
+      "status": "corp_unresolved"
+    },
+    {
+      "id": "camsquare_third_spc",
+      "name": "캄스퀘어제삼차",
+      "status": "corp_unresolved"
+    },
+    {
+      "id": "camsquare_yongin_pfv",
+      "name": "캄스퀘어용인데이터센터PFV",
+      "status": "corp_unresolved"
+    },
+    {
+      "id": "capstone_meta_idc_pfv",
+      "name": "캡스톤메타IDC피에프브이",
+      "status": "corp_unresolved"
+    },
+    {
+      "id": "casequare_busan_jangnim_pfv",
+      "corp_code": "01987122",
+      "status": "no_usable_filing",
+      "filing_count": 5
+    },
+    {
+      "id": "casequare_eco_songpa_pfv",
+      "name": "케이스퀘어에코송파피에프브이",
+      "corp_code": "01811722",
+      "corp_name_resolved": "케이스퀘어에코송파피에프브이",
+      "rcept_no": "20260406000992",
+      "report_nm": "감사보고서 (2025.12)",
+      "rcept_dt": "20260406",
+      "status": "fetched"
+    },
+    {
+      "id": "casequare_manus_guro_pfv",
+      "name": "케이스퀘어마누스데이터센터구로피에프브이",
+      "status": "corp_unresolved"
+    },
+    {
+      "id": "casequare_pfv",
+      "corp_code": "01613005",
+      "rcept_no": "20260409001042",
+      "status": "already_cached"
+    },
+    {
+      "id": "casequare_yongsan_pfv",
+      "name": "케이스퀘어용산피에프브이",
+      "corp_code": "01613528",
+      "corp_name_resolved": "케이스퀘어용산피에프브이",
+      "rcept_no": "20260409002420",
+      "report_nm": "감사보고서 (2025.12)",
+      "rcept_dt": "20260409",
+      "status": "fetched"
+    },
+    {
+      "id": "cheongna_idc_pfv",
+      "corp_code": "01742060",
+      "rcept_no": "20260413000174",
+      "status": "already_cached"
+    },
+    {
+      "id": "corz_finance_i",
+      "status": "skip_non_dart_target"
+    },
+    {
+      "id": "dcity_bucheon_pfv",
+      "corp_code": "01971228",
+      "status": "no_usable_filing",
+      "filing_count": 8
+    },
+    {
+      "id": "dcity_incheon_pfv",
+      "corp_code": "01971200",
+      "status": "no_usable_filing",
+      "filing_count": 6
+    },
+    {
+      "id": "dck1",
+      "name": "디씨케이원",
+      "corp_code": "01750731",
+      "corp_name_resolved": "디씨케이원",
+      "rcept_no": "20260410002975",
+      "report_nm": "감사보고서 (2025.12)",
+      "rcept_dt": "20260410",
+      "status": "fetched"
+    },
+    {
+      "id": "dito_pfv",
+      "corp_code": "01635344",
+      "rcept_no": "20260410001996",
+      "status": "already_cached"
+    },
+    {
+      "id": "donghae_ai_campus3",
+      "corp_code": "02040640",
+      "status": "no_usable_filing",
+      "filing_count": 2
+    },
+    {
+      "id": "edgecore_pfv",
+      "corp_code": "01878833",
+      "rcept_no": "20260403003710",
+      "status": "already_cached"
+    },
+    {
+      "id": "epoch_pfv",
+      "corp_code": "01592526",
+      "rcept_no": "20260331002059",
+      "status": "already_cached"
+    },
+    {
+      "id": "fine_dc_pfv",
+      "corp_code": "01992513",
+      "status": "no_usable_filing",
+      "filing_count": 0
+    },
+    {
+      "id": "galaxy_helios_ii",
+      "status": "skip_non_dart_target"
+    },
+    {
+      "id": "gaon_haeje5_spc",
+      "corp_code": "01903661",
+      "status": "no_usable_filing",
+      "filing_count": 0
+    },
+    {
+      "id": "gasan_dc_jv",
+      "name": "가산디씨제이브이",
+      "corp_code": "01670408",
+      "corp_name_resolved": "가산디씨제이브이",
+      "rcept_no": "20260406000434",
+      "report_nm": "감사보고서 (2025.12)",
+      "rcept_dt": "20260406",
+      "status": "fetched"
+    },
+    {
+      "id": "gasan_dc_sl1",
+      "corp_code": "01583041",
+      "status": "no_usable_filing",
+      "filing_count": 29
+    },
+    {
+      "id": "gasan_edc_spv",
+      "status": "skip_non_dart_target"
+    },
+    {
+      "id": "gasan_landmark_pfv",
+      "name": "가산랜드마크데이터센터피에프브이",
+      "corp_code": "01770902",
+      "corp_name_resolved": "가산랜드마크데이터센터피에프브이",
+      "rcept_no": "20260406003009",
+      "report_nm": "감사보고서 (2025.12)",
+      "rcept_dt": "20260406",
+      "status": "fetched"
+    },
+    {
+      "id": "gaya_pfv",
+      "corp_code": "01748611",
+      "rcept_no": "20260408000296",
+      "status": "already_cached"
+    },
+    {
+      "id": "gps23_spc",
+      "corp_code": "01732036",
+      "status": "no_usable_filing",
+      "filing_count": 0
+    },
+    {
+      "id": "green_digital_infra",
+      "name": "그린디지털인프라",
+      "corp_code": "01894877",
+      "corp_name_resolved": "그린디지털인프라",
+      "rcept_no": "20260402001874",
+      "report_nm": "감사보고서 (2025.12)",
+      "rcept_dt": "20260402",
+      "status": "fetched"
+    },
+    {
+      "id": "hana_dc_1st_spc",
+      "corp_code": "01511220",
+      "status": "no_usable_filing",
+      "filing_count": 0
+    },
+    {
+      "id": "hanam_edge_pfv",
+      "name": "하남엣지센터피에프브이",
+      "status": "corp_unresolved"
+    },
+    {
+      "id": "hanwha_sec_spc_yongin",
+      "status": "skip_non_dart_target"
+    },
+    {
+      "id": "keppel_ansan_pfv",
+      "corp_code": "01665798",
+      "rcept_no": "20260330000663",
+      "status": "already_cached"
+    },
+    {
+      "id": "koramco_siheung_pfv",
+      "corp_code": "01835324",
+      "rcept_no": "20260413002815",
+      "status": "already_cached"
+    },
+    {
+      "id": "kw_tg4_spc",
+      "name": "케이더블유투금제사차",
+      "status": "corp_unresolved"
+    },
+    {
+      "id": "magna_pfv",
+      "corp_code": "01717675",
+      "rcept_no": "20260406003595",
+      "status": "already_cached"
+    },
+    {
+      "id": "mountain_rich",
+      "name": "마운틴리치제일차",
+      "status": "corp_unresolved"
+    },
+    {
+      "id": "msedc1_spc",
+      "name": "엠에스이디씨제일차",
+      "status": "corp_unresolved"
+    },
+    {
+      "id": "msedc2_spc",
+      "name": "엠에스이디씨제이차",
+      "status": "corp_unresolved"
+    },
+    {
+      "id": "pacific_sunny_spv",
+      "status": "skip_non_dart_target"
+    },
+    {
+      "id": "peach_pfv",
+      "corp_code": "01640090",
+      "rcept_no": "20260401001191",
+      "status": "already_cached"
+    },
+    {
+      "id": "pohang_aif_spc",
+      "status": "skip_non_dart_target"
+    },
+    {
+      "id": "rec_datacenter",
+      "corp_code": "01720819",
+      "status": "no_usable_filing",
+      "filing_count": 32
+    },
+    {
+      "id": "shinyoung_munbong_pfv",
+      "corp_code": "01692525",
+      "rcept_no": "20260401001427",
+      "status": "already_cached"
+    },
+    {
+      "id": "sk_sec_spc_yongin",
+      "status": "skip_non_dart_target"
+    },
+    {
+      "id": "yk_ansan_d1",
+      "name": "와이케이안산디원",
+      "status": "corp_unresolved"
+    },
+    {
+      "id": "yongin_deokseong_pfv",
+      "corp_code": "02010269",
+      "status": "no_usable_filing",
+      "filing_count": 0
+    },
+    {
+      "id": "yongin_jigok_dc_bridge_ref",
+      "name": "용인지곡동데이터센터(브릿지 참조)",
+      "status": "corp_unresolved"
+    }
+  ]
+}

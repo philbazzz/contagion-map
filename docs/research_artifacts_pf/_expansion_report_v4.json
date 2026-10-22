@@ -1,0 +1,202 @@
+{
+  "fx": {
+    "pair": "USD/KRW",
+    "rate": 1323.7900390625,
+    "source": "Yahoo Finance KRW=X (yfinance)",
+    "formula": "market_cap_krw = market_cap_usd × usd_krw_rate",
+    "threshold_krw": 500000000000,
+    "threshold_usd_equiv": 377703401.0273237
+  },
+  "us_added": [
+    "marvell",
+    "macom",
+    "maxlinear",
+    "semtech",
+    "wdc",
+    "lattice",
+    "microchip",
+    "ambarella",
+    "synaptics",
+    "silabs",
+    "ti",
+    "adi",
+    "diodes",
+    "cirrus",
+    "mps",
+    "power_integrations",
+    "onsemi",
+    "aos",
+    "vishay",
+    "wolfspeed",
+    "navitas",
+    "allegro",
+    "indie",
+    "astera",
+    "credo",
+    "rambus",
+    "arteris",
+    "sitime",
+    "knowles",
+    "coherent",
+    "lumentum",
+    "aoi",
+    "globalfoundries",
+    "cadence",
+    "applied_materials",
+    "veeco",
+    "acm_research",
+    "axcelis",
+    "kla",
+    "onto",
+    "teradyne",
+    "cohu",
+    "aehr",
+    "formfactor",
+    "keysight",
+    "bruker",
+    "thermo_fisher",
+    "mks",
+    "advanced_energy",
+    "ichor",
+    "ultra_clean",
+    "enpro",
+    "entegris",
+    "photronics",
+    "axt",
+    "element_solutions",
+    "rogers",
+    "materion",
+    "dow",
+    "air_products",
+    "corning",
+    "arrow",
+    "avnet"
+  ],
+  "us_skipped_existing": [],
+  "us_excluded": [
+    {
+      "id": "cerebras",
+      "reason": "private — excluded from mcap-filtered US set"
+    },
+    {
+      "id": "ambiq",
+      "reason": "listing unclear / not treated as liquid US public seed without verified ticker"
+    },
+    {
+      "id": "sandisk_standalone",
+      "reason": "use Western Digital (WDC) as listed parent; SanDisk not separate listed entity for this pass"
+    },
+    {
+      "id": "qnity",
+      "reason": "ticker/listing not verified in this pass — research queue"
+    }
+  ],
+  "us_below_mcap": [],
+  "semi_edges_added": [
+    "s_kla_tsmc",
+    "s_amat_tsmc",
+    "s_cadence_nvidia",
+    "s_astera_hyperscale",
+    "s_gfs_amd",
+    "s_arrow_dist"
+  ],
+  "semi_edges_skipped": [
+    "s_amd_tsmc",
+    "s_intel_amkor (missing node)",
+    "s_micron_nvidia_hbm (dup of s_nvidia_micron)"
+  ],
+  "kr_companies_added": [
+    "ibk",
+    "ibk_sec",
+    "hana_capital",
+    "woori_am",
+    "woori_trust",
+    "pacific_am",
+    "widecreek_am",
+    "inmark_am",
+    "kdb_infra_am",
+    "korea_realasset_am",
+    "mastern_am",
+    "capstone_am",
+    "mkif",
+    "kb_balhae_infra",
+    "kgrowth",
+    "dongyang",
+    "dc_platform",
+    "ido",
+    "shinyoung",
+    "dcity_bucheon_pfv",
+    "pacific_sunny_spv",
+    "fine_dc_pfv",
+    "cheongna_idc_pfv",
+    "cpp_investments",
+    "kepco",
+    "sk_gas",
+    "dream_mark1",
+    "daou_tech",
+    "koscom",
+    "dc_bridge"
+  ],
+  "kr_projects_added": [
+    "yongin_jukjeon_pacific",
+    "bucheon_samjeong_ai",
+    "gwangju_fine_dc"
+  ],
+  "kr_edges_added": [
+    "pf_pacific_am_jukjeon",
+    "pf_cpp_jukjeon",
+    "pf_shinhan_jukjeon_eq",
+    "pf_hyundai_jukjeon_epc",
+    "pf_lgcns_jukjeon_lease",
+    "pf_dongyang_bucheon",
+    "pf_dcplat_bucheon",
+    "pf_dl_bucheon_epc",
+    "pf_hana_bucheon",
+    "pf_bnk_bucheon",
+    "pf_ibk_bucheon",
+    "pf_hana_cap_bucheon",
+    "pf_daewoo_fine_epc",
+    "pf_daewoo_fine_guar",
+    "pf_kb_balhae_fine",
+    "pf_hana_fine_lender",
+    "pf_kb_fine_lender"
+  ],
+  "research_queue": [
+    {
+      "cluster": "포항 AI Factory",
+      "status": "research_queue",
+      "note": "대주·차주 법인 교차검증 전 확정 그래프 미편입"
+    },
+    {
+      "cluster": "고양 삼송",
+      "status": "research_queue",
+      "note": "이지스·LG CNS·네이버클라우드·대주단 — 필지·차주 확인 필요"
+    },
+    {
+      "cluster": "인천 원창동",
+      "status": "research_queue",
+      "note": "이도·청라IDC PFV·신한·현대엔지니어링"
+    },
+    {
+      "cluster": "인천 도화동",
+      "status": "research_queue",
+      "note": "산은인프라·IBK증권 — 차주 미확정"
+    },
+    {
+      "cluster": "용인 덕성리",
+      "status": "research_queue",
+      "note": "와이드크릭·Warburg·삼성물산"
+    },
+    {
+      "cluster": "인천 부평 Digital Edge vs ESR/STACK",
+      "status": "research_queue",
+      "note": "프로젝트 분리 유지 — 동일 시군구로 병합 금지"
+    },
+    {
+      "cluster": "안산 복수 프로젝트",
+      "status": "research_queue",
+      "note": "글로벌클라우드/메타/캄스퀘어/코람코·DCI/Keppel 분리"
+    }
+  ],
+  "removed_or_downgraded": []
+}

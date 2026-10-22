@@ -1,0 +1,1264 @@
+{
+ "sources": [
+  {
+   "id": "S_10K",
+   "title": "CoreWeave, Inc. Form 10-K (FY2025)",
+   "publisher": "SEC EDGAR",
+   "date": "2026-03",
+   "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm",
+   "used_for": "FY2025 최대 고객 Microsoft 매출 비중 약 67%, 차입금 만기·유효이자율 (2025.12.31)",
+   "kind": "filing"
+  },
+  {
+   "id": "S_10Q1",
+   "title": "CoreWeave, Inc. Form 10-Q (Q1 2026)",
+   "publisher": "SEC EDGAR",
+   "date": "2026-05",
+   "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000222/crwv-20260331.htm",
+   "used_for": "2026.3.31 차입금·현금흐름, OpenAI·Meta 주문서",
+   "kind": "filing"
+  },
+  {
+   "id": "S_10Q2",
+   "title": "CoreWeave, Inc. Form 10-Q (Q2 2026) — Note 10 Debt",
+   "publisher": "SEC EDGAR",
+   "date": "2026-08-12",
+   "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000366/crwv-20260630.htm",
+   "used_for": "차입금별 원금·유효이자율·만기, 만기 스케줄, 이자비용, 현금흐름, 수주잔고 (2026.6.30 기준)",
+   "kind": "filing"
+  },
+  {
+   "id": "S_10Q1_2025",
+   "title": "CoreWeave, Inc. Form 10-Q (Q1 2025)",
+   "publisher": "SEC EDGAR",
+   "date": "2025-05",
+   "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962825000014/crwv-20250331.htm",
+   "used_for": "DDTL 1.0 분기 분할상환·최종 만기 2028.3.28, DDTL 2.0 약정 76억 달러",
+   "kind": "filing"
+  },
+  {
+   "id": "S_Q2",
+   "title": "CoreWeave Reports Second Quarter 2026 Results (8-K)",
+   "publisher": "SEC EDGAR",
+   "date": "2026-08-11",
+   "url": "https://www.sec.gov/Archives/edgar/data/0001769628/000176962826000362/coreweave2q26earningspress.htm",
+   "used_for": "2분기 실적 발표",
+   "kind": "filing"
+  },
+  {
+   "id": "S_DDTL3",
+   "title": "CoreWeave Closes $2.6 Billion Secured Debt Financing Facility (DDTL 3.0)",
+   "publisher": "CoreWeave IR",
+   "date": "2025-07-31",
+   "url": "https://investors.coreweave.com/news/news-details/2025/CoreWeave-Closes-2-6-Billion-Secured-Debt-Financing-Facility-Strengthening-Market-Position-as-AI-Cloud-Leader/default.aspx",
+   "used_for": "SOFR+4%, 만기 2030.8.21, CCAC VII 자산 담보, MS·MUFG 주관, GS 공동주선, 신디케이트 7개 은행",
+   "kind": "press"
+  },
+  {
+   "id": "S_DDTL4",
+   "title": "CoreWeave Closes $8.5 Billion Financing Facility (DDTL 4.0)",
+   "publisher": "CoreWeave IR",
+   "date": "2026-03-31",
+   "url": "https://investors.coreweave.com/news/news-details/2026/CoreWeave-Closes-Landmark-8-5-Billion-Financing-Facility-Achieving-First-Investment-Grade-Rated-GPU-backed-Financing/default.aspx",
+   "used_for": "MUFG·MS 공동 구조화·주관, GS·JPM 추가 주선, Blackstone 앵커, SOFR+2.25%, 고정 약 5.9%",
+   "kind": "press"
+  },
+  {
+   "id": "S_DDTL5",
+   "title": "Form 8-K — DDTL 5.0 Credit Agreement",
+   "publisher": "SEC EDGAR",
+   "date": "2026-05-18",
+   "url": "https://www.sec.gov/Archives/edgar/data/0001769628/000176962826000236/crwv-20260515.htm",
+   "used_for": "CoreWeave Financing DDTL V, LLC, SOFR+4.50%(하한 0%), 만기 2031.11.15, MS 에이전트, MUFG 주관",
+   "kind": "filing"
+  },
+  {
+   "id": "S_DDTL55",
+   "title": "Form 8-K — DDTL 5.5 Credit Agreement",
+   "publisher": "SEC EDGAR",
+   "date": "2026-08-07",
+   "url": "https://www.sec.gov/Archives/edgar/data/0001769628/000176962826000357/crwv-20260807.htm",
+   "used_for": "CoreWeave Financing DDTL V-V, LLC, Term SOFR+5.50%, 만기 2031.9.1, JPM 에이전트, MUFG 주관",
+   "kind": "filing"
+  },
+  {
+   "id": "S_RCF25",
+   "title": "CoreWeave Expands Revolving Credit Facility to $2.5 Billion",
+   "publisher": "CoreWeave IR / Nasdaq",
+   "date": "2025-11-12",
+   "url": "https://www.nasdaq.com/press-release/coreweave-expands-revolving-credit-facility-25-billion-support-growth-2025-11-12",
+   "used_for": "리볼버 25억 달러, 만기 2029.11, JPM·GS·MS·MUFG 주도, Citi·CA·DB·SMBC·Wells 참여",
+   "kind": "press"
+  },
+  {
+   "id": "S_650",
+   "title": "CoreWeave Announces $650 Million Credit Facility",
+   "publisher": "CoreWeave IR",
+   "date": "2024-10-11",
+   "url": "https://investors.coreweave.com/news/news-details/2024/CoreWeave-Announces-650-Million-Credit-Facility-to-Support-Ongoing-Growth/default.aspx",
+   "used_for": "리볼버 최초 조건(2024), Blackstone·Magnetar 주도 2023/2024 대출 언급",
+   "kind": "press"
+  },
+  {
+   "id": "S_NOTES2030",
+   "title": "CoreWeave Announces Upsize and Pricing of $2,000 million of Senior Notes",
+   "publisher": "CoreWeave IR",
+   "date": "2025-05-21",
+   "url": "https://investors.coreweave.com/news/news-details/2025/CoreWeave-Announces-Upsize-and-Pricing-of-2000-million-of-Senior-Notes/default.aspx",
+   "used_for": "9.250% 선순위 무담보채 2030.6.1 만기, 액면 발행",
+   "kind": "press"
+  },
+  {
+   "id": "S_NOTES2031",
+   "title": "CoreWeave Announces Upsize and Pricing of $1,750 million of Senior Notes (8-K Ex.99.1)",
+   "publisher": "SEC EDGAR",
+   "date": "2025-07-22",
+   "url": "https://www.sec.gov/Archives/edgar/data/0001769628/000176962825000030/coreweave-pressreleasepric.htm",
+   "used_for": "9.000% 선순위채 2031.2.1 만기",
+   "kind": "filing"
+  },
+  {
+   "id": "S_CONV2033",
+   "title": "Latham advises on CoreWeave upsized convertible senior notes offering",
+   "publisher": "Latham & Watkins",
+   "date": "2026-09",
+   "url": "https://www.lw.com/en/news/2026/09/latham-advises-on-coreweave-upsized-convertible-senior-notes-offering",
+   "used_for": "2.875% 전환사채 2033 만기 37억 달러(+옵션 5억 달러), 2026.9.22 결제 예정",
+   "kind": "press"
+  },
+  {
+   "id": "S_AMCOMPUTE",
+   "title": "CoreWeave Debt, Lenders and Contracts (집계 사이트)",
+   "publisher": "AM Compute",
+   "date": "2026-10",
+   "url": "https://www.amcompute.com/companies/coreweave",
+   "used_for": "2차 출처: DDTL 1.0·2.0·2.1 가산금리 등 원공시로 미확인 항목 — INFERRED로만 사용",
+   "kind": "secondary"
+  },
+  {
+   "id": "S_REUTERS",
+   "title": "Factbox: CoreWeave's AI contracts and the lenders financing its build-out",
+   "publisher": "Reuters",
+   "date": "2026-10-15",
+   "url": "https://www.reuters.com/legal/transactional/coreweaves-ai-contracts-lenders-financing-its-build-out-2026-10-15/",
+   "used_for": "주요 고객 계약, 대출 주선기관",
+   "kind": "news"
+  },
+  {
+   "id": "S_REUTERS_SYN",
+   "title": "Factbox (Reuters 기사 전재본)",
+   "publisher": "U.S. News / Reuters",
+   "date": "2026-10-15",
+   "url": "https://money.usnews.com/investing/news/articles/2026-10-15/factbox-coreweaves-ai-contracts-and-the-lenders-financing-its-build-out",
+   "used_for": "Anthropic 계약, OpenAI 지분 발행",
+   "kind": "news"
+  },
+  {
+   "id": "S_NV_EQ",
+   "title": "NVIDIA Tops CoreWeave Stake with $2 Billion",
+   "publisher": "Futuriom",
+   "date": "2026-01",
+   "url": "https://www.futuriom.com/articles/news/nvidia-tops-coreweave-stake-with-2-billion/2026/01",
+   "used_for": "NVIDIA 20억 달러 지분 투자",
+   "kind": "news"
+  },
+  {
+   "id": "S_NV_BACKSTOP",
+   "title": "Nvidia commits $6.3B for CoreWeave's unused cloud capacity",
+   "publisher": "RCR Wireless",
+   "date": "2025-09",
+   "url": "https://www.rcrwireless.com/?p=424411",
+   "used_for": "NVIDIA의 미사용 용량 매입 약정(63억 달러, 2032.4까지)",
+   "kind": "news"
+  },
+  {
+   "id": "S_MAGNETAR",
+   "title": "Nvidia reinforces its commitment to CoreWeave with $2 billion",
+   "publisher": "El Output",
+   "date": "2026-01",
+   "url": "https://en.eloutput.com/news/tech/Nvidia-reinforces-its-commitment-to-CoreWeave-with-%242-billion/",
+   "used_for": "Magnetar 최대 주주 보도",
+   "kind": "news"
+  },
+  {
+   "id": "S_DELL",
+   "title": "Dell Delivers Market's First NVIDIA GB300 NVL72 to CoreWeave",
+   "publisher": "Dell Technologies",
+   "date": "2025-07",
+   "url": "https://www.dell.com/en-us/blog/dell-delivers-market-s-first-nvidia-gb300-nvl72-to-coreweave/",
+   "used_for": "Dell의 GB300 NVL72 랙 서버 공급",
+   "kind": "press"
+  },
+  {
+   "id": "S_SKH",
+   "title": "SK hynix and NVIDIA Announce Multi-year Technology Partnership",
+   "publisher": "SK hynix Newsroom",
+   "date": "2026-06-08",
+   "url": "https://news.skhynix.com/en/multi-year-tech-partnership-with-nvidia/",
+   "used_for": "SK하이닉스–NVIDIA 다년 메모리 협력",
+   "kind": "press"
+  },
+  {
+   "id": "S_HBM",
+   "title": "Foundry & HBM Allocation Dashboard (2026)",
+   "publisher": "Silicon Analysts",
+   "date": "2026",
+   "url": "https://siliconanalysts.com/tools/allocation",
+   "used_for": "TSMC CoWoS·HBM 공급 구조 (산업 구조 참고용)",
+   "kind": "secondary"
+  },
+  {
+   "id": "S_META21",
+   "title": "CoreWeave and Meta $21 billion expanded agreement (8-K Ex.99.1)",
+   "publisher": "SEC EDGAR",
+   "date": "2026-04-09",
+   "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000154/ex991.htm",
+   "used_for": "Meta 약 210억 달러, 2032.12까지",
+   "kind": "filing"
+  },
+  {
+   "id": "S_JANE",
+   "title": "Jane Street $6B AI cloud agreement and $1B equity investment (8-K Ex.99.1)",
+   "publisher": "SEC EDGAR",
+   "date": "2026-04-15",
+   "url": "https://www.sec.gov/Archives/edgar/data/0001769628/000176962826000167/ex991.htm",
+   "used_for": "Jane Street 약 60억 달러 이용 계약, 주당 109달러 10억 달러 지분 투자",
+   "kind": "filing"
+  },
+  {
+   "id": "S_OPENAI65",
+   "title": "CoreWeave Expands Agreement with OpenAI by up to $6.5B",
+   "publisher": "CoreWeave",
+   "date": "2025-09-25",
+   "url": "https://www.coreweave.com/news/coreweave-expands-agreement-with-openai-by-up-to-6-5b",
+   "used_for": "OpenAI 누적 계약 최대 약 224억 달러",
+   "kind": "press"
+  },
+  {
+   "id": "S_CORZ",
+   "title": "Core Scientific and CoreWeave Announce $1.2 Billion Expansion (8-K Ex.99.1)",
+   "publisher": "SEC EDGAR (Core Scientific)",
+   "date": "2025-02-26",
+   "url": "https://www.sec.gov/Archives/edgar/data/1839341/000162828025008312/ex991-coreweavepressrelease.htm",
+   "used_for": "CoreWeave 대상 약 590MW, 계약매출 102억 달러, 12년",
+   "kind": "filing"
+  },
+  {
+   "id": "S_APLD",
+   "title": "Applied Digital Announces 250MW AI Data Center Lease With CoreWeave",
+   "publisher": "Applied Digital IR",
+   "date": "2025-06-02",
+   "url": "https://ir.applieddigital.com/news-events/press-releases/detail/123/",
+   "used_for": "250MW, 약 15년 리스 2건, 예상 매출 약 70억 달러",
+   "kind": "press"
+  },
+  {
+   "id": "S_NVDA_FY26",
+   "title": "NVIDIA Announces Financial Results for Fourth Quarter and Fiscal 2026 (8-K)",
+   "publisher": "SEC EDGAR",
+   "date": "2026-02-25",
+   "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000019/q4fy26pr.htm",
+   "used_for": "NVIDIA FY2026 매출 2,159억 달러, 데이터센터 1,937억 달러",
+   "kind": "filing"
+  },
+  {
+   "id": "S_SOFR",
+   "title": "SOFR daily rates — October 2026 (NY Fed 데이터 재게시, 10.16 3.88%)",
+   "publisher": "SOFRRate.com / Federal Reserve Bank of New York",
+   "date": "2026-10-16",
+   "url": "https://www.sofrrate.com/sofr-rate/2026-10",
+   "used_for": "2026.10.15 SOFR 3.89% — 변동금리 표면금리 계산용 기본값(사용자 수정 가능)",
+   "kind": "market"
+  },
+  {
+   "id": "S_META142",
+   "title": "Form 8-K — Meta Order Form (up to ~$14.2B, through 2031-12-14)",
+   "publisher": "SEC EDGAR",
+   "date": "2025-09-25",
+   "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962825000050/crwv-20250925.htm",
+   "used_for": "Meta 1차 계약: 약 142억 달러, 2031.12.14까지, 2032까지 확대 옵션",
+   "kind": "filing"
+  },
+  {
+   "id": "S_NV_ORDER",
+   "title": "Form 8-K — NVIDIA Order Form ($6.3B initial value, through 2032-04-13)",
+   "publisher": "SEC EDGAR",
+   "date": "2025-09-09",
+   "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962825000047/crwv-20250909.htm",
+   "used_for": "NVIDIA 미판매 용량 매입 의무 63억 달러, 2032.4.13까지",
+   "kind": "filing"
+  },
+  {
+   "id": "S_ANTHROPIC",
+   "title": "CoreWeave Announces Multi-Year Agreement With Anthropic",
+   "publisher": "CoreWeave",
+   "date": "2026-04-10",
+   "url": "https://coreweave.com/news/coreweave-announces-multi-year-agreement-with-anthropic",
+   "used_for": "Anthropic 다년 계약 (금액 비공개, 2026년 하반기부터 가동)",
+   "kind": "press_release"
+  },
+  {
+   "id": "S_CAPACITY",
+   "title": "CoreWeave Continues to Contract New Compute Capacity at Higher Prices",
+   "publisher": "CoreWeave IR",
+   "date": "2026-09-17",
+   "url": "https://investors.coreweave.com/news/news-details/2026/CoreWeave-Continues-to-Contract-New-Compute-Capacity-at-Higher-Prices/default.aspx",
+   "used_for": "2026년 3분기 초 순신규 고객 약정 250억 달러 이상 (6.30 RPO 미포함, 3~6개월 단기), 계약 전력 4.2GW",
+   "kind": "press_release"
+  },
+  {
+   "id": "S_REUTERS_MS",
+   "title": "CoreWeave's AI contracts and the lenders financing its build-out (Reuters, 재게시)",
+   "publisher": "MarketScreener / Reuters",
+   "date": "2026-10-15",
+   "url": "https://www.marketscreener.com/news/coreweave-s-ai-contracts-and-the-lenders-financing-its-build-out-ce785dd3de80f12c",
+   "used_for": "OpenAI 2025.5 계약 2029년까지, 2023·2024 담보대출 참여기관(Coatue, BlackRock, Pimco, Carlyle 등)",
+   "kind": "news"
+  },
+  {
+   "id": "S_10Q2_LEASE",
+   "title": "CoreWeave 10-Q Q2 2026 — Leases",
+   "publisher": "SEC EDGAR",
+   "date": "2026-08-12",
+   "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000366/R14.htm",
+   "used_for": "미개시 임차 약정 355억 달러(2026~2029 개시, 7~16년), 리스 미할인 지급액",
+   "kind": "filing"
+  },
+  {
+   "id": "S_10Q2_CONC",
+   "title": "CoreWeave 10-Q Q2 2026 — Customer Concentration",
+   "publisher": "SEC EDGAR",
+   "date": "2026-08-12",
+   "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000366/R38.htm",
+   "used_for": "매출 10% 이상 고객 A·B·C 비중 (익명)",
+   "kind": "filing"
+  },
+  {
+   "id": "S_DBRG",
+   "title": "SoftBank Group — Completion of Acquisition of DigitalBridge",
+   "publisher": "SoftBank Group",
+   "date": "2026-09-30",
+   "url": "https://group.softbank/en/news/press/20260930",
+   "used_for": "DigitalBridge 인수 완료 → 비상장",
+   "kind": "press_release"
+  },
+  {
+   "id": "S_HRT",
+   "title": "Hudson River Signs Multibillion-Dollar CoreWeave Deal for AI Cloud (Bloomberg 제목)",
+   "publisher": "Bloomberg",
+   "date": "2026-08-20",
+   "url": "https://www.bloomberg.com/news/articles/2026-08-20/hudson-river-signs-multibillion-dollar-coreweave-crwv-deal-for-ai-cloud",
+   "used_for": "Hudson River Trading 계약 '수십억 달러' 규모 (본문 미확인, 금액 미공시)",
+   "kind": "news"
+  },
+  {
+   "id": "S_GOOG_CW",
+   "title": "CoreWeave to offer compute capacity in Google cloud deal with OpenAI",
+   "publisher": "Reuters",
+   "date": "2025-06-11",
+   "url": "https://www.reuters.com/business/coreweave-offer-compute-capacity-googles-new-cloud-deal-with-openai-sources-say-2025-06-11/",
+   "used_for": "Alphabet/Google Cloud가 CoreWeave 고객으로 보도",
+   "kind": "news"
+  },
+  {
+   "id": "S1_COMP",
+   "title": "CoreWeave S-1/A — Competitors include AWS, Google Cloud, Azure, Oracle, IBM",
+   "publisher": "SEC",
+   "date": "2025-03-03",
+   "url": "https://www.sec.gov/Archives/edgar/data/1769628/000119312525058309/d899798ds1a.htm",
+   "used_for": "경쟁사 목록(Amazon, Alphabet, Oracle 등) — 고객 관계가 아님을 명시",
+   "kind": "filing"
+  },
+  {
+   "id": "S_AMD_NV",
+   "title": "NVIDIA and AMD compete in AI accelerators (industry structure)",
+   "publisher": "Company filings / industry",
+   "date": "2025-01-01",
+   "url": "https://www.nvidia.com/",
+   "used_for": "AMD는 NVIDIA 경쟁 GPU 공급사 — CoreWeave 직접 계약 미확인",
+   "kind": "industry"
+  },
+  {
+   "id": "S_SMSNG_HBM",
+   "title": "Samsung Electronics HBM supply to NVIDIA (industry reports)",
+   "publisher": "Industry / company disclosures",
+   "date": "2024-12-01",
+   "url": "https://semiconductor.samsung.com/newsroom/",
+   "used_for": "Samsung HBM — NVIDIA 공급 경쟁사 구조 추론, CoreWeave 직접 계약 미확인",
+   "kind": "industry"
+  },
+  {
+   "id": "S_NVDA_10K_FY26",
+   "title": "NVIDIA Corporation Form 10-K (FY2026 ended Jan 25, 2026)",
+   "publisher": "SEC EDGAR",
+   "date": "2026-02",
+   "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+   "used_for": "Fabless foundry partners TSMC·Samsung; memory SK hynix·Micron·Samsung; CM Hon Hai·Wistron; CSP/OEM customers",
+   "kind": "filing"
+  },
+  {
+   "id": "S_MSFT_OAI_2025",
+   "title": "The next chapter of the Microsoft–OpenAI partnership",
+   "publisher": "Microsoft Corporate Blog",
+   "date": "2025-10-28",
+   "url": "https://blogs.microsoft.com/blog/2025/10/28/the-next-chapter-of-the-microsoft-openai-partnership/",
+   "used_for": "MSFT ~27% as-converted stake in OpenAI PBC; incremental $250B Azure commitment",
+   "kind": "press"
+  },
+  {
+   "id": "S_MSFT_10K_OAI",
+   "title": "Microsoft Form 10-K / subsequent event — OpenAI recapitalization note",
+   "publisher": "SEC EDGAR",
+   "date": "2025-10",
+   "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312525256321/R26.htm",
+   "used_for": "Equity-method accounting; $13B funding commitments; $250B Azure purchase commitment",
+   "kind": "filing"
+  },
+  {
+   "id": "S_AWS_NVDA_1M",
+   "title": "Nvidia to sell 1 million chips to Amazon by end of 2027 (Reuters)",
+   "publisher": "Reuters",
+   "date": "2026-03-19",
+   "url": "https://www.reuters.com/business/retail-consumer/nvidia-sell-1-million-chips-amazon-by-end-2027-cloud-deal-2026-03-19/",
+   "used_for": "AWS–NVIDIA multi-year GPU supply (~1M GPUs through 2027); amount undisclosed",
+   "kind": "news"
+  },
+  {
+   "id": "S_AWS_NVDA_2M",
+   "title": "AWS and NVIDIA to Deliver 2 Million Additional GPUs (2027–2028)",
+   "publisher": "NVIDIA Newsroom / About Amazon",
+   "date": "2026-08-26",
+   "url": "https://nvidianews.nvidia.com/news/aws-and-nvidia-to-deliver-2-million-additional-gpus-and-next-generation-infrastructure-for-agentic-and-physical-ai",
+   "used_for": "Additional ~2M NVIDIA GPUs on AWS in 2027–2028; Vera CPU / networking collaboration",
+   "kind": "press"
+  },
+  {
+   "id": "S_MSFT_FY26Q1",
+   "title": "Microsoft FY2026 Q1 earnings remarks (OpenAI / Cloud)",
+   "publisher": "Microsoft Investor Relations",
+   "date": "2025-10",
+   "url": "https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q1",
+   "used_for": "Microsoft Cloud revenue >$49B (+26% YoY); OpenAI Azure commitment commentary",
+   "kind": "ir"
+  },
+  {
+   "id": "S_TSMC_NV_CNBC",
+   "title": "Nvidia set to supplant Apple as TSMC's largest customer",
+   "publisher": "CNBC",
+   "date": "2026-01-26",
+   "url": "https://www.cnbc.com/2026/01/26/nvidia-set-to-supplant-apple-as-tsmcs-largest-customer.html",
+   "used_for": "Supporting context that NVIDIA is among TSMC's largest customers (TSMC does not name customers in filings)",
+   "kind": "news"
+  },
+  {
+   "id": "S_AMD_TSMC",
+   "title": "AMD Form 10-K — foundry dependence on TSMC",
+   "publisher": "SEC EDGAR / AMD IR",
+   "date": "2025",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000002488&type=10-K",
+   "used_for": "AMD fabless model; TSMC as primary advanced-node foundry (INFERRED amount undisclosed)",
+   "kind": "filing"
+  },
+  {
+   "id": "S_EQIX_HYPER",
+   "title": "Equinix — hyperscale / interconnection customer disclosure (10-K)",
+   "publisher": "Equinix IR / SEC",
+   "date": "2025",
+   "url": "https://investor.equinix.com/",
+   "used_for": "Equinix as interconnection/colocation platform used by cloud/network ecosystems (no named CW link)",
+   "kind": "ir"
+  },
+  {
+   "id": "S_SMCI_NV",
+   "title": "Super Micro — NVIDIA preferred partner / GPU server systems",
+   "publisher": "Super Micro / NVIDIA partner materials",
+   "date": "2025",
+   "url": "https://www.supermicro.com/",
+   "used_for": "SMCI builds NVIDIA GPU server systems for CSPs/enterprises (commercial OEM supply)",
+   "kind": "press"
+  },
+  {
+   "id": "S_ARISTA_DC",
+   "title": "Arista Networks — AI / cloud networking platforms",
+   "publisher": "Arista IR",
+   "date": "2025",
+   "url": "https://www.arista.com/en/company/news/press-release",
+   "used_for": "Ethernet AI networking for hyperscale/AI clusters (ecosystem role; customer names often undisclosed)",
+   "kind": "ir"
+  },
+  {
+   "id": "S_VERTIV_DC",
+   "title": "Vertiv — thermal / power management for data centers",
+   "publisher": "Vertiv IR",
+   "date": "2025",
+   "url": "https://investors.vertiv.com/",
+   "used_for": "Critical cooling/power equipment sold into AI data centers (sector role)",
+   "kind": "ir"
+  },
+  {
+   "id": "S_META_NV",
+   "title": "Meta / NVIDIA AI infrastructure partnership announcements",
+   "publisher": "NVIDIA / Meta",
+   "date": "2025",
+   "url": "https://nvidianews.nvidia.com/",
+   "used_for": "Meta as major NVIDIA AI infrastructure customer (amounts often undisclosed)",
+   "kind": "press"
+  },
+  {
+   "id": "S_MSFT_NV_AZURE",
+   "title": "Microsoft Azure — NVIDIA GPU accelerated instances",
+   "publisher": "Microsoft Azure / NVIDIA",
+   "date": "2025",
+   "url": "https://azure.microsoft.com/en-us/solutions/ai/",
+   "used_for": "Azure ND/NC-class GPU VMs powered by NVIDIA; hyperscaler–GPU supply chain",
+   "kind": "ir"
+  },
+  {
+   "id": "S_GOOG_NV",
+   "title": "Google Cloud — NVIDIA GPU / TPU coexistence; A3/A4 GPU VMs",
+   "publisher": "Google Cloud / NVIDIA",
+   "date": "2025",
+   "url": "https://cloud.google.com/blog/topics/customers/announcing-google-cloud-a3-mega-powered-by-nvidia-h100",
+   "used_for": "Alphabet/Google Cloud as NVIDIA GPU cloud customer",
+   "kind": "press"
+  },
+  {
+   "id": "S_ORCL_NV",
+   "title": "Oracle Cloud Infrastructure — NVIDIA GPU superclusters",
+   "publisher": "Oracle / NVIDIA",
+   "date": "2025",
+   "url": "https://www.oracle.com/news/",
+   "used_for": "OCI as NVIDIA GPU cloud capacity provider/customer",
+   "kind": "press"
+  },
+  {
+   "id": "S_APPLE_TSMC",
+   "title": "TSMC / Apple long-standing foundry customer relationship",
+   "publisher": "TSMC annual report commentary / industry",
+   "date": "2025",
+   "url": "https://investor.tsmc.com/",
+   "used_for": "Apple historically among TSMC's largest customers (TSMC does not name customers; VERIFIED industry consensus + TSMC top-customer %)",
+   "kind": "ir"
+  },
+  {
+   "id": "S_ASML_TSMC",
+   "title": "ASML — EUV lithography equipment customer concentration (TSMC among major)",
+   "publisher": "ASML annual report",
+   "date": "2025",
+   "url": "https://www.asml.com/investors",
+   "used_for": "ASML supplies advanced lithography tools to leading foundries including TSMC",
+   "kind": "ir"
+  },
+  {
+   "id": "S_NVDA_FY26_PR",
+   "title": "NVIDIA Announces Financial Results for Fourth Quarter and Fiscal 2026",
+   "publisher": "NVIDIA / SEC exhibit",
+   "date": "2026-02-25",
+   "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000019/q4fy26pr.htm",
+   "used_for": "NVIDIA FY2026 GAAP revenue, operating income, cash, debt, FCF",
+   "kind": "sec_exhibit"
+  },
+  {
+   "id": "S_MSFT_FY25",
+   "title": "Microsoft FY2025 Q4 financial statements / Annual Report",
+   "publisher": "Microsoft Investor Relations",
+   "date": "2025-07",
+   "url": "https://www.microsoft.com/en-us/investor/earnings/fy-2025-q4/balance-sheets",
+   "used_for": "Microsoft FY2025 revenue, operating income, cash, debt, OCF",
+   "kind": "ir"
+  },
+  {
+   "id": "S_MSFT_10K_FY25",
+   "title": "Microsoft Corporation Form 10-K (year ended June 30, 2025)",
+   "publisher": "SEC EDGAR",
+   "date": "2025-07",
+   "url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+   "used_for": "Microsoft FY2025 consolidated financials",
+   "kind": "10-K"
+  },
+  {
+   "id": "S_TSMC_FY25",
+   "title": "TSMC 4Q25 Management Report / 2025 consolidated results",
+   "publisher": "TSMC Investor Relations",
+   "date": "2026-01",
+   "url": "https://investor.tsmc.com/english/quarterly-results",
+   "used_for": "TSMC 2025 revenue USD, operating income, CAPEX",
+   "kind": "ir"
+  },
+  {
+   "id": "S_TSMC_6K_FY25",
+   "title": "TSMC Board approved 2025 financial statements (Form 6-K)",
+   "publisher": "SEC EDGAR",
+   "date": "2026-02-10",
+   "url": "https://www.sec.gov/Archives/edgar/data/1046179/000104617926000017/tsm-boardx20260210x6k.htm",
+   "used_for": "TSMC 2025 NT$ revenue and net income board approval",
+   "kind": "6-K"
+  },
+  {
+   "id": "S_ORCL_FY25",
+   "title": "Oracle Announces Fiscal 2025 Fourth Quarter and Fiscal Full Year Financial Results",
+   "publisher": "Oracle Investor Relations",
+   "date": "2025-06",
+   "url": "https://investor.oracle.com/investor-news/news-details/2025/Oracle-Announces-Fiscal-2025-Fourth-Quarter-and-Fiscal-Full-Year-Financial-Results/default.aspx",
+   "used_for": "Oracle FY2025 revenue, operating income, OCF, borrowings",
+   "kind": "ir"
+  },
+  {
+   "id": "S_AMZN_FY25",
+   "title": "Amazon.com Announces Fourth Quarter / Full Year 2025 Results",
+   "publisher": "Amazon / SEC exhibit",
+   "date": "2026-02",
+   "url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000002/amzn-20251231xex991.htm",
+   "used_for": "Amazon 2025 net sales, AWS, operating income",
+   "kind": "sec_exhibit"
+  },
+  {
+   "id": "S_SKH_FY25",
+   "title": "SK hynix Announces FY25 Financial Results",
+   "publisher": "SK hynix Newsroom",
+   "date": "2026-01-28",
+   "url": "https://news.skhynix.com/en/sk-hynix-announces-fy25-financial-results/",
+   "used_for": "SK hynix FY2025 KRW revenue and operating profit",
+   "kind": "ir"
+  },
+  {
+   "id": "S_SMSN_FY25",
+   "title": "Samsung Electronics Announces Fourth Quarter and FY 2025 Results",
+   "publisher": "Samsung Global Newsroom / IR",
+   "date": "2026-01",
+   "url": "https://news.samsung.com/global/samsung-electronics-announces-fourth-quarter-and-fy-2025-results",
+   "used_for": "Samsung Electronics 2025 consolidated revenue and operating profit",
+   "kind": "ir"
+  },
+  {
+   "id": "S_SMSN_SOI_FY25",
+   "title": "Samsung Electronics Consolidated Statements of Profit or Loss 2025",
+   "publisher": "Samsung IR PDF",
+   "date": "2026-01",
+   "url": "https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2025_con_quarter04_soi.pdf",
+   "used_for": "Samsung 2025 KRW/USD revenue and operating profit",
+   "kind": "ir"
+  },
+  {
+   "id": "S_META_FY25",
+   "title": "Meta Reports Fourth Quarter and Full Year 2025 Results",
+   "publisher": "Meta Investor Relations",
+   "date": "2026-01-28",
+   "url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Fourth-Quarter-and-Full-Year-2025-Results/default.aspx",
+   "used_for": "Meta FY2025 revenue and operating income",
+   "kind": "ir"
+  },
+  {
+   "id": "S_EQIX_FY25",
+   "title": "Equinix Reports Fourth Quarter and Full Year 2025 Results",
+   "publisher": "Equinix / SEC",
+   "date": "2026-02-11",
+   "url": "https://www.sec.gov/Archives/edgar/data/1101239/000110123926000030/february112026pressrelease-.htm",
+   "used_for": "Equinix 2025 revenue, operating income, AFFO, interest expense",
+   "kind": "sec_exhibit"
+  },
+  {
+   "id": "S_ANET_10K_FY25",
+   "title": "Arista Networks Form 10-K (year ended Dec 31, 2025)",
+   "publisher": "SEC EDGAR",
+   "date": "2026-02-17",
+   "url": "https://www.sec.gov/Archives/edgar/data/1596532/000159653226000013/anet-20251231.htm",
+   "used_for": "Arista FY2025 revenue; two customers >10% (26% / 16%)",
+   "kind": "10-K"
+  },
+  {
+   "id": "S_ANET_10K_FY24",
+   "title": "Arista Networks Form 10-K (year ended Dec 31, 2024)",
+   "publisher": "SEC EDGAR",
+   "date": "2025-02",
+   "url": "https://www.sec.gov/Archives/edgar/data/1596532/000159653225000028/anet-20241231.htm",
+   "used_for": "Named Microsoft and Meta as >10% Cloud/AI Titan customers",
+   "kind": "10-K"
+  },
+  {
+   "id": "S_ANET_FY25_PR",
+   "title": "Arista Networks Reports Fourth Quarter and Year End 2025 Financial Results",
+   "publisher": "Arista IR",
+   "date": "2026-02",
+   "url": "https://investors.arista.com/Communications/Press-Releases-and-Events/Press-Release-Detail/2026/Arista-Networks-Inc--Reports-Fourth-Quarter-and-Year-End-2025-Financial-Results/default.aspx",
+   "used_for": "Arista FY2025 revenue $9.006B, operating income $3.856B, cash",
+   "kind": "ir"
+  },
+  {
+   "id": "S_VRT_10K_FY25",
+   "title": "Vertiv Holdings Co Form 10-K (year ended Dec 31, 2025)",
+   "publisher": "SEC EDGAR",
+   "date": "2026-02-13",
+   "url": "https://www.sec.gov/Archives/edgar/data/1674101/000167410126000008/vrt-20251231.htm",
+   "used_for": "Vertiv FY2025 net sales $10.230B",
+   "kind": "10-K"
+  },
+  {
+   "id": "S_VRT_FY25_PR",
+   "title": "Vertiv Reports Strong Fourth Quarter / FY2025 Results",
+   "publisher": "Vertiv IR",
+   "date": "2026-02",
+   "url": "https://investors.vertiv.com/news/news-details/2026/Vertiv-Reports-Strong-Fourth-Quarter-with-Organic-Orders-Growth-of-252-and-Diluted-EPS-Growth-of-200-Adjusted-Diluted-EPS-37/default.aspx",
+   "used_for": "Vertiv FY2025 operating profit $1.830B, interest expense",
+   "kind": "ir"
+  },
+  {
+   "id": "S_VRT_NVDA_800V",
+   "title": "Vertiv collaborates with NVIDIA to advance 800 VDC platform designs",
+   "publisher": "Vertiv corporate news",
+   "date": "2025-10-13",
+   "url": "https://www.vertiv.com/en-us/about/news-and-events/corporate-news/from-vision-to-readiness-vertiv-collaborates-with-nvidia-to-advance-800-vdc-platform-designs-to-power-the-next-generation-of-ai-factories/",
+   "used_for": "Vertiv–NVIDIA 800 VDC strategic collaboration (not a disclosed supply-contract USD amount)",
+   "kind": "press"
+  },
+  {
+   "id": "S_NVDA_800V_PARTNERS",
+   "title": "NVIDIA 800 VDC Architecture Will Power the Next Generation of AI Factories",
+   "publisher": "NVIDIA Technical Blog",
+   "date": "2025",
+   "url": "https://developer.nvidia.com/blog/nvidia-800-v-hvdc-architecture-will-power-the-next-generation-of-ai-factories/",
+   "used_for": "NVIDIA lists Vertiv, Eaton, Schneider among data-center power system collaborators",
+   "kind": "press"
+  },
+  {
+   "id": "S_HANMI_DART_SKH",
+   "title": "한미반도체 단일판매ㆍ공급계약체결 (SK하이닉스 HBM TC 본더)",
+   "publisher": "DART / 연합뉴스 요약",
+   "date": "2024-03-22",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20240322800090",
+   "used_for": "Hanmi Semiconductor → SK hynix HBM equipment supply (DART)",
+   "kind": "dart"
+  },
+  {
+   "id": "S_HANMI_DART_MICRON",
+   "title": "한미반도체–마이크론 HBM 장비 공급 공시 보도",
+   "publisher": "대한경제 / DART 기반",
+   "date": "2024-04-11",
+   "url": "https://www.dnews.co.kr/m_home/view.jsp?idxno=202404111503480060946",
+   "used_for": "Hanmi → Micron Dual TC Bonder Tiger KRW 22.6B (DART-backed report)",
+   "kind": "news_dart"
+  },
+  {
+   "id": "S_SKT_NVDA_2026",
+   "title": "SK Telecom and NVIDIA Build AI Infrastructure to Power Korea’s AI Innovation",
+   "publisher": "NVIDIA Newsroom",
+   "date": "2026-06-07",
+   "url": "https://nvidianews.nvidia.com/news/sk-telecom-and-nvidia-build-ai-infrastructure-to-power-koreas-ai-innovation",
+   "used_for": "SKT NVIDIA DSX AI Cloud / Cloud Partner (strategic, not disclosed GPU purchase USD)",
+   "kind": "press"
+  },
+  {
+   "id": "S_SKT_BLACKWELL",
+   "title": "SK Telecom Launches Sovereign AI Infrastructure, Powered by NVIDIA",
+   "publisher": "SK telecom newsroom",
+   "date": "2025-08-05",
+   "url": "https://news.sktelecom.com/en/2056",
+   "used_for": "SKT >1,000 NVIDIA Blackwell GPU cluster / GPUaaS; Supermicro server procurement",
+   "kind": "press"
+  },
+  {
+   "id": "S_LSE_BIGTECH_DC",
+   "title": "LS ELECTRIC 단일판매ㆍ공급계약 (Big Tech Data Center 전력설비)",
+   "publisher": "DART / 공시 전문",
+   "date": "2026-08",
+   "url": "https://dart.fss.or.kr/",
+   "used_for": "LS ELECTRIC → US Big Tech DC power equipment via LS ELECTRIC AMERICA; counterparty unnamed in disclosure",
+   "kind": "dart"
+  },
+  {
+   "id": "S_NVDA_KR_SUMMIT",
+   "title": "At AI Summit, South Korea Outlines Its AI Future With NVIDIA and Partners",
+   "publisher": "NVIDIA Blog",
+   "date": "2026",
+   "url": "https://blogs.nvidia.com/blog/ai-summit-korea-partners-and-nvidia/",
+   "used_for": "NAVER NVIDIA DSX AI factory expansion announcement (GPU/MW plans)",
+   "kind": "press"
+  },
+  {
+   "id": "S_NVDA_10K_FY26_MFG",
+   "title": "NVIDIA Form 10-K FY2026 — Manufacturing / suppliers (TSMC, Samsung, SK hynix, Micron, Hon Hai, Wistron)",
+   "publisher": "SEC EDGAR",
+   "date": "2026-02-25",
+   "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+   "used_for": "Named foundry, memory, and CMS suppliers",
+   "kind": "10-K"
+  },
+  {
+   "id": "S_DELL_AI_FACTORY",
+   "title": "Dell AI Factory with NVIDIA (official Dell blog / partnership)",
+   "publisher": "Dell Technologies",
+   "date": "2024-05-20",
+   "url": "https://www.dell.com/en-us/blog/transform-innovation-into-value-the-dell-ai-factory-with-nvidia/",
+   "used_for": "Dell–NVIDIA strategic AI Factory partnership",
+   "kind": "press"
+  },
+  {
+   "id": "S_HPE_NVDA_AI",
+   "title": "HPE and NVIDIA: NVIDIA AI Computing by HPE partnership expansion",
+   "publisher": "HPE Newsroom",
+   "date": "2025-06-24",
+   "url": "https://www.hpe.com/us/en/newsroom/blog-post/2025/06/hpe-and-nvidia-a-partnership-driving-the-next-generation-of-ai-innovation.html",
+   "used_for": "HPE–NVIDIA AI Computing partnership",
+   "kind": "press"
+  },
+  {
+   "id": "S_SMCI_10K_FY25",
+   "title": "Super Micro Computer Form 10-K (year ended June 30, 2025)",
+   "publisher": "SEC EDGAR",
+   "date": "2025",
+   "url": "https://www.sec.gov/Archives/edgar/data/1375365/000137536525000027/smci-20250630.htm",
+   "used_for": "SMCI collaborates with NVIDIA, Intel, AMD on product cycles",
+   "kind": "10-K"
+  },
+  {
+   "id": "S_AMD_AR24",
+   "title": "AMD 2024 Annual Report — shareholder letter (Meta, Microsoft, Oracle Instinct; AWS/Azure instances)",
+   "publisher": "AMD IR / SEC",
+   "date": "2025",
+   "url": "https://ir.amd.com/financial-information/sec-filings/content/0001193125-25-067185/0001193125-25-067185.pdf",
+   "used_for": "Named hyperscaler deployments of AMD Instinct / EPYC",
+   "kind": "ir"
+  },
+  {
+   "id": "S_MSFT_EXPRESSROUTE",
+   "title": "Azure ExpressRoute Metro locations (Equinix / Digital Realty listed)",
+   "publisher": "Microsoft Learn",
+   "date": "2026",
+   "url": "https://learn.microsoft.com/en-us/azure/expressroute/metro",
+   "used_for": "Microsoft Azure interconnection via Equinix and Digital Realty",
+   "kind": "docs"
+  },
+  {
+   "id": "S_EQIX_AZURE",
+   "title": "Equinix partner page — Microsoft Azure / ExpressRoute",
+   "publisher": "Equinix",
+   "date": "2026",
+   "url": "https://www.equinix.com/partners/microsoft-azure",
+   "used_for": "Equinix as Azure ExpressRoute connectivity partner",
+   "kind": "ir"
+  },
+  {
+   "id": "S_DLR_AZURE",
+   "title": "Digital Realty expands Microsoft Azure ExpressRoute relationship",
+   "publisher": "Digital Realty",
+   "date": "2024",
+   "url": "https://www.digitalrealty.com/about/newsroom/press-releases/123278/digital-realty-expands-global-relationship-with-microsoft-with-the-deployment-of-microsoft-azure-expressroute-cloud-on-ramp-in-dallas-and-the-launch-of-the-new-azure-expressroute-metro-service-in-amsterdam-and-zurich",
+   "used_for": "Digital Realty–Microsoft ExpressRoute on-ramps",
+   "kind": "press"
+  },
+  {
+   "id": "S_AWS_DX_PARTNERS",
+   "title": "AWS Direct Connect Partners (Equinix / Digital Realty locations)",
+   "publisher": "Amazon Web Services",
+   "date": "2026",
+   "url": "https://aws.amazon.com/directconnect/partners/",
+   "used_for": "AWS Direct Connect validated partners include Equinix and Digital Realty",
+   "kind": "docs"
+  },
+  {
+   "id": "S_EQIX_AWS",
+   "title": "Equinix — AWS Direct Connect partner page",
+   "publisher": "Equinix",
+   "date": "2026",
+   "url": "https://www.equinix.com/partners/aws",
+   "used_for": "Equinix Fabric / Direct Connect to AWS",
+   "kind": "ir"
+  },
+  {
+   "id": "S_DLR_AWS",
+   "title": "Digital Realty — AWS Direct Connect / Outposts partner page",
+   "publisher": "Digital Realty",
+   "date": "2026",
+   "url": "https://www.digitalrealty.com/partners/aws",
+   "used_for": "Digital Realty hosts AWS Direct Connect on-ramps",
+   "kind": "ir"
+  },
+  {
+   "id": "S_ORCL_FC_EQIX",
+   "title": "Oracle FastConnect regions by partner — Equinix Fabric / Digital Realty",
+   "publisher": "Oracle",
+   "date": "2026",
+   "url": "https://www.oracle.com/cloud/networking/fastconnect/regions-by-partner/",
+   "used_for": "OCI FastConnect partners include Equinix Fabric and Digital Realty",
+   "kind": "docs"
+  },
+  {
+   "id": "S_OAI_NVDA_10GW",
+   "title": "OpenAI and NVIDIA announce strategic partnership to deploy 10 GW of NVIDIA systems",
+   "publisher": "OpenAI / NVIDIA Newsroom",
+   "date": "2025-09-22",
+   "url": "https://openai.com/index/openai-nvidia-systems-partnership/",
+   "used_for": "OpenAI–NVIDIA LOI: ≥10 GW systems; NVIDIA intends up to $100B investment as GW deployed",
+   "kind": "press"
+  },
+  {
+   "id": "S_OAI_ORCL_STARGATE",
+   "title": "Stargate advances with 4.5 GW partnership with Oracle",
+   "publisher": "OpenAI",
+   "date": "2025-07-22",
+   "url": "https://openai.com/index/stargate-advances-with-partnership-with-oracle/",
+   "used_for": "OpenAI–Oracle Stargate data-center capacity agreement",
+   "kind": "press"
+  },
+  {
+   "id": "S_OAI_STARGATE",
+   "title": "Announcing The Stargate Project",
+   "publisher": "OpenAI",
+   "date": "2025-01-21",
+   "url": "https://openai.com/index/announcing-the-stargate-project",
+   "used_for": "Stargate initial partners: SoftBank, OpenAI, Oracle, MGX; tech partners include Microsoft, NVIDIA, Oracle",
+   "kind": "press"
+  },
+  {
+   "id": "S_AMZN_ANTHROPIC",
+   "title": "Amazon and Anthropic expand strategic collaboration (equity + AWS compute)",
+   "publisher": "Amazon / Anthropic",
+   "date": "2026-04-20",
+   "url": "https://www.anthropic.com/news/anthropic-amazon-compute",
+   "used_for": "Amazon equity in Anthropic; Anthropic AWS primary cloud / Trainium compute",
+   "kind": "press"
+  },
+  {
+   "id": "S_AMZN_ANTHROPIC_INV",
+   "title": "Amazon announces additional Anthropic investment",
+   "publisher": "Amazon",
+   "date": "2026",
+   "url": "https://www.aboutamazon.com/news/company-news/amazon-invests-additional-5-billion-anthropic-ai",
+   "used_for": "Amazon $5B + up to $20B future investment in Anthropic (on top of prior $8B)",
+   "kind": "press"
+  },
+  {
+   "id": "S_MICRON_NVDA_HBM",
+   "title": "Micron HBM / SOCAMM designed for NVIDIA platforms (GTC press)",
+   "publisher": "Micron IR",
+   "date": "2025-03-18",
+   "url": "https://investors.micron.com/news/press-release/2025/Micron-Innovates-From-the-Data-Center-to-the-Edge-With-NVIDIA-03-18-2025/default.aspx",
+   "used_for": "Micron HBM3E/SOCAMM for NVIDIA Blackwell platforms",
+   "kind": "press"
+  },
+  {
+   "id": "S_SMSN_BR_FY25",
+   "title": "삼성전자 제57기 사업보고서 (FY2025) — 주요 매출처·원재료·Tesla 파운드리 수주",
+   "publisher": "DART / KIND / Samsung IR",
+   "date": "2026-03-10",
+   "url": "https://kind.krx.co.kr/external/2026/03/10/001404/20260310003123/11011.htm",
+   "used_for": "Alphabet·Apple top-5 customers; Qualcomm AP supplier; Tesla foundry $16.544B; DS/DX financials; cash/debt",
+   "kind": "dart"
+  },
+  {
+   "id": "S_SMSN_IR_FY25_EN",
+   "title": "Samsung Electronics 2025 Business Report (English IR PDF)",
+   "publisher": "Samsung IR",
+   "date": "2026-03",
+   "url": "https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2025_4Q_Interim_Report.pdf",
+   "used_for": "English confirmation of FY2025 major customers and DS division overview",
+   "kind": "ir"
+  },
+  {
+   "id": "S_NVDA_SMSN_AIF",
+   "title": "NVIDIA and Samsung Build AI Factory to Transform Global Intelligent Manufacturing",
+   "publisher": "NVIDIA Investor Relations",
+   "date": "2025-10-31",
+   "url": "https://investor.nvidia.com/news/press-release-details/2025/NVIDIA-and-Samsung-Build-AI-Factory-to-Transform-Global-Intelligent-Manufacturing/default.aspx",
+   "used_for": "NVIDIA–Samsung AI Factory / HBM3E·HBM4 supply collaboration announcement",
+   "kind": "press"
+  },
+  {
+   "id": "S_SKH_ASML_EUV",
+   "title": "SK하이닉스 ASML EUV 장비 취득 결정 (약 11.9496조 원, ~2027.12)",
+   "publisher": "DART / Asia Business Daily 요약",
+   "date": "2026-03-24",
+   "url": "https://www.asiae.co.kr/en/article/2026032413552957143",
+   "used_for": "SK hynix disclosed EUV procurement from ASML (~KRW 11.95T through Dec 2027)",
+   "kind": "dart"
+  },
+  {
+   "id": "S_SKH_CFS_FY25",
+   "title": "SK hynix Inc. Consolidated Financial Statements FY2025",
+   "publisher": "SK hynix IR",
+   "date": "2026-01",
+   "url": "https://mis-prod-koce-homepage-cdn-01-blob-ep.azureedge.net/web/attach/121822586381465204.pdf",
+   "used_for": "SK hynix FY2025 cash, borrowings, PPE acquisitions (CapEx)",
+   "kind": "ir"
+  },
+  {
+   "id": "S_SKH_NVDA_2026",
+   "title": "Nvidia, SK hynix sign multiyear deal for AI factories",
+   "publisher": "The Korea Herald (company statements)",
+   "date": "2026-06-08",
+   "url": "https://www.koreaherald.com/article/10765670",
+   "used_for": "Multi-year NVIDIA–SK hynix technology partnership for AI memory (not a disclosed fixed-price HBM offtake)",
+   "kind": "press"
+  },
+  {
+   "id": "S_HANMI_DART_SKH_2025",
+   "title": "한미반도체 단일판매ㆍ공급계약체결 — SK하이닉스 DUAL TC BONDER GRIFFIN (2025.05.16, KRW 428.1억)",
+   "publisher": "DART",
+   "date": "2025-05-16",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250516800319",
+   "used_for": "Hanmi → SK hynix HBM TC bonder ~KRW 42.8B (2025-05)",
+   "kind": "dart"
+  },
+  {
+   "id": "S_JUSUNG_DART_SKH",
+   "title": "주성엔지니어링–SK하이닉스 반도체 제조장비 공급계약 (2024.07, KRW 194억) 및 사업보고서 기재",
+   "publisher": "DART / KIND 사업보고서",
+   "date": "2024-07-10",
+   "url": "https://kind.krx.co.kr/external/2026/03/18/000306/20260318001621/11011.htm",
+   "used_for": "Jusung Engineering equipment supply to SK hynix (DART + FY2025 business report history)",
+   "kind": "dart"
+  },
+  {
+   "id": "S_GLXY_10K25",
+   "title": "Galaxy Digital Inc. Form 10-K (FY2025)",
+   "publisher": "SEC EDGAR",
+   "date": "2026-03",
+   "url": "https://www.sec.gov/Archives/edgar/data/1859392/000185939226000016/glxy-20251231.htm",
+   "used_for": "Helios campus CoreWeave leases Phases I–III totaling 526 MW critical IT load; 15-year terms",
+   "kind": "filing"
+  },
+  {
+   "id": "S_GLXY_HELIOS",
+   "title": "Galaxy Completes Phase I of Its Helios Data Center Campus (IR)",
+   "publisher": "Galaxy Digital IR",
+   "date": "2026-07-06",
+   "url": "https://investor.galaxy.com/news-releases/news-release-details/galaxy-completes-phase-i-its-helios-data-center-campus",
+   "used_for": "Phase I 133 MW critical IT to CoreWeave; 526 MW Phases I–III; >\\ avg annual revenue expected",
+   "kind": "press"
+  },
+  {
+   "id": "S_CORZ_FINANCE_I",
+   "title": "Core Scientific Announces Pricing of $3.3 Billion of Senior Secured Notes",
+   "publisher": "Core Scientific IR",
+   "date": "2026-04-22",
+   "url": "https://investors.corescientific.com/news-events/press-releases/detail/132/core-scientific-announces-pricing-of-3-3-billion-of-senior-secured-notes",
+   "used_for": "Core Scientific Finance I LLC $3.3B 7.750% senior secured notes due 2031; parent completion guarantee; parent does not guarantee notes",
+   "kind": "press"
+  },
+  {
+   "id": "S_GLXY_HELIOS_II_NOTES",
+   "title": "Galaxy Helios Data Centers II LLC senior secured notes (trade / market reports citing offering)",
+   "publisher": "Secondary reporting (verify against Galaxy IR / indenture)",
+   "date": "2026-07",
+   "url": "https://investor.galaxy.com/news-releases/news-release-details/galaxy-completes-phase-i-its-helios-data-center-campus",
+   "used_for": "Helios Phase II project financing via Galaxy Helios Data Centers II LLC; CoreWeave lease as credit support; parent completion guarantee reported",
+   "kind": "press"
+  },
+  {
+   "id": "S_APLD_MACQ",
+   "title": "Applied Digital and Macquarie Asset Management Execute First Funding Milestone in $5.0 Billion AI Infrastructure Partnership",
+   "publisher": "Applied Digital IR",
+   "date": "2025-10-07",
+   "url": "https://ir.applieddigital.com/news-events/press-releases/detail/130/applied-digital-and-macquarie-asset-management-execute",
+   "used_for": "MAM preferred equity facility up to $5B; Polaris Forge 1 CoreWeave lease; initial $112.5M draw",
+   "kind": "press"
+  },
+  {
+   "id": "S_CIFR_10Q1",
+   "title": "Cipher Digital Inc. Form 10-Q (Q1 2026)",
+   "publisher": "SEC EDGAR",
+   "date": "2026-05",
+   "url": "https://www.sec.gov/Archives/edgar/data/1819989/000181998926000028/cifr-20260331.htm",
+   "used_for": "Cash $715.2M; HPC build-out; convertible and secured notes; Fluidstack / hyperscaler tenants",
+   "kind": "filing"
+  },
+  {
+   "id": "S_CIFR_10Q2",
+   "title": "Cipher Digital Inc. Form 10-Q (Q2 2026) debt / revolver disclosures",
+   "publisher": "SEC EDGAR / company 10-Q",
+   "date": "2026-08",
+   "url": "https://www.sec.gov/Archives/edgar/data/1819989/000181998926000041/R67.htm",
+   "used_for": "Long-term borrowings / principal outstanding; $200M revolver undrawn; minimum liquidity covenant",
+   "kind": "filing"
+  },
+  {
+   "id": "S_WYFI_FY25",
+   "title": "WhiteFiber, Inc. Reports Fourth Quarter and Full Year 2025 Results",
+   "publisher": "WhiteFiber IR",
+   "date": "2026-03-26",
+   "url": "https://whitefiber.investorroom.com/2026-03-26-WhiteFiber,-Inc-Reports-Fourth-Quarter-and-Full-Year-2025-Results",
+   "used_for": "Cash $114.4M YE2025; no funded debt YE2025; $230M 4.5% converts Jan 2026; Nscale colocation",
+   "kind": "press"
+  },
+  {
+   "id": "S_WYFI_NSCALE",
+   "title": "WhiteFiber and Nscale Announce 10-Year, 40 MW Colocation Agreement (~$865M)",
+   "publisher": "WhiteFiber IR",
+   "date": "2025-12-18",
+   "url": "https://whitefiber.investorroom.com/2025-12-18-WhiteFiber-and-Nscale-Announce-10-Year,-40-MW-Colocation-Agreement-Representing-Approximately-865-Million-in-Total-Contract-Value-at-NC-1-AI-Data-Center-Campus",
+   "used_for": "NC-1 40MW Nscale lease ~$865M TCV",
+   "kind": "press"
+  },
+  {
+   "id": "S_WULF_10Q2",
+   "title": "TeraWulf Inc. Form 10-Q (Q2 2026)",
+   "publisher": "SEC EDGAR / TeraWulf IR",
+   "date": "2026-08-05",
+   "url": "https://investors.terawulf.com/sec-filings/all-sec-filings/content/0001083301-26-000166/wulf-20260630.htm",
+   "used_for": "Cash $2,619.2M; LT debt ~$3,019M; ST converts ~$1,102M; Fluidstack / Google credit support for HPC leases",
+   "kind": "filing"
+  },
+  {
+   "id": "S_IREN_FY26",
+   "title": "IREN Reports FY26 Results",
+   "publisher": "SEC EDGAR / IREN",
+   "date": "2026-08-27",
+   "url": "https://www.sec.gov/Archives/edgar/data/1878848/000187884826000051/irenreportsfy26results.htm",
+   "used_for": "AI Cloud transition; GPU financings; contracted ARR commentary",
+   "kind": "press"
+  },
+  {
+   "id": "S_NBIS_20F25",
+   "title": "Nebius Group N.V. Form 20-F (FY2025)",
+   "publisher": "SEC EDGAR",
+   "date": "2026",
+   "url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926052948/nbis-20251231x20f.htm",
+   "used_for": "Capital-intensive AI infra; need for additional financing disclosed as risk",
+   "kind": "filing"
+  },
+  {
+   "id": "S_ACIS_NBIS_IREN",
+   "title": "AI Infrastructure Expansion Still Depends on External Funding (H1 2026 comps)",
+   "publisher": "ACIS Research",
+   "date": "2026-10-18",
+   "url": "https://acisresearch.com/en/research/memos/ai-infrastructure-external-funding-crwv-nbis-iren-2026-10-18",
+   "used_for": "H1 2026 cash/debt/OCF/capex comparables for NBIS and IREN (research synthesis of filings)",
+   "kind": "research"
+  },
+  {
+   "id": "S_NSCALE_B",
+   "title": "Nscale Raises $1.1B Series B",
+   "publisher": "Nscale",
+   "date": "2025-09-25",
+   "url": "https://www.nscale.tech/press-releases/nscale-series-b",
+   "used_for": "Private AI hyperscaler funding; NVIDIA / Blue Owl participation",
+   "kind": "press"
+  },
+  {
+   "id": "S_NSCALE_PREIPO",
+   "title": "Nscale Raises $3.36 Billion in Pre-IPO Convertible Financing",
+   "publisher": "Nscale",
+   "date": "2026-09-25",
+   "url": "https://www.nscale.com/press-releases/pre-ipo-convertible-financing",
+   "used_for": "Pre-IPO convertible; NVIDIA $1B commitment tranche; private — no full public financials",
+   "kind": "press"
+  },
+  {
+   "id": "S_SLNH_10Q2",
+   "title": "Soluna Holdings, Inc. Form 10-Q (Q2 2026)",
+   "publisher": "SEC EDGAR",
+   "date": "2026-08",
+   "url": "https://www.sec.gov/Archives/edgar/data/64463/000162828026056702/slnh-20260630.htm",
+   "used_for": "Cash $113.4M; current debt $30.1M; LT debt $3.0M as of 2026-06-30",
+   "kind": "filing"
+  },
+  {
+   "id": "S_HUT_10Q2",
+   "title": "Hut 8 Corp. Form 10-Q (Q2 2026)",
+   "publisher": "SEC EDGAR",
+   "date": "2026-08",
+   "url": "https://www.sec.gov/Archives/edgar/data/1964789/000110465926090025/hut-20260630x10q.htm",
+   "used_for": "River Bend $3.25B / Beacon Point $4.25B project notes; Fluidstack+Google backstop; parent largely non-recourse",
+   "kind": "filing"
+  },
+  {
+   "id": "S_HUT_Q2_PR",
+   "title": "Hut 8 Reports Second Quarter 2026 Results",
+   "publisher": "Hut 8 / PR Newswire",
+   "date": "2026-08",
+   "url": "https://www.prnewswire.com/news-releases/hut-8-reports-second-quarter-2026-results-302841830.html",
+   "used_for": "~$8.1B liquidity incl. BTC; IG project financing; no general recourse parent debt after Coatue conversion",
+   "kind": "press"
+  },
+  {
+   "id": "S_CORZ_NOTES_8K",
+   "title": "Core Scientific, Inc. Form 8-K (Finance I Notes Closing)",
+   "publisher": "SEC EDGAR",
+   "date": "2026-05-06",
+   "url": "https://www.sec.gov/Archives/edgar/data/1839341/000119312526208905/d47435d8k.htm",
+   "used_for": "Finance I notes closing; Morgan Stanley & Co. and J.P. Morgan Securities as representatives of initial purchasers",
+   "kind": "filing"
+  },
+  {
+   "id": "S_SKH_BR_FY25",
+   "title": "SK hynix FY2025 Business Report (DART) — HBM / customer / equipment",
+   "url": "https://dart.fss.or.kr/",
+   "publisher": "DART / SK hynix",
+   "date": "2026-03",
+   "used_for": "Use for equipment purchases and named customer categories; do not invent volumes.",
+   "kind": "filing"
+  },
+  {
+   "id": "S_SS_BR_FY25",
+   "title": "Samsung Electronics FY2025 Business Report — top customers / foundry backlog",
+   "url": "https://dart.fss.or.kr/",
+   "publisher": "DART / Samsung Electronics",
+   "date": "2026-03",
+   "used_for": "Top-5 customers and foundry backlog figures already used in prior hub expansion.",
+   "kind": "filing"
+  },
+  {
+   "id": "S_NVDA_MSFT_AZURE",
+   "title": "Microsoft–NVIDIA multi-year Azure GPU / AI infrastructure collaboration (IR / press)",
+   "url": "https://nvidianews.nvidia.com/",
+   "publisher": "NVIDIA / Microsoft IR",
+   "date": "2024-2025",
+   "used_for": "Strategic supply / cloud deployment — not a quantified purchase commitment unless filing states amount.",
+   "kind": "press"
+  },
+  {
+   "id": "S_SKH_MICRON_HBM",
+   "title": "Industry HBM competitive context (analytical — not a contractual edge)",
+   "url": "",
+   "publisher": "internal",
+   "date": "2026-10-21",
+   "used_for": "Do not add Micron↔SKH edge; competitors are not counterparties.",
+   "kind": "press"
+  },
+  {
+   "id": "S_US_MCAP_V4",
+   "title": "US market-cap eligibility snapshot (yfinance KRW=X + marketCap)",
+   "publisher": "Yahoo Finance via yfinance",
+   "date": "2026-10-21",
+   "url": "https://finance.yahoo.com/",
+   "used_for": "USD/KRW and US listed market caps for ≥ KRW 500B filter",
+   "kind": "market_data"
+  },
+  {
+   "id": "S_PF_EXPAND_V4",
+   "title": "Korean AI DC PF cluster expansion (press + company disclosures)",
+   "publisher": "Contagion research pack",
+   "date": "2026-10-21",
+   "url": "",
+   "used_for": "Yongin Jukjeon / Bucheon Samjeong / Gwangju Fine DC edges",
+   "kind": "press"
+  },
+  {
+   "id": "S_HDEC_JUKJEON",
+   "title": "현대건설 용인 죽전 퍼시픽써니 데이터센터 준공",
+   "publisher": "현대건설 뉴스룸",
+   "date": "2025-10-24",
+   "url": "https://www.hdec.kr/kr/newsroom/news_view.aspx?NewsListType=news_clist&NewsSeq=1368&NewsType=LATEST",
+   "used_for": "Pacific AM · CPPIB · Shinhan · Hyundai E&C roles",
+   "kind": "press"
+  },
+  {
+   "id": "S_EDALLY_BUCHEON",
+   "title": "부천 삼정 AI 허브센터 PF 1590억 기표",
+   "publisher": "이데일리",
+   "date": "2026-05",
+   "url": "https://www.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=05005286645450888",
+   "used_for": "DCITY Bucheon PFV lenders and DL Construction EPC",
+   "kind": "press"
+  },
+  {
+   "id": "S_DAEWOO_FINE_DART",
+   "title": "대우건설 파인디씨피에프브이 채무보증 결정",
+   "publisher": "DART / DigitalToday",
+   "date": "2025-12-15",
+   "url": "https://www.digitaltoday.co.kr/news/articleView.html?idxno=612777",
+   "used_for": "Fine DC PFV debt guarantee / completion support 2,959억",
+   "kind": "filing"
+  }
+ ]
+}

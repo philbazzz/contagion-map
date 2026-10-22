@@ -1,0 +1,157 @@
+{
+ "meta": {
+  "as_of": "2026-10-20",
+  "note": "Inputs for sector-wide financing contagion. Missing fields are null — never invented.",
+  "disclaimer": "Analytical scenario inputs, not bankruptcy probabilities."
+ },
+ "entities": {
+  "cipher_digital": {
+   "cash_usd_m": 715.2,
+   "total_debt_usd_m": 5200,
+   "floating_debt_usd_m": 50,
+   "near_term_debt_usd_m": 200,
+   "annual_capex_need_usd_m": 2000,
+   "funding_dependence": "high",
+   "cw_direct": false,
+   "resilience": "levered_builder",
+   "data_quality": "partial",
+   "source_ids": [
+    "S_CIFR_10Q1",
+    "S_CIFR_10Q2"
+   ]
+  },
+  "whitefiber": {
+   "cash_usd_m": 114.4,
+   "total_debt_usd_m": 230,
+   "floating_debt_usd_m": 0,
+   "near_term_debt_usd_m": 0,
+   "annual_capex_need_usd_m": 400,
+   "funding_dependence": "high",
+   "cw_direct": false,
+   "resilience": "early_stage",
+   "data_quality": "partial",
+   "source_ids": [
+    "S_WYFI_FY25"
+   ]
+  },
+  "terawulf": {
+   "cash_usd_m": 2619.2,
+   "total_debt_usd_m": 4121.3,
+   "floating_debt_usd_m": 0,
+   "near_term_debt_usd_m": 1102.0,
+   "annual_capex_need_usd_m": 1500,
+   "funding_dependence": "medium",
+   "cw_direct": false,
+   "resilience": "cash_rich_levered",
+   "data_quality": "good",
+   "source_ids": [
+    "S_WULF_10Q2"
+   ]
+  },
+  "iren": {
+   "cash_usd_m": 5895.6,
+   "total_debt_usd_m": 7592.9,
+   "floating_debt_usd_m": 0,
+   "near_term_debt_usd_m": 169.4,
+   "annual_capex_need_usd_m": 6666,
+   "funding_dependence": "high",
+   "cw_direct": false,
+   "resilience": "cash_rich_capex",
+   "data_quality": "research_synth",
+   "source_ids": [
+    "S_ACIS_NBIS_IREN",
+    "S_IREN_FY26"
+   ]
+  },
+  "nebius": {
+   "cash_usd_m": 8042.1,
+   "total_debt_usd_m": 8545.7,
+   "floating_debt_usd_m": 0,
+   "near_term_debt_usd_m": 46.7,
+   "annual_capex_need_usd_m": 16260,
+   "funding_dependence": "high",
+   "cw_direct": false,
+   "resilience": "cash_rich_capex",
+   "data_quality": "research_synth",
+   "source_ids": [
+    "S_ACIS_NBIS_IREN",
+    "S_NBIS_20F25"
+   ]
+  },
+  "nscale": {
+   "cash_usd_m": null,
+   "total_debt_usd_m": null,
+   "floating_debt_usd_m": null,
+   "near_term_debt_usd_m": null,
+   "annual_capex_need_usd_m": null,
+   "funding_dependence": "unknown",
+   "cw_direct": false,
+   "resilience": "insufficient_data",
+   "data_quality": "insufficient",
+   "source_ids": [
+    "S_NSCALE_B",
+    "S_NSCALE_PREIPO"
+   ]
+  },
+  "soluna": {
+   "cash_usd_m": 113.4,
+   "total_debt_usd_m": 33.1,
+   "floating_debt_usd_m": 0,
+   "near_term_debt_usd_m": 30.1,
+   "annual_capex_need_usd_m": 80,
+   "funding_dependence": "low",
+   "cw_direct": false,
+   "resilience": "low_leverage",
+   "data_quality": "good",
+   "source_ids": [
+    "S_SLNH_10Q2"
+   ]
+  },
+  "hut8": {
+   "cash_usd_m": 7600,
+   "total_debt_usd_m": 7638.4,
+   "floating_debt_usd_m": 0,
+   "near_term_debt_usd_m": 234.7,
+   "annual_capex_need_usd_m": 1000,
+   "funding_dependence": "medium",
+   "cw_direct": false,
+   "resilience": "ig_project_google_backstop",
+   "data_quality": "good",
+   "source_ids": [
+    "S_HUT_10Q2",
+    "S_HUT_Q2_PR"
+   ],
+   "notes": "cash approx from liquidity ex-BTC attribution; project debt mostly non-recourse"
+  },
+  "corz_finance_i": {
+   "cash_usd_m": null,
+   "total_debt_usd_m": 3300,
+   "floating_debt_usd_m": 0,
+   "near_term_debt_usd_m": 0,
+   "annual_capex_need_usd_m": null,
+   "funding_dependence": "tenant",
+   "cw_direct": true,
+   "resilience": "spv_single_tenant",
+   "data_quality": "good",
+   "parent_id": "core_scientific",
+   "source_ids": [
+    "S_CORZ_FINANCE_I"
+   ]
+  },
+  "galaxy_helios_ii": {
+   "cash_usd_m": null,
+   "total_debt_usd_m": 3500,
+   "floating_debt_usd_m": 0,
+   "near_term_debt_usd_m": 0,
+   "annual_capex_need_usd_m": null,
+   "funding_dependence": "tenant",
+   "cw_direct": true,
+   "resilience": "spv_single_tenant",
+   "data_quality": "inferred",
+   "parent_id": "galaxy_digital",
+   "source_ids": [
+    "S_GLXY_HELIOS_II_NOTES"
+   ]
+  }
+ }
+}

@@ -1,0 +1,691 @@
+{
+  "count": 66,
+  "items": [
+    {
+      "id": "a1_breeze",
+      "name": "에이원브리즈",
+      "dart_corp_code": null,
+      "dart_last_audit_rcept": null,
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes"
+    },
+    {
+      "id": "a1_living",
+      "name": "에이원리빙",
+      "dart_corp_code": null,
+      "dart_last_audit_rcept": null,
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes"
+    },
+    {
+      "id": "ansan_green_energy_pfv",
+      "name": "안산그린에너지피에프브이",
+      "dart_corp_code": "01843299",
+      "dart_last_audit_rcept": "20260406003916",
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes",
+      "borrower28_id": "b13",
+      "seed_name": "안산그린에너지피에프브이(주)",
+      "report_nm": "감사보고서 (2025.12)",
+      "rcept_dt": "20260406"
+    },
+    {
+      "id": "apld_eln_01",
+      "name": "APLD ELN-01 LLC",
+      "dart_corp_code": null,
+      "dart_last_audit_rcept": null,
+      "visibility": "visible",
+      "region": "US",
+      "source": "network.nodes"
+    },
+    {
+      "id": "apld_hpc_holdings",
+      "name": "APLD HPC Holdings LLC",
+      "dart_corp_code": null,
+      "dart_last_audit_rcept": null,
+      "visibility": "visible",
+      "region": "US",
+      "source": "network.nodes"
+    },
+    {
+      "id": "blue_dragon7_spc",
+      "name": "블루드래곤제칠차",
+      "dart_corp_code": null,
+      "dart_last_audit_rcept": null,
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes"
+    },
+    {
+      "id": "blueribbon_dev",
+      "name": "블루리본디벨롭먼트",
+      "dart_corp_code": "01693083",
+      "dart_last_audit_rcept": "20260406002845",
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes"
+    },
+    {
+      "id": "bucheon_space1_spc",
+      "name": "부천공간제일차",
+      "dart_corp_code": null,
+      "dart_last_audit_rcept": null,
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes"
+    },
+    {
+      "id": "bukhang_idc_pfv",
+      "name": "북항아이디씨피에프브이",
+      "dart_corp_code": "01843749",
+      "dart_last_audit_rcept": "20260408000471",
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes",
+      "borrower28_id": "b08",
+      "seed_name": "북항아이디씨피에프브이(주)",
+      "report_nm": "감사보고서 (2025.12)",
+      "rcept_dt": "20260408"
+    },
+    {
+      "id": "busan_ecodelta_pfv",
+      "name": "부산에코델타그린데이터센터피에프브이",
+      "dart_corp_code": "01915587",
+      "dart_last_audit_rcept": "20260410003722",
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes",
+      "borrower28_id": "b09",
+      "seed_name": "부산에코델타그린데이터센터PFV",
+      "report_nm": "감사보고서 (2025.12)",
+      "rcept_dt": "20260413"
+    },
+    {
+      "id": "camsquare_first_spc",
+      "name": "캄스퀘어제일차",
+      "dart_corp_code": null,
+      "dart_last_audit_rcept": null,
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes"
+    },
+    {
+      "id": "camsquare_pfv",
+      "name": "캄스퀘어안산데이터센터PFV",
+      "dart_corp_code": "01800683",
+      "dart_last_audit_rcept": "20260413002070",
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes",
+      "borrower28_id": "b23",
+      "seed_name": "캄스퀘어안산데이터센터피에프브이(주)",
+      "report_nm": "감사보고서 (2025.12)",
+      "rcept_dt": "20260413"
+    },
+    {
+      "id": "camsquare_second_spc",
+      "name": "캄스퀘어제이차",
+      "dart_corp_code": null,
+      "dart_last_audit_rcept": null,
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes"
+    },
+    {
+      "id": "camsquare_seori_pfv",
+      "name": "캄스퀘어서리데이터센터PFV",
+      "dart_corp_code": null,
+      "dart_last_audit_rcept": null,
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes"
+    },
+    {
+      "id": "camsquare_third_spc",
+      "name": "캄스퀘어제삼차",
+      "dart_corp_code": null,
+      "dart_last_audit_rcept": null,
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes"
+    },
+    {
+      "id": "camsquare_yongin_pfv",
+      "name": "캄스퀘어용인데이터센터PFV",
+      "dart_corp_code": null,
+      "dart_last_audit_rcept": null,
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes",
+      "borrower28_id": "b24",
+      "seed_name": "캄스퀘어용인데이터센터피에프브이(주)"
+    },
+    {
+      "id": "capstone_meta_idc_pfv",
+      "name": "캡스톤메타IDC피에프브이",
+      "dart_corp_code": null,
+      "dart_last_audit_rcept": null,
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes"
+    },
+    {
+      "id": "casequare_busan_jangnim_pfv",
+      "name": "케이스퀘어부산장림데이터센터피에프브이",
+      "dart_corp_code": "01987122",
+      "dart_last_audit_rcept": null,
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes",
+      "borrower28_id": "b21",
+      "seed_name": "케이스퀘어부산장림데이터센터피에프브이(주)"
+    },
+    {
+      "id": "casequare_eco_songpa_pfv",
+      "name": "케이스퀘어에코송파피에프브이",
+      "dart_corp_code": "01811722",
+      "dart_last_audit_rcept": "20260406000992",
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes"
+    },
+    {
+      "id": "casequare_manus_guro_pfv",
+      "name": "케이스퀘어마누스데이터센터구로피에프브이",
+      "dart_corp_code": null,
+      "dart_last_audit_rcept": null,
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes"
+    },
+    {
+      "id": "casequare_pfv",
+      "name": "케이스퀘어데이터센터PFV",
+      "dart_corp_code": "01613005",
+      "dart_last_audit_rcept": "20260409001042",
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes",
+      "borrower28_id": "b20",
+      "seed_name": "케이스퀘어데이터센터피에프브이(주)",
+      "report_nm": "감사보고서 (2025.12)",
+      "rcept_dt": "20260409"
+    },
+    {
+      "id": "casequare_yongsan_pfv",
+      "name": "케이스퀘어용산피에프브이",
+      "dart_corp_code": "01613528",
+      "dart_last_audit_rcept": "20260409002420",
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes"
+    },
+    {
+      "id": "cheongna_idc_pfv",
+      "name": "청라아이디씨피에프브이",
+      "dart_corp_code": "01742060",
+      "dart_last_audit_rcept": "20260413000174",
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes",
+      "borrower28_id": "b18",
+      "seed_name": "청라아이디씨피에프브이(주)",
+      "report_nm": "감사보고서 (2025.12)",
+      "rcept_dt": "20260413"
+    },
+    {
+      "id": "corz_finance_i",
+      "name": "코어사이언티픽 Finance I",
+      "dart_corp_code": null,
+      "dart_last_audit_rcept": null,
+      "visibility": "visible",
+      "region": "US",
+      "source": "network.nodes"
+    },
+    {
+      "id": "dcity_bucheon_pfv",
+      "name": "디씨아이티와이부천피에프브이",
+      "dart_corp_code": "01971228",
+      "dart_last_audit_rcept": null,
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes",
+      "borrower28_id": "b05",
+      "seed_name": "디씨아이티와이부천피에프브이(주)"
+    },
+    {
+      "id": "dcity_incheon_pfv",
+      "name": "디씨아이티와이인천피에프브이",
+      "dart_corp_code": null,
+      "dart_last_audit_rcept": null,
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes"
+    },
+    {
+      "id": "dck1",
+      "name": "디씨케이원",
+      "dart_corp_code": "01750731",
+      "dart_last_audit_rcept": "20260410002975",
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes"
+    },
+    {
+      "id": "dito_pfv",
+      "name": "디토피에프브이",
+      "dart_corp_code": "01635344",
+      "dart_last_audit_rcept": "20260410001996",
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes",
+      "borrower28_id": "b06",
+      "seed_name": "디토피에프브이(주)",
+      "report_nm": "감사보고서 (2025.12)",
+      "rcept_dt": "20260410"
+    },
+    {
+      "id": "donghae_ai_campus3",
+      "name": "동해에이아이제3캠퍼스",
+      "dart_corp_code": null,
+      "dart_last_audit_rcept": null,
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes"
+    },
+    {
+      "id": "edgecore_pfv",
+      "name": "엣지코어피에프브이",
+      "dart_corp_code": "01878833",
+      "dart_last_audit_rcept": "20260403003710",
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes",
+      "borrower28_id": "b16",
+      "seed_name": "엣지코어피에프브이(주)",
+      "report_nm": "감사보고서 (2025.12)",
+      "rcept_dt": "20260403"
+    },
+    {
+      "id": "epoch_pfv",
+      "name": "에포크피에프브이",
+      "dart_corp_code": "01592526",
+      "dart_last_audit_rcept": "20260331002059",
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes",
+      "borrower28_id": "b15",
+      "seed_name": "에포크피에프브이(주)",
+      "report_nm": "감사보고서 (2025.12)",
+      "rcept_dt": "20260331"
+    },
+    {
+      "id": "fine_dc_pfv",
+      "name": "파인디씨피에프브이",
+      "dart_corp_code": "01992513",
+      "dart_last_audit_rcept": null,
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes",
+      "borrower28_id": "b25",
+      "seed_name": "파인디씨피에프브이(주)"
+    },
+    {
+      "id": "galaxy_helios_ii",
+      "name": "갤럭시 Helios II",
+      "dart_corp_code": null,
+      "dart_last_audit_rcept": null,
+      "visibility": "visible",
+      "region": "US",
+      "source": "network.nodes"
+    },
+    {
+      "id": "gaon_haeje5_spc",
+      "name": "가온해제오차",
+      "dart_corp_code": null,
+      "dart_last_audit_rcept": null,
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes"
+    },
+    {
+      "id": "gasan_dc_jv",
+      "name": "가산디씨제이브이",
+      "dart_corp_code": "01670408",
+      "dart_last_audit_rcept": "20260406000434",
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes"
+    },
+    {
+      "id": "gasan_dc_sl1",
+      "name": "가산디씨에스엘원",
+      "dart_corp_code": "01583041",
+      "dart_last_audit_rcept": null,
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes",
+      "borrower28_id": "b02",
+      "seed_name": "가산디씨에스엘원(주)"
+    },
+    {
+      "id": "gasan_edc_spv",
+      "name": "가산-eDC 시행법인(명칭 미공개)",
+      "dart_corp_code": null,
+      "dart_last_audit_rcept": null,
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes"
+    },
+    {
+      "id": "gasan_landmark_pfv",
+      "name": "가산랜드마크데이터센터피에프브이",
+      "dart_corp_code": "01770902",
+      "dart_last_audit_rcept": "20260406003009",
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes"
+    },
+    {
+      "id": "gaya_pfv",
+      "name": "가야피에프브이",
+      "dart_corp_code": "01748611",
+      "dart_last_audit_rcept": "20260408000296",
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes",
+      "borrower28_id": "b01",
+      "seed_name": "가야피에프브이(주)",
+      "report_nm": "감사보고서 (2025.12)",
+      "rcept_dt": "20260408"
+    },
+    {
+      "id": "gps23_spc",
+      "name": "쥐피에스23제일차",
+      "dart_corp_code": null,
+      "dart_last_audit_rcept": null,
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes"
+    },
+    {
+      "id": "green_digital_infra",
+      "name": "그린디지털인프라",
+      "dart_corp_code": "01894877",
+      "dart_last_audit_rcept": "20260402001874",
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes"
+    },
+    {
+      "id": "hana_dc_1st_spc",
+      "name": "하나데이터센터제일차",
+      "dart_corp_code": null,
+      "dart_last_audit_rcept": null,
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes"
+    },
+    {
+      "id": "hanam_edge_pfv",
+      "name": "하남엣지센터피에프브이",
+      "dart_corp_code": null,
+      "dart_last_audit_rcept": null,
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes",
+      "borrower28_id": "b27",
+      "seed_name": "하남엣지센터피에프브이(주)"
+    },
+    {
+      "id": "hanwha_sec_spc_yongin",
+      "name": "한화투자증권 SPC(명칭 미공개)",
+      "dart_corp_code": null,
+      "dart_last_audit_rcept": null,
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes"
+    },
+    {
+      "id": "keppel_ansan_pfv",
+      "name": "케펠데이터센터안산피에프브이",
+      "dart_corp_code": "01665798",
+      "dart_last_audit_rcept": "20260330000663",
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes",
+      "borrower28_id": "b03",
+      "seed_name": "다올데이터센터1호피에프브이(주)",
+      "report_nm": "감사보고서 (2025.12)",
+      "rcept_dt": "20260330"
+    },
+    {
+      "id": "koramco_siheung_pfv",
+      "name": "코람코시화데이터센터피에프브이",
+      "dart_corp_code": "01835324",
+      "dart_last_audit_rcept": "20260413002815",
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes",
+      "borrower28_id": "b22",
+      "seed_name": "코람코시화데이터센터피에프브이(주)",
+      "report_nm": "감사보고서 (2025.12)",
+      "rcept_dt": "20260413"
+    },
+    {
+      "id": "kw_tg4_spc",
+      "name": "케이더블유투금제사차",
+      "dart_corp_code": null,
+      "dart_last_audit_rcept": null,
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes"
+    },
+    {
+      "id": "magna_pfv",
+      "name": "마그나피에프브이",
+      "dart_corp_code": "01717675",
+      "dart_last_audit_rcept": "20260406003595",
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes",
+      "borrower28_id": "b07",
+      "seed_name": "마그나피에프브이(주)",
+      "report_nm": "감사보고서 (2025.12)",
+      "rcept_dt": "20260406"
+    },
+    {
+      "id": "mountain_rich",
+      "name": "마운틴리치제일차",
+      "dart_corp_code": null,
+      "dart_last_audit_rcept": null,
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes"
+    },
+    {
+      "id": "msedc1_spc",
+      "name": "엠에스이디씨제일차",
+      "dart_corp_code": null,
+      "dart_last_audit_rcept": null,
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes"
+    },
+    {
+      "id": "msedc2_spc",
+      "name": "엠에스이디씨제이차",
+      "dart_corp_code": null,
+      "dart_last_audit_rcept": null,
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes"
+    },
+    {
+      "id": "pacific_sunny_spv",
+      "name": "퍼시픽써니 시행 SPC(법인명 미확인)",
+      "dart_corp_code": null,
+      "dart_last_audit_rcept": null,
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes"
+    },
+    {
+      "id": "peach_pfv",
+      "name": "퍼시픽피치피에프브이",
+      "dart_corp_code": "01640090",
+      "dart_last_audit_rcept": "20260401001191",
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes",
+      "borrower28_id": "b26",
+      "seed_name": "퍼시픽피치피에프브이(주)",
+      "report_nm": "감사보고서 (2025.12)",
+      "rcept_dt": "20260401"
+    },
+    {
+      "id": "pohang_aif_spc",
+      "name": "포항 AI Factory 시행법인(명칭 미공개)",
+      "dart_corp_code": null,
+      "dart_last_audit_rcept": null,
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes"
+    },
+    {
+      "id": "rec_datacenter",
+      "name": "알이씨데이터센터",
+      "dart_corp_code": null,
+      "dart_last_audit_rcept": null,
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes"
+    },
+    {
+      "id": "seed:b04",
+      "name": "더엣지영등포피에프브이(주)",
+      "dart_corp_code": null,
+      "dart_last_audit_rcept": null,
+      "report_nm": null,
+      "visibility": "no_map_node",
+      "borrower28_id": "b04",
+      "seed_name": "더엣지영등포피에프브이(주)",
+      "source": "borrower28_unresolved",
+      "skip_reason": null
+    },
+    {
+      "id": "seed:b11",
+      "name": "신영식사피에프브이(주)",
+      "dart_corp_code": null,
+      "dart_last_audit_rcept": "20210310000200",
+      "report_nm": "감사보고서 (2020.12)",
+      "visibility": "no_map_node",
+      "borrower28_id": "b11",
+      "seed_name": "신영식사피에프브이(주)",
+      "source": "borrower28_unresolved",
+      "skip_reason": "lookalike rejected: primary was 신영피에프브이제2호 — not 신영식사"
+    },
+    {
+      "id": "seed:b12",
+      "name": "아이비케이부산에이아이데이터센터(주)",
+      "dart_corp_code": null,
+      "dart_last_audit_rcept": null,
+      "report_nm": null,
+      "visibility": "no_map_node",
+      "borrower28_id": "b12",
+      "seed_name": "아이비케이부산에이아이데이터센터(주)",
+      "source": "borrower28_unresolved",
+      "skip_reason": null
+    },
+    {
+      "id": "seed:b14",
+      "name": "에이아이팩토리포항피에프브이(주)",
+      "dart_corp_code": null,
+      "dart_last_audit_rcept": null,
+      "report_nm": null,
+      "visibility": "no_map_node",
+      "borrower28_id": "b14",
+      "seed_name": "에이아이팩토리포항피에프브이(주)",
+      "source": "borrower28_unresolved",
+      "skip_reason": null
+    },
+    {
+      "id": "seed:b19",
+      "name": "케이인더스트리피에프브이(주)",
+      "dart_corp_code": null,
+      "dart_last_audit_rcept": null,
+      "report_nm": null,
+      "visibility": "no_map_node",
+      "borrower28_id": "b19",
+      "seed_name": "케이인더스트리피에프브이(주)",
+      "source": "borrower28_unresolved",
+      "skip_reason": null
+    },
+    {
+      "id": "seed:b28",
+      "name": "하양에너지발전(주)",
+      "dart_corp_code": "01736962",
+      "dart_last_audit_rcept": "20260410002411",
+      "report_nm": "감사보고서 (2025.12)",
+      "visibility": "no_map_node",
+      "borrower28_id": "b28",
+      "seed_name": "하양에너지발전(주)",
+      "source": "borrower28_unresolved",
+      "skip_reason": "법인명에 에너지발전 포함 — DC PFV로 자동 확정하지 않음"
+    },
+    {
+      "id": "shinyoung_munbong_pfv",
+      "name": "신영문봉피에프브이",
+      "dart_corp_code": "01692525",
+      "dart_last_audit_rcept": "20260401001427",
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes",
+      "borrower28_id": "b10",
+      "seed_name": "신영문봉PFV",
+      "report_nm": "감사보고서 (2025.12)",
+      "rcept_dt": "20260401"
+    },
+    {
+      "id": "sk_sec_spc_yongin",
+      "name": "SK증권 SPC(명칭 미공개)",
+      "dart_corp_code": null,
+      "dart_last_audit_rcept": null,
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes"
+    },
+    {
+      "id": "yk_ansan_d1",
+      "name": "와이케이안산디원",
+      "dart_corp_code": null,
+      "dart_last_audit_rcept": null,
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes"
+    },
+    {
+      "id": "yongin_deokseong_pfv",
+      "name": "용인덕성데이터센터피에프브이",
+      "dart_corp_code": "02010269",
+      "dart_last_audit_rcept": null,
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes",
+      "borrower28_id": "b17",
+      "seed_name": "용인덕성데이터센터피에프브이(주)"
+    },
+    {
+      "id": "yongin_jigok_dc_bridge_ref",
+      "name": "용인지곡동데이터센터(브릿지 참조)",
+      "dart_corp_code": null,
+      "dart_last_audit_rcept": null,
+      "visibility": "visible",
+      "region": "KR",
+      "source": "network.nodes"
+    }
+  ]
+}

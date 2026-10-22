@@ -1,0 +1,2669 @@
+{
+ "meta": {
+  "as_of": "2026-10-20",
+  "note": "Comparable company dossiers from SEC/IR. Missing fields stay explicit (UNKNOWN).",
+  "research_pass": "enrich_company_profiles.py"
+ },
+ "profiles": {
+  "nvidia": {
+   "as_of": "2026-01-25",
+   "period_label": "FY2026 (year ended Jan 25, 2026)",
+   "currency": "USD",
+   "unit": "million",
+   "overview": "Fabless AI/accelerated computing designer. GPUs/SoCs manufactured via foundries (TSMC, Samsung) and memory partners (SK hynix, Micron, Samsung); sold to CSPs, OEMs, ODMs.",
+   "metrics": [
+    {
+     "id": "revenue",
+     "label": "Revenue (GAAP)",
+     "value_usd_m": 215938,
+     "display": "$215.9B",
+     "period": "FY2026",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_NVDA_FY26_PR",
+      "S_NVDA_FY26"
+     ]
+    },
+    {
+     "id": "operating_income",
+     "label": "Operating income (GAAP)",
+     "value_usd_m": 130387,
+     "display": "$130.4B",
+     "period": "FY2026",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_NVDA_FY26_PR"
+     ]
+    },
+    {
+     "id": "ocf",
+     "label": "Operating cash flow",
+     "value_usd_m": 102718,
+     "display": "$102.7B",
+     "period": "FY2026",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_NVDA_FY26_PR"
+     ],
+     "note": "CFO commentary / non-GAAP FCF bridge"
+    },
+    {
+     "id": "fcf",
+     "label": "Free cash flow (company-defined)",
+     "value_usd_m": 96575,
+     "display": "$96.6B",
+     "period": "FY2026",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_NVDA_FY26_PR"
+     ],
+     "note": "OCF − PPE/intangibles purchases − principal payments on PPE/intangibles"
+    },
+    {
+     "id": "cash",
+     "label": "Cash and cash equivalents",
+     "value_usd_m": 10605,
+     "display": "$10.6B",
+     "period": "2026-01-25",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_NVDA_FY26_PR"
+     ]
+    },
+    {
+     "id": "long_term_debt",
+     "label": "Long-term debt",
+     "value_usd_m": 7469,
+     "display": "$7.5B",
+     "period": "2026-01-25",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_NVDA_FY26_PR"
+     ]
+    },
+    {
+     "id": "interest_expense",
+     "label": "Interest expense",
+     "value_usd_m": 259,
+     "display": "$259M",
+     "period": "FY2026",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_NVDA_FY26_PR"
+     ]
+    },
+    {
+     "id": "capex_ppe",
+     "label": "Purchases of PPE and intangibles",
+     "value_usd_m": 6042,
+     "display": "$6.0B",
+     "period": "FY2026",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_NVDA_FY26_PR"
+     ]
+    },
+    {
+     "id": "ebitda",
+     "label": "EBITDA",
+     "value_usd_m": null,
+     "display": "Not separately highlighted as primary KPI in FY26 PR",
+     "period": "FY2026",
+     "status": "UNKNOWN",
+     "source_ids": [
+      "S_NVDA_FY26_PR"
+     ],
+     "note": "Unavailable as a company-emphasized GAAP line in the cited exhibit"
+    }
+   ],
+   "financing_notes": [
+    "Investment-grade public equity (NVDA); modest long-term debt vs cash generation.",
+    "AI-cycle exposure is primarily customer CAPEX and supply/capacity commitments, not CoreWeave-style DDTLs.",
+    "Places non-cancellable component orders / deposits to secure capacity (10-K)."
+   ],
+   "risk_factors": [
+    "Customer concentration among large CSPs/OEMs",
+    "Foundry and CoWoS / advanced packaging capacity",
+    "Export controls / geopolitics (Taiwan supply chain)",
+    "Competition (AMD, custom ASICs)",
+    "Interest-rate shock: direct floating-debt path is limited vs cash flow; secondary path is customer financing stress"
+   ],
+   "missing": [
+    "Instrument-level floating-rate debt schedule comparable to CoreWeave 10-Q Note 10",
+    "Named USD value of individual hyperscaler purchase agreements"
+   ],
+   "source_ids": [
+    "S_NVDA_FY26_PR",
+    "S_NVDA_FY26",
+    "S_NVDA_10K_FY26"
+   ],
+   "reporting_currency": "USD",
+   "listing_currency": "USD"
+  },
+  "microsoft": {
+   "as_of": "2025-06-30",
+   "period_label": "FY2025 (year ended June 30, 2025)",
+   "currency": "USD",
+   "unit": "million",
+   "overview": "Hyperscale cloud (Azure), productivity, and AI platform. Strategic investor in and cloud provider to OpenAI; major NVIDIA GPU customer for Azure AI infrastructure.",
+   "metrics": [
+    {
+     "id": "revenue",
+     "label": "Revenue",
+     "value_usd_m": 281724,
+     "display": "$281.7B",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_MSFT_FY25",
+      "S_MSFT_10K_FY25"
+     ]
+    },
+    {
+     "id": "operating_income",
+     "label": "Operating income",
+     "value_usd_m": 128528,
+     "display": "$128.5B",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_MSFT_FY25"
+     ]
+    },
+    {
+     "id": "intelligent_cloud_rev",
+     "label": "Intelligent Cloud revenue",
+     "value_usd_m": 106265,
+     "display": "$106.3B",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_MSFT_FY25"
+     ]
+    },
+    {
+     "id": "ocf",
+     "label": "Operating cash flow",
+     "value_usd_m": 136162,
+     "display": "$136.2B",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_MSFT_FY25"
+     ]
+    },
+    {
+     "id": "cash_st_investments",
+     "label": "Cash + short-term investments",
+     "value_usd_m": 94565,
+     "display": "$94.6B",
+     "period": "2025-06-30",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_MSFT_FY25"
+     ]
+    },
+    {
+     "id": "cash",
+     "label": "Cash and cash equivalents",
+     "value_usd_m": 30242,
+     "display": "$30.2B",
+     "period": "2025-06-30",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_MSFT_FY25"
+     ]
+    },
+    {
+     "id": "total_debt",
+     "label": "Long-term debt (incl. current)",
+     "value_usd_m": 43151,
+     "display": "$43.2B",
+     "period": "2025-06-30",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_MSFT_FY25"
+     ],
+     "note": "Current LT debt $3.0B + LT debt $40.2B; commercial paper $0"
+    },
+    {
+     "id": "ppe",
+     "label": "Property and equipment, net",
+     "value_usd_m": 204966,
+     "display": "$205.0B",
+     "period": "2025-06-30",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_MSFT_FY25"
+     ]
+    },
+    {
+     "id": "openai_azure_commit",
+     "label": "OpenAI incremental Azure commitment",
+     "value_usd_m": 250000,
+     "display": "$250B",
+     "period": "2025-10 agreement",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_MSFT_OAI_2025",
+      "S_MSFT_10K_OAI"
+     ]
+    },
+    {
+     "id": "openai_funding_commit",
+     "label": "Cumulative OpenAI funding commitments",
+     "value_usd_m": 13000,
+     "display": "$13B",
+     "period": "through recapitalization",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_MSFT_10K_OAI"
+     ]
+    },
+    {
+     "id": "fcf",
+     "label": "Free cash flow",
+     "value_usd_m": null,
+     "display": "Not restated as a single GAAP line here",
+     "period": "FY2025",
+     "status": "UNKNOWN",
+     "source_ids": [
+      "S_MSFT_FY25"
+     ],
+     "note": "Compute from OCF − capex using 10-K cash flow details if needed"
+    }
+   ],
+   "financing_notes": [
+    "Network (2026-10-20): Customers: Arista (>10% ANET); suppliers/partners: NVIDIA, AMD; interconnect: Equinix, Digital Realty; OpenAI equity.",
+    "Investment-grade public company with large fixed-rate senior notes program.",
+    "OpenAI stake accounted under equity method ($13B cumulative funding commitments).",
+    "AI CAPEX visible in rising PPE; refinancing risk is limited relative to OCF but rate rises still affect new issuance."
+   ],
+   "risk_factors": [
+    "AI CAPEX intensity and power availability",
+    "OpenAI partnership economics / competitive cloud shift",
+    "Regulatory scrutiny of large AI partnerships",
+    "Customer/supplier concentration in GPU and foundry ecosystem (indirect)"
+   ],
+   "missing": [
+    "Full bond-by-bond maturity table in this dataset",
+    "Floating vs fixed share of total debt by instrument"
+   ],
+   "source_ids": [
+    "S_MSFT_FY25",
+    "S_MSFT_10K_FY25",
+    "S_MSFT_OAI_2025",
+    "S_MSFT_10K_OAI",
+    "S_MSFT_FY26Q1"
+   ],
+   "reporting_currency": "USD",
+   "listing_currency": "USD"
+  },
+  "amazon": {
+   "as_of": "2025-12-31",
+   "period_label": "FY2025 (year ended Dec 31, 2025)",
+   "currency": "USD",
+   "unit": "million",
+   "overview": "AWS hyperscaler plus retail/advertising. Multi-year NVIDIA GPU deployments alongside custom Trainium silicon.",
+   "metrics": [
+    {
+     "id": "revenue",
+     "label": "Net sales (consolidated)",
+     "value_usd_m": 716924,
+     "display": "$716.9B",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_AMZN_FY25"
+     ]
+    },
+    {
+     "id": "aws_revenue",
+     "label": "AWS net sales",
+     "value_usd_m": 128725,
+     "display": "$128.7B",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_AMZN_FY25"
+     ]
+    },
+    {
+     "id": "operating_income",
+     "label": "Operating income (consolidated)",
+     "value_usd_m": 79975,
+     "display": "$80.0B",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_AMZN_FY25"
+     ]
+    },
+    {
+     "id": "aws_operating_income",
+     "label": "AWS operating income",
+     "value_usd_m": 45606,
+     "display": "$45.6B",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_AMZN_FY25"
+     ]
+    },
+    {
+     "id": "gpu_commit_units",
+     "label": "NVIDIA GPUs (announced deployments)",
+     "value_usd_m": null,
+     "display": "~1M (2026–27) + ~2M (2027–28)",
+     "period": "2026 announcements",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_AWS_NVDA_1M",
+      "S_AWS_NVDA_2M"
+     ],
+     "note": "Unit counts disclosed; USD not disclosed"
+    },
+    {
+     "id": "total_debt_face",
+     "label": "Long-term debt face (incl. current)",
+     "value_usd_m": 68800,
+     "display": "~$68.8B face",
+     "period": "2025-12-31",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_AMZN_FY25"
+     ],
+     "note": "Primarily fixed-rate unsecured senior notes per Item 7A commentary"
+    },
+    {
+     "id": "cash",
+     "label": "Cash and cash equivalents",
+     "value_usd_m": null,
+     "display": "See 10-K balance sheet",
+     "period": "2025-12-31",
+     "status": "UNKNOWN",
+     "source_ids": [
+      "S_AMZN_FY25"
+     ],
+     "note": "Exact cash line not mirrored from secondary summary in this pass"
+    },
+    {
+     "id": "ebitda",
+     "label": "EBITDA",
+     "value_usd_m": null,
+     "display": "Not used as primary AWS KPI here",
+     "period": "FY2025",
+     "status": "UNKNOWN",
+     "source_ids": [
+      "S_AMZN_FY25"
+     ]
+    }
+   ],
+   "financing_notes": [
+    "Network (2026-10-20): NVIDIA GPU deployments; AMD instances; Equinix/DLR Direct Connect; Anthropic equity+AWS compute.",
+    "Investment-grade; AWS CAPEX funded at Amazon parent level.",
+    "Debt predominantly fixed-rate senior notes — rate shock hits refinancing/new issuance more than floating coupons."
+   ],
+   "risk_factors": [
+    "AI CAPEX / power",
+    "Custom silicon vs GPU mix",
+    "Cloud competition",
+    "Indirect: supplier (NVIDIA) and foundry (TSMC via NVIDIA) concentration"
+   ],
+   "missing": [
+    "USD value of NVIDIA purchase agreements",
+    "Cash and marketable securities exact line in this profile (see 10-K)"
+   ],
+   "source_ids": [
+    "S_AMZN_FY25",
+    "S_AWS_NVDA_1M",
+    "S_AWS_NVDA_2M"
+   ],
+   "reporting_currency": "USD",
+   "listing_currency": "USD"
+  },
+  "oracle": {
+   "as_of": "2025-05-31",
+   "period_label": "FY2025 (year ended May 31, 2025)",
+   "currency": "USD",
+   "unit": "million",
+   "overview": "Enterprise software and OCI cloud. Expanding NVIDIA GPU supercluster capacity; competes with and partners across AI cloud.",
+   "metrics": [
+    {
+     "id": "revenue",
+     "label": "Total revenues",
+     "value_usd_m": 57399,
+     "display": "$57.4B",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_ORCL_FY25"
+     ]
+    },
+    {
+     "id": "cloud_support_rev",
+     "label": "Cloud services and license support",
+     "value_usd_m": 44029,
+     "display": "$44.0B",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_ORCL_FY25"
+     ]
+    },
+    {
+     "id": "operating_income",
+     "label": "Operating income",
+     "value_usd_m": 17678,
+     "display": "$17.7B",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_ORCL_FY25"
+     ]
+    },
+    {
+     "id": "interest_expense",
+     "label": "Interest expense",
+     "value_usd_m": 3578,
+     "display": "$3.6B",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_ORCL_FY25"
+     ]
+    },
+    {
+     "id": "ocf",
+     "label": "Operating cash flow",
+     "value_usd_m": 20800,
+     "display": "$20.8B",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_ORCL_FY25"
+     ]
+    },
+    {
+     "id": "borrowings",
+     "label": "Notes payable and other borrowings",
+     "value_usd_m": 92600,
+     "display": "~$92.6B",
+     "period": "FY2025 YE",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_ORCL_FY25"
+     ],
+     "note": "Current + non-current notes/borrowings per FY results release"
+    },
+    {
+     "id": "fcf",
+     "label": "Free cash flow",
+     "value_usd_m": null,
+     "display": "Not restated as single figure here",
+     "period": "FY2025",
+     "status": "UNKNOWN",
+     "source_ids": [
+      "S_ORCL_FY25"
+     ]
+    },
+    {
+     "id": "cash",
+     "label": "Cash and cash equivalents",
+     "value_usd_m": null,
+     "display": "See FY25 balance sheet in release",
+     "period": "FY2025 YE",
+     "status": "UNKNOWN",
+     "source_ids": [
+      "S_ORCL_FY25"
+     ]
+    }
+   ],
+   "financing_notes": [
+    "Network (2026-10-20): NVIDIA AI cloud; AMD Instinct; Equinix/DLR FastConnect; OpenAI Stargate capacity.",
+    "Material notes payable / borrowings relative to peers — interest expense is a first-order sensitivity channel.",
+    "Cloud infrastructure growth funds AI GPU cluster buildout (NVIDIA relationship)."
+   ],
+   "risk_factors": [
+    "High absolute debt / interest expense vs AI CAPEX race",
+    "Cloud competition (AWS, Azure, Google)",
+    "Customer concentration",
+    "GPU supply and data-center power"
+   ],
+   "missing": [
+    "Complete instrument maturity schedule in this dataset",
+    "Floating vs fixed mix by facility"
+   ],
+   "source_ids": [
+    "S_ORCL_FY25",
+    "S_ORCL_NV"
+   ],
+   "reporting_currency": "USD",
+   "listing_currency": "USD"
+  },
+  "tsmc": {
+   "as_of": "2025-12-31",
+   "period_label": "CY2025 consolidated (TIFRS)",
+   "currency": "TWD",
+   "reporting_currency": "TWD",
+   "listing_currency": "USD",
+   "unit": "NT$ billion / USD billion",
+   "overview": "Pure-play foundry. Financial statements in TWD (and USD convenience). NYSE ADR (TSM) trades in USD — do not treat TSMC as a US-domiciled reporter.",
+   "metrics": [
+    {
+     "id": "revenue_twd",
+     "label": "Net revenue (TWD)",
+     "value_usd_m": null,
+     "currency": "TWD",
+     "display": "NT$3,809.05B",
+     "period": "CY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_TSMC_FY25",
+      "S_TSMC_6K_FY25"
+     ]
+    },
+    {
+     "id": "revenue_usd",
+     "label": "Net revenue (USD convenience)",
+     "value_usd_m": 122420,
+     "currency": "USD",
+     "display": "US$122.42B",
+     "period": "CY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_TSMC_FY25"
+     ],
+     "note": "Company-reported USD translation"
+    },
+    {
+     "id": "operating_income_twd",
+     "label": "Operating income (TWD)",
+     "value_usd_m": null,
+     "currency": "TWD",
+     "display": "NT$1,936.09B",
+     "period": "CY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_TSMC_FY25"
+     ]
+    },
+    {
+     "id": "operating_margin",
+     "label": "Operating margin",
+     "value_usd_m": null,
+     "currency": "TWD",
+     "display": "50.8%",
+     "period": "CY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_TSMC_FY25"
+     ]
+    },
+    {
+     "id": "capex_usd",
+     "label": "CAPEX (USD)",
+     "value_usd_m": 40900,
+     "currency": "USD",
+     "display": "US$40.9B",
+     "period": "CY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_TSMC_FY25"
+     ]
+    },
+    {
+     "id": "capex_guide",
+     "label": "2026 CAPEX guidance",
+     "value_usd_m": null,
+     "currency": "USD",
+     "display": "US$52–56B",
+     "period": "CY2026 guide",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_TSMC_FY25"
+     ]
+    },
+    {
+     "id": "total_debt",
+     "label": "Total debt",
+     "value_usd_m": null,
+     "currency": "TWD",
+     "display": "Not disclosed in this dossier",
+     "period": "CY2025",
+     "status": "UNKNOWN",
+     "source_ids": [
+      "S_TSMC_FY25"
+     ]
+    }
+   ],
+   "financing_notes": [
+    "Reporting currency: TWD. Listing: Taiwan main board + NYSE ADR (USD quotes).",
+    "ASML tools are critical-path equipment (existing edge)."
+   ],
+   "risk_factors": [
+    "Geopolitics / Taiwan",
+    "Customer concentration",
+    "Advanced packaging",
+    "CAPEX intensity"
+   ],
+   "missing": [
+    "Named customer revenue mix",
+    "Full TWD debt schedule in this dossier"
+   ],
+   "source_ids": [
+    "S_TSMC_FY25",
+    "S_TSMC_6K_FY25",
+    "S_ASML_TSMC"
+   ]
+  },
+  "sk_hynix": {
+   "as_of": "2025-12-31",
+   "period_label": "FY2025 (K-IFRS consolidated)",
+   "currency": "KRW",
+   "reporting_currency": "KRW",
+   "listing_currency": "KRW",
+   "unit": "billion KRW",
+   "overview": "SK하이닉스(000660). DRAM·NAND·HBM. FY2025 매출 97.15조·영업이익 47.21조(영업이익률 49%). NVIDIA 10-K 메모리 공급사 + 2026 다년 기술 파트너십. ASML EUV ~11.95조 취득 공시. 한미반도체 TC본더·주성엔지니어링 공정장비 구매(DART).",
+   "metrics": [
+    {
+     "id": "revenue",
+     "label": "매출액",
+     "value_usd_m": null,
+     "currency": "KRW",
+     "display": "97.15조 원",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_SKH_FY25",
+      "S_SKH_CFS_FY25"
+     ],
+     "value_native": 971467,
+     "note": "KRW 97,146.7 billion"
+    },
+    {
+     "id": "operating_income",
+     "label": "영업이익",
+     "value_usd_m": null,
+     "currency": "KRW",
+     "display": "47.21조 원",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_SKH_FY25",
+      "S_SKH_CFS_FY25"
+     ],
+     "value_native": 472063
+    },
+    {
+     "id": "operating_margin",
+     "label": "영업이익률",
+     "value_usd_m": null,
+     "currency": "KRW",
+     "display": "49%",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_SKH_FY25"
+     ]
+    },
+    {
+     "id": "net_income",
+     "label": "당기순이익",
+     "value_usd_m": null,
+     "currency": "KRW",
+     "display": "42.95조 원",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_SKH_FY25",
+      "S_SKH_CFS_FY25"
+     ],
+     "value_native": 429479
+    },
+    {
+     "id": "cash",
+     "label": "현금및현금성자산",
+     "value_usd_m": null,
+     "currency": "KRW",
+     "display": "14.92조 원",
+     "period": "2025-12-31",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_SKH_CFS_FY25"
+     ],
+     "value_native": 14924,
+     "note": "KRW 14,923,766 million"
+    },
+    {
+     "id": "total_debt",
+     "label": "차입금 합계",
+     "value_usd_m": null,
+     "currency": "KRW",
+     "display": "22.25조 원",
+     "period": "2025-12-31",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_SKH_CFS_FY25"
+     ],
+     "value_native": 22248,
+     "note": "유동+비유동 borrowings KRW 22,247,905 million"
+    },
+    {
+     "id": "capex_ppe",
+     "label": "유형자산 취득(CFS)",
+     "value_usd_m": null,
+     "currency": "KRW",
+     "display": "27.52조 원",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_SKH_CFS_FY25"
+     ],
+     "value_native": 27519,
+     "note": "Acquisitions of PPE KRW 27,518,924 million"
+    },
+    {
+     "id": "asml_euv_commitment",
+     "label": "ASML EUV 취득 약정",
+     "value_usd_m": null,
+     "currency": "KRW",
+     "display": "11.95조 원",
+     "period": "~2027-12",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_SKH_ASML_EUV"
+     ],
+     "value_native": 11950,
+     "note": "2026.03.24 공시; 설치·개조 포함"
+    },
+    {
+     "id": "customer_a",
+     "label": "단일 고객 A (>10%)",
+     "value_usd_m": null,
+     "currency": "KRW",
+     "display": "23.26조 원 (상호 미공시)",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_SKH_FY25"
+     ],
+     "note": "사업보고서 고객 집중 공시; NVIDIA로 특정하지 않음"
+    },
+    {
+     "id": "debt_equity_ratio",
+     "label": "부채비율",
+     "value_usd_m": null,
+     "currency": "KRW",
+     "display": "45.95%",
+     "period": "2025-12-31",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_SKH_CFS_FY25"
+     ],
+     "note": "Total liabilities / equity"
+    }
+   ],
+   "financing_notes": [
+    "원화(KRW) 보고. USD 환산 미적용.",
+    "주요 차입 계약상 부채비율·LTV 준수 조항; 2025.12.31 기준 준수(CFS 주석).",
+    "순차입비율은 2025말 현금성자산 확대로 음수(미공시)."
+   ],
+   "risk_factors": [
+    "HBM CAPEX·수율",
+    "고객 집중(Customer A)",
+    "EUV 장비 납기·환율",
+    "후공정(TC 본더) 공급망",
+    "메모리 가격 사이클"
+   ],
+   "missing": [
+    "Customer A 상호(공시상 미기재)",
+    "NVIDIA HBM 고정 물량·단가",
+    "TSMC 베이스다이 계약 금액(양자 공시 없음)"
+   ],
+   "source_ids": [
+    "S_SKH_FY25",
+    "S_SKH_CFS_FY25",
+    "S_SKH_ASML_EUV",
+    "S_NVDA_10K_FY26_MFG",
+    "S_SKH_NVDA_2026",
+    "S_HANMI_DART_SKH_2025",
+    "S_JUSUNG_DART_SKH"
+   ]
+  },
+  "samsung": {
+   "as_of": "2025-12-31",
+   "period_label": "FY2025 (K-IFRS consolidated)",
+   "currency": "KRW",
+   "reporting_currency": "KRW",
+   "listing_currency": "KRW",
+   "unit": "billion KRW",
+   "overview": "삼성전자(005930). DX·DS·SDC·Harman. FY2025 연결 매출 333.6조·영업이익 약 43.6조 원. DS 매출 130.1조·영업이익 24.9조. 5대 매출처(Alphabet, Apple 등) 합계 ~15%. NVIDIA 파운드리·메모리 공급; Tesla Foundry 수주 USD 16.5B; DX는 Qualcomm AP 매입.",
+   "metrics": [
+    {
+     "id": "revenue",
+     "label": "매출액",
+     "value_usd_m": null,
+     "currency": "KRW",
+     "display": "333.6조 원",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_SMSN_BR_FY25",
+      "S_SMSN_FY25"
+     ],
+     "value_native": 333606,
+     "note": "KRW 333조 6,059억"
+    },
+    {
+     "id": "operating_income",
+     "label": "영업이익",
+     "value_usd_m": null,
+     "currency": "KRW",
+     "display": "43.6조 원",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_SMSN_FY25",
+      "S_SMSN_SOI_FY25"
+     ],
+     "value_native": 43600,
+     "note": "연결; 부문 합계 DX 12.85 + DS 24.86 + SDC 4.12 + Harman 1.53조 원"
+    },
+    {
+     "id": "ds_revenue",
+     "label": "DS 부문 매출",
+     "value_usd_m": null,
+     "currency": "KRW",
+     "display": "130.1조 원",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_SMSN_BR_FY25"
+     ],
+     "value_native": 130128,
+     "note": "내부거래 포함 부문 매출"
+    },
+    {
+     "id": "ds_operating_income",
+     "label": "DS 부문 영업이익",
+     "value_usd_m": null,
+     "currency": "KRW",
+     "display": "24.9조 원",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_SMSN_BR_FY25"
+     ],
+     "value_native": 24858
+    },
+    {
+     "id": "capex_facility",
+     "label": "시설투자",
+     "value_usd_m": null,
+     "currency": "KRW",
+     "display": "52.7조 원",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_SMSN_BR_FY25"
+     ],
+     "value_native": 52700,
+     "note": "DS·SDC 등 첨단공정·인프라 중심"
+    },
+    {
+     "id": "cash",
+     "label": "현금및현금성자산",
+     "value_usd_m": null,
+     "currency": "KRW",
+     "display": "57.86조 원",
+     "period": "2025-12-31",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_SMSN_BR_FY25"
+     ],
+     "value_native": 57856,
+     "note": "연결 재무상태표"
+    },
+    {
+     "id": "total_debt",
+     "label": "차입금(단·장기+사채)",
+     "value_usd_m": null,
+     "currency": "KRW",
+     "display": "24.06조 원",
+     "period": "2025-12-31",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_SMSN_BR_FY25"
+     ],
+     "value_native": 24062,
+     "note": "단기차입 17.575 + 장기차입 6.480 + 사채 0.007조 원"
+    },
+    {
+     "id": "ppe_acquisitions_cfs",
+     "label": "유형자산 취득(CFS)",
+     "value_usd_m": null,
+     "currency": "KRW",
+     "display": "47.5조 원",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_SMSN_BR_FY25"
+     ],
+     "value_native": 47522,
+     "note": "현금흐름표 유형자산의 취득"
+    },
+    {
+     "id": "top5_customer_share",
+     "label": "5대 매출처 매출 비중",
+     "value_usd_m": null,
+     "currency": "KRW",
+     "display": "약 15%",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_SMSN_BR_FY25",
+      "S_SMSN_IR_FY25_EN"
+     ],
+     "note": "Alphabet, Apple, Deutsche Telekom, Hong Kong Techtronics, Supreme Electronics"
+    },
+    {
+     "id": "tesla_foundry_backlog",
+     "label": "Tesla Foundry 수주총액",
+     "value_usd_m": null,
+     "currency": "USD",
+     "display": "USD 16.54B",
+     "period": "2025-07 ~ 2033-12",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_SMSN_BR_FY25"
+     ],
+     "note": "사업보고서 수주상황; 수요에 따라 변동 가능"
+    },
+    {
+     "id": "rd_spend",
+     "label": "연구개발비 / 매출",
+     "value_usd_m": null,
+     "currency": "KRW",
+     "display": "11.3%",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_SMSN_BR_FY25"
+     ]
+    }
+   ],
+   "financing_notes": [
+    "원화(KRW) 보고. USD 환산 미적용.",
+    "이자율 위험: 예금·변동금리 차입 중심이나 내부자금 공유로 외부차입 최소화(사업보고서 재무위험관리).",
+    "신용등급: Moody's Aa2, S&P AA- (사업보고서)."
+   ],
+   "risk_factors": [
+    "메모리·파운드리 사이클",
+    "고객 집중(5대 ~15%)",
+    "EUV·선단 CAPEX",
+    "환율(USD/EUR)",
+    "지정학·수출규제"
+   ],
+   "missing": [
+    "5대 매출처 개별 매출액",
+    "NVIDIA HBM 계약 단가·물량",
+    "ASML EUV 개별 계약 금액(삼성 측 미공시)"
+   ],
+   "source_ids": [
+    "S_SMSN_BR_FY25",
+    "S_SMSN_IR_FY25_EN",
+    "S_SMSN_FY25",
+    "S_SMSN_SOI_FY25",
+    "S_NVDA_10K_FY26_MFG",
+    "S_NVDA_SMSN_AIF"
+   ]
+  },
+  "meta": {
+   "as_of": "2025-12-31",
+   "period_label": "FY2025 (year ended Dec 31, 2025)",
+   "currency": "USD",
+   "unit": "million",
+   "overview": "Family of Apps advertising platform with Reality Labs; large AI infrastructure / NVIDIA GPU buyer for training and inference.",
+   "metrics": [
+    {
+     "id": "revenue",
+     "label": "Revenue",
+     "value_usd_m": 200966,
+     "display": "$201.0B",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_META_FY25"
+     ]
+    },
+    {
+     "id": "operating_income",
+     "label": "Income from operations",
+     "value_usd_m": 83276,
+     "display": "$83.3B",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_META_FY25"
+     ]
+    },
+    {
+     "id": "advertising_rev",
+     "label": "Advertising revenue",
+     "value_usd_m": 196175,
+     "display": "$196.2B",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_META_FY25"
+     ]
+    },
+    {
+     "id": "reality_labs_op_loss",
+     "label": "Reality Labs operating loss",
+     "value_usd_m": -19193,
+     "display": "$(19.2)B",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_META_FY25"
+     ]
+    },
+    {
+     "id": "capex",
+     "label": "CapEx incl. finance-lease principal",
+     "value_usd_m": 72220,
+     "display": "$72.2B",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_META_FY25"
+     ],
+     "note": "Company-defined CapEx including finance-lease principal payments"
+    },
+    {
+     "id": "debt",
+     "label": "Total debt",
+     "value_usd_m": null,
+     "display": "See Meta 10-K balance sheet",
+     "period": "FY2025",
+     "status": "UNKNOWN",
+     "source_ids": [
+      "S_META_FY25"
+     ]
+    },
+    {
+     "id": "fcf",
+     "label": "Free cash flow",
+     "value_usd_m": null,
+     "display": "See cash flow statement",
+     "period": "FY2025",
+     "status": "UNKNOWN",
+     "source_ids": [
+      "S_META_FY25"
+     ]
+    }
+   ],
+   "financing_notes": [
+    "Primarily equity-funded with investment-grade access; AI CapEx is the dominant cash use.",
+    "Rate shock: more relevant via CapEx financing cost and advertising cycle than floating AI-cloud DDTLs."
+   ],
+   "risk_factors": [
+    "AI CapEx intensity",
+    "Advertising cyclicality",
+    "Reality Labs losses",
+    "GPU / power supply constraints"
+   ],
+   "missing": [
+    "Debt maturity schedule in this dataset",
+    "Named GPU contract USD amounts"
+   ],
+   "source_ids": [
+    "S_META_FY25"
+   ],
+   "reporting_currency": "USD",
+   "listing_currency": "USD"
+  },
+  "equinix": {
+   "as_of": "2025-12-31",
+   "period_label": "FY2025",
+   "currency": "USD",
+   "unit": "million",
+   "overview": "Global colocation / interconnection REIT. Provides data-center capacity used by cloud and enterprise customers; buys cooling/power infrastructure from suppliers such as Vertiv.",
+   "metrics": [
+    {
+     "id": "revenue",
+     "label": "Revenues",
+     "value_usd_m": 9217,
+     "display": "$9.2B",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_EQIX_FY25"
+     ]
+    },
+    {
+     "id": "operating_income",
+     "label": "Income from operations",
+     "value_usd_m": 1848,
+     "display": "$1.85B",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_EQIX_FY25"
+     ]
+    },
+    {
+     "id": "adj_ebitda",
+     "label": "Adjusted EBITDA",
+     "value_usd_m": 4530,
+     "display": "$4.53B",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_EQIX_FY25"
+     ],
+     "note": "Non-GAAP; margin 49%"
+    },
+    {
+     "id": "affo",
+     "label": "AFFO",
+     "value_usd_m": 3761,
+     "display": "$3.76B",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_EQIX_FY25"
+     ],
+     "note": "Non-GAAP REIT metric"
+    },
+    {
+     "id": "interest_expense",
+     "label": "Interest expense",
+     "value_usd_m": 527,
+     "display": "$527M",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_EQIX_FY25"
+     ]
+    },
+    {
+     "id": "total_debt",
+     "label": "Total debt principal",
+     "value_usd_m": null,
+     "display": "See 10-K debt note (~$21B+ senior notes program)",
+     "period": "FY2025",
+     "status": "INFERRED",
+     "source_ids": [
+      "S_EQIX_FY25"
+     ],
+     "note": "Exact principal table not fully copied; REIT has material fixed-rate senior notes"
+    }
+   ],
+   "financing_notes": [
+    "Network (2026-10-20): ExpressRoute/Direct Connect/FastConnect partner paths to Microsoft, Amazon, Oracle (official partner docs).",
+    "REIT capital structure with material senior notes — refinancing/new issuance sensitive to rates.",
+    "xScale JV capital plans amplify growth CAPEX needs."
+   ],
+   "risk_factors": [
+    "Interest expense / refinancing",
+    "Power and land availability",
+    "Customer concentration among hyperscalers (general industry)",
+    "Construction cost inflation"
+   ],
+   "missing": [
+    "Full debt maturity schedule by instrument in this dataset",
+    "Named hyperscaler lease USD amounts"
+   ],
+   "source_ids": [
+    "S_EQIX_FY25"
+   ],
+   "reporting_currency": "USD",
+   "listing_currency": "USD"
+  },
+  "coreweave": {
+   "as_of": "2026-06-30",
+   "period_label": "10-Q Q2 2026",
+   "currency": "USD",
+   "unit": "million",
+   "overview": "Specialized AI cloud. Detailed debt instruments, maturities, and floating SOFR exposure already modeled in financials.json.",
+   "metrics": [
+    {
+     "id": "total_principal",
+     "label": "Total debt principal",
+     "value_usd_m": 35551,
+     "display": "$35.6B",
+     "period": "2026-06-30",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_10Q2"
+     ]
+    },
+    {
+     "id": "cash",
+     "label": "Cash and cash equivalents",
+     "value_usd_m": 5524,
+     "display": "$5.5B",
+     "period": "2026-06-30",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_10Q2"
+     ]
+    },
+    {
+     "id": "ocf_6m",
+     "label": "Operating cash flow (6M)",
+     "value_usd_m": 3663,
+     "display": "$3.7B",
+     "period": "H1 2026",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_10Q2"
+     ]
+    },
+    {
+     "id": "capex_6m",
+     "label": "CAPEX (6M)",
+     "value_usd_m": 14117,
+     "display": "$14.1B",
+     "period": "H1 2026",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_10Q2"
+     ]
+    },
+    {
+     "id": "rpo",
+     "label": "Remaining performance obligations",
+     "value_usd_m": 103700,
+     "display": "$103.7B",
+     "period": "2026-06-30",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_10Q2"
+     ]
+    },
+    {
+     "id": "interest_exp_6m",
+     "label": "Interest expense after capitalization (6M)",
+     "value_usd_m": 985,
+     "display": "$985M",
+     "period": "H1 2026",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_10Q2"
+     ]
+    },
+    {
+     "id": "revenue",
+     "label": "Annual revenue",
+     "value_usd_m": null,
+     "display": "See latest 10-K/10-Q income statement",
+     "period": "various",
+     "status": "UNKNOWN",
+     "source_ids": [
+      "S_10Q2"
+     ],
+     "note": "Full-year revenue not duplicated here; use filings"
+    }
+   ],
+   "financing_notes": [
+    "See financials.json instruments (DDTLs, notes, convertibles) — primary quantified rate-shock borrower in Shock mode.",
+    "High floating-rate / SOFR exposure relative to hyperscaler peers."
+   ],
+   "risk_factors": [
+    "Customer concentration",
+    "Refinancing / floating SOFR debt",
+    "GPU CAPEX",
+    "Interest-rate and credit-spread sensitivity"
+   ],
+   "missing": [],
+   "source_ids": [
+    "S_10Q2"
+   ],
+   "reporting_currency": "USD",
+   "listing_currency": "USD"
+  },
+  "arista": {
+   "as_of": "2025-12-31",
+   "period_label": "FY2025 (year ended Dec 31, 2025)",
+   "currency": "USD",
+   "reporting_currency": "USD",
+   "listing_currency": "USD",
+   "unit": "million",
+   "overview": "Cloud and AI Ethernet networking. Significant customer concentration in Cloud/AI Titans (Microsoft and Meta named in FY2024 10-K; FY2025 two customers 26%/16%).",
+   "metrics": [
+    {
+     "id": "revenue",
+     "label": "Revenue",
+     "value_usd_m": 9006,
+     "currency": "USD",
+     "display": "$9.01B",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_ANET_FY25_PR",
+      "S_ANET_10K_FY25"
+     ]
+    },
+    {
+     "id": "operating_income",
+     "label": "Operating income",
+     "value_usd_m": 3856,
+     "currency": "USD",
+     "display": "$3.86B",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_ANET_FY25_PR"
+     ]
+    },
+    {
+     "id": "cash",
+     "label": "Cash and cash equivalents",
+     "value_usd_m": 1964,
+     "currency": "USD",
+     "display": "$1.96B",
+     "period": "2025-12-31",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_ANET_FY25_PR"
+     ]
+    },
+    {
+     "id": "marketable_securities",
+     "label": "Marketable securities",
+     "value_usd_m": 8779,
+     "currency": "USD",
+     "display": "$8.78B",
+     "period": "2025-12-31",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_ANET_FY25_PR"
+     ]
+    },
+    {
+     "id": "total_debt",
+     "label": "Interest-bearing debt",
+     "value_usd_m": 0,
+     "currency": "USD",
+     "display": "None material (no notes payable on FY25 BS)",
+     "period": "2025-12-31",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_ANET_FY25_PR"
+     ],
+     "note": "Balance sheet shows no traditional long-term debt line"
+    },
+    {
+     "id": "msft_share",
+     "label": "Microsoft revenue share (named FY24)",
+     "value_usd_m": null,
+     "currency": "USD",
+     "display": "20% of FY2024 revenue",
+     "period": "FY2024",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_ANET_10K_FY24"
+     ]
+    },
+    {
+     "id": "meta_share",
+     "label": "Meta revenue share (named FY24)",
+     "value_usd_m": null,
+     "currency": "USD",
+     "display": "15% of FY2024 revenue",
+     "period": "FY2024",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_ANET_10K_FY24"
+     ]
+    },
+    {
+     "id": "top2_fy25",
+     "label": "Top-2 customers (unnamed FY25)",
+     "value_usd_m": null,
+     "currency": "USD",
+     "display": "26% + 16% of FY2025 revenue",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_ANET_10K_FY25"
+     ]
+    },
+    {
+     "id": "fcf",
+     "label": "Free cash flow",
+     "value_usd_m": null,
+     "display": "Not disclosed as primary KPI here",
+     "period": "FY2025",
+     "status": "UNKNOWN",
+     "source_ids": [
+      "S_ANET_FY25_PR"
+     ]
+    }
+   ],
+   "financing_notes": [
+    "Investment-grade cash-rich balance sheet; rate-shock path is mainly customer CapEx timing, not floating debt."
+   ],
+   "risk_factors": [
+    "Customer concentration (Microsoft / Meta)",
+    "Hyperscaler CapEx cycles",
+    "AI networking competition"
+   ],
+   "missing": [
+    "Named USD purchase orders by customer"
+   ],
+   "source_ids": [
+    "S_ANET_10K_FY25",
+    "S_ANET_10K_FY24",
+    "S_ANET_FY25_PR"
+   ]
+  },
+  "vertiv": {
+   "as_of": "2025-12-31",
+   "period_label": "FY2025 (year ended Dec 31, 2025)",
+   "currency": "USD",
+   "reporting_currency": "USD",
+   "listing_currency": "USD",
+   "unit": "million",
+   "overview": "Critical digital infrastructure (power, cooling, services) for data centers. Collaborates with NVIDIA on 800 VDC AI factory power architectures (strategic, not a disclosed supply PO).",
+   "metrics": [
+    {
+     "id": "revenue",
+     "label": "Net sales",
+     "value_usd_m": 10230,
+     "currency": "USD",
+     "display": "$10.23B",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_VRT_10K_FY25",
+      "S_VRT_FY25_PR"
+     ]
+    },
+    {
+     "id": "operating_income",
+     "label": "Operating profit",
+     "value_usd_m": 1830,
+     "currency": "USD",
+     "display": "$1.83B",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_VRT_FY25_PR"
+     ]
+    },
+    {
+     "id": "interest_expense",
+     "label": "Interest expense, net",
+     "value_usd_m": 86,
+     "currency": "USD",
+     "display": "$86M",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_VRT_FY25_PR"
+     ]
+    },
+    {
+     "id": "net_income",
+     "label": "Net income",
+     "value_usd_m": 1333,
+     "currency": "USD",
+     "display": "$1.33B",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_VRT_FY25_PR"
+     ]
+    },
+    {
+     "id": "total_debt",
+     "label": "Total debt",
+     "value_usd_m": null,
+     "display": "See 10-K debt note",
+     "period": "FY2025",
+     "status": "UNKNOWN",
+     "source_ids": [
+      "S_VRT_10K_FY25"
+     ]
+    },
+    {
+     "id": "cash",
+     "label": "Cash and cash equivalents",
+     "value_usd_m": null,
+     "display": "See 10-K balance sheet",
+     "period": "FY2025",
+     "status": "UNKNOWN",
+     "source_ids": [
+      "S_VRT_10K_FY25"
+     ]
+    },
+    {
+     "id": "fcf",
+     "label": "Free cash flow",
+     "value_usd_m": null,
+     "display": "Not restated here",
+     "period": "FY2025",
+     "status": "UNKNOWN",
+     "source_ids": [
+      "S_VRT_FY25_PR"
+     ]
+    }
+   ],
+   "financing_notes": [
+    "Has interest-bearing debt (interest expense disclosed). Instrument schedule not fully mirrored.",
+    "800 VDC NVIDIA collaboration is technology/strategic — do not treat as quantified supply revenue."
+   ],
+   "risk_factors": [
+    "Data-center CapEx cycles",
+    "Interest expense / refinancing",
+    "Supply chain for power/cooling components"
+   ],
+   "missing": [
+    "Full debt maturity table in this dataset"
+   ],
+   "source_ids": [
+    "S_VRT_10K_FY25",
+    "S_VRT_FY25_PR",
+    "S_VRT_NVDA_800V"
+   ]
+  },
+  "hanmi_semi": {
+   "as_of": "2024-06",
+   "period_label": "DART supply contracts 2024 (not full FY P&L mirrored)",
+   "currency": "KRW",
+   "reporting_currency": "KRW",
+   "listing_currency": "KRW",
+   "overview": "HBM TC 본더 장비. SK하이닉스·마이크론 공급 공시 확인. NVIDIA 직접 공급계약은 미확인.",
+   "metrics": [
+    {
+     "id": "skh_contract_example",
+     "label": "SK하이닉스 공급계약(예시)",
+     "currency": "KRW",
+     "display": "214.83억 원",
+     "period": "2024-03-22 DART",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_HANMI_DART_SKH"
+     ]
+    },
+    {
+     "id": "micron_contract",
+     "label": "마이크론 공급계약",
+     "currency": "KRW",
+     "display": "225.9억 원",
+     "period": "2024-04-11",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_HANMI_DART_MICRON"
+     ]
+    },
+    {
+     "id": "revenue",
+     "label": "연간 매출액",
+     "currency": "KRW",
+     "display": "Not disclosed in this dossier",
+     "period": "—",
+     "status": "UNKNOWN",
+     "source_ids": []
+    }
+   ],
+   "financing_notes": [
+    "원화 공시 우선. 전체 손익은 사업보고서에서 추가 수록 필요."
+   ],
+   "risk_factors": [
+    "HBM CAPEX 사이클",
+    "고객 집중"
+   ],
+   "missing": [
+    "전체 손익·차입금"
+   ],
+   "source_ids": [
+    "S_HANMI_DART_SKH",
+    "S_HANMI_DART_MICRON"
+   ]
+  },
+  "sk_telecom": {
+   "as_of": "2026-06-07",
+   "period_label": "Partnership announcements 2025–2026",
+   "currency": "KRW",
+   "reporting_currency": "KRW",
+   "listing_currency": "KRW",
+   "overview": "국내 통신·AI Cloud. NVIDIA Blackwell GPUaaS 및 DSX AI Cloud 계획(공식 보도).",
+   "metrics": [
+    {
+     "id": "gpu_cluster",
+     "label": "Blackwell GPU cluster",
+     "currency": "KRW",
+     "display": ">1,000 GPUs (press)",
+     "period": "2025-08",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_SKT_BLACKWELL"
+     ]
+    },
+    {
+     "id": "revenue",
+     "label": "연결 매출액",
+     "currency": "KRW",
+     "display": "Not disclosed in this dossier",
+     "period": "—",
+     "status": "UNKNOWN",
+     "source_ids": []
+    },
+    {
+     "id": "total_debt",
+     "label": "차입금",
+     "currency": "KRW",
+     "display": "Not disclosed in this dossier",
+     "period": "—",
+     "status": "UNKNOWN",
+     "source_ids": []
+    }
+   ],
+   "financing_notes": [
+    "AI 인프라 투자는 CAPEX·파트너십 중심. GPU 구매 USD 미공시."
+   ],
+   "risk_factors": [
+    "AI CapEx",
+    "GPU 공급",
+    "통신 규제"
+   ],
+   "missing": [
+    "최근 사업보고서 손익 수치"
+   ],
+   "source_ids": [
+    "S_SKT_NVDA_2026",
+    "S_SKT_BLACKWELL"
+   ]
+  },
+  "naver": {
+   "as_of": "2026",
+   "period_label": "NVIDIA Korea AI Summit commentary",
+   "currency": "KRW",
+   "reporting_currency": "KRW",
+   "listing_currency": "KRW",
+   "overview": "인터넷·클라우드. NVIDIA 보도상 각 세종 DSX AI factory 확장 계획.",
+   "metrics": [
+    {
+     "id": "ai_factory",
+     "label": "AI factory expansion (press)",
+     "currency": "KRW",
+     "display": "Up to ~200 MW / Vera Rubin plans (NVIDIA blog)",
+     "period": "2026",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_NVDA_KR_SUMMIT"
+     ]
+    },
+    {
+     "id": "revenue",
+     "label": "연결 매출액",
+     "currency": "KRW",
+     "display": "Not disclosed in this dossier",
+     "period": "—",
+     "status": "UNKNOWN",
+     "source_ids": []
+    }
+   ],
+   "financing_notes": [
+    "원화 재무제표. GPU 계약 금액 미공시."
+   ],
+   "risk_factors": [
+    "AI CapEx",
+    "전력",
+    "경쟁"
+   ],
+   "missing": [
+    "사업보고서 손익"
+   ],
+   "source_ids": [
+    "S_NVDA_KR_SUMMIT"
+   ]
+  },
+  "ls_electric": {
+   "as_of": "2026-08",
+   "period_label": "DART Big Tech DC power supply disclosure",
+   "currency": "KRW",
+   "reporting_currency": "KRW",
+   "listing_currency": "KRW",
+   "overview": "전력·배전. DART: 자회사 경유 미국 Big Tech 데이터센터 전력설비 공급(상대 상호 미공시).",
+   "metrics": [
+    {
+     "id": "bigtech_contract",
+     "label": "Big Tech DC 전력설비 계약",
+     "currency": "KRW",
+     "display": "약 2,309억 원 (USD 165.7M @ 1,393원)",
+     "period": "2026-08 변경계약",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_LSE_BIGTECH_DC"
+     ],
+     "note": "상대방 상호 미공시 — 하이퍼스케일 노드에 직접 엣지 연결하지 않음"
+    },
+    {
+     "id": "revenue",
+     "label": "연결 매출액",
+     "currency": "KRW",
+     "display": "Not disclosed in this dossier",
+     "period": "—",
+     "status": "UNKNOWN",
+     "source_ids": []
+    }
+   ],
+   "financing_notes": [
+    "공시 환율로 USD→KRW 환산액이 함께 기재됨. 본 독세는 KRW 표시."
+   ],
+   "risk_factors": [
+    "미공시 고객 집중",
+    "북미 납기",
+    "환율"
+   ],
+   "missing": [
+    "상대방 상호",
+    "전체 손익"
+   ],
+   "source_ids": [
+    "S_LSE_BIGTECH_DC"
+   ]
+  },
+  "openai": {
+   "as_of": "2026-10-20",
+   "period_label": "Relationship notes",
+   "reporting_currency": "USD",
+   "overview": "Also linked in network to Microsoft (equity+Azure), NVIDIA (10GW LOI + intended equity), Oracle (Stargate).",
+   "metrics": [],
+   "financing_notes": [
+    "Also linked in network to Microsoft (equity+Azure), NVIDIA (10GW LOI + intended equity), Oracle (Stargate)."
+   ],
+   "risk_factors": [],
+   "missing": [
+    "Full P&L dossier"
+   ],
+   "source_ids": []
+  },
+  "anthropic": {
+   "as_of": "2026-10-20",
+   "period_label": "Relationship notes",
+   "reporting_currency": "USD",
+   "overview": "Amazon minority equity + AWS primary cloud/Trainium (distinct edges).",
+   "metrics": [],
+   "financing_notes": [
+    "Amazon minority equity + AWS primary cloud/Trainium (distinct edges)."
+   ],
+   "risk_factors": [],
+   "missing": [
+    "Full P&L dossier"
+   ],
+   "source_ids": []
+  },
+  "amd": {
+   "as_of": "2026-10-20",
+   "period_label": "Relationship notes",
+   "reporting_currency": "USD",
+   "overview": "Deployments named in AMD 2024 AR: Microsoft, Meta, Oracle, AWS instances; SMCI co-dev; TSMC foundry edge.",
+   "metrics": [],
+   "financing_notes": [
+    "Deployments named in AMD 2024 AR: Microsoft, Meta, Oracle, AWS instances; SMCI co-dev; TSMC foundry edge."
+   ],
+   "risk_factors": [],
+   "missing": [
+    "Full P&L dossier"
+   ],
+   "source_ids": []
+  },
+  "digital_realty": {
+   "as_of": "2026-10-20",
+   "period_label": "Relationship notes",
+   "reporting_currency": "USD",
+   "overview": "ExpressRoute/Direct Connect/FastConnect partner paths to Microsoft, Amazon, Oracle.",
+   "metrics": [],
+   "financing_notes": [
+    "ExpressRoute/Direct Connect/FastConnect partner paths to Microsoft, Amazon, Oracle."
+   ],
+   "risk_factors": [],
+   "missing": [
+    "Full P&L dossier"
+   ],
+   "source_ids": []
+  },
+  "qualcomm": {
+   "as_of": "2025-12-31",
+   "period_label": "Counterparty dossier (Samsung BR)",
+   "currency": "USD",
+   "reporting_currency": "USD",
+   "listing_currency": "USD",
+   "unit": "USD",
+   "overview": "삼성전자 DX 부문 모바일AP 주요 매입처로 사업보고서에 명시. Contagion Map에서는 Samsung 공급망 허브의 1차 연결로 수록.",
+   "metrics": [
+    {
+     "id": "role_at_samsung",
+     "label": "Samsung DX 원재료 역할",
+     "value_usd_m": null,
+     "currency": "USD",
+     "display": "모바일AP 주요 매입처",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_SMSN_BR_FY25"
+     ],
+     "note": "품목 합계(Qualcomm+MediaTek) KRW 13.8272조"
+    }
+   ],
+   "financing_notes": [
+    "Samsung 사업보고서 기준 역할 확인. Qualcomm 자사 10-K 재무는 후속 보강 대상."
+   ],
+   "risk_factors": [
+    "스마트폰 사이클",
+    "삼성 조달 비중"
+   ],
+   "missing": [
+    "Qualcomm FY2025 상세 재무 메트릭"
+   ],
+   "source_ids": [
+    "S_SMSN_BR_FY25"
+   ]
+  },
+  "tesla": {
+   "as_of": "2025-12-31",
+   "period_label": "Counterparty dossier (Samsung BR backlog)",
+   "currency": "USD",
+   "reporting_currency": "USD",
+   "listing_currency": "USD",
+   "unit": "USD million",
+   "overview": "삼성전자 DS Foundry 수주 공시의 발주처. 위탁생산 계약 총액 USD 16,544M (2025.07–2033.12).",
+   "metrics": [
+    {
+     "id": "samsung_foundry_backlog",
+     "label": "Samsung Foundry 수주총액",
+     "value_usd_m": null,
+     "currency": "USD",
+     "display": "USD 16,544M",
+     "period": "2025-07 ~ 2033-12",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_SMSN_BR_FY25"
+     ]
+    }
+   ],
+   "financing_notes": [
+    "금액은 삼성 사업보고서 수주총액이며 Tesla 측 대응 공시와 대조 필요."
+   ],
+   "risk_factors": [
+    "자동차 반도체 수요",
+    "장기 계약 변동 조항"
+   ],
+   "missing": [
+    "Tesla 10-K상 Samsung 명시 여부 교차검증"
+   ],
+   "source_ids": [
+    "S_SMSN_BR_FY25"
+   ]
+  },
+  "jusung_eng": {
+   "as_of": "2025-12-31",
+   "period_label": "FY2025 (K-IFRS) — equipment supplier dossier",
+   "currency": "KRW",
+   "reporting_currency": "KRW",
+   "listing_currency": "KRW",
+   "unit": "billion KRW",
+   "overview": "주성엔지니어링(036930). SK하이닉스 반도체 제조장비 공급(DART·사업보고서). FY2025 연결 매출 약 3,107억 원.",
+   "metrics": [
+    {
+     "id": "revenue",
+     "label": "매출액",
+     "value_usd_m": null,
+     "currency": "KRW",
+     "display": "3,107억 원",
+     "period": "FY2025",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_JUSUNG_DART_SKH"
+     ],
+     "value_native": 311,
+     "note": "사업보고서 개요(약)"
+    },
+    {
+     "id": "skh_contract_202407",
+     "label": "SK하이닉스 공급계약(예)",
+     "value_usd_m": null,
+     "currency": "KRW",
+     "display": "194억 원",
+     "period": "2024-07",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_JUSUNG_DART_SKH"
+     ],
+     "value_native": 19.4
+    }
+   ],
+   "financing_notes": [
+    "원화 보고. SK하이닉스 투자 사이클에 매출 민감."
+   ],
+   "risk_factors": [
+    "메모리 CAPEX 사이클",
+    "고객 집중"
+   ],
+   "missing": [
+    "상세 차입·현금 주석"
+   ],
+   "source_ids": [
+    "S_JUSUNG_DART_SKH"
+   ]
+  },
+  "core_scientific": {
+   "as_of": "2026-04-22",
+   "period_label": "CW lease + Finance I notes",
+   "currency": "USD",
+   "reporting_currency": "USD",
+   "listing_currency": "USD",
+   "unit": "USD million",
+   "overview": "HDC colocation landlord to CoreWeave (~590MW / $10.2B disclosed). Finance I LLC issued $3.3B secured notes on CW-leased assets; parent provides completion guarantee but does not guarantee the notes.",
+   "metrics": [
+    {
+     "id": "contract_backlog_cw",
+     "label": "CoreWeave landlord contract value",
+     "value_usd_m": 10200,
+     "display": "$10.20B",
+     "period": "2025-02",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_CORZ"
+     ]
+    },
+    {
+     "id": "spv_notes",
+     "label": "Finance I notes principal",
+     "value_usd_m": 3300,
+     "display": "$3.30B",
+     "period": "2026-05",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_CORZ_FINANCE_I"
+     ]
+    }
+   ],
+   "financing_notes": [
+    "Parent does not guarantee Finance I notes — project-level stress ≠ automatic parent bankruptcy.",
+    "Completion guarantee can still create contingent parent cash needs."
+   ],
+   "risk_factors": [
+    "CoreWeave tenant concentration",
+    "Project/SPV secured debt"
+   ],
+   "missing": [
+    "Latest consolidated cash / total debt from 10-Q — enrich when filing parsed"
+   ],
+   "source_ids": [
+    "S_CORZ",
+    "S_CORZ_FINANCE_I"
+   ]
+  },
+  "applied_digital": {
+   "as_of": "2025-10-07",
+   "period_label": "Polaris Forge / Macquarie",
+   "currency": "USD",
+   "reporting_currency": "USD",
+   "listing_currency": "USD",
+   "unit": "USD million",
+   "overview": "Ellendale Polaris Forge AI campuses leased in material part to CoreWeave. Macquarie preferred equity facility up to $5B; first draw $112.5M.",
+   "metrics": [
+    {
+     "id": "cw_lease_expected",
+     "label": "CoreWeave Ellendale expected landlord revenue",
+     "value_usd_m": 7000,
+     "display": "$7.00B",
+     "period": "2025-06",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_APLD"
+     ],
+     "note": "Expected / not fully fixed"
+    },
+    {
+     "id": "mam_facility",
+     "label": "Macquarie preferred facility ceiling",
+     "value_usd_m": 5000,
+     "display": "$5.00B",
+     "period": "2025-10",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_APLD_MACQ"
+     ]
+    },
+    {
+     "id": "mam_first_draw",
+     "label": "Macquarie first draw",
+     "value_usd_m": 112.5,
+     "display": "$112.5M",
+     "period": "2025-10-07",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_APLD_MACQ"
+     ]
+    }
+   ],
+   "financing_notes": [
+    "Project finance + preferred equity reduce APLD equity contribution at Polaris Forge 1 (company statement)."
+   ],
+   "risk_factors": [
+    "CoreWeave concentration",
+    "Construction / project financing execution"
+   ],
+   "missing": [
+    "Latest consolidated cash and total debt"
+   ],
+   "source_ids": [
+    "S_APLD",
+    "S_APLD_MACQ"
+   ]
+  },
+  "galaxy_digital": {
+   "as_of": "2026-07-06",
+   "period_label": "Helios / CoreWeave",
+   "currency": "USD",
+   "reporting_currency": "USD",
+   "listing_currency": "USD",
+   "unit": "USD million",
+   "overview": "Helios campus 526MW critical IT leased to CoreWeave (15y). Data Centers segment is CW-anchored. Helios II SPV financing reported separately from parent.",
+   "metrics": [
+    {
+     "id": "helios_mw",
+     "label": "Helios CW critical IT MW",
+     "value_usd_m": 526,
+     "display": "$526.0M",
+     "period": "2026",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_GLXY_10K25",
+      "S_GLXY_HELIOS"
+     ],
+     "note": "MW not USD"
+    }
+   ],
+   "financing_notes": [
+    "Parent diversified (digital assets + data centers). SPV notes reported as non-recourse to parent notes guarantee."
+   ],
+   "risk_factors": [
+    "Single-tenant Helios exposure",
+    "Project financing coupon sensitive to tenant credit"
+   ],
+   "missing": [
+    "Primary Helios II indenture confirmation",
+    "Consolidated cash/debt snapshot"
+   ],
+   "source_ids": [
+    "S_GLXY_10K25",
+    "S_GLXY_HELIOS",
+    "S_GLXY_HELIOS_II_NOTES"
+   ]
+  },
+  "cipher_digital": {
+   "as_of": "2026-03-31",
+   "period_label": "Q1 2026 10-Q (+ Q2 debt tables)",
+   "currency": "USD",
+   "reporting_currency": "USD",
+   "listing_currency": "USD",
+   "unit": "USD million",
+   "overview": "HPC hosting developer (ex-Cipher Mining). Large secured notes and convertibles funding Barber Lake / Black Pearl. Revolver $200M undrawn with liquidity covenant.",
+   "metrics": [
+    {
+     "id": "cash",
+     "label": "Cash and cash equivalents",
+     "value_usd_m": 715.2,
+     "display": "$715.2M",
+     "period": "2026-03-31",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_CIFR_10Q1"
+     ]
+    },
+    {
+     "id": "total_debt_principal",
+     "label": "Debt principal (approx., Q2 tables)",
+     "value_usd_m": 5200,
+     "display": "$5.20B",
+     "period": "2026-06",
+     "status": "INFERRED",
+     "source_ids": [
+      "S_CIFR_10Q2"
+     ],
+     "note": "Order-of-magnitude from principal tables — confirm exact line"
+    }
+   ],
+   "financing_notes": [
+    "Tenants include Fluidstack and a hyperscaler (company disclosures) — not CoreWeave-centric.",
+    "Restricted cash for project builds is not unrestricted liquidity."
+   ],
+   "risk_factors": [
+    "High leverage",
+    "Construction funding",
+    "Sector financing conditions"
+   ],
+   "missing": [
+    "Exact consolidated interest expense / OCF for stress ratio"
+   ],
+   "source_ids": [
+    "S_CIFR_10Q1",
+    "S_CIFR_10Q2"
+   ]
+  },
+  "whitefiber": {
+   "as_of": "2025-12-31",
+   "period_label": "FY2025 results + Jan 2026 converts",
+   "currency": "USD",
+   "reporting_currency": "USD",
+   "listing_currency": "USD",
+   "unit": "USD million",
+   "overview": "AI colo/cloud. Nscale NC-1 anchor. YE2025 no funded debt; Jan 2026 $230M 4.5% converts due 2031.",
+   "metrics": [
+    {
+     "id": "cash",
+     "label": "Cash and cash equivalents",
+     "value_usd_m": 114.4,
+     "display": "$114.4M",
+     "period": "2025-12-31",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_WYFI_FY25"
+     ]
+    },
+    {
+     "id": "funded_debt_ye",
+     "label": "Funded debt",
+     "value_usd_m": 0,
+     "display": "$0.0M",
+     "period": "2025-12-31",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_WYFI_FY25"
+     ]
+    },
+    {
+     "id": "converts_2031",
+     "label": "4.5% converts due 2031",
+     "value_usd_m": 230,
+     "display": "$230.0M",
+     "period": "2026-01",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_WYFI_FY25"
+     ]
+    },
+    {
+     "id": "nscale_tcv",
+     "label": "Nscale NC-1 TCV",
+     "value_usd_m": 865,
+     "display": "$865.0M",
+     "period": "2025-12",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_WYFI_NSCALE"
+     ]
+    }
+   ],
+   "financing_notes": [
+    "Construction facility for NC-1 contemplated; not assumed drawn without disclosure."
+   ],
+   "risk_factors": [
+    "Construction financing",
+    "Tenant concentration (Nscale)"
+   ],
+   "missing": [
+    "2026 mid-year cash after convert proceeds"
+   ],
+   "source_ids": [
+    "S_WYFI_FY25",
+    "S_WYFI_NSCALE"
+   ]
+  },
+  "terawulf": {
+   "as_of": "2026-06-30",
+   "period_label": "Q2 2026 10-Q",
+   "currency": "USD",
+   "reporting_currency": "USD",
+   "listing_currency": "USD",
+   "unit": "USD million",
+   "overview": "HPC leasing to Fluidstack with Google credit support. Large cash and convertible/secured stack.",
+   "metrics": [
+    {
+     "id": "cash",
+     "label": "Cash and cash equivalents",
+     "value_usd_m": 2619.2,
+     "display": "$2.62B",
+     "period": "2026-06-30",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_WULF_10Q2"
+     ]
+    },
+    {
+     "id": "long_term_debt",
+     "label": "Long-term debt",
+     "value_usd_m": 3019.3,
+     "display": "$3.02B",
+     "period": "2026-06-30",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_WULF_10Q2"
+     ]
+    },
+    {
+     "id": "st_converts",
+     "label": "Short-term convertible notes",
+     "value_usd_m": 1102.0,
+     "display": "$1.10B",
+     "period": "2026-06-30",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_WULF_10Q2"
+     ]
+    }
+   ],
+   "financing_notes": [
+    "Primary disclosed HPC counterparty is Fluidstack/Google-supported — not CoreWeave."
+   ],
+   "risk_factors": [
+    "Convertible classification / dilution",
+    "Ongoing project funding"
+   ],
+   "missing": [
+    "OCF / interest coverage detail for ratio stress"
+   ],
+   "source_ids": [
+    "S_WULF_10Q2"
+   ]
+  },
+  "iren": {
+   "as_of": "2026-06-30",
+   "period_label": "FY26 / H1 2026 comps",
+   "currency": "USD",
+   "reporting_currency": "USD",
+   "listing_currency": "USD",
+   "unit": "USD million",
+   "overview": "AI Cloud ramp with GPU financings and customer prepayments. Large cash and debt balances.",
+   "metrics": [
+    {
+     "id": "cash",
+     "label": "Cash and cash equivalents",
+     "value_usd_m": 5895.6,
+     "display": "$5.90B",
+     "period": "2026-06-30",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_ACIS_NBIS_IREN"
+     ],
+     "note": "Research synthesis of filings"
+    },
+    {
+     "id": "debt_ex_leases",
+     "label": "Debt carrying excl. leases",
+     "value_usd_m": 7592.9,
+     "display": "$7.59B",
+     "period": "2026-06-30",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_ACIS_NBIS_IREN"
+     ],
+     "note": "Research synthesis"
+    },
+    {
+     "id": "ocf_h1",
+     "label": "Operating cash flow H1 2026",
+     "value_usd_m": 1886.4,
+     "display": "$1.89B",
+     "period": "H1 2026",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_ACIS_NBIS_IREN"
+     ]
+    },
+    {
+     "id": "capex_h1",
+     "label": "Cash capex H1 2026",
+     "value_usd_m": 3333.4,
+     "display": "$3.33B",
+     "period": "H1 2026",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_ACIS_NBIS_IREN"
+     ]
+    }
+   ],
+   "financing_notes": [
+    "GPU financing commitments ≠ fully funded debt."
+   ],
+   "risk_factors": [
+    "External funding dependence",
+    "Capex vs OCF gap"
+   ],
+   "missing": [
+    "Instrument-level floating share"
+   ],
+   "source_ids": [
+    "S_IREN_FY26",
+    "S_ACIS_NBIS_IREN"
+   ]
+  },
+  "nebius": {
+   "as_of": "2026-06-30",
+   "period_label": "H1 2026 comps + 20-F risk",
+   "currency": "USD",
+   "reporting_currency": "USD",
+   "listing_currency": "USD",
+   "unit": "USD million",
+   "overview": "Capital-intensive AI infra; 20-F states growth depends on additional equity/debt. Large cash and convert stack.",
+   "metrics": [
+    {
+     "id": "cash",
+     "label": "Cash and cash equivalents",
+     "value_usd_m": 8042.1,
+     "display": "$8.04B",
+     "period": "2026-06-30",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_ACIS_NBIS_IREN"
+     ],
+     "note": "Research synthesis"
+    },
+    {
+     "id": "debt_ex_leases",
+     "label": "Debt carrying excl. leases",
+     "value_usd_m": 8545.7,
+     "display": "$8.55B",
+     "period": "2026-06-30",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_ACIS_NBIS_IREN"
+     ]
+    },
+    {
+     "id": "ocf_h1",
+     "label": "Operating cash flow H1 2026",
+     "value_usd_m": 4504.1,
+     "display": "$4.50B",
+     "period": "H1 2026",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_ACIS_NBIS_IREN"
+     ]
+    },
+    {
+     "id": "capex_h1",
+     "label": "Cash capex H1 2026",
+     "value_usd_m": 8130.3,
+     "display": "$8.13B",
+     "period": "H1 2026",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_ACIS_NBIS_IREN"
+     ]
+    }
+   ],
+   "financing_notes": [
+    "Deferred revenue / prepayments material to liquidity (research note)."
+   ],
+   "risk_factors": [
+    "External financing needed",
+    "Capex intensity"
+   ],
+   "missing": [
+    "Instrument-level coupons / floating share"
+   ],
+   "source_ids": [
+    "S_NBIS_20F25",
+    "S_ACIS_NBIS_IREN"
+   ]
+  },
+  "nscale": {
+   "as_of": "2026-09-25",
+   "period_label": "Private company — funding announcements only",
+   "currency": "USD",
+   "reporting_currency": "USD",
+   "listing_currency": null,
+   "unit": "USD million",
+   "overview": "Private AI infrastructure provider. Series B $1.1B and Pre-IPO convert $3.36B announced. No public consolidated financial statements suitable for quantitative distress scoring.",
+   "metrics": [
+    {
+     "id": "series_b",
+     "label": "Series B raise",
+     "value_usd_m": 1100,
+     "display": "$1.10B",
+     "period": "2025-09",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_NSCALE_B"
+     ]
+    },
+    {
+     "id": "preipo_convert",
+     "label": "Pre-IPO convertible financing",
+     "value_usd_m": 3360,
+     "display": "$3.36B",
+     "period": "2026-09",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_NSCALE_PREIPO"
+     ]
+    }
+   ],
+   "financing_notes": [
+    "Quantitative liquidity/debt service stress = unverified."
+   ],
+   "risk_factors": [
+    "Private disclosure gap",
+    "GPU procurement commitments"
+   ],
+   "missing": [
+    "Cash",
+    "Total debt",
+    "OCF",
+    "Interest expense"
+   ],
+   "source_ids": [
+    "S_NSCALE_B",
+    "S_NSCALE_PREIPO",
+    "S_WYFI_NSCALE"
+   ]
+  },
+  "soluna": {
+   "as_of": "2026-06-30",
+   "period_label": "Q2 2026 10-Q",
+   "currency": "USD",
+   "reporting_currency": "USD",
+   "listing_currency": "USD",
+   "unit": "USD million",
+   "overview": "Smaller renewable-linked data center developer. Relatively low leverage vs cash.",
+   "metrics": [
+    {
+     "id": "cash",
+     "label": "Cash",
+     "value_usd_m": 113.4,
+     "display": "$113.4M",
+     "period": "2026-06-30",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_SLNH_10Q2"
+     ]
+    },
+    {
+     "id": "current_debt",
+     "label": "Current portion of debt",
+     "value_usd_m": 30.1,
+     "display": "$30.1M",
+     "period": "2026-06-30",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_SLNH_10Q2"
+     ]
+    },
+    {
+     "id": "long_term_debt",
+     "label": "Long-term debt",
+     "value_usd_m": 3.0,
+     "display": "$3.0M",
+     "period": "2026-06-30",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_SLNH_10Q2"
+     ]
+    }
+   ],
+   "financing_notes": [
+    "No CoreWeave relationship identified in project data."
+   ],
+   "risk_factors": [
+    "Scale / access to capital markets"
+   ],
+   "missing": [
+    "Major AI tenant concentration"
+   ],
+   "source_ids": [
+    "S_SLNH_10Q2"
+   ]
+  },
+  "hut8": {
+   "as_of": "2026-06-30",
+   "period_label": "Q2 2026 10-Q / earnings",
+   "currency": "USD",
+   "reporting_currency": "USD",
+   "listing_currency": "USD",
+   "unit": "USD million",
+   "overview": "IG project notes at Hut 8 DC subsidiaries (River Bend / Beacon Point) leased to Fluidstack with Google financial backstop. Parent reports strong liquidity and reduced general recourse debt.",
+   "metrics": [
+    {
+     "id": "project_notes_river_bend",
+     "label": "River Bend notes principal",
+     "value_usd_m": 3250,
+     "display": "$3.25B",
+     "period": "2026-04-30",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_HUT_10Q2"
+     ]
+    },
+    {
+     "id": "project_notes_beacon",
+     "label": "Beacon Point notes principal",
+     "value_usd_m": 4250,
+     "display": "$4.25B",
+     "period": "2026-06-09",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_HUT_10Q2"
+     ]
+    },
+    {
+     "id": "debt_carrying",
+     "label": "Loans/notes carrying amount",
+     "value_usd_m": 7638.4,
+     "display": "$7.64B",
+     "period": "2026-06-30",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_HUT_10Q2"
+     ]
+    },
+    {
+     "id": "liquidity_incl_btc",
+     "label": "Unrestricted cash+restricted+BTC (reported)",
+     "value_usd_m": 8100,
+     "display": "$8.10B",
+     "period": "2026-06-30",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_HUT_Q2_PR"
+     ],
+     "note": "Includes BTC — not all cash"
+    }
+   ],
+   "financing_notes": [
+    "Project notes are non-recourse to Hut 8 Corp. per company disclosures.",
+    "Google backstop on Fluidstack rent — resilient to CoreWeave-specific default."
+   ],
+   "risk_factors": [
+    "Phase 2 financing needs",
+    "BTC mark-to-market in liquidity figure"
+   ],
+   "missing": [
+    "Exact unrestricted cash excluding BTC"
+   ],
+   "source_ids": [
+    "S_HUT_10Q2",
+    "S_HUT_Q2_PR"
+   ]
+  },
+  "corz_finance_i": {
+   "as_of": "2026-05-06",
+   "period_label": "Notes pricing",
+   "currency": "USD",
+   "reporting_currency": "USD",
+   "overview": "SPV issuer of $3.3B secured notes backed by CoreWeave-leased HPC sites. Parent completion guarantee only.",
+   "metrics": [
+    {
+     "id": "notes_principal",
+     "label": "Senior secured notes",
+     "value_usd_m": 3300,
+     "display": "$3.30B",
+     "period": "2026-05",
+     "status": "VERIFIED",
+     "source_ids": [
+      "S_CORZ_FINANCE_I"
+     ]
+    }
+   ],
+   "financing_notes": [
+    "Non-recourse notes to Core Scientific parent (no notes guarantee)."
+   ],
+   "risk_factors": [
+    "Single-tenant cash flow (CoreWeave)",
+    "Construction completion"
+   ],
+   "missing": [
+    "DSRA balances",
+    "Covenant tests"
+   ],
+   "source_ids": [
+    "S_CORZ_FINANCE_I"
+   ]
+  },
+  "galaxy_helios_ii": {
+   "as_of": "2026-07",
+   "period_label": "Reported Helios II financing",
+   "currency": "USD",
+   "reporting_currency": "USD",
+   "overview": "Reported single-asset Helios Phase II financing vehicle with CoreWeave lease credit support.",
+   "metrics": [
+    {
+     "id": "notes_principal",
+     "label": "Senior secured notes (reported)",
+     "value_usd_m": 3500,
+     "display": "$3.50B",
+     "period": "2026-07",
+     "status": "INFERRED",
+     "source_ids": [
+      "S_GLXY_HELIOS_II_NOTES"
+     ]
+    }
+   ],
+   "financing_notes": [
+    "Primary indenture confirmation recommended — status INFERRED."
+   ],
+   "risk_factors": [
+    "CoreWeave tenant credit",
+    "Construction timing"
+   ],
+   "missing": [
+    "Indenture primary source",
+    "DSRA"
+   ],
+   "source_ids": [
+    "S_GLXY_HELIOS_II_NOTES"
+   ]
+  }
+ }
+}

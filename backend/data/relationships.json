@@ -1,0 +1,2921 @@
+{
+ "as_of": "2026-10-21",
+ "relationships": [
+  {
+   "id": "f_magnetar",
+   "source": "coreweave",
+   "target": "magnetar",
+   "relationship_type": "FINANCING_PARTICIPATION",
+   "impact_channel": "financial",
+   "label": "차입 계약 참여 3건",
+   "impact_label": "차환 시 계약 상대 (보유액 미공개)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_10Q1_2025",
+    "S_10Q2",
+    "S_650",
+    "S_AMCOMPUTE",
+    "S_REUTERS_MS"
+   ],
+   "contract_ids": [
+    "ddtl_1",
+    "ddtl_2",
+    "magnetar_loan"
+   ],
+   "amount_usd_m": null,
+   "amount_note": "기관별 보유액 미공시 · 계약 전체 금액은 계약 정보 참고",
+   "roles": [
+    "DDTL 1.0: Lead Lender",
+    "DDTL 2.0: Co-Lead Lender",
+    "Magnetar Loan (MagAI Ventures): Lender"
+   ],
+   "explanation": "주선(Arranger)·북러너는 대출을 구조화·판매하는 역할로, 최종 보유액과 다를 수 있습니다. 기관별 보유액은 공시되지 않아 손익을 계산하지 않습니다.",
+   "commercial_ids": []
+  },
+  {
+   "id": "f_blackstone",
+   "source": "coreweave",
+   "target": "blackstone",
+   "relationship_type": "FINANCING_PARTICIPATION",
+   "impact_channel": "financial",
+   "label": "차입 계약 참여 3건",
+   "impact_label": "차환 시 계약 상대 (보유액 미공개)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_10Q1_2025",
+    "S_10Q2",
+    "S_650",
+    "S_AMCOMPUTE",
+    "S_DDTL4",
+    "S_REUTERS_MS"
+   ],
+   "contract_ids": [
+    "ddtl_1",
+    "ddtl_2",
+    "ddtl_4"
+   ],
+   "amount_usd_m": null,
+   "amount_note": "기관별 보유액 미공시 · 계약 전체 금액은 계약 정보 참고",
+   "roles": [
+    "DDTL 1.0: Lead Lender (Tactical Opportunities)",
+    "DDTL 2.0: Lead Lender",
+    "DDTL 4.0: Anchor Investor"
+   ],
+   "explanation": "주선(Arranger)·북러너는 대출을 구조화·판매하는 역할로, 최종 보유액과 다를 수 있습니다. 기관별 보유액은 공시되지 않아 손익을 계산하지 않습니다.",
+   "commercial_ids": []
+  },
+  {
+   "id": "f_coatue",
+   "source": "coreweave",
+   "target": "coatue",
+   "relationship_type": "FINANCING_PARTICIPATION",
+   "impact_channel": "financial",
+   "label": "차입 계약 참여 2건",
+   "impact_label": "차환 시 계약 상대 (보유액 미공개)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_10Q1_2025",
+    "S_10Q2",
+    "S_650",
+    "S_AMCOMPUTE",
+    "S_REUTERS_MS"
+   ],
+   "contract_ids": [
+    "ddtl_1",
+    "ddtl_2"
+   ],
+   "amount_usd_m": null,
+   "amount_note": "기관별 보유액 미공시 · 계약 전체 금액은 계약 정보 참고",
+   "roles": [
+    "DDTL 1.0: Lender",
+    "DDTL 2.0: Lender"
+   ],
+   "explanation": "주선(Arranger)·북러너는 대출을 구조화·판매하는 역할로, 최종 보유액과 다를 수 있습니다. 기관별 보유액은 공시되지 않아 손익을 계산하지 않습니다.",
+   "commercial_ids": []
+  },
+  {
+   "id": "f_digitalbridge",
+   "source": "coreweave",
+   "target": "digitalbridge",
+   "relationship_type": "FINANCING_PARTICIPATION",
+   "impact_channel": "financial",
+   "label": "차입 계약 참여 2건",
+   "impact_label": "차환 시 계약 상대 (보유액 미공개)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_10Q1_2025",
+    "S_10Q2",
+    "S_650",
+    "S_AMCOMPUTE",
+    "S_REUTERS_MS"
+   ],
+   "contract_ids": [
+    "ddtl_1",
+    "ddtl_2"
+   ],
+   "amount_usd_m": null,
+   "amount_note": "기관별 보유액 미공시 · 계약 전체 금액은 계약 정보 참고",
+   "roles": [
+    "DDTL 1.0: Lender",
+    "DDTL 2.0: Lender"
+   ],
+   "explanation": "주선(Arranger)·북러너는 대출을 구조화·판매하는 역할로, 최종 보유액과 다를 수 있습니다. 기관별 보유액은 공시되지 않아 손익을 계산하지 않습니다.",
+   "commercial_ids": []
+  },
+  {
+   "id": "f_blackrock",
+   "source": "coreweave",
+   "target": "blackrock",
+   "relationship_type": "FINANCING_PARTICIPATION",
+   "impact_channel": "financial",
+   "label": "차입 계약 참여 2건",
+   "impact_label": "차환 시 계약 상대 (보유액 미공개)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_10Q1_2025",
+    "S_10Q2",
+    "S_650",
+    "S_AMCOMPUTE",
+    "S_REUTERS_MS"
+   ],
+   "contract_ids": [
+    "ddtl_1",
+    "ddtl_2"
+   ],
+   "amount_usd_m": null,
+   "amount_note": "기관별 보유액 미공시 · 계약 전체 금액은 계약 정보 참고",
+   "roles": [
+    "DDTL 1.0: Lender",
+    "DDTL 2.0: Lender"
+   ],
+   "explanation": "주선(Arranger)·북러너는 대출을 구조화·판매하는 역할로, 최종 보유액과 다를 수 있습니다. 기관별 보유액은 공시되지 않아 손익을 계산하지 않습니다.",
+   "commercial_ids": []
+  },
+  {
+   "id": "f_pimco",
+   "source": "coreweave",
+   "target": "pimco",
+   "relationship_type": "FINANCING_PARTICIPATION",
+   "impact_channel": "financial",
+   "label": "차입 계약 참여 1건",
+   "impact_label": "차환 시 계약 상대 (보유액 미공개)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_10Q1_2025",
+    "S_10Q2",
+    "S_650",
+    "S_AMCOMPUTE",
+    "S_REUTERS_MS"
+   ],
+   "contract_ids": [
+    "ddtl_1"
+   ],
+   "amount_usd_m": null,
+   "amount_note": "기관별 보유액 미공시 · 계약 전체 금액은 계약 정보 참고",
+   "roles": [
+    "DDTL 1.0: Lender"
+   ],
+   "explanation": "주선(Arranger)·북러너는 대출을 구조화·판매하는 역할로, 최종 보유액과 다를 수 있습니다. 기관별 보유액은 공시되지 않아 손익을 계산하지 않습니다.",
+   "commercial_ids": []
+  },
+  {
+   "id": "f_carlyle",
+   "source": "coreweave",
+   "target": "carlyle",
+   "relationship_type": "FINANCING_PARTICIPATION",
+   "impact_channel": "financial",
+   "label": "차입 계약 참여 2건",
+   "impact_label": "차환 시 계약 상대 (보유액 미공개)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_10Q1_2025",
+    "S_10Q2",
+    "S_650",
+    "S_AMCOMPUTE",
+    "S_REUTERS_MS"
+   ],
+   "contract_ids": [
+    "ddtl_1",
+    "ddtl_2"
+   ],
+   "amount_usd_m": null,
+   "amount_note": "기관별 보유액 미공시 · 계약 전체 금액은 계약 정보 참고",
+   "roles": [
+    "DDTL 1.0: Lender",
+    "DDTL 2.0: Lender"
+   ],
+   "explanation": "주선(Arranger)·북러너는 대출을 구조화·판매하는 역할로, 최종 보유액과 다를 수 있습니다. 기관별 보유액은 공시되지 않아 손익을 계산하지 않습니다.",
+   "commercial_ids": []
+  },
+  {
+   "id": "f_cdpq",
+   "source": "coreweave",
+   "target": "cdpq",
+   "relationship_type": "FINANCING_PARTICIPATION",
+   "impact_channel": "financial",
+   "label": "차입 계약 참여 1건",
+   "impact_label": "차환 시 계약 상대 (보유액 미공개)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_10Q1_2025",
+    "S_10Q2",
+    "S_650",
+    "S_AMCOMPUTE",
+    "S_REUTERS_MS"
+   ],
+   "contract_ids": [
+    "ddtl_2"
+   ],
+   "amount_usd_m": null,
+   "amount_note": "기관별 보유액 미공시 · 계약 전체 금액은 계약 정보 참고",
+   "roles": [
+    "DDTL 2.0: Lender"
+   ],
+   "explanation": "주선(Arranger)·북러너는 대출을 구조화·판매하는 역할로, 최종 보유액과 다를 수 있습니다. 기관별 보유액은 공시되지 않아 손익을 계산하지 않습니다.",
+   "commercial_ids": []
+  },
+  {
+   "id": "f_eldridge",
+   "source": "coreweave",
+   "target": "eldridge",
+   "relationship_type": "FINANCING_PARTICIPATION",
+   "impact_channel": "financial",
+   "label": "차입 계약 참여 1건",
+   "impact_label": "차환 시 계약 상대 (보유액 미공개)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_10Q1_2025",
+    "S_10Q2",
+    "S_650",
+    "S_AMCOMPUTE",
+    "S_REUTERS_MS"
+   ],
+   "contract_ids": [
+    "ddtl_2"
+   ],
+   "amount_usd_m": null,
+   "amount_note": "기관별 보유액 미공시 · 계약 전체 금액은 계약 정보 참고",
+   "roles": [
+    "DDTL 2.0: Lender"
+   ],
+   "explanation": "주선(Arranger)·북러너는 대출을 구조화·판매하는 역할로, 최종 보유액과 다를 수 있습니다. 기관별 보유액은 공시되지 않아 손익을 계산하지 않습니다.",
+   "commercial_ids": []
+  },
+  {
+   "id": "f_great_elm",
+   "source": "coreweave",
+   "target": "great_elm",
+   "relationship_type": "FINANCING_PARTICIPATION",
+   "impact_channel": "financial",
+   "label": "차입 계약 참여 1건",
+   "impact_label": "차환 시 계약 상대 (보유액 미공개)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_10Q1_2025",
+    "S_10Q2",
+    "S_650",
+    "S_AMCOMPUTE",
+    "S_REUTERS_MS"
+   ],
+   "contract_ids": [
+    "ddtl_2"
+   ],
+   "amount_usd_m": null,
+   "amount_note": "기관별 보유액 미공시 · 계약 전체 금액은 계약 정보 참고",
+   "roles": [
+    "DDTL 2.0: Lender"
+   ],
+   "explanation": "주선(Arranger)·북러너는 대출을 구조화·판매하는 역할로, 최종 보유액과 다를 수 있습니다. 기관별 보유액은 공시되지 않아 손익을 계산하지 않습니다.",
+   "commercial_ids": []
+  },
+  {
+   "id": "f_morgan_stanley",
+   "source": "coreweave",
+   "target": "morgan_stanley",
+   "relationship_type": "FINANCING_PARTICIPATION",
+   "impact_channel": "financial",
+   "label": "차입 계약 참여 4건",
+   "impact_label": "차환 시 계약 상대 (보유액 미공개)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_10Q2",
+    "S_650",
+    "S_DDTL3",
+    "S_DDTL4",
+    "S_DDTL5",
+    "S_RCF25"
+   ],
+   "contract_ids": [
+    "ddtl_3",
+    "ddtl_4",
+    "ddtl_5",
+    "rcf"
+   ],
+   "amount_usd_m": null,
+   "amount_note": "기관별 보유액 미공시 · 계약 전체 금액은 계약 정보 참고",
+   "roles": [
+    "DDTL 3.0: Joint Bookrunner, Joint Lead Arranger",
+    "DDTL 4.0: Co-Structuring Agent, Joint Bookrunner",
+    "DDTL 5.0: Administrative Agent, Coordinating Lead Arranger, Joint Bookrunner",
+    "Revolving Credit Facility: Lead Bank"
+   ],
+   "explanation": "주선(Arranger)·북러너는 대출을 구조화·판매하는 역할로, 최종 보유액과 다를 수 있습니다. 기관별 보유액은 공시되지 않아 손익을 계산하지 않습니다.",
+   "commercial_ids": []
+  },
+  {
+   "id": "f_mufg",
+   "source": "coreweave",
+   "target": "mufg",
+   "relationship_type": "FINANCING_PARTICIPATION",
+   "impact_channel": "financial",
+   "label": "차입 계약 참여 5건",
+   "impact_label": "차환 시 계약 상대 (보유액 미공개)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_10Q2",
+    "S_650",
+    "S_DDTL3",
+    "S_DDTL4",
+    "S_DDTL5",
+    "S_DDTL55",
+    "S_RCF25"
+   ],
+   "contract_ids": [
+    "ddtl_3",
+    "ddtl_4",
+    "ddtl_5",
+    "ddtl_5_5",
+    "rcf"
+   ],
+   "amount_usd_m": null,
+   "amount_note": "기관별 보유액 미공시 · 계약 전체 금액은 계약 정보 참고",
+   "roles": [
+    "DDTL 3.0: Joint Bookrunner, Joint Lead Arranger",
+    "DDTL 4.0: Co-Structuring Agent, Joint Bookrunner",
+    "DDTL 5.0: Coordinating Lead Arranger, Joint Bookrunner",
+    "DDTL 5.5: Joint Lead Arranger, Joint Bookrunner, Syndication Agent",
+    "Revolving Credit Facility: Lead Bank"
+   ],
+   "explanation": "주선(Arranger)·북러너는 대출을 구조화·판매하는 역할로, 최종 보유액과 다를 수 있습니다. 기관별 보유액은 공시되지 않아 손익을 계산하지 않습니다.",
+   "commercial_ids": []
+  },
+  {
+   "id": "f_goldman",
+   "source": "coreweave",
+   "target": "goldman",
+   "relationship_type": "FINANCING_PARTICIPATION",
+   "impact_channel": "financial",
+   "label": "차입 계약 참여 3건",
+   "impact_label": "차환 시 계약 상대 (보유액 미공개)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_10Q2",
+    "S_650",
+    "S_DDTL3",
+    "S_DDTL4",
+    "S_RCF25"
+   ],
+   "contract_ids": [
+    "ddtl_3",
+    "ddtl_4",
+    "rcf"
+   ],
+   "amount_usd_m": null,
+   "amount_note": "기관별 보유액 미공시 · 계약 전체 금액은 계약 정보 참고",
+   "roles": [
+    "DDTL 3.0: Joint Lead Arranger",
+    "DDTL 4.0: Coordinating Lead Arranger",
+    "Revolving Credit Facility: Lead Bank"
+   ],
+   "explanation": "주선(Arranger)·북러너는 대출을 구조화·판매하는 역할로, 최종 보유액과 다를 수 있습니다. 기관별 보유액은 공시되지 않아 손익을 계산하지 않습니다.",
+   "commercial_ids": []
+  },
+  {
+   "id": "f_jpmorgan",
+   "source": "coreweave",
+   "target": "jpmorgan",
+   "relationship_type": "FINANCING_PARTICIPATION",
+   "impact_channel": "financial",
+   "label": "차입 계약 참여 4건",
+   "impact_label": "차환 시 계약 상대 (보유액 미공개)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_10Q2",
+    "S_650",
+    "S_DDTL3",
+    "S_DDTL4",
+    "S_DDTL55",
+    "S_RCF25"
+   ],
+   "contract_ids": [
+    "ddtl_3",
+    "ddtl_4",
+    "ddtl_5_5",
+    "rcf"
+   ],
+   "amount_usd_m": null,
+   "amount_note": "기관별 보유액 미공시 · 계약 전체 금액은 계약 정보 참고",
+   "roles": [
+    "DDTL 3.0: Lender (Syndicate)",
+    "DDTL 4.0: Coordinating Lead Arranger",
+    "DDTL 5.5: Administrative Agent, Joint Lead Arranger, Joint Bookrunner, Syndication Agent",
+    "Revolving Credit Facility: Lead Bank"
+   ],
+   "explanation": "주선(Arranger)·북러너는 대출을 구조화·판매하는 역할로, 최종 보유액과 다를 수 있습니다. 기관별 보유액은 공시되지 않아 손익을 계산하지 않습니다.",
+   "commercial_ids": []
+  },
+  {
+   "id": "f_wells_fargo",
+   "source": "coreweave",
+   "target": "wells_fargo",
+   "relationship_type": "FINANCING_PARTICIPATION",
+   "impact_channel": "financial",
+   "label": "차입 계약 참여 2건",
+   "impact_label": "차환 시 계약 상대 (보유액 미공개)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_10Q2",
+    "S_650",
+    "S_DDTL3",
+    "S_RCF25"
+   ],
+   "contract_ids": [
+    "ddtl_3",
+    "rcf"
+   ],
+   "amount_usd_m": null,
+   "amount_note": "기관별 보유액 미공시 · 계약 전체 금액은 계약 정보 참고",
+   "roles": [
+    "DDTL 3.0: Lender (Syndicate)",
+    "Revolving Credit Facility: Participant"
+   ],
+   "explanation": "주선(Arranger)·북러너는 대출을 구조화·판매하는 역할로, 최종 보유액과 다를 수 있습니다. 기관별 보유액은 공시되지 않아 손익을 계산하지 않습니다.",
+   "commercial_ids": []
+  },
+  {
+   "id": "f_bbva",
+   "source": "coreweave",
+   "target": "bbva",
+   "relationship_type": "FINANCING_PARTICIPATION",
+   "impact_channel": "financial",
+   "label": "차입 계약 참여 1건",
+   "impact_label": "차환 시 계약 상대 (보유액 미공개)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_10Q2",
+    "S_DDTL3"
+   ],
+   "contract_ids": [
+    "ddtl_3"
+   ],
+   "amount_usd_m": null,
+   "amount_note": "기관별 보유액 미공시 · 계약 전체 금액은 계약 정보 참고",
+   "roles": [
+    "DDTL 3.0: Lender (Syndicate)"
+   ],
+   "explanation": "주선(Arranger)·북러너는 대출을 구조화·판매하는 역할로, 최종 보유액과 다를 수 있습니다. 기관별 보유액은 공시되지 않아 손익을 계산하지 않습니다.",
+   "commercial_ids": []
+  },
+  {
+   "id": "f_credit_agricole",
+   "source": "coreweave",
+   "target": "credit_agricole",
+   "relationship_type": "FINANCING_PARTICIPATION",
+   "impact_channel": "financial",
+   "label": "차입 계약 참여 2건",
+   "impact_label": "차환 시 계약 상대 (보유액 미공개)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_10Q2",
+    "S_650",
+    "S_DDTL3",
+    "S_RCF25"
+   ],
+   "contract_ids": [
+    "ddtl_3",
+    "rcf"
+   ],
+   "amount_usd_m": null,
+   "amount_note": "기관별 보유액 미공시 · 계약 전체 금액은 계약 정보 참고",
+   "roles": [
+    "DDTL 3.0: Lender (Syndicate)",
+    "Revolving Credit Facility: Participant"
+   ],
+   "explanation": "주선(Arranger)·북러너는 대출을 구조화·판매하는 역할로, 최종 보유액과 다를 수 있습니다. 기관별 보유액은 공시되지 않아 손익을 계산하지 않습니다.",
+   "commercial_ids": []
+  },
+  {
+   "id": "f_smbc",
+   "source": "coreweave",
+   "target": "smbc",
+   "relationship_type": "FINANCING_PARTICIPATION",
+   "impact_channel": "financial",
+   "label": "차입 계약 참여 2건",
+   "impact_label": "차환 시 계약 상대 (보유액 미공개)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_10Q2",
+    "S_650",
+    "S_DDTL3",
+    "S_RCF25"
+   ],
+   "contract_ids": [
+    "ddtl_3",
+    "rcf"
+   ],
+   "amount_usd_m": null,
+   "amount_note": "기관별 보유액 미공시 · 계약 전체 금액은 계약 정보 참고",
+   "roles": [
+    "DDTL 3.0: Lender (Syndicate)",
+    "Revolving Credit Facility: Participant"
+   ],
+   "explanation": "주선(Arranger)·북러너는 대출을 구조화·판매하는 역할로, 최종 보유액과 다를 수 있습니다. 기관별 보유액은 공시되지 않아 손익을 계산하지 않습니다.",
+   "commercial_ids": []
+  },
+  {
+   "id": "f_pnc",
+   "source": "coreweave",
+   "target": "pnc",
+   "relationship_type": "FINANCING_PARTICIPATION",
+   "impact_channel": "financial",
+   "label": "차입 계약 참여 1건",
+   "impact_label": "차환 시 계약 상대 (보유액 미공개)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_10Q2",
+    "S_DDTL3"
+   ],
+   "contract_ids": [
+    "ddtl_3"
+   ],
+   "amount_usd_m": null,
+   "amount_note": "기관별 보유액 미공시 · 계약 전체 금액은 계약 정보 참고",
+   "roles": [
+    "DDTL 3.0: Lender (Syndicate)"
+   ],
+   "explanation": "주선(Arranger)·북러너는 대출을 구조화·판매하는 역할로, 최종 보유액과 다를 수 있습니다. 기관별 보유액은 공시되지 않아 손익을 계산하지 않습니다.",
+   "commercial_ids": []
+  },
+  {
+   "id": "f_societe_generale",
+   "source": "coreweave",
+   "target": "societe_generale",
+   "relationship_type": "FINANCING_PARTICIPATION",
+   "impact_channel": "financial",
+   "label": "차입 계약 참여 1건",
+   "impact_label": "차환 시 계약 상대 (보유액 미공개)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_10Q2",
+    "S_DDTL3"
+   ],
+   "contract_ids": [
+    "ddtl_3"
+   ],
+   "amount_usd_m": null,
+   "amount_note": "기관별 보유액 미공시 · 계약 전체 금액은 계약 정보 참고",
+   "roles": [
+    "DDTL 3.0: Lender (Syndicate)"
+   ],
+   "explanation": "주선(Arranger)·북러너는 대출을 구조화·판매하는 역할로, 최종 보유액과 다를 수 있습니다. 기관별 보유액은 공시되지 않아 손익을 계산하지 않습니다.",
+   "commercial_ids": []
+  },
+  {
+   "id": "f_us_bank",
+   "source": "coreweave",
+   "target": "us_bank",
+   "relationship_type": "COLLATERAL_AGENT",
+   "impact_channel": "financial",
+   "label": "담보·예치 관리",
+   "impact_label": "차환 시 계약 상대 (보유액 미공개)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_10Q2",
+    "S_DDTL5",
+    "S_DDTL55"
+   ],
+   "contract_ids": [
+    "ddtl_5",
+    "ddtl_5_5"
+   ],
+   "amount_usd_m": null,
+   "amount_note": "기관별 보유액 미공시 · 계약 전체 금액은 계약 정보 참고",
+   "roles": [
+    "DDTL 5.0: Collateral Agent, Depositary Bank",
+    "DDTL 5.5: Collateral Agent, Depositary Bank"
+   ],
+   "explanation": "주선(Arranger)·북러너는 대출을 구조화·판매하는 역할로, 최종 보유액과 다를 수 있습니다. 기관별 보유액은 공시되지 않아 손익을 계산하지 않습니다.",
+   "commercial_ids": []
+  },
+  {
+   "id": "f_citi",
+   "source": "coreweave",
+   "target": "citi",
+   "relationship_type": "FINANCING_PARTICIPATION",
+   "impact_channel": "financial",
+   "label": "차입 계약 참여 1건",
+   "impact_label": "차환 시 계약 상대 (보유액 미공개)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_10Q2",
+    "S_650",
+    "S_RCF25"
+   ],
+   "contract_ids": [
+    "rcf"
+   ],
+   "amount_usd_m": null,
+   "amount_note": "기관별 보유액 미공시 · 계약 전체 금액은 계약 정보 참고",
+   "roles": [
+    "Revolving Credit Facility: Participant"
+   ],
+   "explanation": "주선(Arranger)·북러너는 대출을 구조화·판매하는 역할로, 최종 보유액과 다를 수 있습니다. 기관별 보유액은 공시되지 않아 손익을 계산하지 않습니다.",
+   "commercial_ids": []
+  },
+  {
+   "id": "f_deutsche_bank",
+   "source": "coreweave",
+   "target": "deutsche_bank",
+   "relationship_type": "FINANCING_PARTICIPATION",
+   "impact_channel": "financial",
+   "label": "차입 계약 참여 1건",
+   "impact_label": "차환 시 계약 상대 (보유액 미공개)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_10Q2",
+    "S_650",
+    "S_RCF25"
+   ],
+   "contract_ids": [
+    "rcf"
+   ],
+   "amount_usd_m": null,
+   "amount_note": "기관별 보유액 미공시 · 계약 전체 금액은 계약 정보 참고",
+   "roles": [
+    "Revolving Credit Facility: Participant"
+   ],
+   "explanation": "주선(Arranger)·북러너는 대출을 구조화·판매하는 역할로, 최종 보유액과 다를 수 있습니다. 기관별 보유액은 공시되지 않아 손익을 계산하지 않습니다.",
+   "commercial_ids": []
+  },
+  {
+   "id": "f_barclays",
+   "source": "coreweave",
+   "target": "barclays",
+   "relationship_type": "FINANCING_PARTICIPATION",
+   "impact_channel": "financial",
+   "label": "차입 계약 참여 1건",
+   "impact_label": "차환 시 계약 상대 (보유액 미공개)",
+   "source_status": "INFERRED",
+   "source_ids": [
+    "S_10Q2",
+    "S_650",
+    "S_RCF25"
+   ],
+   "contract_ids": [
+    "rcf"
+   ],
+   "amount_usd_m": null,
+   "amount_note": "기관별 보유액 미공시 · 계약 전체 금액은 계약 정보 참고",
+   "roles": [
+    "Revolving Credit Facility: Participant (2024 최초 $650M, 현재 참여 미확인)"
+   ],
+   "explanation": "주선(Arranger)·북러너는 대출을 구조화·판매하는 역할로, 최종 보유액과 다를 수 있습니다. 기관별 보유액은 공시되지 않아 손익을 계산하지 않습니다.",
+   "commercial_ids": []
+  },
+  {
+   "id": "f_jefferies",
+   "source": "coreweave",
+   "target": "jefferies",
+   "relationship_type": "FINANCING_PARTICIPATION",
+   "impact_channel": "financial",
+   "label": "차입 계약 참여 1건",
+   "impact_label": "차환 시 계약 상대 (보유액 미공개)",
+   "source_status": "INFERRED",
+   "source_ids": [
+    "S_10Q2",
+    "S_650",
+    "S_RCF25"
+   ],
+   "contract_ids": [
+    "rcf"
+   ],
+   "amount_usd_m": null,
+   "amount_note": "기관별 보유액 미공시 · 계약 전체 금액은 계약 정보 참고",
+   "roles": [
+    "Revolving Credit Facility: Participant (2024 최초 $650M, 현재 참여 미확인)"
+   ],
+   "explanation": "주선(Arranger)·북러너는 대출을 구조화·판매하는 역할로, 최종 보유액과 다를 수 있습니다. 기관별 보유액은 공시되지 않아 손익을 계산하지 않습니다.",
+   "commercial_ids": []
+  },
+  {
+   "id": "f_mizuho",
+   "source": "coreweave",
+   "target": "mizuho",
+   "relationship_type": "FINANCING_PARTICIPATION",
+   "impact_channel": "financial",
+   "label": "차입 계약 참여 1건",
+   "impact_label": "차환 시 계약 상대 (보유액 미공개)",
+   "source_status": "INFERRED",
+   "source_ids": [
+    "S_10Q2",
+    "S_650",
+    "S_RCF25"
+   ],
+   "contract_ids": [
+    "rcf"
+   ],
+   "amount_usd_m": null,
+   "amount_note": "기관별 보유액 미공시 · 계약 전체 금액은 계약 정보 참고",
+   "roles": [
+    "Revolving Credit Facility: Participant (2024 최초 $650M, 현재 참여 미확인)"
+   ],
+   "explanation": "주선(Arranger)·북러너는 대출을 구조화·판매하는 역할로, 최종 보유액과 다를 수 있습니다. 기관별 보유액은 공시되지 않아 손익을 계산하지 않습니다.",
+   "commercial_ids": []
+  },
+  {
+   "id": "q_nvidia",
+   "source": "coreweave",
+   "target": "nvidia",
+   "relationship_type": "EQUITY_INVESTMENT",
+   "impact_channel": "equity",
+   "label": "지분 투자 (NVIDIA→CoreWeave)",
+   "impact_label": "주주 관계",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_NV_EQ"
+   ],
+   "contract_ids": [],
+   "amount_usd_m": 2000,
+   "amount_note": "2026.1 20억 달러 투자(보도)",
+   "roles": [],
+   "explanation": "",
+   "commercial_ids": []
+  },
+  {
+   "id": "q_magnetar",
+   "source": "coreweave",
+   "target": "magnetar",
+   "relationship_type": "EQUITY_INVESTMENT",
+   "impact_channel": "equity",
+   "label": "주주",
+   "impact_label": "주주 관계",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_MAGNETAR"
+   ],
+   "contract_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "",
+   "roles": [],
+   "explanation": "",
+   "commercial_ids": []
+  },
+  {
+   "id": "q_openai",
+   "source": "coreweave",
+   "target": "openai",
+   "relationship_type": "EQUITY_INVESTMENT",
+   "impact_channel": "equity",
+   "label": "주주 (2025.3 주식 발행)",
+   "impact_label": "주주 관계",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_REUTERS_SYN"
+   ],
+   "contract_ids": [],
+   "amount_usd_m": 350,
+   "amount_note": "3.5억 달러 규모 주식 발행(보도)",
+   "roles": [],
+   "explanation": "",
+   "commercial_ids": []
+  },
+  {
+   "id": "q_jane",
+   "source": "coreweave",
+   "target": "jane_street",
+   "relationship_type": "EQUITY_INVESTMENT",
+   "impact_channel": "equity",
+   "label": "지분 투자 10억 달러",
+   "impact_label": "주주 관계",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_JANE"
+   ],
+   "contract_ids": [],
+   "amount_usd_m": 1000,
+   "amount_note": "주당 109달러",
+   "roles": [],
+   "explanation": "",
+   "commercial_ids": []
+  },
+  {
+   "id": "s_nvidia",
+   "source": "coreweave",
+   "target": "nvidia",
+   "relationship_type": "SUPPLIER",
+   "impact_channel": "supply_chain",
+   "label": "GPU 공급",
+   "impact_label": "GPU 구매 변화 전달",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_NV_EQ",
+    "S_DELL"
+   ],
+   "contract_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "",
+   "roles": [],
+   "explanation": "CoreWeave는 NVIDIA GPU로 클라우드를 구성합니다. 구매 금액은 공시되지 않았습니다.",
+   "commercial_ids": []
+  },
+  {
+   "id": "s_dell",
+   "source": "coreweave",
+   "target": "dell",
+   "relationship_type": "SUPPLIER",
+   "impact_channel": "supply_chain",
+   "label": "AI 서버 랙 공급",
+   "impact_label": "서버 구매 변화 전달",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_DELL"
+   ],
+   "contract_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "",
+   "roles": [],
+   "explanation": "",
+   "commercial_ids": []
+  },
+  {
+   "id": "s_dell_nvidia",
+   "source": "dell",
+   "target": "nvidia",
+   "relationship_type": "STRATEGIC_PARTNERSHIP",
+   "impact_channel": "supply_chain",
+   "label": "Dell AI Factory with NVIDIA",
+   "impact_label": "Dell AI Factory with NVIDIA",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_DELL_AI_FACTORY",
+    "S_NVDA_10K_FY26"
+   ],
+   "contract_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "전략 파트너십 · 계약액 미공시",
+   "roles": [],
+   "explanation": "Dell official announcement of Dell AI Factory with NVIDIA (end-to-end enterprise AI solutions). Long-standing OEM/systems partnership; not a disclosed hyperscaler GPU PO amount.",
+   "commercial_ids": []
+  },
+  {
+   "id": "s_nvidia_skh",
+   "source": "nvidia",
+   "target": "sk_hynix",
+   "relationship_type": "SUPPLIER",
+   "impact_channel": "supply_chain",
+   "label": "NVIDIA purchases memory from SK hynix (10-K named)",
+   "impact_label": "NVIDIA purchases memory from SK hynix (10-K named)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_SKH",
+    "S_NVDA_10K_FY26_MFG",
+    "S_SKH_FY25"
+   ],
+   "contract_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "",
+   "roles": [],
+   "explanation": "NVIDIA FY2026 10-K: purchases memory from SK Hynix Inc., Micron, and Samsung. Separate from the 2026 multi-year technology partnership edge.",
+   "commercial_ids": []
+  },
+  {
+   "id": "s_nvidia_tsmc",
+   "source": "nvidia",
+   "target": "tsmc",
+   "relationship_type": "SUPPLIER",
+   "impact_channel": "supply_chain",
+   "label": "NVIDIA wafers at TSMC (named 10-K)",
+   "impact_label": "NVIDIA wafers at TSMC (named 10-K)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_NVDA_10K_FY26",
+    "S_NVDA_10K_FY26_MFG"
+   ],
+   "contract_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "웨이퍼 물량·단가 미공시",
+   "roles": [],
+   "explanation": "NVIDIA FY2026 10-K Manufacturing: utilizes foundries such as TSMC and Samsung to produce semiconductor wafers; uses CoWoS packaging. Named supplier relationship — wafer volumes/prices not disclosed.",
+   "commercial_ids": []
+  },
+  {
+   "id": "k_nvidia_backstop",
+   "source": "coreweave",
+   "target": "nvidia",
+   "relationship_type": "CAPACITY_BACKSTOP",
+   "impact_channel": "contract",
+   "label": "미사용 용량 매입 약정 63억 달러",
+   "impact_label": "고객 측 지원 약정",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_NV_ORDER"
+   ],
+   "contract_ids": [],
+   "amount_usd_m": 6300,
+   "amount_note": "초기 계약가치. 고객이 쓰지 않은 잔여 용량을 2032.4.13까지 NVIDIA가 매입할 의무",
+   "roles": [],
+   "explanation": "",
+   "commercial_ids": [
+    "nvidia_capacity"
+   ]
+  },
+  {
+   "id": "c_microsoft",
+   "source": "coreweave",
+   "target": "microsoft",
+   "relationship_type": "CUSTOMER",
+   "impact_channel": "customer",
+   "label": "클라우드 고객",
+   "impact_label": "서비스 제공 계약",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_10K"
+   ],
+   "contract_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "FY2025 매출의 약 67%",
+   "roles": [],
+   "explanation": "",
+   "commercial_ids": [
+    "microsoft_msa"
+   ]
+  },
+  {
+   "id": "c_openai",
+   "source": "coreweave",
+   "target": "openai",
+   "relationship_type": "CUSTOMER",
+   "impact_channel": "customer",
+   "label": "클라우드 고객",
+   "impact_label": "서비스 제공 계약",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_OPENAI65",
+    "S_REUTERS_MS",
+    "S_10Q1"
+   ],
+   "contract_ids": [],
+   "amount_usd_m": 22400,
+   "amount_note": "3건 합계 최대치: 2025.3 119억 + 2025.5 40억 + 2025.9 65억 달러",
+   "roles": [],
+   "explanation": "",
+   "commercial_ids": [
+    "openai_2503",
+    "openai_2505",
+    "openai_2509"
+   ]
+  },
+  {
+   "id": "c_meta",
+   "source": "coreweave",
+   "target": "meta",
+   "relationship_type": "CUSTOMER",
+   "impact_channel": "customer",
+   "label": "클라우드 고객",
+   "impact_label": "서비스 제공 계약",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_META142",
+    "S_META21"
+   ],
+   "contract_ids": [],
+   "amount_usd_m": 35200,
+   "amount_note": "2건 합계 최대치: 2025.9 약 142억 달러(~2031.12.14) + 2026.4 약 210억 달러(~2032.12)",
+   "roles": [],
+   "explanation": "",
+   "commercial_ids": [
+    "meta_2509",
+    "meta_2604"
+   ]
+  },
+  {
+   "id": "c_anthropic",
+   "source": "coreweave",
+   "target": "anthropic",
+   "relationship_type": "CUSTOMER",
+   "impact_channel": "customer",
+   "label": "클라우드 고객",
+   "impact_label": "서비스 제공 계약",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_ANTHROPIC"
+   ],
+   "contract_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "계약 금액 미공개 · 2026년 하반기부터 가동",
+   "roles": [],
+   "explanation": "",
+   "commercial_ids": [
+    "anthropic_2604"
+   ]
+  },
+  {
+   "id": "c_jane",
+   "source": "coreweave",
+   "target": "jane_street",
+   "relationship_type": "CUSTOMER",
+   "impact_channel": "customer",
+   "label": "클라우드 고객",
+   "impact_label": "서비스 제공 계약",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_JANE"
+   ],
+   "contract_ids": [],
+   "amount_usd_m": 6000,
+   "amount_note": "AI 클라우드 이용 약 60억 달러 (기간 미공시)",
+   "roles": [],
+   "explanation": "",
+   "commercial_ids": [
+    "jane_2604"
+   ]
+  },
+  {
+   "id": "d_corz",
+   "source": "coreweave",
+   "target": "core_scientific",
+   "relationship_type": "LESSOR",
+   "impact_channel": "facility",
+   "label": "데이터센터 임차 (약 590MW)",
+   "impact_label": "임차료 지급 계약",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_CORZ"
+   ],
+   "contract_ids": [],
+   "amount_usd_m": 10200,
+   "amount_note": "12년 계약매출 (임대인 기준)",
+   "roles": [],
+   "explanation": "",
+   "commercial_ids": [
+    "corz_lease"
+   ]
+  },
+  {
+   "id": "d_apld",
+   "source": "coreweave",
+   "target": "applied_digital",
+   "relationship_type": "LESSOR",
+   "impact_channel": "facility",
+   "label": "데이터센터 임차 (250MW)",
+   "impact_label": "임차료 지급 계약",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_APLD"
+   ],
+   "contract_ids": [],
+   "amount_usd_m": 7000,
+   "amount_note": "약 15년 예상 매출 (임대인 기준, 확정 금액 아님)",
+   "roles": [],
+   "explanation": "",
+   "commercial_ids": [
+    "apld_lease"
+   ]
+  },
+  {
+   "id": "d_glxy",
+   "source": "coreweave",
+   "target": "galaxy_digital",
+   "relationship_type": "LESSOR",
+   "impact_channel": "facility",
+   "label": "Helios 데이터센터 임차 (526MW critical IT)",
+   "impact_label": "임차료 지급 계약",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_GLXY_10K25",
+    "S_GLXY_HELIOS"
+   ],
+   "contract_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "총액 미공시 · 평균 연간 >\\ 예상 (임대인 IR)",
+   "roles": [],
+   "explanation": "",
+   "commercial_ids": [
+    "glxy_helios_lease"
+   ]
+  },
+  {
+   "id": "d_corz_spv",
+   "source": "core_scientific",
+   "target": "corz_finance_i",
+   "relationship_type": "PARENT_SPV",
+   "impact_channel": "financial",
+   "label": "Finance I 발행체 (완공보증 · notes 미보증)",
+   "impact_label": "프로젝트 부채 · 모회사 비소구 notes",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_CORZ_FINANCE_I"
+   ],
+   "contract_ids": [],
+   "amount_usd_m": 3300,
+   "amount_note": "$3.3B 7.750% senior secured notes due 2031",
+   "roles": [],
+   "explanation": "모회사는 notes를 보증하지 않음. 완공보증만.",
+   "commercial_ids": [
+    "corz_finance_i_notes"
+   ]
+  },
+  {
+   "id": "c_hrt",
+   "source": "coreweave",
+   "target": "hudson_river",
+   "relationship_type": "CUSTOMER",
+   "impact_channel": "customer",
+   "label": "클라우드 고객",
+   "impact_label": "서비스 제공 계약",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_Q2",
+    "S_HRT"
+   ],
+   "contract_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "'수십억 달러' 규모 보도(본문 미확인) · 금액 미공시",
+   "roles": [],
+   "explanation": "",
+   "commercial_ids": [
+    "hrt_2026"
+   ]
+  },
+  {
+   "id": "c_alphabet",
+   "source": "coreweave",
+   "target": "alphabet",
+   "relationship_type": "CUSTOMER",
+   "impact_channel": "customer",
+   "label": "Google Cloud 고객 관계 (보도)",
+   "impact_label": "고객 수요 경로 · 금액 미공시",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_GOOG_CW"
+   ],
+   "contract_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "계약 금액 미공시",
+   "roles": [
+    "Customer (Google Cloud)"
+   ],
+   "explanation": "Reuters가 Google Cloud–CoreWeave 용량 활용을 보도. 기관별·계약별 금액은 공시되지 않아 정량 영향을 계산하지 않습니다.",
+   "commercial_ids": []
+  },
+  {
+   "id": "sc_samsung_nv",
+   "source": "nvidia",
+   "target": "samsung",
+   "relationship_type": "SUPPLIER",
+   "impact_channel": "supply_chain",
+   "label": "NVIDIA foundry + memory at Samsung (10-K named)",
+   "impact_label": "NVIDIA foundry + memory at Samsung (10-K named)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_NVDA_10K_FY26",
+    "S_NVDA_10K_FY26_MFG",
+    "S_SMSN_FY25",
+    "S_SMSN_BR_FY25"
+   ],
+   "contract_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "물량·단가 미공시",
+   "roles": [
+    "HBM supplier (industry structure)"
+   ],
+   "explanation": "NVIDIA FY2026 10-K Manufacturing: uses Samsung as a wafer foundry and purchases memory from Samsung (with SK hynix and Micron). Distinct from the Oct 2025 AI Factory strategic announcement.",
+   "commercial_ids": []
+  },
+  {
+   "id": "eq_msft_openai",
+   "source": "microsoft",
+   "target": "openai",
+   "relationship_type": "EQUITY_INVESTMENT",
+   "impact_channel": "equity",
+   "label": "Microsoft equity stake in OpenAI PBC",
+   "impact_label": "Microsoft equity stake in OpenAI PBC",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_MSFT_OAI_2025",
+    "S_MSFT_10K_OAI"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": 135000,
+   "amount_note": "공시 평가액(지분) · 출자 약정 $13B와 별도",
+   "roles": [
+    "Strategic investor"
+   ],
+   "explanation": "2025.10 재자본화 후 Microsoft는 OpenAI Group PBC에 as-converted diluted 기준 약 27% 지분(평가액 약 $135B 공시). 누적 출자 약정 $13B는 지분법 회계."
+  },
+  {
+   "id": "c_openai_azure",
+   "source": "openai",
+   "target": "microsoft",
+   "relationship_type": "CUSTOMER",
+   "impact_channel": "customer",
+   "label": "OpenAI Azure cloud commitment",
+   "impact_label": "OpenAI Azure cloud commitment",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_MSFT_OAI_2025",
+    "S_MSFT_10K_OAI"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": 250000,
+   "amount_note": "증분 Azure 구매 약정(commitment)",
+   "roles": [
+    "Cloud customer"
+   ],
+   "explanation": "OpenAI가 Azure 서비스에 대해 추가 $250B 구매 약정을 공시. 금액은 약정(commitment)이며 이행 시점은 다년."
+  },
+  {
+   "id": "s_amazon_nvidia",
+   "source": "amazon",
+   "target": "nvidia",
+   "relationship_type": "SUPPLIER",
+   "impact_channel": "supply_chain",
+   "label": "AWS purchases NVIDIA GPUs",
+   "impact_label": "AWS purchases NVIDIA GPUs",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_AWS_NVDA_1M",
+    "S_AWS_NVDA_2M"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "대수 공시 · USD 총액 미공시",
+   "roles": [],
+   "explanation": "AWS가 2026–2027에 약 100만 장, 이어 2027–2028에 추가 약 200만 장의 NVIDIA GPU 배치를 발표. 계약 총액은 미공시."
+  },
+  {
+   "id": "s_microsoft_nvidia",
+   "source": "microsoft",
+   "target": "nvidia",
+   "relationship_type": "SUPPLIER",
+   "impact_channel": "supply_chain",
+   "label": "Azure NVIDIA GPU infrastructure",
+   "impact_label": "Azure NVIDIA GPU infrastructure",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_MSFT_NV_AZURE",
+    "S_NVDA_10K_FY26"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "금액 미공시",
+   "roles": [],
+   "explanation": "Azure가 NVIDIA GPU 가속 인스턴스를 제공. NVIDIA 10-K는 주요 CSP를 고객군으로 명시(개별 금액 비공시)."
+  },
+  {
+   "id": "s_alphabet_nvidia",
+   "source": "alphabet",
+   "target": "nvidia",
+   "relationship_type": "SUPPLIER",
+   "impact_channel": "supply_chain",
+   "label": "Google Cloud NVIDIA GPU VMs",
+   "impact_label": "Google Cloud NVIDIA GPU VMs",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_GOOG_NV",
+    "S_NVDA_10K_FY26"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "금액 미공시",
+   "roles": [],
+   "explanation": "Google Cloud A3 등 NVIDIA GPU VM. TPU와 병행. 개별 구매액 미공시."
+  },
+  {
+   "id": "s_meta_nvidia",
+   "source": "meta",
+   "target": "nvidia",
+   "relationship_type": "SUPPLIER",
+   "impact_channel": "supply_chain",
+   "label": "Meta AI infrastructure / NVIDIA",
+   "impact_label": "Meta AI infrastructure / NVIDIA",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_META_NV",
+    "S_NVDA_10K_FY26"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "금액 미공시",
+   "roles": [],
+   "explanation": "Meta는 대규모 AI 학습·추론 인프라에서 NVIDIA GPU를 사용(파트너십·제품 발표). 총액 미공시."
+  },
+  {
+   "id": "s_oracle_nvidia",
+   "source": "oracle",
+   "target": "nvidia",
+   "relationship_type": "SUPPLIER",
+   "impact_channel": "supply_chain",
+   "label": "OCI NVIDIA GPU superclusters",
+   "impact_label": "OCI NVIDIA GPU superclusters",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_ORCL_NV",
+    "S_NVDA_10K_FY26"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "금액 혼재·미공시 가능",
+   "roles": [],
+   "explanation": "Oracle Cloud가 NVIDIA GPU 슈퍼클러스터를 제공·확장. 개별 계약액은 발표마다 상이·부분 공시."
+  },
+  {
+   "id": "s_nvidia_micron",
+   "source": "nvidia",
+   "target": "micron",
+   "relationship_type": "SUPPLIER",
+   "impact_channel": "supply_chain",
+   "label": "NVIDIA buys memory from Micron",
+   "impact_label": "NVIDIA buys memory from Micron",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_NVDA_10K_FY26",
+    "S_NVDA_10K_FY26_MFG",
+    "S_MICRON_NVDA_HBM"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "금액 미공시",
+   "roles": [],
+   "explanation": "NVIDIA FY2026 10-K names Micron as a memory supplier. Micron IR: HBM3E/SOCAMM products designed for NVIDIA Blackwell platforms. Supply relationship — USD of memory purchases not disclosed."
+  },
+  {
+   "id": "s_nvidia_foxconn",
+   "source": "nvidia",
+   "target": "foxconn",
+   "relationship_type": "SUPPLIER",
+   "impact_channel": "supply_chain",
+   "label": "Hon Hai assembly/test for NVIDIA",
+   "impact_label": "Hon Hai assembly/test for NVIDIA",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_NVDA_10K_FY26",
+    "S_NVDA_10K_FY26_MFG"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "금액 미공시",
+   "roles": [],
+   "explanation": "NVIDIA FY2026 10-K Manufacturing: engages Hon Hai Precision Industry (Foxconn) among contract manufacturers for assembly, testing and packaging of final products."
+  },
+  {
+   "id": "s_nvidia_wistron",
+   "source": "nvidia",
+   "target": "wistron",
+   "relationship_type": "SUPPLIER",
+   "impact_channel": "supply_chain",
+   "label": "Wistron assembly/test for NVIDIA",
+   "impact_label": "Wistron assembly/test for NVIDIA",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_NVDA_10K_FY26",
+    "S_NVDA_10K_FY26_MFG"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "금액 미공시",
+   "roles": [],
+   "explanation": "NVIDIA FY2026 10-K Manufacturing: engages Wistron Corporation among contract manufacturers for assembly, testing and packaging of final products."
+  },
+  {
+   "id": "s_amd_tsmc",
+   "source": "amd",
+   "target": "tsmc",
+   "relationship_type": "SUPPLIER",
+   "impact_channel": "supply_chain",
+   "label": "AMD advanced-node foundry at TSMC",
+   "impact_label": "AMD advanced-node foundry at TSMC",
+   "source_status": "INFERRED",
+   "source_ids": [
+    "S_AMD_TSMC",
+    "S_TSMC_NV_CNBC"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "금액 미공시",
+   "roles": [],
+   "explanation": "AMD는 fabless로 선단 공정을 TSMC에 의존(10-K 위험요인). 고객별 매출 비중은 TSMC가 비공시."
+  },
+  {
+   "id": "s_apple_tsmc",
+   "source": "apple",
+   "target": "tsmc",
+   "relationship_type": "SUPPLIER",
+   "impact_channel": "supply_chain",
+   "label": "Apple SoC foundry at TSMC",
+   "impact_label": "Apple SoC foundry at TSMC",
+   "source_status": "INFERRED",
+   "source_ids": [
+    "S_APPLE_TSMC",
+    "S_TSMC_NV_CNBC"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "고객명 비공시 · 산업 컨센서스",
+   "roles": [],
+   "explanation": "Apple은 TSMC 최대 고객군으로 널리 알려짐. TSMC는 고객명을 공시하지 않으며 상위 고객 매출 비중만 공개."
+  },
+  {
+   "id": "s_broadcom_tsmc",
+   "source": "broadcom",
+   "target": "tsmc",
+   "relationship_type": "SUPPLIER",
+   "impact_channel": "supply_chain",
+   "label": "Broadcom foundry at TSMC",
+   "impact_label": "Broadcom foundry at TSMC",
+   "source_status": "INFERRED",
+   "source_ids": [
+    "S_TSMC_NV_CNBC"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "금액 미공시",
+   "roles": [],
+   "explanation": "Broadcom 등 무공장 설계사가 TSMC 고객군에 포함(산업·보도). 개별 금액 미공시."
+  },
+  {
+   "id": "s_tsmc_asml",
+   "source": "tsmc",
+   "target": "asml",
+   "relationship_type": "SUPPLIER",
+   "impact_channel": "supply_chain",
+   "label": "TSMC buys ASML lithography tools",
+   "impact_label": "TSMC buys ASML lithography tools",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_ASML_TSMC"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "개별 주문액은 분기별로 부분 공시",
+   "roles": [],
+   "explanation": "ASML EUV/DUV 장비가 선단 파운드리 CAPEX의 핵심. TSMC는 ASML의 주요 고객사 중 하나."
+  },
+  {
+   "id": "s_smci_nvidia",
+   "source": "smci",
+   "target": "nvidia",
+   "relationship_type": "SUPPLIER",
+   "impact_channel": "supply_chain",
+   "label": "Super Micro NVIDIA GPU servers",
+   "impact_label": "Super Micro NVIDIA GPU servers",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_SMCI_10K_FY25",
+    "S_SMCI_NV",
+    "S_NVDA_10K_FY26"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "금액 미공시",
+   "roles": [],
+   "explanation": "SMCI FY2025 10-K: works closely with NVIDIA (and Intel/AMD) to align products with processor release cycles; ships Hopper/Blackwell-compatible systems. Reinforced by SMCI IR releases on NVIDIA-certified systems."
+  },
+  {
+   "id": "s_hpe_nvidia",
+   "source": "hpe",
+   "target": "nvidia",
+   "relationship_type": "STRATEGIC_PARTNERSHIP",
+   "impact_channel": "supply_chain",
+   "label": "NVIDIA AI Computing by HPE",
+   "impact_label": "NVIDIA AI Computing by HPE",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_HPE_NVDA_AI",
+    "S_NVDA_10K_FY26"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "전략 파트너십 · 계약액 미공시",
+   "roles": [],
+   "explanation": "HPE official partnership materials: NVIDIA AI Computing by HPE / Private Cloud AI with Blackwell support. Strategic OEM/systems collaboration — unit purchase USD not disclosed."
+  },
+  {
+   "id": "s_equinix_vertiv",
+   "source": "equinix",
+   "target": "vertiv",
+   "relationship_type": "SUPPLIER",
+   "impact_channel": "supply_chain",
+   "label": "DC operator ↔ critical infrastructure vendors (sector)",
+   "impact_label": "DC operator ↔ critical infrastructure vendors (sector)",
+   "source_status": "INFERRED",
+   "source_ids": [
+    "S_EQIX_HYPER",
+    "S_VERTIV_DC"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "섹터 경로 · 개별 PO 미특정 — Vertiv는 Equinix 캠퍼스에서 흔히 쓰이는 전력·냉각 벤더군에 속하나 개별 계약액 미공시",
+   "roles": [],
+   "explanation": "코로/하이퍼스케일 캠퍼스는 Vertiv 등 전력·냉각 장비를 사용. 특정 계약·금액은 이 엣지에 부여하지 않음."
+  },
+  {
+   "id": "s_dlr_eaton",
+   "source": "digital_realty",
+   "target": "eaton",
+   "relationship_type": "SUPPLIER",
+   "impact_channel": "supply_chain",
+   "label": "DC REIT ↔ power equipment (sector)",
+   "impact_label": "DC REIT ↔ power equipment (sector)",
+   "source_status": "INFERRED",
+   "source_ids": [
+    "S_EQIX_HYPER",
+    "S_VERTIV_DC"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "섹터 경로 · 개별 계약 미특정",
+   "roles": [],
+   "explanation": "데이터센터 REIT의 전력 인프라는 Eaton 등 장비사와 연계되는 것이 일반적. 특정 계약 미확인."
+  },
+  {
+   "id": "s_vertiv_schneider",
+   "source": "vertiv",
+   "target": "schneider",
+   "relationship_type": "INDIRECT_SUPPLY_CHAIN",
+   "impact_channel": "supply_chain",
+   "label": "Competing/overlapping DC power & cooling vendors",
+   "impact_label": "Competing/overlapping DC power & cooling vendors",
+   "source_status": "INFERRED",
+   "source_ids": [
+    "S_VERTIV_DC"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "경쟁·대체 · 금액 없음",
+   "roles": [],
+   "explanation": "동일 AI 데이터센터 CAPEX 사이클에 노출된 장비 경쟁사·대체재 관계(동일 계약 중복 계상 금지)."
+  },
+  {
+   "id": "c_microsoft_arista",
+   "source": "microsoft",
+   "target": "arista",
+   "relationship_type": "CUSTOMER",
+   "impact_channel": "customer",
+   "label": "Microsoft · Arista significant customer",
+   "impact_label": "Microsoft · Arista significant customer",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_ANET_10K_FY24",
+    "S_ANET_10K_FY25"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "금액 미공시 / 해당 없음",
+   "roles": [],
+   "explanation": "Arista FY2024 10-K names Microsoft as a Cloud/AI Titan end customer >10% of revenue (20% in 2024). FY2025 10-K reports two customers at 26% and 16% without repeating names; continuity with FY2024 naming supports Microsoft as the larger share. Not a disclosed unit switch PO."
+  },
+  {
+   "id": "c_meta_arista",
+   "source": "meta",
+   "target": "arista",
+   "relationship_type": "CUSTOMER",
+   "impact_channel": "customer",
+   "label": "Meta · Arista significant customer",
+   "impact_label": "Meta · Arista significant customer",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_ANET_10K_FY24",
+    "S_ANET_10K_FY25"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "금액 미공시 / 해당 없음",
+   "roles": [],
+   "explanation": "Arista FY2024 10-K names Meta Platforms as >10% customer (15% in 2024). FY2025 continues two >10% customers (26%/16%). Customer relationship, not a named dollar PO."
+  },
+  {
+   "id": "sp_vertiv_nvidia",
+   "source": "vertiv",
+   "target": "nvidia",
+   "relationship_type": "STRATEGIC_PARTNERSHIP",
+   "impact_channel": "supply_chain",
+   "label": "Vertiv–NVIDIA 800 VDC collaboration",
+   "impact_label": "Vertiv–NVIDIA 800 VDC collaboration",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_VRT_NVDA_800V",
+    "S_NVDA_800V_PARTNERS"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "기술 협력 · 공급계약액 미공시",
+   "roles": [],
+   "explanation": "Official Vertiv and NVIDIA announcements: collaboration on 800 VDC platform designs for AI factories. Strategic/technology partnership — NOT a confirmed supply-contract dollar amount."
+  },
+  {
+   "id": "sp_eaton_nvidia",
+   "source": "eaton",
+   "target": "nvidia",
+   "relationship_type": "STRATEGIC_PARTNERSHIP",
+   "impact_channel": "supply_chain",
+   "label": "Eaton listed in NVIDIA 800 VDC collaborator set",
+   "impact_label": "Eaton listed in NVIDIA 800 VDC collaborator set",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_NVDA_800V_PARTNERS"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "기술 협력 · 공급계약액 미공시",
+   "roles": [],
+   "explanation": "NVIDIA technical blog lists Eaton among data-center power system collaborators for 800 VDC. Not a disclosed sales contract."
+  },
+  {
+   "id": "sp_schneider_nvidia",
+   "source": "schneider",
+   "target": "nvidia",
+   "relationship_type": "STRATEGIC_PARTNERSHIP",
+   "impact_channel": "supply_chain",
+   "label": "Schneider listed in NVIDIA 800 VDC collaborator set",
+   "impact_label": "Schneider listed in NVIDIA 800 VDC collaborator set",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_NVDA_800V_PARTNERS"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "기술 협력 · 공급계약액 미공시",
+   "roles": [],
+   "explanation": "NVIDIA technical blog lists Schneider Electric among 800 VDC power collaborators. Not a disclosed sales contract."
+  },
+  {
+   "id": "s_hanmi_skh",
+   "source": "sk_hynix",
+   "target": "hanmi_semi",
+   "relationship_type": "SUPPLIER",
+   "impact_channel": "supply_chain",
+   "label": "SK hynix buys HBM TC bonders from Hanmi Semiconductor",
+   "impact_label": "SK hynix buys HBM TC bonders from Hanmi Semiconductor",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_HANMI_DART_SKH",
+    "S_HANMI_DART_SKH_2025"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "예: 2025.05 계약 약 KRW 428억 (매출 대비 7.66%)",
+   "roles": [],
+   "explanation": "한미반도체 DART 단일판매ㆍ공급계약: SK하이닉스향 HBM 제조용 TC 본더·장비 (예: 2025.05 약 KRW 428억, 2025.01·2025.11 추가 건). 지속 공급 관계."
+  },
+  {
+   "id": "s_hanmi_micron",
+   "source": "micron",
+   "target": "hanmi_semi",
+   "relationship_type": "SUPPLIER",
+   "impact_channel": "supply_chain",
+   "label": "Hanmi → Micron HBM TC bonders",
+   "impact_label": "Hanmi → Micron HBM TC bonders",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_HANMI_DART_MICRON"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "KRW 약 225.9억 원",
+   "roles": [],
+   "explanation": "DART 기반 보도: 한미반도체 → 마이크론 Dual TC Bonder Tiger 약 225.9억 원. 납품 지역 대만."
+  },
+  {
+   "id": "sp_skt_nvidia",
+   "source": "sk_telecom",
+   "target": "nvidia",
+   "relationship_type": "STRATEGIC_PARTNERSHIP",
+   "impact_channel": "customer",
+   "label": "SKT–NVIDIA AI Cloud / DSX",
+   "impact_label": "SKT–NVIDIA AI Cloud / DSX",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_SKT_NVDA_2026",
+    "S_SKT_BLACKWELL"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "전략 협력 · GPU 구매액 미공시",
+   "roles": [],
+   "explanation": "NVIDIA/SKT official releases: Blackwell GPUaaS cluster and planned NVIDIA DSX AI Cloud in Korea; SKT to become NVIDIA Cloud Partner. GPU purchase USD not disclosed."
+  },
+  {
+   "id": "s_skt_smci",
+   "source": "sk_telecom",
+   "target": "smci",
+   "relationship_type": "SUPPLIER",
+   "impact_channel": "supply_chain",
+   "label": "SKT AI servers via Supermicro (press)",
+   "impact_label": "SKT AI servers via Supermicro (press)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_SKT_BLACKWELL"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "금액 미공시 / 해당 없음",
+   "roles": [],
+   "explanation": "SKT newsroom: sovereign AI infrastructure prep included Supermicro for AI server procurement. Amount not disclosed."
+  },
+  {
+   "id": "sp_naver_nvidia",
+   "source": "naver",
+   "target": "nvidia",
+   "relationship_type": "STRATEGIC_PARTNERSHIP",
+   "impact_channel": "customer",
+   "label": "NAVER–NVIDIA AI factory (DSX) plans",
+   "impact_label": "NAVER–NVIDIA AI factory (DSX) plans",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_NVDA_KR_SUMMIT"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "전략 협력 · 구매액 미공시",
+   "roles": [],
+   "explanation": "NVIDIA blog: NAVER AI factory at GAK Sejong to expand on NVIDIA DSX / Vera Rubin (MW and GPU plans cited). Not treated as a disclosed purchase-order dollar amount."
+  },
+  {
+   "id": "sp_msft_equinix",
+   "source": "microsoft",
+   "target": "equinix",
+   "relationship_type": "STRATEGIC_PARTNERSHIP",
+   "impact_channel": "facility",
+   "label": "Azure ExpressRoute via Equinix",
+   "impact_label": "Azure ExpressRoute via Equinix",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_MSFT_EXPRESSROUTE",
+    "S_EQIX_AZURE"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "상호접속 · 임차액 미공시",
+   "roles": [],
+   "explanation": "Microsoft Learn lists Equinix among ExpressRoute Metro/service providers; Equinix markets Azure ExpressRoute on-ramps. Interconnection partnership — not a disclosed Azure lease USD amount."
+  },
+  {
+   "id": "sp_msft_dlr",
+   "source": "microsoft",
+   "target": "digital_realty",
+   "relationship_type": "STRATEGIC_PARTNERSHIP",
+   "impact_channel": "facility",
+   "label": "Azure ExpressRoute via Digital Realty",
+   "impact_label": "Azure ExpressRoute via Digital Realty",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_MSFT_EXPRESSROUTE",
+    "S_DLR_AZURE"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "상호접속 · 임차액 미공시",
+   "roles": [],
+   "explanation": "Microsoft Learn lists Digital Realty in ExpressRoute Metro locations; Digital Realty announced Azure ExpressRoute Cloud On-Ramp expansion. Interconnection — lease USD not disclosed here."
+  },
+  {
+   "id": "sp_amazon_equinix",
+   "source": "amazon",
+   "target": "equinix",
+   "relationship_type": "STRATEGIC_PARTNERSHIP",
+   "impact_channel": "facility",
+   "label": "AWS Direct Connect via Equinix",
+   "impact_label": "AWS Direct Connect via Equinix",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_AWS_DX_PARTNERS",
+    "S_EQIX_AWS"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "상호접속 · 계약액 미공시",
+   "roles": [],
+   "explanation": "AWS Direct Connect Partners program lists Equinix at multiple DX locations; Equinix documents Dedicated/Hosted DX. Connectivity partnership — not a named AWS CapEx contract."
+  },
+  {
+   "id": "sp_amazon_dlr",
+   "source": "amazon",
+   "target": "digital_realty",
+   "relationship_type": "STRATEGIC_PARTNERSHIP",
+   "impact_channel": "facility",
+   "label": "AWS Direct Connect via Digital Realty",
+   "impact_label": "AWS Direct Connect via Digital Realty",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_AWS_DX_PARTNERS",
+    "S_DLR_AWS"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "상호접속 · 계약액 미공시",
+   "roles": [],
+   "explanation": "AWS Direct Connect partner listings and Digital Realty AWS partner page: DLR hosts multiple DX on-ramps. Connectivity partnership — not a disclosed hyperscale build USD."
+  },
+  {
+   "id": "sp_oracle_equinix",
+   "source": "oracle",
+   "target": "equinix",
+   "relationship_type": "STRATEGIC_PARTNERSHIP",
+   "impact_channel": "facility",
+   "label": "OCI FastConnect via Equinix Fabric",
+   "impact_label": "OCI FastConnect via Equinix Fabric",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_ORCL_FC_EQIX"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "상호접속 · 계약액 미공시",
+   "roles": [],
+   "explanation": "Oracle FastConnect regions-by-partner lists Equinix Fabric across many metros. Official partner interconnect — not a disclosed OCI campus lease amount."
+  },
+  {
+   "id": "sp_oracle_dlr",
+   "source": "oracle",
+   "target": "digital_realty",
+   "relationship_type": "STRATEGIC_PARTNERSHIP",
+   "impact_channel": "facility",
+   "label": "OCI FastConnect via Digital Realty",
+   "impact_label": "OCI FastConnect via Digital Realty",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_ORCL_FC_EQIX"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "상호접속 · 계약액 미공시",
+   "roles": [],
+   "explanation": "Oracle FastConnect regions-by-partner lists Digital Realty in multiple regions. Official partner interconnect."
+  },
+  {
+   "id": "sp_openai_nvidia",
+   "source": "openai",
+   "target": "nvidia",
+   "relationship_type": "STRATEGIC_PARTNERSHIP",
+   "impact_channel": "supply_chain",
+   "label": "OpenAI–NVIDIA ≥10 GW systems LOI",
+   "impact_label": "OpenAI–NVIDIA ≥10 GW systems LOI",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_OAI_NVDA_10GW"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "≥10 GW 규모 · GPU 단가 미공시",
+   "roles": [],
+   "explanation": "OpenAI and NVIDIA (2025-09-22) letter of intent to deploy ≥10 GW of NVIDIA systems (Vera Rubin first GW 2H2026). Preferred strategic compute/networking partner language. Final definitive terms noted as forthcoming."
+  },
+  {
+   "id": "eq_nvidia_openai",
+   "source": "nvidia",
+   "target": "openai",
+   "relationship_type": "EQUITY_INVESTMENT",
+   "impact_channel": "equity",
+   "label": "NVIDIA intended investment in OpenAI (up to $100B as GW deployed)",
+   "impact_label": "NVIDIA intended investment in OpenAI (up to $100B as GW deployed)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_OAI_NVDA_10GW"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": 100000,
+   "amount_note": "최대 $100B 의도 · 단계적",
+   "roles": [],
+   "explanation": "Same LOI: NVIDIA intends to invest up to $100B in OpenAI progressively as each gigawatt is deployed. Investment is contingent on deployment milestones; treat as announced intent, not closed single tranche."
+  },
+  {
+   "id": "sp_openai_oracle",
+   "source": "openai",
+   "target": "oracle",
+   "relationship_type": "STRATEGIC_PARTNERSHIP",
+   "impact_channel": "facility",
+   "label": "OpenAI–Oracle Stargate capacity",
+   "impact_label": "OpenAI–Oracle Stargate capacity",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_OAI_ORCL_STARGATE",
+    "S_OAI_STARGATE"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "4.5 GW+ Stargate · 금액은 보도 기준 상이",
+   "roles": [],
+   "explanation": "OpenAI: agreement with Oracle to develop 4.5 GW additional Stargate DC capacity; Stargate I Abilene on OCI with NVIDIA GB200 racks. Strategic infrastructure partnership — not CoreWeave-centric."
+  },
+  {
+   "id": "eq_amazon_anthropic",
+   "source": "amazon",
+   "target": "anthropic",
+   "relationship_type": "EQUITY_INVESTMENT",
+   "impact_channel": "equity",
+   "label": "Amazon minority equity in Anthropic",
+   "impact_label": "Amazon minority equity in Anthropic",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_AMZN_ANTHROPIC",
+    "S_AMZN_ANTHROPIC_INV"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": 13000,
+   "amount_note": "누적 투자 공시 (단계별)",
+   "roles": [],
+   "explanation": "Amazon official: prior $8B investment; additional $5B announced with up to $20B future tied to milestones. Minority stake; Anthropic governance notes Long Term Benefit Trust remains."
+  },
+  {
+   "id": "c_anthropic_amazon",
+   "source": "anthropic",
+   "target": "amazon",
+   "relationship_type": "CUSTOMER",
+   "impact_channel": "customer",
+   "label": "Anthropic primary cloud / Trainium on AWS",
+   "impact_label": "Anthropic primary cloud / Trainium on AWS",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_AMZN_ANTHROPIC"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": 100000,
+   "amount_note": "10년 >$100B AWS 커밋 (회사 발표)",
+   "roles": [],
+   "explanation": "Anthropic: AWS primary training/cloud provider; >$100B ten-year commitment to AWS technologies; up to 5 GW capacity including Trainium. Claude on Bedrock. Distinct from equity stake."
+  },
+  {
+   "id": "c_microsoft_amd",
+   "source": "microsoft",
+   "target": "amd",
+   "relationship_type": "CUSTOMER",
+   "impact_channel": "customer",
+   "label": "Microsoft Azure / Copilot on AMD Instinct (AMD AR)",
+   "impact_label": "Microsoft Azure / Copilot on AMD Instinct (AMD AR)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_AMD_AR24"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "배포 확인 · 매출비중 미공시",
+   "roles": [],
+   "explanation": "AMD 2024 Annual Report shareholder letter: Microsoft highlighted TCO of Instinct MI300X for Copilot; Azure instances with AMD Instinct. Customer/deployer — not a >10% AMD revenue disclosure."
+  },
+  {
+   "id": "c_meta_amd",
+   "source": "meta",
+   "target": "amd",
+   "relationship_type": "CUSTOMER",
+   "impact_channel": "customer",
+   "label": "Meta deploys AMD Instinct / EPYC (AMD AR)",
+   "impact_label": "Meta deploys AMD Instinct / EPYC (AMD AR)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_AMD_AR24"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "배포 확인 · 매출비중 미공시",
+   "roles": [],
+   "explanation": "AMD 2024 AR: Meta deployed MI300X for inference (incl. Llama 405B) and >1.5M EPYC processors across fleet. Named deployment — not AMD 10-K >10% customer line."
+  },
+  {
+   "id": "c_oracle_amd",
+   "source": "oracle",
+   "target": "amd",
+   "relationship_type": "CUSTOMER",
+   "impact_channel": "customer",
+   "label": "Oracle Cloud deploys AMD Instinct (AMD AR)",
+   "impact_label": "Oracle Cloud deploys AMD Instinct (AMD AR)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_AMD_AR24"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "배포 확인 · 매출비중 미공시",
+   "roles": [],
+   "explanation": "AMD 2024 AR: Oracle Cloud among cloud providers adopting Instinct accelerators for public instances."
+  },
+  {
+   "id": "c_amazon_amd",
+   "source": "amazon",
+   "target": "amd",
+   "relationship_type": "CUSTOMER",
+   "impact_channel": "customer",
+   "label": "AWS offers AMD EPYC / Instinct instances (AMD AR)",
+   "impact_label": "AWS offers AMD EPYC / Instinct instances (AMD AR)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_AMD_AR24"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "클라우드 인스턴스 · 매출비중 미공시",
+   "roles": [],
+   "explanation": "AMD 2024 AR: >1,000 AMD-powered public cloud instances including AWS; hyperscale data-center demand described in 10-K generally."
+  },
+  {
+   "id": "sp_smci_amd",
+   "source": "smci",
+   "target": "amd",
+   "relationship_type": "STRATEGIC_PARTNERSHIP",
+   "impact_channel": "supply_chain",
+   "label": "SMCI product co-development with AMD",
+   "impact_label": "SMCI product co-development with AMD",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_SMCI_10K_FY25"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "제품 공동 개발 · 구매액 미공시",
+   "roles": [],
+   "explanation": "SMCI FY2025 10-K: works closely with NVIDIA, Intel and AMD to develop products compatible with latest processors."
+  },
+  {
+   "id": "c_apple_samsung",
+   "source": "apple",
+   "target": "samsung",
+   "relationship_type": "CUSTOMER",
+   "impact_channel": "customer",
+   "label": "Apple — Samsung top-5 customer (FY2025 BR)",
+   "impact_label": "Apple — Samsung top-5 customer (FY2025 BR)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_SMSN_BR_FY25",
+    "S_SMSN_IR_FY25_EN"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "금액 미공시 / 해당 없음",
+   "roles": [
+    "Major customer"
+   ],
+   "explanation": "삼성전자 제57기 사업보고서: 2025년 주요 매출처에 Apple 포함(5대 합계 매출 비중 약 15%). 제품별 금액·품목 세부 미공시."
+  },
+  {
+   "id": "c_alphabet_samsung",
+   "source": "alphabet",
+   "target": "samsung",
+   "relationship_type": "CUSTOMER",
+   "impact_channel": "customer",
+   "label": "Alphabet — Samsung top-5 customer (FY2025 BR)",
+   "impact_label": "Alphabet — Samsung top-5 customer (FY2025 BR)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_SMSN_BR_FY25",
+    "S_SMSN_IR_FY25_EN"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "금액 미공시 / 해당 없음",
+   "roles": [
+    "Major customer"
+   ],
+   "explanation": "삼성전자 제57기 사업보고서: 2025년 주요 매출처에 Alphabet 포함(알파벳순 열거). HBM/메모리 공급 세부 금액은 미공시."
+  },
+  {
+   "id": "s_samsung_qualcomm",
+   "source": "samsung",
+   "target": "qualcomm",
+   "relationship_type": "SUPPLIER",
+   "impact_channel": "supply_chain",
+   "label": "Samsung DX buys mobile AP from Qualcomm",
+   "impact_label": "Samsung DX buys mobile AP from Qualcomm",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_SMSN_BR_FY25"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "DX 모바일AP 품목 합계 KRW 13.8272조 (Qualcomm+MediaTek)",
+   "roles": [
+    "AP supplier"
+   ],
+   "explanation": "삼성전자 FY2025 사업보고서 DX 원재료: 모바일AP 솔루션 주요 매입처 Qualcomm, MediaTek. 2025년 해당 품목 매입액 13조 8,272억 원(DX 원재료의 18.5%). Qualcomm 단독 금액은 미분리."
+  },
+  {
+   "id": "c_tesla_samsung",
+   "source": "tesla",
+   "target": "samsung",
+   "relationship_type": "CUSTOMER",
+   "impact_channel": "customer",
+   "label": "Tesla foundry offtake at Samsung DS (disclosed backlog)",
+   "impact_label": "Tesla foundry offtake at Samsung DS (disclosed backlog)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_SMSN_BR_FY25"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": 16544.0,
+   "amount_note": "수주총액 USD 16,544M (계약기간 수요에 따라 변동 가능)",
+   "roles": [
+    "Foundry customer"
+   ],
+   "explanation": "삼성전자 FY2025 사업보고서 수주상황: DS Foundry–Tesla, Inc. 반도체 위탁생산. 계약 2025.07.26–2033.12.31, 수주총액 USD 16,544 million. 수량·기납품액은 영업비밀로 생략."
+  },
+  {
+   "id": "sp_nvidia_samsung_aif",
+   "source": "nvidia",
+   "target": "samsung",
+   "relationship_type": "STRATEGIC_PARTNERSHIP",
+   "impact_channel": "supply_chain",
+   "label": "NVIDIA–Samsung AI Factory / HBM collaboration",
+   "impact_label": "NVIDIA–Samsung AI Factory / HBM collaboration",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_NVDA_SMSN_AIF",
+    "S_NVDA_10K_FY26_MFG"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "금액 미공시 / 해당 없음",
+   "roles": [
+    "Strategic collaborator"
+   ],
+   "explanation": "NVIDIA IR(2025.10.31): Samsung과 AI Factory(5만+ GPU) 및 HBM3E·HBM4 공급 협력 발표. 기존 10-K상 foundry+memory 공급과 별개의 전략 협력 공지. 고정 단가·물량 계약액은 미공시."
+  },
+  {
+   "id": "s_skh_asml",
+   "source": "sk_hynix",
+   "target": "asml",
+   "relationship_type": "SUPPLIER",
+   "impact_channel": "supply_chain",
+   "label": "SK hynix EUV tools from ASML (~KRW 11.95T)",
+   "impact_label": "SK hynix EUV tools from ASML (~KRW 11.95T)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_SKH_ASML_EUV"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "약 KRW 11.9496조 (EUV 취득·설치, ~2027.12)",
+   "roles": [
+    "EUV equipment supplier"
+   ],
+   "explanation": "SK하이닉스 2026.03.24 공시: ASML EUV 노광장비 취득 약 11.9496조 원(2024말 자산총액 대비 약 9.97%), 이행 기한 ~2027.12. HBM·선단 DRAM(1c) 생산용. 설치·개조비 포함."
+  },
+  {
+   "id": "s_skh_jusung",
+   "source": "sk_hynix",
+   "target": "jusung_eng",
+   "relationship_type": "SUPPLIER",
+   "impact_channel": "supply_chain",
+   "label": "SK hynix buys process tools from Jusung Engineering",
+   "impact_label": "SK hynix buys process tools from Jusung Engineering",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_JUSUNG_DART_SKH"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "예시: 2024.07 계약 KRW 194.3억 (최근 매출 대비 6.82%)",
+   "roles": [
+    "ALD/CVD equipment supplier"
+   ],
+   "explanation": "주성엔지니어링 FY2025 사업보고서 및 2024.07 DART: SK하이닉스에 반도체 제조장비 공급(2024.07 계약 약 KRW 194억 등 다건). 지속적 장비 공급 관계로 확인."
+  },
+  {
+   "id": "sp_nvidia_skh_tech",
+   "source": "nvidia",
+   "target": "sk_hynix",
+   "relationship_type": "STRATEGIC_PARTNERSHIP",
+   "impact_channel": "supply_chain",
+   "label": "NVIDIA–SK hynix multi-year AI memory tech partnership",
+   "impact_label": "NVIDIA–SK hynix multi-year AI memory tech partnership",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_SKH_NVDA_2026",
+    "S_NVDA_10K_FY26_MFG"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "금액 미공시 / 해당 없음",
+   "roles": [
+    "Strategic memory partner"
+   ],
+   "explanation": "2026.06: NVIDIA·SK하이닉스가 AI 팩토리용 차세대 메모리 기술 로드맵을 위한 다년 기술 파트너십을 발표(회사 발언·보도). NVIDIA 10-K상 메모리 구매처 명시와 병행. 고정 HBM 물량·단가 계약액은 미공시 — 예상 점유율 보도는 제외."
+  },
+  {
+   "id": "sp_skh_tsmc",
+   "source": "sk_hynix",
+   "target": "tsmc",
+   "relationship_type": "STRATEGIC_PARTNERSHIP",
+   "impact_channel": "supply_chain",
+   "label": "SK hynix–TSMC HBM4 base-die / CoWoS alignment (inferred)",
+   "impact_label": "SK hynix–TSMC HBM4 base-die / CoWoS alignment (inferred)",
+   "source_status": "INFERRED",
+   "source_ids": [
+    "S_NVDA_10K_FY26_MFG"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "금액 미공시 / 해당 없음",
+   "roles": [
+    "HBM base-die / packaging collaborator"
+   ],
+   "explanation": "HBM4부터 로직 베이스다이에 선단 파운드리 공정이 필요하며, 업계·경영진 발언상 SK하이닉스는 TSMC 공정을 활용하고 TSMC CoWoS가 NVIDIA GPU와 HBM을 통합. 양사 간 금액이 공시된 직접 공급계약은 확인되지 않아 INFERRED. NVIDIA↔TSMC·NVIDIA↔SKH 직접 에지는 별도 VERIFIED."
+  },
+  {
+   "id": "d_cw_corz_spv",
+   "source": "coreweave",
+   "target": "corz_finance_i",
+   "relationship_type": "LESSOR",
+   "impact_channel": "facility",
+   "label": "임차 현금흐름 → SPV 담보",
+   "impact_label": "임차료가 프로젝트 부채 상환 원천",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_CORZ_FINANCE_I",
+    "S_CORZ"
+   ],
+   "contract_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "CORZ–CW 임차 자산이 notes 담보",
+   "roles": [],
+   "explanation": "",
+   "commercial_ids": [
+    "corz_lease"
+   ]
+  },
+  {
+   "id": "d_glxy_spv",
+   "source": "galaxy_digital",
+   "target": "galaxy_helios_ii",
+   "relationship_type": "PARENT_SPV",
+   "impact_channel": "financial",
+   "label": "Helios II 발행체 (완공보증 보고)",
+   "impact_label": "프로젝트 부채 · 모회사 비소구 notes",
+   "source_status": "INFERRED",
+   "source_ids": [
+    "S_GLXY_HELIOS_II_NOTES"
+   ],
+   "contract_ids": [],
+   "amount_usd_m": 3500,
+   "amount_note": "시장 보고 $3.5B 9.875% notes due 2031 — 인수확인은 Galaxy IR/indenture 대조",
+   "roles": [],
+   "explanation": "모회사 notes 미보증·완공보증만(시장 보도).",
+   "commercial_ids": [
+    "glxy_helios_ii_notes"
+   ]
+  },
+  {
+   "id": "d_cw_glxy_spv",
+   "source": "coreweave",
+   "target": "galaxy_helios_ii",
+   "relationship_type": "LESSOR",
+   "impact_channel": "facility",
+   "label": "Helios Phase II CoreWeave 리스",
+   "impact_label": "임차료가 프로젝트 신용지지",
+   "source_status": "INFERRED",
+   "source_ids": [
+    "S_GLXY_HELIOS_II_NOTES",
+    "S_GLXY_10K25"
+   ],
+   "contract_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "Phase II critical IT ~260MW 보고",
+   "roles": [],
+   "explanation": "",
+   "commercial_ids": [
+    "glxy_helios_lease"
+   ]
+  },
+  {
+   "id": "d_wyfi_nscale",
+   "source": "whitefiber",
+   "target": "nscale",
+   "relationship_type": "CUSTOMER",
+   "impact_channel": "facility",
+   "label": "NC-1 40MW 코로케이션 (~$865M)",
+   "impact_label": "임차료 · 건설금융 담보",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_WYFI_NSCALE"
+   ],
+   "contract_ids": [],
+   "amount_usd_m": 865,
+   "amount_note": "10년 TCV ~$865M (전기 등 제외)",
+   "roles": [],
+   "explanation": "",
+   "commercial_ids": [
+    "wyfi_nscale_lease"
+   ]
+  },
+  {
+   "id": "d_nscale_nvidia",
+   "source": "nscale",
+   "target": "nvidia",
+   "relationship_type": "SUPPLIER",
+   "impact_channel": "supply_chain",
+   "label": "GPU · 전략 투자 (Series B / Pre-IPO)",
+   "impact_label": "장비·자본 파트너",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_NSCALE_B",
+    "S_NSCALE_PREIPO"
+   ],
+   "contract_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "Pre-IPO convert 중 NVIDIA $1B 약정 트란치",
+   "roles": [],
+   "explanation": "",
+   "commercial_ids": []
+  },
+  {
+   "id": "d_apld_macq",
+   "source": "applied_digital",
+   "target": "macquarie",
+   "relationship_type": "INVESTOR",
+   "impact_channel": "financial",
+   "label": "MAM preferred equity facility (up to \\)",
+   "impact_label": "프로젝트 자본 파트너",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_APLD_MACQ"
+   ],
+   "contract_ids": [],
+   "amount_usd_m": 5000,
+   "amount_note": "Facility ceiling up to \\; first draw \\.5M",
+   "roles": [],
+   "explanation": "",
+   "commercial_ids": []
+  },
+  {
+   "id": "d_corz_spv_ms",
+   "source": "corz_finance_i",
+   "target": "morgan_stanley",
+   "relationship_type": "INITIAL_PURCHASER",
+   "impact_channel": "financial",
+   "label": "Notes initial purchaser representative",
+   "impact_label": "주선·초기매수 대표 (보유≠손실)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_CORZ_NOTES_8K",
+    "S_CORZ_FINANCE_I"
+   ],
+   "contract_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "Representative of initial purchasers — not disclosed inventory holdings",
+   "roles": [
+    "initial_purchaser_rep"
+   ],
+   "explanation": "Arranger/purchaser role is not automatic credit loss.",
+   "commercial_ids": [
+    "corz_finance_i_notes"
+   ]
+  },
+  {
+   "id": "d_corz_spv_jpm",
+   "source": "corz_finance_i",
+   "target": "jpmorgan",
+   "relationship_type": "INITIAL_PURCHASER",
+   "impact_channel": "financial",
+   "label": "Notes initial purchaser representative",
+   "impact_label": "주선·초기매수 대표 (보유≠손실)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_CORZ_NOTES_8K",
+    "S_CORZ_FINANCE_I"
+   ],
+   "contract_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "Representative of initial purchasers — not disclosed inventory holdings",
+   "roles": [
+    "initial_purchaser_rep"
+   ],
+   "explanation": "Arranger/purchaser role is not automatic credit loss.",
+   "commercial_ids": [
+    "corz_finance_i_notes"
+   ]
+  },
+  {
+   "id": "s_nvidia_broadcom_net",
+   "source": "broadcom",
+   "target": "nvidia",
+   "relationship_type": "SUPPLIER",
+   "impact_channel": "supply_chain",
+   "label": "Broadcom → NVIDIA: AI cluster networking / custom silicon adjacency",
+   "impact_label": "네트워킹·커스텀 실리콘 공급망 인접 (물량 미공시)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_NVDA_10K_FY26"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "생태계·공급 인접. 단일 계약 금액으로 환산하지 않음.",
+   "roles": [
+    "networking",
+    "custom_silicon"
+   ],
+   "transmission_class": "sector_demand",
+   "evidence_level": 2,
+   "explanation": "Networking and custom ASIC adjacency in AI clusters. Ordinary supplier relationship — not credit exposure.",
+   "relationship_status": "current",
+   "stress_direction": "AI 클러스터 CAPEX 둔화 → 네트워킹·가속기 수요 동반 압력"
+  },
+  {
+   "id": "c_microsoft_skh",
+   "source": "microsoft",
+   "target": "sk_hynix",
+   "relationship_type": "CUSTOMER",
+   "impact_channel": "supply_chain",
+   "label": "Microsoft → SK hynix: Azure AI HBM/memory demand channel (inferred hyperscaler)",
+   "impact_label": "하이퍼스케일러 HBM 수요 채널 — 개별 물량 미공시",
+   "source_status": "INFERRED",
+   "source_ids": [
+    "S_SKH_BR_FY25",
+    "S_NVDA_MSFT_AZURE"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "사업보고서가 MSFT를 명명하지 않으면 추론 채널로만 표시. 구매약정·보증 아님.",
+   "roles": [
+    "hbm_customer",
+    "hyperscaler"
+   ],
+   "transmission_class": "sector_demand",
+   "evidence_level": 1,
+   "explanation": "Industry/IR context links Azure AI buildout to HBM demand leaders including SK hynix. Not a named bilateral purchase volume in DART.",
+   "relationship_status": "current",
+   "stress_direction": "Azure AI CAPEX 축소 → HBM 수요 압력 (추론·정성)"
+  },
+  {
+   "id": "c_amazon_skh",
+   "source": "amazon",
+   "target": "sk_hynix",
+   "relationship_type": "CUSTOMER",
+   "impact_channel": "supply_chain",
+   "label": "Amazon → SK hynix: AWS AI HBM/DRAM demand channel (inferred hyperscaler)",
+   "impact_label": "AWS AI 메모리 수요 — 개별 물량 미공시",
+   "source_status": "INFERRED",
+   "source_ids": [
+    "S_SKH_BR_FY25"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "명명된 양자 계약 물량 없음 — 섹터 수요 추론.",
+   "roles": [
+    "hbm_customer",
+    "hyperscaler"
+   ],
+   "transmission_class": "sector_demand",
+   "evidence_level": 1,
+   "explanation": "AWS AI capacity is a major HBM end-demand pool. Inferred channel only.",
+   "relationship_status": "current",
+   "stress_direction": "AWS CAPEX 둔화 → HBM 수요 압력 (추론)"
+  },
+  {
+   "id": "s_skh_lam",
+   "source": "sk_hynix",
+   "target": "lam_research",
+   "relationship_type": "SUPPLIER",
+   "impact_channel": "supply_chain",
+   "label": "Lam Research → SK hynix: etch/dep equipment for DRAM/HBM fabs",
+   "impact_label": "전공정 장비 공급 (CAPEX 주기)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_SKH_BR_FY25"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "장비 CAPEX. 개별 발주 금액은 DART 개별 공시가 있을 때만 기재.",
+   "roles": [
+    "equipment_supplier"
+   ],
+   "transmission_class": "sector_demand",
+   "evidence_level": 2,
+   "explanation": "Memory fab tool supplier. Capex cuts at SK hynix reduce tool orders — not PF credit.",
+   "relationship_status": "current",
+   "stress_direction": "메모리 투자 축소 → 장비 발주 감소"
+  },
+  {
+   "id": "s_skh_amkor",
+   "source": "sk_hynix",
+   "target": "amkor",
+   "relationship_type": "SUPPLIER",
+   "impact_channel": "supply_chain",
+   "label": "Amkor → SK hynix: advanced packaging / OSAT adjacency for HBM stacks",
+   "impact_label": "HBM 패키징·OSAT 인접 공급",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_SKH_BR_FY25"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "패키징 외주·협업. 물량 미공시.",
+   "roles": [
+    "packaging",
+    "osat"
+   ],
+   "transmission_class": "sector_demand",
+   "evidence_level": 2,
+   "explanation": "Advanced packaging capacity supports HBM. Operational dependence, not credit.",
+   "relationship_status": "current",
+   "stress_direction": "HBM 출하 둔화 → 패키징 물량·가동률 압력"
+  },
+  {
+   "id": "c_microsoft_samsung",
+   "source": "microsoft",
+   "target": "samsung",
+   "relationship_type": "CUSTOMER",
+   "impact_channel": "supply_chain",
+   "label": "Microsoft → Samsung: foundry / memory / device channels (where disclosed in BR)",
+   "impact_label": "파운드리·메모리·디바이스 수요 채널 (집중도 공시 참고)",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_SS_BR_FY25"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "사업보고서 고객 카테고리·파운드리 백로그 맥락. 개별 MSFT 계약액을 추정하지 않음.",
+   "roles": [
+    "hyperscaler_customer",
+    "foundry_customer"
+   ],
+   "transmission_class": "sector_demand",
+   "evidence_level": 2,
+   "explanation": "Microsoft is a material hyperscaler/foundry customer channel for Samsung. Customer concentration, not PF.",
+   "relationship_status": "current",
+   "stress_direction": "MSFT AI/클라우드 CAPEX 둔화 → 파운드리·메모리 수요 압력"
+  },
+  {
+   "id": "s_samsung_amkor",
+   "source": "samsung",
+   "target": "amkor",
+   "relationship_type": "SUPPLIER",
+   "impact_channel": "supply_chain",
+   "label": "Amkor ↔ Samsung: OSAT / advanced packaging partnership capacity",
+   "impact_label": "첨단 패키징·OSAT 협력",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_SS_BR_FY25"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "패키징 용량·외주. 금액 미공시.",
+   "roles": [
+    "packaging",
+    "osat"
+   ],
+   "transmission_class": "sector_demand",
+   "evidence_level": 2,
+   "explanation": "Packaging capacity partnership. Not a financial guarantee.",
+   "relationship_status": "current",
+   "stress_direction": "어드밴스드 패키징 수요 둔화 → OSAT 가동·매출 압력"
+  },
+  {
+   "id": "s_samsung_lam",
+   "source": "samsung",
+   "target": "lam_research",
+   "relationship_type": "SUPPLIER",
+   "impact_channel": "supply_chain",
+   "label": "Lam Research → Samsung: process equipment for memory/foundry fabs",
+   "impact_label": "전공정 장비 CAPEX",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_SS_BR_FY25"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "장비 투자 주기. 개별 PO는 별도 공시 시에만 금액화.",
+   "roles": [
+    "equipment_supplier"
+   ],
+   "transmission_class": "sector_demand",
+   "evidence_level": 2,
+   "explanation": "Fab tool supplier to Samsung. Capex cycle sensitivity.",
+   "relationship_status": "current",
+   "stress_direction": "삼성 투자 축소 → 장비 발주 감소"
+  },
+  {
+   "id": "s_samsung_asml",
+   "source": "samsung",
+   "target": "asml",
+   "relationship_type": "SUPPLIER",
+   "impact_channel": "supply_chain",
+   "label": "ASML → Samsung: EUV / lithography tools (amount often undisclosed)",
+   "impact_label": "EUV·노광 장비 — 개별 계약액 미공시 시 금액화 안 함",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_SS_BR_FY25"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "삼성도 EUV 핵심 수요처이나 개별 계약액은 ASML 20-F/삼성 BR에서 상호 미명명인 경우가 많음.",
+   "roles": [
+    "equipment_supplier",
+    "euv"
+   ],
+   "transmission_class": "sector_demand",
+   "evidence_level": 2,
+   "explanation": "Samsung is a known EUV customer of ASML. Relationship verified at industry/filing level; do not invent EUR contract size.",
+   "relationship_status": "current",
+   "stress_direction": "파운드리·메모리 CAPEX 축소 → EUV 발주 타이밍 압력"
+  },
+  {
+   "id": "s_nvidia_synopsys",
+   "source": "nvidia",
+   "target": "synopsys",
+   "relationship_type": "SUPPLIER",
+   "impact_channel": "supply_chain",
+   "label": "Synopsys → NVIDIA: EDA / IP for GPU and interconnect design",
+   "impact_label": "EDA·IP 설계 도구 의존",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_NVDA_10K_FY26"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "설계 도구 라이선스. AI GPU R&D 주기와 연동되나 PF 아님.",
+   "roles": [
+    "eda",
+    "ip"
+   ],
+   "transmission_class": "sector_demand",
+   "evidence_level": 2,
+   "explanation": "EDA tools are critical to NVIDIA chip design. Indirect sector link only.",
+   "relationship_status": "current",
+   "stress_direction": "설계 사이클·노드 전환 지연 시 EDA 지출 타이밍 변동 (정성)"
+  },
+  {
+   "id": "c_meta_samsung",
+   "source": "meta",
+   "target": "samsung",
+   "relationship_type": "CUSTOMER",
+   "impact_channel": "supply_chain",
+   "label": "Meta → Samsung: AI infra / device / foundry demand channel (inferred)",
+   "impact_label": "하이퍼스케일러·디바이스 수요 채널 — 물량 미공시",
+   "source_status": "INFERRED",
+   "source_ids": [
+    "S_SS_BR_FY25"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "BR 상위 고객에 명시되지 않으면 추론. 금액화하지 않음.",
+   "roles": [
+    "hyperscaler_customer"
+   ],
+   "transmission_class": "sector_demand",
+   "evidence_level": 1,
+   "explanation": "Meta AI infra and device channels can touch Samsung memory/foundry/display. Inferred unless named in BR.",
+   "relationship_status": "uncertain",
+   "stress_direction": "Meta CAPEX 둔화 → 삼성 관련 수요 압력 (추론·불확실)"
+  },
+  {
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "source_ids": [
+    "S_NVDA_10K_FY26"
+   ],
+   "evidence_level": 2,
+   "transmission_class": "direct_contract",
+   "relationship_status": "current",
+   "verification_date": "2026-10-21",
+   "verification_gap": "추가 DART/원문 대조 권장",
+   "impact_label": "계측·검사 장비 CAPEX",
+   "roles": [
+    "equipment_supplier"
+   ],
+   "id": "s_kla_tsmc",
+   "source": "kla",
+   "target": "tsmc",
+   "relationship_type": "SUPPLIER",
+   "impact_channel": "supply_chain",
+   "label": "KLA → TSMC: process control / metrology tools",
+   "source_status": "VERIFIED",
+   "amount_note": "Tool CAPEX cycle — no single PO invented",
+   "explanation": "KLA is a core metrology supplier to leading foundries including TSMC.",
+   "stress_direction": "파운드리 CAPEX 축소 → 계측장비 발주 감소"
+  },
+  {
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "source_ids": [
+    "S_NVDA_10K_FY26"
+   ],
+   "evidence_level": 2,
+   "transmission_class": "direct_contract",
+   "relationship_status": "current",
+   "verification_date": "2026-10-21",
+   "verification_gap": "추가 DART/원문 대조 권장",
+   "impact_label": "전공정 장비",
+   "roles": [
+    "equipment_supplier"
+   ],
+   "id": "s_amat_tsmc",
+   "source": "applied_materials",
+   "target": "tsmc",
+   "relationship_type": "SUPPLIER",
+   "impact_channel": "supply_chain",
+   "label": "Applied Materials → TSMC: deposition/etch tools",
+   "source_status": "VERIFIED",
+   "amount_note": "Equipment CAPEX — not invented PO",
+   "explanation": "AMAT supplies process equipment to leading foundries.",
+   "stress_direction": "CAPEX 축소 → 장비 수요 압력"
+  },
+  {
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "source_ids": [
+    "S_NVDA_10K_FY26"
+   ],
+   "evidence_level": 2,
+   "transmission_class": "direct_contract",
+   "relationship_status": "current",
+   "verification_date": "2026-10-21",
+   "verification_gap": "추가 DART/원문 대조 권장",
+   "impact_label": "EDA·IP",
+   "roles": [
+    "eda"
+   ],
+   "id": "s_cadence_nvidia",
+   "source": "cadence",
+   "target": "nvidia",
+   "relationship_type": "SUPPLIER",
+   "impact_channel": "supply_chain",
+   "label": "Cadence → NVIDIA: EDA tools / IP",
+   "source_status": "VERIFIED",
+   "amount_note": "License — not PF",
+   "explanation": "EDA tools support GPU design; sector demand only.",
+   "stress_direction": "설계 주기 변동 → EDA 지출 타이밍"
+  },
+  {
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "source_ids": [
+    "S_NVDA_MSFT_AZURE"
+   ],
+   "evidence_level": 2,
+   "transmission_class": "direct_contract",
+   "relationship_status": "uncertain",
+   "verification_date": "2026-10-21",
+   "verification_gap": "추가 DART/원문 대조 권장",
+   "impact_label": "AI 클러스터 인터커넥트 (고객 집중 — 물량 미공시)",
+   "roles": [
+    "interconnect"
+   ],
+   "id": "s_astera_hyperscale",
+   "source": "astera",
+   "target": "microsoft",
+   "relationship_type": "SUPPLIER",
+   "impact_channel": "supply_chain",
+   "label": "Astera Labs → hyperscaler AI interconnect (MSFT channel)",
+   "source_status": "INFERRED",
+   "amount_note": "Customer concentration reported in industry IR; bilateral volume not invented",
+   "explanation": "Astera connectivity ICs used in AI clusters; MSFT treated as inferred demand channel.",
+   "stress_direction": "하이퍼스케일러 CAPEX 둔화 → 인터커넥트 수요 압력"
+  },
+  {
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "source_ids": [
+    "S_NVDA_10K_FY26"
+   ],
+   "evidence_level": 2,
+   "transmission_class": "direct_contract",
+   "relationship_status": "current",
+   "verification_date": "2026-10-21",
+   "verification_gap": "추가 DART/원문 대조 권장",
+   "impact_label": "파운드리 (성숙·특화 공정)",
+   "roles": [
+    "foundry"
+   ],
+   "id": "s_gfs_amd",
+   "source": "globalfoundries",
+   "target": "amd",
+   "relationship_type": "SUPPLIER",
+   "impact_channel": "supply_chain",
+   "label": "GlobalFoundries → AMD: specialty / mature-node foundry",
+   "source_status": "VERIFIED",
+   "amount_note": "Foundry — not exclusive leading-edge",
+   "explanation": "GF remains a foundry partner for certain AMD products/nodes.",
+   "stress_direction": "파운드리 가동 이슈 → 해당 제품군 공급"
+  },
+  {
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "source_ids": [
+    "S_NVDA_10K_FY26"
+   ],
+   "evidence_level": 2,
+   "transmission_class": "direct_contract",
+   "relationship_status": "current",
+   "verification_date": "2026-10-21",
+   "verification_gap": "추가 DART/원문 대조 권장",
+   "impact_label": "유통·재고 채널",
+   "roles": [
+    "distributor"
+   ],
+   "id": "s_arrow_dist",
+   "source": "arrow",
+   "target": "microchip",
+   "relationship_type": "DISTRIBUTOR",
+   "impact_channel": "supply_chain",
+   "label": "Arrow → Microchip: electronics distribution",
+   "source_status": "VERIFIED",
+   "amount_note": "Distribution — not manufacturer credit",
+   "explanation": "Arrow distributes semiconductor components including Microchip lines.",
+   "stress_direction": "수요 둔화 → 유통 재고·매출 압력"
+  },
+  {
+   "id": "s_intel_amkor",
+   "source": "intel",
+   "target": "amkor",
+   "relationship_type": "SUPPLIER",
+   "impact_channel": "supply_chain",
+   "label": "Amkor → Intel: OSAT / packaging",
+   "impact_label": "패키징·OSAT",
+   "source_status": "VERIFIED",
+   "source_ids": [
+    "S_US_MCAP_V4"
+   ],
+   "contract_ids": [],
+   "commercial_ids": [],
+   "amount_usd_m": null,
+   "amount_note": "Packaging capacity — amount undisclosed",
+   "roles": [
+    "packaging"
+   ],
+   "explanation": "Intel uses external OSAT capacity including Amkor for certain products.",
+   "stress_direction": "패키징 병목 → 출하 지연",
+   "relationship_status": "current",
+   "verification_date": "2026-10-21",
+   "verification_gap": ""
+  }
+ ]
+}

@@ -1,0 +1,141 @@
+{
+  "generated_at": "2026-10-20T00:00:00Z",
+  "snapshot_at": "2026-10-20",
+  "ecosystem": "datacenter_pf",
+  "usage_note": "Observed / disclosed figures only. Shock tab assumptions are separate. UST yields remain available here for analysis but were removed from the global header.",
+  "indicators": [
+    {
+      "id": "ust_2y",
+      "name": "US Treasury 2Y",
+      "plain": "단기 국채 금리 (시장 관측). 헤더에는 표시하지 않음.",
+      "unit": "%",
+      "source": {
+        "name": "FRED",
+        "url": "https://fred.stlouisfed.org/"
+      },
+      "caution": "관측값 · 시나리오 가정이 아님",
+      "status": "ok",
+      "status_ko": "스냅샷",
+      "latest": null,
+      "note": "Loaded from shared market.json when available"
+    },
+    {
+      "id": "ust_10y",
+      "name": "US Treasury 10Y",
+      "plain": "장기 국채 금리 (시장 관측). 헤더에는 표시하지 않음.",
+      "unit": "%",
+      "source": {
+        "name": "FRED",
+        "url": "https://fred.stlouisfed.org/"
+      },
+      "caution": "관측값 · 시나리오 가정이 아님",
+      "status": "ok",
+      "status_ko": "스냅샷",
+      "latest": null
+    },
+    {
+      "id": "hyperscaler_capex_amzn",
+      "name": "Amazon CY2025 CAPEX guidance",
+      "plain": "회사 가이던스 (CNBC 보도 라운드업 기준 ~$125B)",
+      "unit": "USD billion",
+      "source": {
+        "name": "CNBC / company earnings",
+        "url": "https://www.cnbc.com/2025/10/31/tech-ai-google-meta-amazon-microsoft-spend.html"
+      },
+      "caution": "총 CAPEX ≠ 전부 AI DC. 시나리오는 % 감축 가정.",
+      "status": "ok",
+      "status_ko": "공시·보도",
+      "latest": {
+        "value": 125,
+        "obs_date": "2025-10",
+        "collected_at": "2026-10-20"
+      }
+    },
+    {
+      "id": "hyperscaler_capex_googl",
+      "name": "Alphabet CY2025 CAPEX guidance",
+      "plain": "$91–93B (CNBC roundup)",
+      "unit": "USD billion",
+      "source": {
+        "name": "CNBC / company earnings",
+        "url": "https://www.cnbc.com/2025/10/31/tech-ai-google-meta-amazon-microsoft-spend.html"
+      },
+      "caution": "Range midpoint used for display only",
+      "status": "ok",
+      "status_ko": "공시·보도",
+      "latest": {
+        "value": 92,
+        "obs_date": "2025-10",
+        "collected_at": "2026-10-20"
+      }
+    },
+    {
+      "id": "hyperscaler_capex_meta",
+      "name": "Meta CY2025 CAPEX guidance",
+      "plain": "$70–72B",
+      "unit": "USD billion",
+      "source": {
+        "name": "CNBC / company earnings",
+        "url": "https://www.cnbc.com/2025/10/31/tech-ai-google-meta-amazon-microsoft-spend.html"
+      },
+      "caution": "Total CAPEX; AI share not isolated",
+      "status": "ok",
+      "status_ko": "공시·보도",
+      "latest": {
+        "value": 71,
+        "obs_date": "2025-10",
+        "collected_at": "2026-10-20"
+      }
+    },
+    {
+      "id": "gpu_rent_note",
+      "name": "GPU rental observations",
+      "plain": "비교 가능한 모델·조건별 공시/광고 가격만 사용. 단일 지수로 합치지 않음.",
+      "unit": "USD/hr",
+      "source": {
+        "name": "Contagion market snapshot / provider list prices",
+        "url": ""
+      },
+      "caution": "광고가 ≠ 실현 계약가. Shock의 −%는 사용자 가정.",
+      "status": "ok",
+      "status_ko": "방법론 고지",
+      "latest": null
+    },
+    {
+      "id": "helios_facility",
+      "name": "Helios project debt facility",
+      "plain": "$1.4B · ~80% LTC · 36개월 (2025-08-15)",
+      "unit": "USD million",
+      "source": {
+        "name": "Galaxy IR",
+        "url": "https://investor.galaxy.com/news-releases/news-release-details/galaxy-closes-14-billion-project-financing-facility-accelerate"
+      },
+      "caution": "약정 규모 · 인출액과 다를 수 있음",
+      "status": "ok",
+      "status_ko": "회사 발표",
+      "latest": {
+        "value": 1400,
+        "obs_date": "2025-08-15",
+        "collected_at": "2026-10-20"
+      }
+    },
+    {
+      "id": "sds_gumi_capex",
+      "name": "Samsung SDS Gumi AI DC investment",
+      "plain": "KRW 427.3B board-approved",
+      "unit": "KRW billion",
+      "source": {
+        "name": "Samsung SDS",
+        "url": "https://www.samsungsds.com/en/news/gumi-260112.html"
+      },
+      "caution": "투자예산 · 프로젝트론 조건 미공시",
+      "status": "ok",
+      "status_ko": "회사 발표",
+      "latest": {
+        "value": 427.3,
+        "obs_date": "2026-01",
+        "collected_at": "2026-10-20"
+      }
+    }
+  ]
+}

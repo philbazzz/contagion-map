@@ -1,0 +1,40 @@
+# Dependencies & virtualenvs
+node_modules/
+frontend/node_modules/
+backend/.venv/
+.venv/
+venv/
+
+# Secrets — never commit
+.env
+backend/.env
+**/.env
+!.env.example
+!backend/.env.example
+
+# Build / caches
+frontend/dist/
+dist/
+__pycache__/
+**/__pycache__/
+*.pyc
+.pytest_cache/
+.vite/
+*.egg-info/
+
+# Local data caches & DBs
+backend/data/opendart_cache/
+backend/data/market.db
+backend/data/market.db-*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
+
+# Local checkpoints / zip verify temps (Desktop copies stay outside repo)
+contagion-checkpoints/
+contagion-zip-verify*/
+*.zip

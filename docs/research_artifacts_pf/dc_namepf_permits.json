@@ -1,0 +1,1059 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>데이터센터 개발 현황 대시보드</title>
+<meta name="description" content="전국 건축 인허가에서 층별 용도가 데이터센터인 건의 허가 · 착공 · 준공과 용량, 데이터센터 신규 가동(추가 실사용량 추정), 345kV 변전소 공급 여유, 국제 해저케이블, 제도 · 일정. 매일 자동 갱신">
+<meta name="naver-site-verification" content="2fcbd39fee22cc2de99b1bab7b6cc5a5d0a39e8e" />
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="namepf.com">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:url" content="https://dc.namepf.com/">
+<meta property="og:title" content="데이터센터 개발 현황 대시보드">
+<meta property="og:description" content="전국 데이터센터 인허가 · 착공 · 준공과 용량, 전력 확보 여건, 제도 · 일정 · 매일 자동 갱신">
+<meta property="og:image" content="https://dc.namepf.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://dc.namepf.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<!--HEAD-END-->
+<style>
+/* Layout: 단일 컬럼 대시보드 — 요약 4칸 → 인허가 추이(전체 폭) → 인허가 목록(용량 칸 포함) → 정보통신업 전력사용량 → 전력 여건(자립도 × 수요) → 제도 · 일정 · 기사
+   토큰은 apt-watch · daily-ratings · cons-ratings와 동일. 단계 색(허가 연파랑 · 착공 파랑 · 준공 남색: 진행될수록 짙게)과 권역 색만 추가 */
+:root{
+  --bg:#f5f6f8; --surface:#ffffff; --line:#dfe2e8; --fg:#1b2230; --muted:#5d6678;
+  --accent:#2747a8; --accent-soft:#e8edf9;
+  --up:#c8302f; --down:#2453c4; --flat:#6b7383;
+  --ok:#1f7a4d; --warn:#a26a00; --bad:#b3401f;
+  --st-p:#9aabdc; --st-s:#3354c4; --st-d:#16245e;
+  --hr0:#e5484d; --hr1:#3aa564; --cable:#1b88ad; --zone:#0d9488;
+  --cap:#3354c4; --reg:#0e8f7b; --warm:#d4682a; --gray:#7b8494;
+  --sf1:#f3cdb6; --sf2:#fbe9de; --sf3:#d9efe9; --sf4:#b4e0d4;
+  --tip-shadow:rgba(27,34,48,.14);
+  --land:#e8ebf0; --land2:#f2f3f6; --bd:#b9c0cc; --bd2:#d3d8e0;
+  --f-sans:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#11151d; --surface:#181e29; --line:#2a3242; --fg:#e6e9ef; --muted:#97a0b2;
+  --accent:#8ea8ff; --accent-soft:#1f2a45;
+  --up:#ff7a72; --down:#7aa2ff; --flat:#8b93a3;
+  --ok:#5fd19a; --warn:#f0bb4a; --bad:#ff8a63;
+  --st-p:#56649a; --st-s:#6584ea; --st-d:#b7c6ff;
+  --hr0:#ff6b78; --hr1:#5fcf8c; --cable:#56c2e4; --zone:#2dd4bf;
+  --cap:#5f7be0; --reg:#2fa88f; --warm:#dc7334; --gray:#8b93a3;
+  --sf1:#5b3423; --sf2:#3b2b23; --sf3:#1e3b34; --sf4:#256052;
+  --land:#232b38; --land2:#1c222d; --bd:#4a5468; --bd2:#343d4e;
+  --tip-shadow:rgba(0,0,0,.5); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11151d; --surface:#181e29; --line:#2a3242; --fg:#e6e9ef; --muted:#97a0b2;
+  --accent:#8ea8ff; --accent-soft:#1f2a45;
+  --up:#ff7a72; --down:#7aa2ff; --flat:#8b93a3;
+  --ok:#5fd19a; --warn:#f0bb4a; --bad:#ff8a63;
+  --st-p:#56649a; --st-s:#6584ea; --st-d:#b7c6ff;
+  --hr0:#ff6b78; --hr1:#5fcf8c; --cable:#56c2e4; --zone:#2dd4bf;
+  --cap:#5f7be0; --reg:#2fa88f; --warm:#dc7334; --gray:#8b93a3;
+  --sf1:#5b3423; --sf2:#3b2b23; --sf3:#1e3b34; --sf4:#256052;
+  --land:#232b38; --land2:#1c222d; --bd:#4a5468; --bd2:#343d4e;
+  --tip-shadow:rgba(0,0,0,.5); color-scheme:dark}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-sans);font-size:14px;line-height:1.5}
+.wrap{max-width:1680px;margin:0 auto;padding-inline:16px;padding-block:24px 40px;display:flex;flex-direction:column;gap:22px}
+a{color:var(--accent)}
+.draft{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center;font-size:.8rem;color:var(--muted);background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:8px 12px;word-break:keep-all}
+.draft b{color:var(--fg);font-weight:600}
+header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:8px 16px}
+header > div:first-child{flex:1 1 520px;min-width:0}
+h1{font-size:1.45rem;font-weight:700;margin:0;letter-spacing:-.01em;text-wrap:balance}
+.sub{color:var(--muted);font-size:.85rem;margin:2px 0 0;max-width:96ch;word-break:keep-all}
+.hright{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.sisters{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end}
+.updated{font-size:.76rem;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums;word-break:keep-all}
+.sister{font-size:.76rem;font-weight:600;color:var(--accent);text-decoration:none;border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:3px 9px;white-space:nowrap}
+.sister:hover{background:var(--accent-soft)}
+.sister .sl{color:var(--muted);font-weight:500}
+.sister:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+h2{font-size:.78rem;font-weight:600;letter-spacing:.08em;color:var(--muted);margin:0}
+.sec-head{display:flex;justify-content:space-between;align-items:baseline;gap:6px 12px;flex-wrap:wrap;margin-bottom:10px}
+.sec-head .note{font-size:.78rem;color:var(--muted)}
+
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:var(--surface);border:1px solid var(--line);border-radius:10px}
+.kpi{padding:16px 18px;display:flex;flex-direction:column;gap:7px;min-width:0}
+.kpi + .kpi{border-left:1px solid var(--line)}
+.kpi .name{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.kpi .name b{font-weight:600;font-size:.92rem;word-break:keep-all}
+.kpi .name b .nb{white-space:nowrap;font:inherit;color:inherit}
+.kpi .name span{font-size:.7rem;color:var(--muted);white-space:nowrap}
+.kpi .val{display:flex;align-items:baseline;gap:6px 10px;flex-wrap:wrap}
+.kpi .num{font-family:var(--f-mono);font-size:1.8rem;font-weight:500;font-variant-numeric:tabular-nums;letter-spacing:-.02em;line-height:1.15}
+.kpi .num small{font-size:.85rem;color:var(--muted);margin-left:2px}
+.chg{font-family:var(--f-mono);font-size:.82rem;font-variant-numeric:tabular-nums}
+.chg.up{color:var(--up)} .chg.down{color:var(--down)} .chg.flat{color:var(--flat)}
+.split{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:.76rem;color:var(--muted)}
+.split b{font-family:var(--f-mono);font-weight:500;color:var(--fg);font-variant-numeric:tabular-nums}
+.kpi .src{font-size:.7rem;color:var(--muted);margin-top:auto;word-break:keep-all}
+@supports (grid-template-rows:subgrid){ .kpi{display:grid;grid-row:span 4;grid-template-rows:subgrid;row-gap:7px} .kpi>*{min-width:0} .kpi .src{align-self:end} }
+.kb{display:flex;flex-direction:column;gap:7px}  /* 제목이 두 줄인 카드가 있어도 숫자 · 출처 줄을 나란히 */
+.spark{width:100%;height:40px;display:block;overflow:visible}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px 14px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.card-head{display:flex;justify-content:space-between;align-items:baseline;gap:4px 10px;flex-wrap:wrap}
+.card-head h3{margin:0;font-size:.95rem;font-weight:600}
+.card-head .note{font-size:.74rem;color:var(--muted)}
+.foot{margin:0;font-size:.72rem;color:var(--muted);line-height:1.6;word-break:keep-all}
+.foot .src{display:block;margin-top:2px;opacity:.85}
+.chart{position:relative;width:100%;min-width:0}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.chart text{font-family:var(--f-sans);font-variant-numeric:tabular-nums}
+.chart .ax{font-size:11px;fill:var(--muted)}
+.chart .yr{font-size:12px;font-weight:500;fill:var(--fg)}
+.chart .grid{stroke:var(--line);stroke-width:1;shape-rendering:crispEdges}
+.chart .base{stroke:var(--muted);stroke-opacity:.45;stroke-width:1;shape-rendering:crispEdges}
+.chart .lbl{font-size:11px;font-weight:600;fill:var(--fg);paint-order:stroke;stroke:var(--surface);stroke-width:3px;stroke-linejoin:round}
+.chart .lbl.dim{fill:var(--muted);font-weight:500}
+.chart .hit{fill:transparent}
+.chart .hl{fill:var(--fg);opacity:0;transition:opacity .12s}
+.chart .hl.on{opacity:.045}
+.tip{position:absolute;pointer-events:none;background:var(--surface);color:var(--fg);border:1px solid var(--line);box-shadow:0 8px 24px var(--tip-shadow);font-size:.78rem;line-height:1.45;padding:10px 12px;border-radius:8px;font-variant-numeric:tabular-nums;z-index:3;min-width:190px;max-width:300px}
+.tip .t{font-weight:600;margin-bottom:6px}
+.tip .t small{font-weight:400;color:var(--muted);margin-left:4px}
+.tip .r{display:grid;grid-template-columns:12px 1fr auto;gap:8px;align-items:center}
+.tip .r + .r{margin-top:3px}
+.tip .r span:nth-child(2){color:var(--muted)}
+.tip .r b{font-weight:600}
+.sw{width:12px;height:12px;border-radius:3px;display:inline-block}
+.ln{width:16px;height:3px;border-radius:2px;display:inline-block}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.76rem;color:var(--muted);align-items:center}
+.legend span{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+
+.chart-top{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center}
+.chart-top .legend{margin-left:auto}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--surface)}
+.seg button{all:unset;cursor:pointer;padding:5px 10px;font-size:.82rem;color:var(--muted)}
+.seg button + button{border-left:1px solid var(--line)}
+.seg button[aria-pressed="true"]{background:var(--accent-soft);color:var(--accent);font-weight:600}
+.seg button:focus-visible,select:focus-visible,input:focus-visible,th button:focus-visible,.info summary:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+label.f{display:flex;align-items:center;gap:6px;font-size:.82rem;color:var(--muted);white-space:nowrap}
+select,input[type=search]{font:inherit;font-size:.85rem;color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 10px}
+input[type=search]{min-width:0;width:200px}
+
+
+.filters{display:flex;flex-wrap:wrap;gap:10px 12px;align-items:center;margin-bottom:10px}
+.funnel{margin:0 0 12px;font-size:.84rem;color:var(--muted);line-height:1.6;word-break:keep-all}
+.funnel b{font-weight:600;color:var(--fg);font-variant-numeric:tabular-nums}
+.count{font-size:.82rem;color:var(--muted);white-space:nowrap;margin-left:auto}
+.dl{font:inherit;font-size:.82rem;font-weight:600;color:var(--accent);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 12px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.dl:hover{background:var(--accent-soft)}
+.dl:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.dl:disabled{opacity:.6;cursor:progress}
+.dl svg{width:14px;height:14px}
+.table-box{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:auto;max-height:72vh}
+table{width:100%;border-collapse:separate;border-spacing:0;font-size:.84rem}
+th,td{padding:7px 9px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap;vertical-align:middle}
+th:first-child,td:first-child{padding-left:12px}
+th{font-size:.74rem;font-weight:600;color:var(--muted);background:var(--surface);position:sticky;top:0;z-index:2}
+th button{all:unset;cursor:pointer}
+th button::after{content:"";margin-left:4px}
+th[aria-sort="ascending"] button::after{content:"▲"}
+th[aria-sort="descending"] button::after{content:"▼"}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover td{background:var(--accent-soft)}
+td.num,th.num{text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+td.nm{font-weight:600;white-space:normal;word-break:keep-all;min-width:12em;max-width:20em}
+td.nm small,td.rg small{display:block;font-weight:400;color:var(--muted);font-size:.72rem;margin-top:1px}
+td.rg{white-space:normal;min-width:9em;max-width:15em;word-break:keep-all}
+td.rg a{color:var(--muted);text-decoration:none;font-size:.72rem}
+td.rg a:hover{color:var(--accent);text-decoration:underline}
+td.dt{font-family:var(--f-mono);font-size:.8rem;font-variant-numeric:tabular-nums}
+.st{font-size:.72rem;font-weight:600;padding:2px 7px;border-radius:4px;border:1px solid currentColor;white-space:nowrap}
+.st.s-p{color:var(--warn)} .st.s-s{color:var(--accent)} .st.s-d{color:var(--ok)}
+.kd{font-size:.68rem;color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:0 4px;margin-left:4px}
+td.nw{white-space:normal;min-width:16em;max-width:24em}
+td.nw a{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;color:var(--fg);text-decoration:none;font-size:.78rem;line-height:1.45;word-break:keep-all}
+td.nw a + a{margin-top:5px}
+td.nw a:hover{color:var(--accent);text-decoration:underline}
+td.nw a:focus-visible{outline:2px solid var(--accent);outline-offset:1px;border-radius:2px}
+td.nw a small{color:var(--muted);font-family:var(--f-mono);font-size:.7rem;margin-right:4px}
+td.nw .more{font-size:.7rem;color:var(--muted)}
+.dim{color:var(--muted)}
+.empty{padding:28px;text-align:center;color:var(--muted)}
+
+.two{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+@media (min-width:980px){.two{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.list li{display:grid;grid-template-columns:5.6em minmax(0,1fr);gap:2px 12px;padding:9px 0;border-top:1px solid var(--line)}
+.list li:first-child{border-top:0;padding-top:0}
+.list .d{font-family:var(--f-mono);font-size:.76rem;color:var(--muted);font-variant-numeric:tabular-nums;padding-top:1px}
+.list a{color:var(--fg);text-decoration:none;font-size:.86rem;font-weight:500;word-break:keep-all;line-height:1.5}
+.list a:hover{color:var(--accent);text-decoration:underline}
+.list a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
+.list small{display:block;font-size:.72rem;color:var(--muted)}
+.pill{display:inline-block;font-size:.66rem;font-weight:600;border:1px solid currentColor;border-radius:999px;padding:0 6px;margin-left:6px;vertical-align:1px}
+.pill.live{color:var(--accent)} .pill.done{color:var(--ok)} .pill.dead{color:var(--muted)}
+.scroll{max-height:560px;overflow:auto}
+td.hr{text-align:right;white-space:normal;min-width:7.5em;max-width:11em}
+td.hr .v{font-family:var(--f-mono);font-weight:600;font-variant-numeric:tabular-nums}
+td.hr .v.no{color:var(--bad)} td.hr .v.ok{color:var(--ok)}
+td.hr small{display:block;font-size:.68rem;color:var(--muted);line-height:1.35;margin-top:1px;word-break:keep-all}
+.hrc{display:flex;flex-direction:column;gap:10px}
+.hrc .say{font-size:.86rem;line-height:1.6;word-break:keep-all;padding:10px 12px;border-radius:8px;background:var(--accent-soft);margin:0}
+.hrc .say b{font-family:var(--f-mono);font-weight:600}
+.hb2{display:flex;flex-direction:column;gap:4px}
+.hb2 > div{display:grid;grid-template-columns:5.2em minmax(0,1fr) 4.6em 3.6em;gap:8px;align-items:center;font-size:.8rem}
+.hb2 .bar{height:10px;background:var(--line);border-radius:3px;overflow:hidden}
+.hb2 .bar i{display:block;height:100%;border-radius:3px}
+.hb2 .v{font-family:var(--f-mono);text-align:right;font-variant-numeric:tabular-nums}
+.hb2 .c{font-size:.7rem;color:var(--muted);text-align:right;white-space:nowrap}
+.tops{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:.76rem;color:var(--muted)}
+.tops b{font-family:var(--f-mono);font-weight:600;color:var(--ok)}
+.dia{width:10px;height:10px;transform:rotate(45deg);display:inline-block;background:var(--zone);border-radius:1px}
+@media (min-width:980px){
+  .eqh > div{display:flex;flex-direction:column;min-width:0}
+  .eqh .card{height:600px}
+  .eqh .card.scroll{max-height:none;overflow:auto}
+  .eqh #tl-box{flex:1 1 auto;min-height:0;max-height:none}
+}
+.explain{margin:0;font-size:.8rem;line-height:1.6;color:var(--muted);word-break:keep-all;background:var(--accent-soft);border-radius:8px;padding:9px 12px}
+.explain b{color:var(--fg);font-weight:600;margin-right:4px}
+h1 .dev{font-size:.95rem;font-weight:600;color:var(--warm);margin-left:4px;vertical-align:2px;white-space:nowrap}
+.pm-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+.map-body{display:flex;flex-direction:column;gap:12px;min-width:0}
+.map-side{display:flex;flex-direction:column;gap:8px;min-width:0}
+@media (min-width:1180px){.pm-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  /* 넓은 화면: 지도 오른쪽에 범례를 세로로 두어 지도를 키우고 바다 여백을 줄인다 */
+  .map-body{display:grid;grid-template-columns:minmax(0,1fr) 196px;gap:16px;align-items:start}
+  .map-side{padding-top:4px}
+  .map-side .ly-h{flex-direction:column;gap:2px;margin-top:0}
+  .map-side .ly-h span::before{content:""}
+  .map-side .layers{display:flex;flex-direction:column;gap:6px;margin-top:0}
+  .map-side .ly{border-radius:10px;width:100%;align-items:center}
+}
+.map{position:relative;width:100%;min-width:0}
+.map svg{display:block;width:100%;height:auto;cursor:zoom-in;user-select:none;-webkit-user-select:none;touch-action:pan-y}
+.map.zoomed svg{cursor:grab;touch-action:none}
+.map.panning svg{cursor:grabbing}
+.map .zn,.map .lp{cursor:pointer}
+.map .zc{position:absolute;left:6px;bottom:6px;display:flex;align-items:center;gap:4px;font-size:.7rem;color:var(--muted);pointer-events:none}
+.map .zc .zh{padding:2px 6px;border-radius:6px;background:color-mix(in srgb,var(--surface) 80%,transparent)}
+.map .zc .zb{display:inline-flex;border:1px solid var(--line);border-radius:7px;overflow:hidden;background:var(--surface);box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.map .zc button{all:unset;pointer-events:auto;box-sizing:border-box;cursor:pointer;min-width:26px;height:26px;padding:0 8px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:7px;background:var(--surface);color:var(--fg);font-size:.74rem;font-weight:600;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.map .zc .zb button{border:0;border-radius:0;box-shadow:none}
+.map .zc .zb button + button{border-left:1px solid var(--line)}
+.map .zc button:hover{background:var(--accent-soft)}
+.map .zc button:disabled{opacity:.4;cursor:default}
+.map .zc button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.map .land{fill:var(--land);stroke:var(--bd);stroke-width:.8px;stroke-linejoin:round}
+.map .nk{fill:var(--land2);stroke:var(--bd2);stroke-width:.8px}
+.map .sgg{fill:none;stroke:var(--bd2);stroke-width:.6px}
+.map .ml{font-family:var(--f-sans);fill:var(--muted);paint-order:stroke;stroke:var(--land);stroke-linejoin:round}
+.map .ml.k2{fill:var(--fg);font-weight:600}
+.map .pt{cursor:pointer}
+.map .sb{cursor:pointer}
+.map .cb{fill:none;stroke:var(--cable);stroke-linecap:round;stroke-linejoin:round}
+.map .cbh{fill:none;stroke:transparent;stroke-width:9px;cursor:pointer;pointer-events:stroke}
+.map .cbh:hover + .cb,.map .cb.on{stroke-opacity:1;stroke-width:2.2px}
+.map .lp{cursor:pointer}
+.map .ml.cbl{fill:var(--cable);font-weight:600}
+.layers{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+.ly{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;gap:7px;padding:4px 10px 4px 8px;border:1px solid var(--line);border-radius:999px;font-size:.76rem;font-weight:600;color:var(--fg);background:var(--surface);transition:opacity .15s,border-color .15s}
+.ly:hover{border-color:var(--bd)}
+.ly small{font-weight:400;color:var(--muted);font-size:.7rem}
+.ly .lt{min-width:0}
+.ly::before{content:"";flex:none;width:13px;height:13px;box-sizing:border-box;border-radius:3.5px;border:1.5px solid var(--bd);background:var(--surface);display:inline-flex;align-items:center;justify-content:center;font-size:10px;line-height:1;font-weight:700;color:var(--surface)}
+.ly[aria-pressed="true"]::before{content:"✓";background:var(--accent);border-color:var(--accent)}
+.ly-h{display:flex;align-items:baseline;gap:8px;font-size:.74rem;font-weight:600;color:var(--fg);margin-top:4px}
+.ly-h span{font-weight:400;color:var(--muted)}
+.ly-h span::before{content:"· ";}
+.ly[aria-pressed="false"]{opacity:.55;border-style:dashed}
+.ly[aria-pressed="false"] .lsw{filter:grayscale(1)}
+.ly:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ly .lsw{display:inline-flex;align-items:center;gap:3px;flex:none}
+.ly .lsw i{flex:none}
+.ly .lsw .dot{width:8px;height:8px}
+.ly .lsw .gw,.ly .k .gw{width:13px;height:13px;border-radius:50%;display:inline-block;flex:none;background:radial-gradient(circle,var(--c) 0,color-mix(in srgb,var(--c) 45%,transparent) 45%,transparent 72%)}
+/* 설명이 두 가지면 한 덩어리씩 줄을 나눠 단어 중간에서 끊기지 않게 */
+.ly .lt{text-align:left}
+.ly .lt small{display:block;margin-top:1px;line-height:1.4;word-break:keep-all}
+.ly{border-radius:10px}
+.ly .k{display:flex;align-items:center;gap:3px}
+.ly .k .gw{width:12px;height:12px}
+.ly .lsw .cl{width:14px;height:0;border-top:1.6px solid var(--cable);display:inline-block}
+.ly .lsw .lp{width:7px;height:7px;border-radius:50%;border:1.6px solid var(--cable);background:var(--surface);display:inline-block;box-sizing:border-box}
+.ly .lsw .dia{width:8px;height:8px}
+@media (max-width:640px){ .ly{font-size:.74rem} }
+.map .inset{fill:none;stroke:var(--bd);stroke-dasharray:3 3;stroke-width:.8px}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+.mk{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px 16px}
+.mk > div{display:flex;flex-direction:column;gap:1px;min-width:0}
+.mk span{font-size:.74rem;color:var(--muted);word-break:keep-all}
+.mk b{font-family:var(--f-mono);font-size:1.25rem;font-weight:500;font-variant-numeric:tabular-nums}
+.mk b small{font-size:.78rem;color:var(--muted);font-weight:400;margin-left:3px}
+.mk em{font-style:normal;font-size:.76rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.mk em.up{color:var(--up)} .mk em.down{color:var(--down)}
+.up{color:var(--up)} .down{color:var(--down)}
+.pill.plan{color:var(--warm)} .pill.hold{color:var(--muted)}
+td.cp{text-align:right;white-space:nowrap}
+td.cp .v{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+td.cp .v b{font-weight:600}
+td.cp .v .q{font-family:var(--f-sans);font-weight:400;color:var(--muted);font-size:.78rem;margin:0 2px}
+
+td.cp small{display:block;font-size:.7rem;color:var(--muted);margin-top:1px}
+td.cp small a{color:var(--muted)}
+td.cp small a:hover{color:var(--accent)}
+
+
+.tl-top{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;justify-content:space-between}
+.tline{list-style:none;margin:0;padding:0}
+.tline li{display:grid;grid-template-columns:5.6em minmax(0,1fr);gap:2px 12px;padding:10px 0;border-top:1px solid var(--line)}
+.tline li:first-child{border-top:0;padding-top:2px}
+.tline .d{font-family:var(--f-mono);font-size:.76rem;color:var(--muted);padding-top:2px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.tline .t{font-weight:600;font-size:.88rem;word-break:keep-all;line-height:1.5}
+.tline .s{display:block;font-size:.78rem;color:var(--muted);word-break:keep-all;margin-top:2px;line-height:1.5}
+.tline .src{display:inline-block;font-size:.72rem;color:var(--muted);text-decoration:none;margin-top:3px}
+.tline .src:hover{color:var(--accent);text-decoration:underline}
+.tline .src:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px}
+.tline .tag{font-size:.66rem;font-weight:500;color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:0 4px;margin-right:6px;vertical-align:1px;white-space:nowrap}
+.tline li.now{display:flex;align-items:center;gap:8px;padding:6px 0;font-size:.72rem;font-weight:600;color:var(--warm);border-top:0}
+.tline li.now::before,.tline li.now::after{content:"";flex:1;height:1px;background:var(--warm);opacity:.55}
+.tline li.now + li{border-top:0}
+
+.info{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 16px;font-size:.84rem}
+.info summary{cursor:pointer;font-weight:600}
+.gl{display:grid;grid-template-columns:minmax(0,1fr);gap:8px 24px;margin:10px 0 2px}
+@media (min-width:900px){.gl{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.gl div{font-size:.8rem;color:var(--muted);line-height:1.55;word-break:keep-all}
+.gl b{color:var(--fg);font-weight:600;margin-right:6px}
+footer{font-size:.76rem;color:var(--muted);line-height:1.65}
+footer p{margin:0 0 6px}
+footer a{color:var(--accent);text-decoration:none}
+footer .ct{white-space:nowrap}
+.placeholder{padding:22px;color:var(--muted)}
+
+@media (max-width:1100px){
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .kpi:nth-child(3){border-left:0}
+  .kpi:nth-child(n+3){border-top:1px solid var(--line)}
+}
+@media (max-width:760px){
+  .kpis{grid-template-columns:1fr}
+  .kpi + .kpi{border-left:0;border-top:1px solid var(--line)}
+  .chart-top .legend{margin-left:0}
+  .hright{align-items:flex-start}
+  .sisters{justify-content:flex-start}
+  .updated{text-align:left}
+  input[type=search]{width:100%}
+  label.f.search{flex:1 1 100%}
+  .count{margin-left:0}
+  td.nm{min-width:10em;max-width:13em}
+  footer .ct{display:block;margin-top:6px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <!--DRAFT-->
+  <header>
+    <div>
+      <h1>데이터센터 개발 현황 대시보드</h1>
+      <p class="sub">국토교통부 건축 인허가 대장에서 용도가 '데이터센터'인 건을 모아 허가 → 착공 → 준공 흐름과 위치를 보여 주고, 공개 보도로 확인된 수전 · IT 용량, 정보통신업 전기 사용량 증가(MW), 시 · 도 전력자립도, 제도 · 일정과 기사를 함께 모았습니다 · <span style="white-space:nowrap">매일 오전(08:00) 자동 갱신</span></p>
+    </div>
+    <div class="hright">
+      <div class="sisters">
+        <a class="sister" href="https://cons.namepf.com/" target="_blank" rel="noopener"><span class="sl">관련 대시보드:</span> → 시공사 시공능력평가 · 신용등급 현황</a>
+        <a class="sister" href="https://abs.namepf.com/" target="_blank" rel="noopener"><span class="sl">관련 대시보드:</span> → 유동화시장 등급 · 금리 현황</a>
+        <a class="sister" href="https://apt.namepf.com/" target="_blank" rel="noopener"><span class="sl">관련 대시보드:</span> → 아파트 수급 · 분양시장 현황</a>
+      </div>
+      <div class="updated" id="updated">데이터 불러오는 중…</div>
+    </div>
+  </header>
+
+  <section aria-labelledby="h-sum">
+    <div class="sec-head"><h2 id="h-sum">요약</h2><span class="note" id="sum-note"></span></div>
+    <div class="kpis" id="kpis"><div class="placeholder">요약 불러오는 중…</div></div>
+  </section>
+
+  <section aria-labelledby="h-pm">
+    <div class="sec-head"><h2 id="h-pm">데이터센터 건축 허가 · 착공 · 준공 추이</h2><span class="note" id="pm-note"></span></div>
+    <div class="pm-grid">
+    <div class="card">
+        <div class="chart-top">
+          <div class="seg" role="group" aria-label="기준">
+            <button type="button" data-m="area" aria-pressed="true">연면적</button>
+            <button type="button" data-m="cnt" aria-pressed="false">건수</button>
+          </div>
+          <label class="f" for="pm-rg">지역 <select id="pm-rg"></select></label>
+          <span class="legend">
+            <span><i class="sw" style="background:var(--st-p)"></i>허가</span>
+            <span><i class="sw" style="background:var(--st-s)"></i>착공</span>
+            <span><i class="sw" style="background:var(--st-d)"></i>준공(사용승인)</span>
+          </span>
+        </div>
+        <div class="chart" id="pm-chart"></div>
+        <p class="foot" id="pm-foot"></p>
+    </div>
+    <div class="card" aria-labelledby="h-map">
+      <div class="card-head"><h3 id="h-map">사업장 위치</h3>
+        <div class="seg" role="group" aria-label="지도 범위">
+          <button type="button" data-v="all" aria-pressed="true">전국</button>
+          <button type="button" data-v="cap" aria-pressed="false">수도권</button>
+        </div>
+      </div>
+      <div class="map-body">
+      <div class="map" id="map"></div>
+      <div class="map-side">
+      <div class="ly-h" id="ly-h">지도에 표시할 항목<span>눌러서 켜고 끄기</span></div>
+      <div class="layers" role="group" aria-labelledby="ly-h">
+        <button type="button" class="ly" data-ly="dc" aria-pressed="true"><span class="lsw"><i class="dot" style="background:var(--st-p)"></i><i class="dot" style="background:var(--st-s)"></i><i class="dot" style="background:var(--st-d)"></i></span><span class="lt">데이터센터<small>착공 전 · 공사 중 · 준공</small></span></button>
+        <button type="button" class="ly" data-ly="sub" aria-pressed="true"><span class="lt">345kV 변전소 여유<small><span class="k"><i class="gw" style="--c:var(--hr0)"></i>여유 없음</span><span class="k"><i class="gw" style="--c:var(--hr1)"></i>여유 있음 · 넓을수록 큼</span></small></span></button>
+        <button type="button" class="ly" data-ly="cab" aria-pressed="true"><span class="lsw"><i class="cl"></i><i class="lp"></i></span><span class="lt">해저케이블 · 육양국<small>점선 = 예정</small></span></button>
+        <button type="button" class="ly" data-ly="zone" aria-pressed="true"><span class="lsw"><i class="dia"></i></span><span class="lt">분산에너지특화지역</span></button>
+      </div>
+      </div>
+      </div>
+      <p class="foot" id="map-foot"></p>
+    </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-list">
+    <div class="sec-head"><h2 id="h-list">데이터센터 인허가 목록</h2><span class="note">층별 용도에 '데이터센터'가 들어간 허가 대장 · 용량은 기사 · 공개 보고서로 확인된 값만(매주 재검색) · 관련 기사는 이름 + 지역이 맞는 것만 자동 연결</span></div>
+    <p class="funnel" id="funnel"></p>
+    <div class="filters">
+      <div class="seg" role="group" aria-label="단계">
+        <button type="button" data-st="all" aria-pressed="true">전체</button>
+        <button type="button" data-st="착공 전" aria-pressed="false">착공 전</button>
+        <button type="button" data-st="공사 중" aria-pressed="false">공사 중</button>
+        <button type="button" data-st="준공" aria-pressed="false">준공</button>
+      </div>
+      <label class="f" for="ls-rg">지역 <select id="ls-rg"></select></label>
+      <label class="f search" for="q">검색 <input type="search" id="q" placeholder="건물명 · 주소"></label>
+      <span class="count" id="count"></span>
+      <button type="button" class="dl" id="dl" title="지금 표에 보이는 필터 · 정렬 그대로 엑셀로 받습니다"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v8M4.5 6.5 8 10l3.5-3.5M2.5 13.5h11"/></svg>엑셀 다운로드</button>
+    </div>
+    <div class="table-box">
+      <table>
+        <thead><tr>
+          <th scope="col" data-k="nm"><button type="button">건물명 · 구분</button></th>
+          <th scope="col" data-k="sd"><button type="button">위치</button></th>
+          <th scope="col" class="num" data-k="cap"><button type="button">용량(MW)</button></th>
+          <th scope="col" class="num" data-k="hr"><button type="button" title="한전 전력공급 여유지도: 이 시 · 군 · 구를 맡은 345kV 변전소에 남은 공급 여유용량(이미 배정된 사업장 몫을 뺀 값, – = 남은 여유 없음)">관할 변전소 추가 여유(MW)</button></th>
+          <th scope="col" class="num" data-k="area"><button type="button">연면적(㎡)</button></th>
+          <th scope="col" class="num" data-k="share"><button type="button">데이터센터 층 비중</button></th>
+          <th scope="col" data-k="pms" aria-sort="descending"><button type="button">허가</button></th>
+          <th scope="col" data-k="stc"><button type="button">착공</button></th>
+          <th scope="col" data-k="apr"><button type="button">준공</button></th>
+          <th scope="col" data-k="stage"><button type="button">단계</button></th>
+          <th scope="col" data-k="newsd"><button type="button">관련 기사</button></th>
+        </tr></thead>
+        <tbody id="tb"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-ict">
+    <div class="sec-head"><h2 id="h-ict">정보통신업 전기 사용량</h2><span class="note" id="ict-note"></span></div>
+    <div>
+      <div class="card">
+        <div class="card-head"><h3>데이터센터 신규 가동(추가 실사용량 추정, MW)</h3><span class="note">정보통신업 전기 사용량 증가분 기준</span></div>
+        <p class="explain" id="ict-ex"></p>
+        <div class="mk" id="ict-k"></div>
+        <div class="chart-top"><span class="legend" style="margin-left:0">
+          <span><i class="sw" style="background:var(--cap)"></i>수도권</span>
+          <span><i class="sw" style="background:var(--reg)"></i>비수도권</span>
+        </span></div>
+        <div class="chart" id="ict-chart"></div>
+        <p class="foot" id="ict-foot"></p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-pow">
+    <div class="sec-head"><h2 id="h-pow">전력 여건</h2><span class="note">수전 가능성</span></div>
+    <div class="two">
+      <div class="card">
+        <div class="card-head"><h3>전기가 남는 곳과 수요가 몰린 곳</h3><span class="note" id="sc-note"></span></div>
+        <div class="chart" id="sc-chart"></div>
+        <p class="foot" id="sc-foot"></p>
+      </div>
+      <div class="card hrc">
+        <div class="card-head"><h3>345kV 변전소 공급 여유</h3><span class="note" id="hr-note"></span></div>
+        <p class="say" id="hr-say"></p>
+        <div class="hb2" id="hr-bars"></div>
+        <div class="tops" id="hr-top"></div>
+        <p class="foot">한전 사이버지점 '전력공급 여유지도'의 시 · 도별 345kV 변전소 공급 여유용량 합계입니다(여러 시 · 도를 맡는 변전소는 각 시 · 도에 모두 셈). 변압기 용량 기준의 참고값이라, 실제 공급 가능 여부와 시기는 전기사용 신청 뒤 한전 검토로 정해집니다. 인허가 목록의 '관할 변전소 추가 여유' 칸은 그 사업장 시 · 군 · 구를 맡은 변전소 값입니다. 매일 갱신.</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-law">
+    <div class="two eqh">
+      <div>
+        <div class="sec-head"><h2 id="h-news">최근 기사</h2><span class="note" id="news-note"></span></div>
+        <div class="card scroll"><ul class="list" id="news"></ul></div>
+      </div>
+      <div>
+        <div class="sec-head"><h2 id="h-law">제도 · 일정</h2><span class="note" id="law-note"></span></div>
+        <div class="card">
+          <div class="tl-top"><label class="f" for="tl-tag">분야 <select id="tl-tag"></select></label><span class="note foot" id="tl-chk"></span></div>
+          <div class="scroll" id="tl-box"><ol class="tline" id="tline"></ol></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <details class="info">
+    <summary>용어 · 기준</summary>
+    <div class="gl">
+      <div><b>데이터센터 인허가</b>건축 인허가 대장에서 주용도가 '방송통신시설'이고 층별 용도에 '데이터센터'가 있는 건입니다. 업무시설 등 다른 주용도 건물 안의 소규모 전산실은 잡히지 않습니다.</div>
+      <div><b>허가 · 착공 · 준공</b>대장의 건축허가일 · 실제착공일 · 사용승인일입니다. 착공일이 비어 있으면 '착공 전', 사용승인일이 있으면 '준공'으로 분류합니다.</div>
+      <div><b>용량(MW)</b>인허가 대장에는 전력 용량이 없어 기사 · 운영사 발표 · 공개 시장 보고서에서 확인된 값만 적습니다. '수전'은 한전에서 받는 전력, 'IT'는 서버에 쓸 수 있는 전력(IT Load)이고, 어느 쪽인지 밝히지 않은 값은 '기준 미표기'로 둡니다. 확인 안 된 건은 매주 다시 찾고, 그사이 연결된 기사 제목에 MW가 나오면 '기사 제목'으로 표시합니다.</div>
+      <div><b>연면적</b>같은 연면적이라도 층고 · 랙 밀도에 따라 용량은 크게 다르므로 규모 비교는 용량 칸을 우선 보세요.</div>
+      <div><b>관련 기사</b>건물명에 드러난 사업자 · 브랜드와 시 · 군 · 동 이름으로 구글 뉴스를 매주 다시 검색해, 제목에 데이터센터와 이름 · 지역이 함께 나오는 기사만 붙입니다. 같은 동에 데이터센터가 여럿이면 신축 · 전환 성격이 맞는 기사만 남겨, 확신이 없으면 비워 둡니다.</div>
+      <div><b>대수선 · 용도변경</b>기존 건물을 데이터센터로 바꾸는 건도 함께 나오며, 구분 칸에 표시합니다.</div>
+      <div><b>사용량(MW 환산)</b>한전 산업분류(한국표준산업분류 J) '정보통신업' 사용량(kWh)을 시간으로 나눈 값으로, 1년 내내 평균 몇 MW씩 쓰는지를 뜻합니다. 데이터센터 외에 통신 · 방송 · 소프트웨어 사업장도 포함됩니다. 2017년 7월 이전은 같은 대분류의 옛 이름(출판 · 영상 · 방송통신 · 정보서비스업)입니다.</div>
+      <div><b>데이터센터 신규 가동(추가 실사용량 추정)</b>정보통신업 사용량(MW 환산)이 1년 동안 늘어난 양입니다. 새로 돌기 시작한 서버 · 냉방 설비만큼 늘어나므로, 데이터센터 임차 · 가동이 실제로 채워진 속도로 읽을 수 있습니다.</div>
+      <div><b>사업장 위치</b>인허가 대장의 법정동 · 리 대표점(도로명주소 행정구역도 기반)에 표시합니다. 정확한 대지 위치는 지도 링크로 확인하세요.</div>
+      <div><b>전력자립도</b>지역 발전량(전력거래소 EPSIS) ÷ 지역 전력판매량(한전). 100% 미만이면 다른 지역에서 송전받아 쓰는 곳입니다.</div>
+      <div><b>PUE · 가동률</b>PUE는 데이터센터 전체 전력 ÷ IT 장비 전력으로, 냉방 · 전력 손실을 얼마나 더 쓰는지 보여 줍니다(낮을수록 효율적). 가동률은 계약한 IT 용량 대비 실제 평균 사용 비율입니다.</div>
+      <div><b>관할 변전소 추가 여유</b>한전 '전력공급 여유지도'에서 그 시 · 군 · 구에 전기를 보내는 345kV 변전소의 공급 여유용량(MW)입니다. 이미 배정된 사업장 몫을 뺀 뒤 남은 값이라, '–'(남은 여유 없음)는 그 지역에 새 대형 수전을 더 넣기 어렵다는 뜻이지 표에 있는 사업장이 전력을 못 받는다는 뜻은 아닙니다. 변압기 용량 기준 참고값이라 실제 공급 가능 여부는 전기사용 신청 뒤 정해집니다.</div>
+      <div><b>분산에너지특화지역</b>분산에너지법에 따라 지역 발전 전기를 한전을 거치지 않고 직접 사고팔 수 있도록 지정한 곳입니다(2025년 7곳). 데이터센터 입장에서는 직접 PPA · 구역전기 공급과 계통 부담 완화가 가능한 지역입니다.</div>
+      <div><b>제도 · 일정</b>정부 · 국회 발표와 보도를 매주 다시 검색해 진행 상황(완료 · 진행 중 · 계류 · 예정)과 새 항목을 반영합니다. 정확한 내용은 각 항목의 출처 원문에서 확인하세요.</div>
+    </div>
+  </details>
+
+  <footer>
+    <p>출처: 국토교통부 건축HUB 건축인허가정보(공공데이터포털), 행정안전부 법정동코드, 한국전력 전력데이터 개방포털(산업분류별 · 계약종별 전력사용량), 한국전력거래소(EPSIS 지역별 발전량), 한국전력 사이버지점(전력공급 여유지도), 정부 · 국회 발표와 언론 보도 · 공개 시장 보고서(제도 · 일정, 용량 — 매주 확인), Google 뉴스. 지도: 통계청 SGIS 행정구역 경계(공공누리 제1유형, <a href="https://github.com/vuski/admdongkor" target="_blank" rel="noopener">vuski/admdongkor</a> 가공), 도로명주소 행정구역도(GIS Developer 배포), Natural Earth. 이 화면은 공개된 자료를 자동으로 모아 정리한 개인 참고용 자료이며, 정리 과정에서 지연 · 누락 · 오기가 생길 수 있고 원문과 다를 수 있습니다.</p>
+    <p>이 화면의 어떤 내용도 투자 권유나 여신 · 의사결정의 근거가 아니며, 이를 이용해 생긴 결과에 대해 작성자는 책임지지 않습니다. 정확한 내용은 세움터 건축물대장과 각 기관 원문에서 확인하시기 바랍니다.</p>
+    <p>함께 운영하는 대시보드: <a href="https://cons.namepf.com/" target="_blank" rel="noopener">시공사 시공능력평가 · 신용등급 현황</a> · <a href="https://abs.namepf.com/" target="_blank" rel="noopener">유동화시장 등급 · 금리 현황</a> · <a href="https://apt.namepf.com/" target="_blank" rel="noopener">아파트 수급 · 분양시장 현황</a></p>
+    <p>기획 · 운영: 한국투자증권 PF그룹 부동산금융1부 최이름 차장 <a class="sister" href="https://namepf.com/" target="_blank" rel="noopener" style="display:inline-block;margin:0 4px;text-decoration:none;white-space:nowrap"><span class="sl">바로가기:</span> → 주요 딜 수행 실적</a> <span class="ct">(<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1779767a72577c786572767e79617264637a7279633974787a">[email&#160;protected]</a>, 02-3276-6012)</span></p>
+  </footer>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt=(n,d=0)=>n==null||isNaN(n)?"–":Number(n).toLocaleString("ko-KR",{minimumFractionDigits:d,maximumFractionDigits:d});
+const CAP=new Set(["서울","인천","경기"]);
+const SIDO=["서울","인천","경기","강원","충북","충남","세종","대전","전북","전남광주","대구","경북","울산","부산","경남","제주"];
+const ym=s=>{const [y,m]=s.split("-");return `'${y.slice(2)}.${m}`;};
+const pctTxt=(a,b)=>!b?"–":((a/b-1)*100>=0?"▲ ":"▼ ")+fmt(Math.abs((a/b-1)*100),1)+"%";
+const pctCls=(a,b)=>!b?"flat":a>=b?"up":"down";
+const sgn=(v,d=0)=>v==null||isNaN(v)?"–":(v>=0?"+":"−")+fmt(Math.abs(v),d);
+function mw12(arr,end){ if(end<11) return null; let e=0,h=0; for(let i=end-11;i<=end;i++){ e+=arr[i]||0; h+=D.kepco.hours[i]; } return e/h/1e3; }
+function capArr(){ const K=D.kepco; return K.months.map((_,i)=>[...CAP].reduce((s,sd)=>s+((K.sido[sd]||[])[i]||0),0)); }
+const ymS=d=>d?`'${d.slice(2,4)}.${d.slice(5,7)}`:"";
+const yd=s=>String(s||"").replace(/^\d{2}(\d{2})/,"'$1").replace(/-/g,".");  /* 2026-10-12 · 2026.10.12 → '26.10.12 */
+function bySite(rows){ const g={}; rows.forEach(r=>{ (g[r.site]=g[r.site]||[]).push(r); });
+  return Object.values(g).map(rs=>{ const top=rs.slice().sort((a,b)=>(b.pms||"").localeCompare(a.pms||""))[0]; const cap=(rs.find(r=>r.cap&&!r.none&&!r.cap.none)||{}).cap||null;
+    return {rs,top,stage:top.stage,cap,nm:(rs.find(r=>r.nm)||{}).nm||"",area:Math.max(...rs.map(r=>r.area||0))}; }); }
+let D;
+
+function niceMax(v){ for(const s of [1,2,5,10,20,25,50,100,200,250,500,1000,2000,5000]){ if(v/s<=5) return {mx:Math.max(s,Math.ceil(v/s)*s),st:s}; } return {mx:Math.ceil(v/5000)*5000,st:5000}; }
+function spark(vals,color,W=240,H=40,p=3){
+  const v=vals.filter(x=>x!=null); const mn=Math.min(...v),mx=Math.max(...v),rg=(mx-mn)||1;
+  const x=i=>p+i*(W-2*p)/Math.max(1,vals.length-1), y=t=>H-p-(t-mn)/rg*(H-2*p);
+  const d=vals.map((t,i)=>`${i?"L":"M"}${x(i).toFixed(1)},${y(t).toFixed(1)}`).join(""), n=vals.length-1;
+  return `<svg class="spark" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true"><path d="${d}L${x(n)},${H}L${x(0)},${H}Z" fill="${color}" fill-opacity=".1"/><path d="${d}" fill="none" stroke="${color}" stroke-width="1.6" vector-effect="non-scaling-stroke"/><circle cx="${x(n)}" cy="${y(vals[n])}" r="3" fill="${color}"/></svg>`;
+}
+const rgMatch=(sd,rg)=>rg==="all"||(rg==="cap"&&CAP.has(sd))||(rg==="reg"&&!CAP.has(sd))||rg===sd;
+function rgOptions(sel,rows){ const have=new Set(rows.map(r=>r.sd)); sel.innerHTML=`<option value="all">전국</option><option value="cap">수도권</option><option value="reg">비수도권</option>`+SIDO.filter(s=>have.has(s)).map(s=>`<option value="${s}">${s}</option>`).join(""); }
+const today=()=>new Date(new Date().getTime()+9*3600e3).toISOString().slice(0,10);
+const minus=(d,days)=>new Date(new Date(d).getTime()-days*86400e3).toISOString().slice(0,10);
+
+/* ── 요약 ── */
+function renderKPI(){
+  const R=D.permits.rows, t=today(), a=minus(t,365), b=minus(t,730);
+  const inR=(k,lo,hi)=>R.filter(r=>r[k]&&r[k]>lo&&r[k]<=hi);
+  const sum=rs=>rs.reduce((s,r)=>s+(r.area||0),0);
+  const p1=inR("pms",a,t), p0=inR("pms",b,a), s1=inR("stc",a,t), s0=inR("stc",b,a), d1=inR("apr",a,t);
+  const live=R.filter(r=>r.stage==="공사 중");
+  const {G}=absorbGroups(), K=D.kepco, ca=capArr(), na=K.nat, ra=na.map((v,i)=>v-ca[i]), L=na.length-1, cNow=G[G.length-1].c, cYr=mw12(ca,L-12)-mw12(ca,L-24), rNow=G[G.length-1].r;
+  const dc=D.kepco.decomp, dcp=dc&&dc.a.length?dc.a.reduce((a,x)=>a+x.d,0)/dc.tot*100:null;
+  const bars=(()=>{ const W=240,H=40,n=G.length,mx=Math.max(...G.map(g=>g.c)),mn=Math.min(0,...G.map(g=>g.c)),bw=W/n; const y=v=>H-2-(v-mn)/(mx-mn||1)*(H-4);
+    return `<svg class="spark" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true">`+G.map((g,i)=>`<rect x="${(i*bw+bw*.18).toFixed(1)}" y="${Math.min(y(g.c),y(0)).toFixed(1)}" width="${(bw*.64).toFixed(1)}" height="${Math.max(1,Math.abs(y(g.c)-y(0))).toFixed(1)}" rx="1.5" fill="var(--accent)" fill-opacity="${i===n-1?1:.32}"/>`).join("")+`</svg>`; })();
+
+  const card=(name,tag,num,unit,chg,split,src)=>`<div class="kpi"><div class="name"><b>${name}</b><span>${tag}</span></div><div class="val"><span class="num">${num}<small>${unit}</small></span>${chg}</div>${split}<div class="src">${src}</div></div>`;
+  $("#kpis").innerHTML=
+    card("데이터센터 건축허가","최근 12개월",fmt(p1.length),"건",`<span class="chg ${pctCls(sum(p1),sum(p0))}">연면적 ${pctTxt(sum(p1),sum(p0))}</span>`,`<div class="split"><span>연면적 <b>${fmt(sum(p1)/1e4,1)}만㎡</b></span><span>직전 12개월 <b>${fmt(p0.length)}건 · ${fmt(sum(p0)/1e4,1)}만㎡</b></span></div>`,"건축HUB 건축인허가 · 허가일 기준")+
+    card("착공","최근 12개월",fmt(s1.length),"건",`<span class="chg ${pctCls(sum(s1),sum(s0))}">연면적 ${pctTxt(sum(s1),sum(s0))}</span>`,`<div class="split"><span>연면적 <b>${fmt(sum(s1)/1e4,1)}만㎡</b></span><span>최근 12개월 준공 <b>${fmt(d1.length)}건 · ${fmt(sum(d1)/1e4,1)}만㎡</b></span></div>`,"건축HUB 건축인허가 · 실제착공일 기준")+
+    card("공사 중","현재",fmt(live.length),"건","",`<div class="split"><span>연면적 <b>${fmt(sum(live)/1e4,1)}만㎡</b></span><span>수도권 <b>${fmt(live.filter(r=>CAP.has(r.sd)).length)}건</b></span><span>비수도권 <b>${fmt(live.filter(r=>!CAP.has(r.sd)).length)}건</b></span></div>`,"착공일이 있고 사용승인일이 없는 건")+
+    card("데이터센터 신규 가동 <span class=\"nb\">(추가 실사용량 추정)</span>",`최근 1년 · 수도권`,sgn(cNow),"MW","",`<div class="kb"><div class="split"><span>1년 전 같은 기간 <b>${sgn(cYr)}MW</b></span><span>비수도권 <b>${sgn(rNow)}MW</b></span></div>`+bars+`</div>`,`정보통신업 전기 사용량 증가분(한국전력)${dcp!=null?` · ${fmt(dcp,0)}%가 데이터센터 가동 지역`:""} · 막대는 해마다 증가분`);
+
+  const cov=D.permits.coverage, done=Object.values(cov).reduce((s,v)=>s+v[0],0), tot=Object.values(cov).reduce((s,v)=>s+v[1],0);
+  $("#sum-note").textContent=D.permits.complete?`인허가 전국 수집 완료 (${String(D.permits.updated||"").replace(/^\d{2}(\d{2})(\d{2})(\d{2})$/,"'$1.$2.$3")} 기준 집계 완료)`:`인허가는 전국 수집 진행 중(${fmt(done/tot*100,0)}%) — 아래 숫자는 수집된 지역 기준`;
+}
+
+/* ── 인허가 추이 ── */
+let pmMode="area";
+function renderPM(){
+  const rg=$("#pm-rg").value||"all", R=D.permits.rows.filter(r=>rgMatch(r.sd,rg));
+  const yr1=+today().slice(0,4), ys0=R.flatMap(r=>["pms","stc","apr"].map(k=>r[k]).filter(Boolean)).map(d=>+d.slice(0,4)).filter(y=>y>=2020), yr0=ys0.length?Math.min(...ys0):2020, yrs=[]; for(let y=yr0;y<=yr1;y++) yrs.push(y);
+  const val=(k,y)=>{ const rs=R.filter(r=>r[k]&&+r[k].slice(0,4)===y); return pmMode==="area"?rs.reduce((s,r)=>s+r.area,0)/1e4:rs.length; };
+  const S=[["pms","허가","var(--st-p)"],["stc","착공","var(--st-s)"],["apr","준공","var(--st-d)"]];
+  const data=yrs.map(y=>S.map(([k])=>val(k,y)));
+  $("#pm-foot").textContent=`건축 인허가 대장의 허가일 · 실제착공일 · 사용승인일을 연도별로 셌습니다. ${yr1}년은 올해 누적입니다. 같은 건물이 해마다 허가 → 착공 → 준공으로 넘어가므로 세 막대를 더하면 안 됩니다.`;
+  if(!D.permits.complete){ const cov=D.permits.coverage, done=Object.values(cov).reduce((a,v)=>a+v[0],0), tot=Object.values(cov).reduce((a,v)=>a+v[1],0);
+    $("#pm-foot").textContent+=` 지금은 전국 동 · 리 단위를 나눠 도는 첫 바퀴(${fmt(done/tot*100,0)}%)라 아직 돌지 않은 지역의 건은 빠져 있습니다.`; }
+  const box=$("#pm-chart"), W=Math.max(300,Math.round(box.clientWidth||600));
+  let H=W<520?250:290;
+  if(window.innerWidth>=1180){ // 옆 지도 카드와 높이를 맞춰 빈 공간 없이 채운다
+    const cc=box.closest(".card"), mc=$("#map").closest(".card"), cs=getComputedStyle(cc), n=cc.children.length;
+    const other=[...cc.children].filter(e=>e!==box).reduce((a,e)=>a+e.offsetHeight,0)+parseFloat(cs.rowGap||0)*(n-1)+parseFloat(cs.paddingTop)+parseFloat(cs.paddingBottom)+2;
+    const ms=getComputedStyle(mc), mn=[...mc.children].reduce((a,e)=>a+e.offsetHeight,0)+parseFloat(ms.rowGap||0)*(mc.children.length-1)+parseFloat(ms.paddingTop)+parseFloat(ms.paddingBottom)+2; // 지도 카드의 원래 높이(늘어난 높이 말고)
+    H=Math.round(Math.max(320,Math.min(760,mn-other))); }
+  const m={l:40,r:8,t:22,b:30}, iw=W-m.l-m.r, ih=H-m.t-m.b;
+  const {mx,st}=niceMax(Math.max(1,...data.flat()));
+  const Y=v=>m.t+ih-(v/mx)*ih, band=iw/yrs.length, gw=Math.min(84,band*.72), bw=gw/3;
+  let s=`<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="연도별 데이터센터 허가·착공·준공">`;
+  for(let v=0;v<=mx+1e-9;v+=st) s+=`<line class="grid" x1="${m.l}" x2="${W-m.r}" y1="${Y(v)}" y2="${Y(v)}"/><text class="ax" x="${m.l-8}" y="${Y(v)+4}" text-anchor="end">${fmt(v)}</text>`;
+  s+=`<text class="ax" x="${m.l-8}" y="${m.t-9}" text-anchor="end">${pmMode==="area"?"만㎡":"건"}</text>`;
+  yrs.forEach((y,i)=>{ const x0=m.l+band*i+(band-gw)/2;
+    s+=`<rect class="hl" data-i="${i}" x="${m.l+band*i+3}" y="${m.t-4}" width="${band-6}" height="${ih+4}" rx="6"/>`;
+    data[i].forEach((v,j)=>{ if(v<=0) return; const x=x0+bw*j+1, h=Y(0)-Y(v); s+=`<rect x="${x.toFixed(1)}" y="${Y(v).toFixed(1)}" width="${(bw-2).toFixed(1)}" height="${Math.max(1,h).toFixed(1)}" rx="2" fill="${S[j][2]}"/>`; });
+    s+=`<text class="yr" x="${m.l+band*i+band/2}" y="${H-10}" text-anchor="middle">${y}${y===yr1?"":""}</text>`; });
+  s+=`<line class="base" x1="${m.l}" x2="${W-m.r}" y1="${Y(0)}" y2="${Y(0)}"/>`;
+  yrs.forEach((y,i)=>{ s+=`<rect class="hit" data-i="${i}" x="${m.l+band*i}" y="0" width="${band}" height="${H}"/>`; });
+  s+=`</svg><div class="tip" hidden></div>`;
+  box.innerHTML=s;
+  const tip=box.querySelector(".tip");
+  box.querySelectorAll(".hit").forEach(h=>{ const show=()=>{ const i=+h.dataset.i, y=yrs[i];
+      box.querySelectorAll(".hl").forEach(e=>e.classList.toggle("on",+e.dataset.i===i));
+      const cnt=k=>R.filter(r=>r[k]&&+r[k].slice(0,4)===y), ar=rs=>rs.reduce((s,r)=>s+r.area,0);
+      tip.innerHTML=`<div class="t">${y}년${y===yr1?"<small>올해 누적</small>":""}</div>`+S.map(([k,l,c])=>{const rs=cnt(k);return `<div class="r"><i class="sw" style="background:${c}"></i><span>${l}</span><b>${fmt(rs.length)}건 · ${fmt(ar(rs)/1e4,1)}만㎡</b></div>`;}).join("");
+      tip.hidden=false; const tw=tip.offsetWidth, cx=m.l+band*i+band/2; let left=cx+gw/2+10; if(left+tw>W) left=Math.max(0,cx-gw/2-10-tw); tip.style.left=left+"px"; tip.style.top=m.t+"px"; };
+    h.addEventListener("pointerenter",show); h.addEventListener("pointerdown",show);
+    h.addEventListener("pointerleave",()=>{ tip.hidden=true; box.querySelectorAll(".hl").forEach(e=>e.classList.remove("on")); }); });
+}
+/* ── 목록 ── */
+const capVal=c=>!c||c.none?null:(c.mw??c.it);
+function hrCell(h){
+  if(!h) return `<td class="hr"><span class="dim">–</span></td>`;
+  // 여유 0은 '–'로: 이미 배정된 사업장 몫을 뺀 뒤 남은 값이라, 0이 이 사업장이 전력을 못 받는다는 뜻은 아니다
+  const mw=v=>v>0?fmt(v):"–", names=Object.entries(h.subs).map(([n,v])=>`${n} ${mw(v)}`).join(" · ");
+  return `<td class="hr" title="${esc("관할 345kV 변전소 남은 여유: "+names+" (– = 남은 여유 없음, 이미 배정된 사업장 몫은 빠진 값)")}"><span class="v ${h.sum>0?"ok":"dim"}">${mw(h.sum)}</span><small>${esc(names)}</small></td>`;
+}
+const mwf=v=>fmt(v,v%1?1:0);
+function capCell(c){
+  // 모든 칸을 같은 모양으로: 첫 줄 = 굵은 숫자만(MW, 오른쪽 끝이 줄 맞게 꾸밈말은 앞에), 둘째 줄 = IT 값 · 기준 · 출처
+  if(!c||c.none) return `<td class="cp"><span class="dim">–</span></td>`;
+  const tt=s=>s?` title="${esc(s)}"`:"", t=c.txt||"";
+  const itOnly=c.mw==null, main=itOnly?c.it:c.mw;
+  const pre=/최대|이하/.test(t)?"최대":/1단계/.test(t)?"1단계":/MW\s*급/.test(t)?"약":"";
+  const v=`${pre?`<span class="q">${pre}</span>`:""}<b>${mwf(main)}</b>`;
+  const basis=itOnly||c.basis==="IT"?"IT 기준":c.basis==="수전"?"수전 기준":c.auto?"기사 제목 기준":"기준 미표기";
+  const a=(c.src||[])[0], sub=[!itOnly&&c.it!=null?`IT ${mwf(c.it)}`:"",/캠퍼스/.test(t)?"캠퍼스 전체":"",/목표/.test(t)?"목표":"",basis,a?`<a href="${esc(a.u)}" target="_blank" rel="noopener"${tt([a.o,a.d,a.t].filter(Boolean).join(" · "))}>출처</a>`:""].filter(Boolean).join(" · ");
+  return `<td class="cp"${tt(c.note)}><span class="v">${v}</span><small>${sub}</small></td>`;
+}
+const tf={st:"all",rg:"all",q:""}; let sortK="pms", sortD=-1;
+function renderFunnel(){
+  const P=D.permits||{}, S=P.scanned, nDc=(P.rows||[]).length, man=n=>{const m=Math.floor(n/1e4), r=n%1e4; return m?`${m.toLocaleString()}만${r?` ${r.toLocaleString()}`:""}`:n.toLocaleString();};
+  const up=String(P.updated||"").replace(/^\d{2}(\d{2})(\d{2})(\d{2})$/,"'$1.$2.$3");
+  const head=S&&S.total?`2020년 이후 전국 건축 인허가 <b>${man(S.total)}건</b>(전국 ${S.units.toLocaleString()}개 동 · 리 전수) 중 `:"";
+  $("#funnel").innerHTML=`${head}주용도 방송통신시설 <b>${(P.n_bc||0).toLocaleString()}건</b> → 층별 용도에 '데이터센터'가 있는 <b>${nDc.toLocaleString()}건</b> · 매일 자동 갱신`;
+}
+// 검색: 띄어쓰기 · 옛 시 · 도 이름(전라남도 · 전라북도 · 강원도 …) · '번지'를 가리지 않고, 낱말을 모두 포함하는 건을 찾는다.
+// 여러 필지에 걸친 허가는 대표 지번만 나오므로 '2315-6'처럼 부번이 달라도 본번(2315)이 같으면 찾는다.
+const SDA={"서울":"서울특별시","부산":"부산광역시","대구":"대구광역시","인천":"인천광역시","대전":"대전광역시","울산":"울산광역시","세종":"세종특별자치시","경기":"경기도","강원":"강원도 강원특별자치도","충북":"충청북도","충남":"충청남도","전북":"전라북도 전북특별자치도","전남광주":"전라남도 전남 광주광역시 광주 전남광주통합특별시","경북":"경상북도","경남":"경상남도","제주":"제주특별자치도 제주도"};
+const nsp=s=>String(s||"").replace(/\s+|번지/g,"");
+function hit(r,q){
+  if(!q) return true;
+  const rest=String(r.addr||"").replace(/^\S+/,""), names=[r.sd,...(SDA[r.sd]||"").split(" ")];
+  const hay=[...names.map(n=>nsp(n+rest)),nsp(r.nm),nsp([r.sg,r.dong].join(""))].join("|");
+  const rx=t=>t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
+  return q.split(/\s+/).filter(Boolean).every(t=>{ t=nsp(t); if(!t||hay.includes(t)) return true;
+    const m=t.match(/^(.*?\d+)-\d+$/); return !!m&&new RegExp(`(^|[^\\d])${rx(m[1])}(-|\\||$)`).test(hay); });
+}
+let TBL=[];
+/* ── 엑셀 다운로드(다른 대시보드와 같은 방식: 표에 보이는 필터 · 정렬 그대로) ── */
+function loadXLSX(){ if(window.XLSX) return Promise.resolve();
+  return new Promise((ok,fail)=>{ const s=document.createElement("script"); s.src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"; s.onload=ok; s.onerror=fail; document.head.appendChild(s); }); }
+async function withBtn(btn, fn){ btn.disabled=true; const t=btn.lastChild.textContent; btn.lastChild.textContent="준비 중…";
+  try{ await loadXLSX(); fn(); } catch(e){ btn.lastChild.textContent="다운로드 실패"; setTimeout(()=>btn.lastChild.textContent=t,2000); btn.disabled=false; return; }
+  btn.lastChild.textContent=t; btn.disabled=false; }
+function dlPermits(){
+  const num=v=>v==null||v===""?"":v;
+  const head=["건물명","구분","시도","시군구","읍면동 · 리","주소","단계","허가일","착공일","착공 예정일","사용승인일","연면적(㎡)","데이터센터 층 연면적(㎡)","데이터센터 비중(%)","대지면적(㎡)","용적률(%)","용도지역",
+    "용량(MW)","IT 용량(MW)","용량 기준","용량 원문","용량 출처","관할 변전소 추가 여유(MW)","관할 변전소별 여유","관련 기사 수","최근 기사","최근 기사 날짜","최근 기사 링크","지도","대장 변경일"];
+  const body=TBL.map(r=>{ const c=r.cap||{}, ok=c&&!c.none, a=ok?(c.src||[])[0]:null, n=(r.news||[])[0];
+    const basis=!ok?"":c.mw==null||c.basis==="IT"?"IT":c.basis==="수전"?"수전":"기준 미표기";
+    return [r.nm||"(건물명 없음)",r.kind||"",r.sd,r.sg||"",r.dong||"",r.addr,r.stage,r.pms||"",r.stc||"",r.sched||"",r.apr||"",num(r.area),num(r.dcArea),r.area?Math.round(Math.min(100,r.dcArea/r.area*100)):"",num(r.plat),r.vl!=null?Math.round(r.vl*10)/10:"",r.zone||"",
+      ok&&(c.mw!=null||c.it!=null)?(c.mw!=null?c.mw:c.it):"",ok&&c.mw!=null&&c.it!=null?c.it:"",basis,ok?(c.txt||""):"",a?a.u:"",
+      r.hr?(r.hr.sum>0?r.hr.sum:"–"):"",r.hr?Object.entries(r.hr.subs).map(([k,v])=>`${k} ${v>0?v:"–"}`).join(" · "):"",(r.news||[]).length,n?n.t:"",n?n.d:"",n?n.u:"",
+      `https://map.kakao.com/?q=${encodeURIComponent(r.addr)}`,r.crtn||""]; });
+  const ws=XLSX.utils.aoa_to_sheet([head,...body]);
+  for(let i=1;i<=body.length;i++) for(const c of [11,12,14,22]){ const cell=ws[XLSX.utils.encode_cell({r:i,c})]; if(cell&&typeof cell.v==="number") cell.z="#,##0"; }
+  ws["!cols"]=head.map((h,i)=>({wch:[0,5,23,25].includes(i)?34:[20,21,27,28].includes(i)?28:i===24?8:12}));
+  ws["!autofilter"]={ref:XLSX.utils.encode_range({s:{r:0,c:0},e:{r:body.length,c:head.length-1}})};
+  const P=D.permits, f=[tf.st==="all"?"전체 단계":tf.st, tf.rg==="all"?"전국":tf.rg==="cap"?"수도권":tf.rg==="reg"?"비수도권":tf.rg, tf.q?`검색 '${tf.q}'`:""].filter(Boolean).join(" · ");
+  const info=[["자료","데이터센터 개발 현황 대시보드 (dc.namepf.com) — 데이터센터 인허가 목록"],
+    ["출처","국토교통부 건축HUB 건축인허가정보(기본개요 · 층별개요) · 한전 전력공급 여유지도(345kV 변전소) · 용량은 기사 · 운영사 발표 · 공개 시장 보고서"],
+    ["대상","2020년 이후 전국 건축 인허가 중 주용도 방송통신시설이면서 층별 용도에 '데이터센터'가 있는 대장"],
+    ["기준",`화면 필터 · 정렬 그대로(${f}) · ${body.length}건 / 전체 ${P.rows.length}건`],
+    ["용량","출처에 적힌 숫자만(수전 기준 · IT 기준 · 기준 미표기 구분). 확인되지 않은 곳은 빈칸"],
+    ["관할 변전소 추가 여유","그 시 · 군 · 구를 맡은 345kV 변전소에 남은 공급 여유용량(이미 배정된 사업장 몫을 뺀 값). '–'는 남은 여유 없음이며 표의 사업장이 전력을 못 받는다는 뜻은 아님"],
+    ["수집 시각",`${D.built||""} KST`]];
+  const ws2=XLSX.utils.aoa_to_sheet(info); ws2["!cols"]=[{wch:20},{wch:100}];
+  const wb=XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb,ws,"인허가 목록"); XLSX.utils.book_append_sheet(wb,ws2,"안내");
+  XLSX.writeFile(wb,`데이터센터_인허가목록_${new Date().toISOString().slice(0,10).replace(/-/g,"")}.xlsx`);
+}
+function renderTable(){
+  const q=tf.q.trim();
+  let rows=D.permits.rows.filter(r=>(tf.st==="all"||r.stage===tf.st)&&rgMatch(r.sd,tf.rg)&&hit(r,q));
+  const key=r=>sortK==="share"?(r.area?r.dcArea/r.area:0):sortK==="newsd"?((r.news||[])[0]||{}).d:sortK==="cap"?capVal(r.cap):sortK==="hr"?(r.hr?r.hr.sum:null):r[sortK];
+  rows.sort((a,b)=>{ const x=key(a),y=key(b); if(x==null||x==="") return 1; if(y==null||y==="") return -1; return (typeof x==="number"?x-y:String(x).localeCompare(String(y),"ko"))*sortD; });
+  const stc={"착공 전":"s-p","공사 중":"s-s","준공":"s-d"};
+  $("#tb").innerHTML=rows.length?rows.map(r=>{ const share=r.area?Math.min(100,r.dcArea/r.area*100):null;
+    return `<tr><td class="nm">${esc(r.nm||"(건물명 없음)")}${r.kind&&r.kind!=="신축"?`<span class="kd">${esc(r.kind)}</span>`:""}<small>대지 ${fmt(r.plat)}㎡${r.zone?" · "+esc(r.zone):""}</small></td>
+    <td class="rg">${esc(r.sd)} ${esc(r.sg)}<small>${esc(r.addr.replace(/^\S+\s+\S+\s+/,""))} · <a href="https://map.kakao.com/?q=${encodeURIComponent(r.addr)}" target="_blank" rel="noopener">지도</a></small></td>
+    ${capCell(r.cap)}${hrCell(r.hr)}<td class="num">${fmt(r.area)}</td><td class="num">${share==null?"–":fmt(share,0)+"%"}</td>
+    <td class="dt">${r.pms||"–"}</td><td class="dt">${r.stc||(r.sched?`<span class="dim">예정 ${r.sched}</span>`:"–")}</td><td class="dt">${r.apr||"–"}</td>
+    <td><span class="st ${stc[r.stage]}">${r.stage}</span></td>
+    <td class="nw">${(r.news||[]).length?r.news.slice(0,2).map(a=>`<a href="${esc(a.u)}" target="_blank" rel="noopener" title="${esc(a.src)} · ${a.d}"><small>${a.d.slice(2).replace(/-/g,".")}</small>${esc(a.t)}</a>`).join("")+(r.news.length>2?`<span class="more">외 ${r.news.length-2}건</span>`:""):`<span class="dim">–</span>`}</td></tr>`; }).join(""):`<tr><td colspan="11" class="empty">조건에 맞는 인허가가 없습니다. 단계나 지역을 바꿔 보세요.</td></tr>`;
+  TBL=rows;
+  $("#count").textContent=`${rows.length}건 / 전체 ${D.permits.rows.length}건`;
+  document.querySelectorAll("th[data-k]").forEach(th=>th.setAttribute("aria-sort",th.dataset.k===sortK?(sortD>0?"ascending":"descending"):"none"));
+}
+
+/* ── 정보통신업 사용량 · 수요 대비 물량 ── */
+function absorbGroups(){
+  const K=D.kepco, ms=K.months, ca=capArr(), na=K.nat, ra=na.map((v,i)=>v-ca[i]), L=ms.length-1, G=[];
+  for(let y=+ms[0].slice(0,4)+1;;y++){ const e=ms.indexOf(`${y}-12`); if(e<0) break; if(e<23) continue;
+    G.push({lb:String(y),c:mw12(ca,e)-mw12(ca,e-12),r:mw12(ra,e)-mw12(ra,e-12),cl:mw12(ca,e),rl:mw12(ra,e)}); }
+  if(!ms[L].endsWith("-12")) G.push({lb:"최근 12개월",sub:`${ym(ms[L-11])}~${ym(ms[L])}`,c:mw12(ca,L)-mw12(ca,L-12),r:mw12(ra,L)-mw12(ra,L-12),cl:mw12(ca,L),rl:mw12(ra,L)});
+  return {G,ca,ra,L};
+}
+function renderAbsorb(){
+  const {G,ca,ra,L}=absorbGroups(), last=G[G.length-1], prev=G[G.length-2];
+  const c3=(mw12(ca,L)-mw12(ca,L-36))/3;
+  $("#ict-ex").innerHTML=`<b>MW 환산</b> = 1년 사용량(kWh) ÷ 8,760시간. "수도권 ${fmt(mw12(ca,L))}MW"는 수도권 정보통신업이 1년 내내 평균 ${fmt(mw12(ca,L))}MW씩 전기를 쓰고 있다는 뜻이고, 이 값이 1년 새 ${fmt(last.c)}MW 늘었다면 그만큼 새 서버 · 냉방 설비가 돌기 시작한 것입니다. 데이터센터 IT 1MW를 가동률 70% · PUE 1.4로 채우면 평균 약 1MW를 쓰므로, 늘어난 MW ≈ 그해 실제 가동되어 새로 채워진 데이터센터 IT 용량으로 읽으면 됩니다.`;
+  $("#ict-k").innerHTML=[["수도권 사용량",mw12(ca,L),null],["수도권 1년 새 증가",last.c,prev.c],["비수도권 사용량",mw12(ra,L),null],["비수도권 1년 새 증가",last.r,prev.r]]
+    .map(([n,v,p])=>`<div><span>${n}</span><b>${p===null?fmt(v):sgn(v)}<small>MW</small></b>${p===null?`<em>최근 12개월 평균</em>`:""}</div>`).join("");
+  const box=$("#ict-chart"), W=Math.max(300,Math.round(box.clientWidth||600)), H=W<520?230:250, m={l:34,r:6,t:18,b:30}, iw=W-m.l-m.r, ih=H-m.t-m.b;
+  const vals=G.flatMap(g=>[g.c,g.r]), lo=Math.min(0,Math.floor(Math.min(...vals)/20)*20), {mx,st}=niceMax(Math.max(...vals));
+  const Y=v=>m.t+ih-(v-lo)/(mx-lo)*ih, band=iw/G.length, gw=Math.min(56,band*.74), bw=gw/2;
+  let s=`<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="연도별 정보통신업 전기 사용량 증가(MW 환산)">`;
+  for(let v=lo;v<=mx+1e-9;v+=st) s+=`<line class="grid" x1="${m.l}" x2="${W-m.r}" y1="${Y(v)}" y2="${Y(v)}"/><text class="ax" x="${m.l-6}" y="${Y(v)+4}" text-anchor="end">${fmt(v)}</text>`;
+  s+=`<text class="ax" x="${m.l-6}" y="${m.t-7}" text-anchor="end">MW</text>`;
+  G.forEach((g,i)=>{ const x0=m.l+band*i+(band-gw)/2, last=i===G.length-1;
+    s+=`<rect class="hl" data-i="${i}" x="${m.l+band*i+2}" y="${m.t-4}" width="${band-4}" height="${ih+4}" rx="5"/>`;
+    [[g.c,"var(--cap)"],[g.r,"var(--reg)"]].forEach(([v,c],j)=>{ const y0=Y(Math.max(0,v)), h=Math.abs(Y(v)-Y(0)); s+=`<rect x="${(x0+bw*j+1).toFixed(1)}" y="${y0.toFixed(1)}" width="${(bw-2).toFixed(1)}" height="${Math.max(1,h).toFixed(1)}" rx="2" fill="${c}"${last?"":` fill-opacity=".85"`}/>`;
+      if(j===0||W>=520) s+=`<text class="lbl${j?" dim":""}" x="${(x0+bw*j+bw/2).toFixed(1)}" y="${(v>=0?Y(v)-4:Y(v)+11).toFixed(1)}" text-anchor="middle" style="font-size:10px">${fmt(v)}</text>`; });
+    s+=`<text class="${last?"yr":"ax"}" x="${m.l+band*i+band/2}" y="${H-10}" text-anchor="middle">${last?(W<520?"최근":"최근 12개월"):(W<520&&i%2?"":"'"+g.lb.slice(2))}</text>`; });
+  s+=`<line class="base" x1="${m.l}" x2="${W-m.r}" y1="${Y(0)}" y2="${Y(0)}"/>`;
+  G.forEach((g,i)=>{ s+=`<rect class="hit" data-i="${i}" x="${m.l+band*i}" y="0" width="${band}" height="${H}"/>`; });
+  s+=`</svg><div class="tip" hidden></div>`; box.innerHTML=s;
+  const tip=box.querySelector(".tip");
+  box.querySelectorAll(".hit").forEach(h=>{ const show=()=>{ const i=+h.dataset.i, g=G[i];
+      box.querySelectorAll(".hl").forEach(e=>e.classList.toggle("on",+e.dataset.i===i));
+      tip.innerHTML=`<div class="t">${g.sub?g.sub:g.lb+"년"}<small>전년 대비 증가 · 사용량</small></div><div class="r"><i class="sw" style="background:var(--cap)"></i><span>수도권</span><b>${sgn(g.c)}MW · ${fmt(g.cl)}MW</b></div><div class="r"><i class="sw" style="background:var(--reg)"></i><span>비수도권</span><b>${sgn(g.r)}MW · ${fmt(g.rl)}MW</b></div>`;
+      tip.hidden=false; const r=box.getBoundingClientRect(), k=r.width/W, tw=tip.offsetWidth, cx=(m.l+band*i+band/2)*k; let left=cx+gw/2*k+8; if(left+tw>r.width) left=Math.max(0,cx-gw/2*k-8-tw); tip.style.left=left+"px"; tip.style.top="0px"; };
+    h.addEventListener("pointerenter",show); h.addEventListener("pointerdown",show);
+    h.addEventListener("pointerleave",()=>{ tip.hidden=true; box.querySelectorAll(".hl").forEach(e=>e.classList.remove("on")); }); });
+  $("#ict-note").textContent=`한국전력 정보통신업 월 사용량 ÷ 시간 · ${ym(D.kepco.latest)}까지 · 매월 자동 갱신`;
+  return {c12:last.c,c3};
+}
+function renderDecomp(){
+  const X=D.kepco.decomp, el=$("#ict-foot"), base="한전 '정보통신업'에는 데이터센터와 함께 통신 · 방송 · 소프트웨어 사업장이 섞여 있습니다.";
+  if(!X||!X.a.length){ el.textContent=base; return; }
+  const A=X.a.reduce((s,x)=>s+x.d,0), p=A/X.tot*100, names=X.a.map(x=>x.sg.replace(/(시|군)$/,"")).join(" · ");
+  el.textContent=`${base} 다만 최근 1년 수도권 증가분 ${sgn(X.tot,0)}MW 중 ${fmt(A,0)}MW(${fmt(p,0)}%)는 그 기간 대형 데이터센터가 새로 가동된 ${X.a.length}개 시 · 군 · 구(${names})에서 나왔고(이 지역들은 고객 수가 거의 그대로인데 사용량만 급증), 그 밖의 지역은 합쳐서 ${sgn(X.rest,1)}MW로 사실상 늘지 않았습니다.${p>=70?" 순증분은 사실상 데이터센터 몫으로 추정됩니다.":""}`;
+}
+/* ── 지도 ── */
+let mapView="all", GEO=null, ZM=null; const LAY={dc:true,sub:true,cab:true,zone:true}; // ZM: 확대 상태 {cx,cy,k}(지도 좌표 중심, 배율)
+let LAND=null;
+function landFit(u,avoid){ // 지도 육지(시 · 도 경계 도형) 안에 있는지 보고, 밖이면 가까운 육지 안쪽 자리를 찾는다
+  const none=(x,y)=>[x,y];
+  try{
+    if(!LAND){ const ns="http://www.w3.org/2000/svg", sv=document.createElementNS(ns,"svg");
+      sv.setAttribute("aria-hidden","true"); sv.style.cssText="position:absolute;left:0;top:0;width:1px;height:1px;overflow:hidden;visibility:hidden;pointer-events:none";
+      const ps=GEO.sido.map(g=>{ const p=document.createElementNS(ns,"path"); p.setAttribute("d",g.d); sv.appendChild(p); return p; });
+      document.body.appendChild(sv); const bb=ps.map(p=>p.getBBox()), pt=sv.createSVGPoint();
+      LAND=(x,y)=>{ pt.x=x; pt.y=y; for(let i=0;i<ps.length;i++){ const b=bb[i]; if(x>=b.x&&x<=b.x+b.width&&y>=b.y&&y<=b.y+b.height&&ps[i].isPointInFill(pt)) return true; } return false; };
+      if(!LAND(...[(127.0-GEO.proj.lon0)*GEO.proj.kx,(GEO.proj.lat0-37.5)*1000])) { LAND=()=>true; } // 판정이 안 되는 브라우저면 그대로 둔다
+    }
+  }catch(_){ LAND=()=>true; }
+  // avoid: 가리면 안 되는 표시(육양국 등) [x, y, 반지름]
+  const clear=(x,y,r)=>(avoid||[]).every(([ax,ay,ar])=>Math.hypot(x-ax,y-ay)>ar+r*.35);
+  const ok=(x,y,m,r)=>LAND(x,y)&&clear(x,y,r)&&(m<=0||[0,1,2,3,4,5,6,7].every(i=>LAND(x+Math.cos(i*Math.PI/4)*m,y+Math.sin(i*Math.PI/4)*m)));
+  // 이미 육지면 그대로 두고, 바다면 해안선 바로 안쪽의 가장 가까운 자리로만 옮긴다(실제 위치에서 최소한만 벗어나게)
+  return (x,y,r)=>{ if(ok(x,y,0,r)) return [x,y];
+    const m=Math.min(r*.3,2*u), maxD=Math.max(60*u,80);
+    for(const mm of [m,0]) for(let d=.75*u; d<=maxD; d*=1.12) for(let a=0;a<36;a++){ const nx=x+Math.cos(a*Math.PI/18)*d, ny=y+Math.sin(a*Math.PI/18)*d; if(ok(nx,ny,mm,r)) return [nx,ny]; }
+    return [x,y]; };
+}
+function mapZoom(nz){ // 확대 · 축소를 부드럽게(지도를 새로 그린 뒤 보이는 범위만 옮겨 간다)
+  const sv=$("#map svg"), from=sv&&sv.getAttribute("viewBox").split(" ").map(Number);
+  ZM=nz; renderMap();
+  const s2=$("#map svg"); if(!from||!s2||matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const to=s2.getAttribute("viewBox").split(" ").map(Number), t0=performance.now(), T=280;
+  const step=t=>{ const p=Math.min(1,(t-t0)/T), e=1-Math.pow(1-p,3); if(!s2.isConnected) return; s2.setAttribute("viewBox",from.map((v,i)=>(v+(to[i]-v)*e).toFixed(1)).join(" ")); if(p<1) requestAnimationFrame(step); };
+  requestAnimationFrame(step);
+}
+function renderMap(){
+  const box=$("#map"); if(!GEO){ box.innerHTML=`<div class="placeholder">지도 불러오는 중…</div>`; return; }
+  const pj=GEO.proj, LL=(lon,lat)=>[(lon-pj.lon0)*pj.kx,(pj.lat0-lat)*1000];
+  const rg=$("#pm-rg").value||"all", S=bySite(D.permits.rows.filter(r=>r.ll&&rgMatch(r.sd,rg)));
+  const zk=ZM?ZM.k:1;
+  S.forEach(x=>{ [x.x,x.y]=LL(...x.top.ll); x.rp=(4+Math.sqrt(x.area/1e4)*2.1)*(mapView==="all"?Math.min(1,.62*Math.pow(zk,.3)):1); });
+  const W=Math.max(280,Math.round(box.clientWidth||400)), H=window.innerWidth>=1180?Math.round(Math.min(620,Math.max(460,W*1.12))):Math.round(Math.min(560,Math.max(340,W*(mapView==="all"?1.18:0.98))));
+  let vb;
+  if(mapView==="all"){ const [x0,y0]=LL(124.55,38.78),[x1,y1]=LL(130.15,33.05); vb=[x0,y0,x1-x0,y1-y0]; }
+  else { const cs=S.filter(x=>CAP.has(x.top.sd)), xs=cs.length?cs.map(x=>x.x):[LL(126.98,37.55)[0]], ys=cs.length?cs.map(x=>x.y):[LL(126.98,37.55)[1]];
+    let a=Math.min(...xs),b=Math.max(...xs),c=Math.min(...ys),d=Math.max(...ys); const pad=Math.max(60,(b-a)*.14,(d-c)*.14); a-=pad;b+=pad;c-=pad;d+=pad;
+    const minS=420; if(b-a<minS){const k=(minS-(b-a))/2;a-=k;b+=k;} if(d-c<minS){const k=(minS-(d-c))/2;c-=k;d+=k;} vb=[a,c,b-a,d-c]; }
+  // 화면 비율에 맞춰 넓히기
+  const ar=W/H; if(vb[2]/vb[3]<ar){ const nw=vb[3]*ar; vb[0]-=(nw-vb[2])/2; vb[2]=nw; } else { const nh=vb[2]/ar; vb[1]-=(nh-vb[3])/2; vb[3]=nh; }
+  // 확대: 처음 화면(base) 안에서만 움직이게 중심을 붙잡는다
+  const base=vb.slice();
+  if(ZM){ const w=base[2]/ZM.k, h=base[3]/ZM.k, x=Math.max(base[0],Math.min(base[0]+base[2]-w,ZM.cx-w/2)), y=Math.max(base[1],Math.min(base[1]+base[3]-h,ZM.cy-h/2));
+    ZM.cx=x+w/2; ZM.cy=y+h/2; vb=[x,y,w,h]; }
+  const u=vb[2]/W; // 화면 1px = u 단위
+  let s=`<svg viewBox="${vb.map(v=>v.toFixed(1)).join(" ")}" width="${W}" height="${H}" role="img" aria-label="데이터센터 사업장 위치 지도">`;
+  if(GEO.nk) s+=`<path class="nk" d="${GEO.nk}" vector-effect="non-scaling-stroke"/>`;
+  GEO.sido.forEach(g=>{ s+=`<path class="land" d="${g.d}" vector-effect="non-scaling-stroke"/>`; });
+  const SB0=((D.layers||{}).subs)||[], gR=b=>(b.mw>0?15+15*Math.sqrt(Math.min(b.mw,1300)/1300):13)*u*(mapView==="all"?1:1.7);
+  if(LAY.sub){
+    s+=`<defs>${[0,1].map(k=>`<radialGradient id="hg${k}"><stop offset="0" style="stop-color:var(--hr${k});stop-opacity:${k?.3:.42}"/><stop offset=".5" style="stop-color:var(--hr${k});stop-opacity:${k?.13:.17}"/><stop offset="1" style="stop-color:var(--hr${k});stop-opacity:0"/></radialGradient>`).join("")}</defs><g class="hz">`;
+    SB0.slice().sort((a,b)=>(a.mw>0)-(b.mw>0)).forEach(b=>{ const [bx,by]=LL(...b.ll); s+=`<circle cx="${bx.toFixed(0)}" cy="${by.toFixed(0)}" r="${gR(b).toFixed(0)}" fill="url(#hg${b.mw>0?1:0})"/>`; });
+    s+=`</g>`;
+  }
+  if(mapView==="cap"||zk>=2.5) GEO.sgg.forEach(g=>{ s+=`<path class="sgg" d="${g.d}" vector-effect="non-scaling-stroke"/>`; });
+  if(mapView==="all"){
+    GEO.sido.forEach(g=>{ s+=`<text class="ml" x="${g.x}" y="${g.y}" text-anchor="middle" style="font-size:${10.5*u}px;stroke-width:${3*u}px">${g.n==="전남광주"?"전남광주":g.n}</text>`; });
+    // 울릉도 · 독도 상자(동해 쪽 빈 바다)
+    const bx=LL(129.08,38.68), bw=1.0*pj.kx, bh=600, b=GEO.ul.b;
+    s+=`<rect class="inset" x="${bx[0]}" y="${bx[1]}" width="${bw}" height="${bh}" rx="${6*u}" vector-effect="non-scaling-stroke"/>`;
+    const rings=GEO.ul.d.split("M").filter(Boolean);
+    rings.forEach(r=>{ const [x,y]=r.split("l")[0].split(" ").map(Number), dok=x>b[0]+500; const tx=dok?bx[0]+bw*.78-x:bx[0]+bw*.28-(b[0]+40), ty=dok?bx[1]+bh*.66-y:bx[1]+bh*.38-(b[1]+30);
+      s+=`<path class="land" d="M${r}" transform="translate(${tx.toFixed(0)} ${ty.toFixed(0)})" vector-effect="non-scaling-stroke"/>`; });
+    s+=`<circle cx="${bx[0]+bw*.78}" cy="${bx[1]+bh*.66}" r="${2.2*u}" fill="var(--bd)"/>`;
+    s+=`<text class="ml" x="${bx[0]+bw*.28}" y="${bx[1]+bh*.78}" text-anchor="middle" style="font-size:${9.5*u}px;stroke-width:${3*u}px">울릉도</text><text class="ml" x="${bx[0]+bw*.78}" y="${bx[1]+bh*.9}" text-anchor="middle" style="font-size:${9.5*u}px;stroke-width:${3*u}px">독도</text>`;
+    if(zk>=2.5){ const minA=vb[2]*vb[3]/250; GEO.lab.filter(l=>l.k!==2&&l.a>minA).forEach(l=>{ s+=`<text class="ml" x="${l.x}" y="${l.y}" text-anchor="middle" style="font-size:${10*u}px;stroke-width:${3*u}px">${l.n}</text>`; }); }
+  } else {
+    const minA=vb[2]*vb[3]/250; GEO.lab.filter(l=>l.k===2||l.a>minA).forEach(l=>{ s+=`<text class="ml${l.k===2?" k2":""}" x="${l.x}" y="${l.y}" text-anchor="middle" style="font-size:${(l.k===2?12:10)*u}px;stroke-width:${3*u}px">${l.n}</text>`; });
+  }
+  // 같은 점에 겹치는 사업장은 둥글게 떨어뜨린다
+  const grp={}; S.forEach(x=>{ const k=Math.round(x.x/(8*u))+"_"+Math.round(x.y/(8*u)); (grp[k]=grp[k]||[]).push(x); });
+  Object.values(grp).forEach(g=>{ if(g.length<2) return; const rr=Math.max(...g.map(x=>x.rp))*u*(zk>1?Math.max(1.15,1.12/Math.sin(Math.PI/g.length)):1.15); g.forEach((x,i)=>{ const a=-Math.PI/2+i*2*Math.PI/g.length; x.x+=Math.cos(a)*rr; x.y+=Math.sin(a)*rr; }); });
+  // 대표점이 해안선 밖(바다)에 찍히거나 펼치다 바다로 나간 점은 가장 가까운 육지 안쪽으로 옮긴다
+  const fit=landFit(u,LAY.cab?((D.layers||{}).landings||[]).map(l=>[...LL(...l.ll),((mapView==="all"?3.4:4.4)+1.5)*u]):[]);
+  S.forEach(x=>{ [x.x,x.y]=fit(x.x,x.y,x.rp*u); });
+  const C={"착공 전":"var(--st-p)","공사 중":"var(--st-s)","준공":"var(--st-d)"};
+  const Z=((D.zones||{}).items||[]).map((z,i)=>{ const [zx,zy]=fit(...LL(...z.ll),(mapView==="all"?5.5:7)*u); return {...z,i,zx,zy}; });
+  const LY=D.layers||{}, CB=LY.cables||[], LPs=LY.landings||[], SB=LY.subs||[], hk=b=>b.mw>0?1:0;
+  let lpS=""; // 육양국은 맨 위에 그린다
+  const pth=ps=>"M"+ps.map(p=>LL(p[0],p[1]).map(v=>v.toFixed(1)).join(",")).join("L");
+  if(LAY.cab){
+    const R=(mapView==="all"?1.7:2.2)*1000;
+    s+=`<defs><radialGradient id="cbg"><stop offset="0" stop-color="#fff"/><stop offset=".45" stop-color="#fff" stop-opacity=".85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient><mask id="cbm" maskUnits="userSpaceOnUse" x="${vb[0]}" y="${vb[1]}" width="${vb[2]}" height="${vb[3]}">${LPs.map(l=>{ const [lx,ly]=LL(...l.ll); return `<circle cx="${lx.toFixed(0)}" cy="${ly.toFixed(0)}" r="${R}" fill="url(#cbg)"/>`; }).join("")}</mask></defs><g mask="url(#cbm)">`;
+    CB.forEach((c,i)=>(c.paths||[]).forEach(ps=>{ const d=pth(ps); s+=`<path class="cbh" data-c="${i}" d="${d}"/><path class="cb" data-c="${i}" d="${d}" stroke-width="1.1" stroke-opacity="${c.planned?.75:.6}"${c.planned?' stroke-dasharray="4 3"':""} vector-effect="non-scaling-stroke"/>`; }));
+    s+=`</g>`;
+    // 육양국 이름이 데이터센터 · 특구 표시를 가리지 않도록, 기본 자리 → 오른쪽 → 왼쪽 → 위 → 아래 순으로 비어 있는 자리를 고른다
+    const lbPos=(lx,ly,txt,pref)=>{ const fs=9*u, w=[...txt].reduce((a,ch)=>a+(/[가-힣]/.test(ch)?.95:.58),0)*fs;
+      const obs=[...(LAY.dc?S.map(x=>[x.x,x.y,x.rp*u]):[]),...(LAY.zone?Z.map(z=>[z.zx,z.zy,(mapView==="all"?5.5:7)*u]):[])];
+      const cands=[pref,[7,3.5,"start"],[-7,3.5,"end"],[0,-8,"middle"],[0,14,"middle"],[5,-6,"start"],[-5,-6,"end"],[5,12,"start"],[-5,12,"end"]];
+      const cost=o=>{ const x=lx+o[0]*u, y=ly+o[1]*u, x0=o[2]==="start"?x:o[2]==="end"?x-w:x-w/2, x1=x0+w, y0=y-.8*fs, y1=y+.2*fs;
+        return obs.reduce((c,[cx,cy,r])=>{ const dx=Math.max(x0-cx,0,cx-x1), dy=Math.max(y0-cy,0,cy-y1); return c+Math.max(0,r+1.5*u-Math.hypot(dx,dy)); },0); };
+      let best=pref, bc=Infinity; for(const o of cands){ const c=cost(o); if(c<bc-1e-6){ bc=c; best=o; } if(c===0) break; }
+      return best; };
+    const LO={"busan-south-korea":[10,17,"start"],"geoje-south-korea":[0,15,"middle"],"shindu-ri-south-korea":[-8,3.5,"end"],"gunsan-south-korea":[-8,3.5,"end"]};
+    LPs.forEach((l,i)=>{ const [lx,ly]=LL(...l.ll), r=(mapView==="all"?3.4:4.4)*u, pl=l.cables.every(id=>(CB.find(c=>c.id===id)||{}).planned);
+      lpS+=`<g class="lp" data-l="${i}"><circle cx="${lx.toFixed(1)}" cy="${ly.toFixed(1)}" r="${(r+3*u).toFixed(1)}" fill="transparent"/><circle cx="${lx.toFixed(1)}" cy="${ly.toFixed(1)}" r="${r.toFixed(1)}" fill="var(--surface)" stroke="var(--cable)" stroke-width="1.8" vector-effect="non-scaling-stroke"${pl?' stroke-dasharray="2 2"':""}/><circle cx="${lx.toFixed(1)}" cy="${ly.toFixed(1)}" r="${(r*.4).toFixed(1)}" fill="var(--cable)"/></g>`;
+      if(mapView==="all"){ const txt=`${l.nm.replace("(새만금)","")} ${pl?"예정":l.cables.length}`, o=lbPos(lx,ly,txt,LO[l.id]||[7,3.5,"start"]);
+        lpS+=`<text class="ml cbl" x="${(lx+o[0]*u).toFixed(1)}" y="${(ly+o[1]*u).toFixed(1)}" text-anchor="${o[2]}" style="font-size:${9*u}px;stroke-width:${3*u}px">${esc(txt)}</text>`; } });
+  }
+  if(LAY.sub) SB.forEach((b,i)=>{ const [bx,by]=LL(...b.ll); s+=`<circle class="sb" data-b="${i}" cx="${bx.toFixed(1)}" cy="${by.toFixed(1)}" r="${(gR(b)*.45).toFixed(1)}" fill="transparent"/>`; });
+  let zS=""; // 분산특구 마름모는 데이터센터 원 위에 그린다
+  if(LAY.zone) Z.forEach(z=>{ const r=(mapView==="all"?5.5:7)*u; zS+=`<path class="zn" data-z="${z.i}" d="M${z.zx},${z.zy-r}L${z.zx+r},${z.zy}L${z.zx},${z.zy+r}L${z.zx-r},${z.zy}Z" fill="var(--zone)" fill-opacity=".9" stroke="var(--surface)" stroke-width="1.2" vector-effect="non-scaling-stroke" style="cursor:pointer"/>`;
+    });
+  if(LAY.dc) S.slice().sort((a,b)=>b.area-a.area).forEach(x=>{ s+=`<circle class="pt" data-s="${esc(x.top.site)}" cx="${x.x.toFixed(1)}" cy="${x.y.toFixed(1)}" r="${(x.rp*u).toFixed(1)}" fill="${C[x.stage]}" fill-opacity=".88" stroke="var(--surface)" stroke-width="1.5" vector-effect="non-scaling-stroke"/>`; });
+  const KMAX=mapView==="all"?16:6;
+  s+=zS+lpS+`</svg><div class="tip" hidden></div><div class="zc">${ZM?`<span class="zb"><button type="button" data-zm="in" aria-label="확대"${ZM.k>=KMAX?" disabled":""}>＋</button><button type="button" data-zm="out" aria-label="축소">－</button></span><button type="button" data-zm="reset">전체 보기</button><span class="zh">${matchMedia("(pointer:coarse)").matches?"끌어서 이동":"끌어서 이동 · 휠로 확대/축소"}</span>`:`<span class="zh">${matchMedia("(pointer:coarse)").matches?"빈 곳을 누르거나 두 손가락으로 벌려 확대":"빈 곳을 누르면 확대"}</span>`}</div>`;
+  box.innerHTML=s;
+  box.classList.toggle("zoomed",!!ZM);
+  { // 빈 곳을 누르면 그 자리를 중심으로 확대 · 확대 중에는 끌어서 이동 · 두 손가락 벌리고 오므려 확대/축소(트랙패드 핀치 · Ctrl+휠도)
+    const svg=box.querySelector("svg"), zoomTo=(cx,cy,k)=>mapZoom(k<=1.01?null:{cx,cy,k:Math.min(KMAX,k)});
+    const toSvg=(X,Y)=>{ const p=svg.createSVGPoint(); p.x=X; p.y=Y; const q=p.matrixTransform(svg.getScreenCTM().inverse()); return [q.x,q.y]; };
+    const cur=()=>svg.getAttribute("viewBox").split(" ").map(Number), setVB=v=>svg.setAttribute("viewBox",v.map(x=>x.toFixed(1)).join(" "));
+    const clampV=v=>[Math.max(base[0],Math.min(base[0]+base[2]-v[2],v[0])),Math.max(base[1],Math.min(base[1]+base[3]-v[3],v[1])),v[2],v[3]];
+    // 배율 k에서 지도 좌표 (px,py)가 화면 위치 (X,Y)에 오도록(처음 화면 밖으로는 나가지 않게)
+    const frame=(k,px,py,X,Y)=>{ const r=svg.getBoundingClientRect(), w=base[2]/k, h=base[3]/k; return clampV([px-(X-r.left)/r.width*w,py-(Y-r.top)/r.height*h,w,h]); };
+    const commit=v=>{ const k=base[2]/v[2]; ZM=k<1.05?null:{cx:v[0]+v[2]/2,cy:v[1]+v[3]/2,k}; renderMap(); };
+    const P=new Map(); let dg=null, pin=null, gest=false, wt=null;
+    const hideTip=()=>{ const t=box.querySelector(".tip"); if(t) t.hidden=true; };
+    svg.addEventListener("pointerdown",e=>{ if(e.button>0) return; P.set(e.pointerId,{x:e.clientX,y:e.clientY});
+      if(P.size===2){ const [a,b]=[...P.values()];
+        pin={d0:Math.hypot(a.x-b.x,a.y-b.y)||1,k0:base[2]/cur()[2],p0:toSvg((a.x+b.x)/2,(a.y+b.y)/2)}; dg=null; gest=true; box.classList.remove("panning"); hideTip();
+        P.forEach((_,id)=>{ try{ svg.setPointerCapture(id); }catch(_){} }); return; }
+      if(P.size===1){ gest=false; dg={x:e.clientX,y:e.clientY,id:e.pointerId,t:e.target,moved:false,v:cur()}; } });
+    svg.addEventListener("pointermove",e=>{ if(!P.has(e.pointerId)) return; P.set(e.pointerId,{x:e.clientX,y:e.clientY});
+      if(pin&&P.size>=2){ const [a,b]=[...P.values()], k=Math.max(1,Math.min(KMAX,pin.k0*Math.hypot(a.x-b.x,a.y-b.y)/pin.d0));
+        setVB(frame(k,pin.p0[0],pin.p0[1],(a.x+b.x)/2,(a.y+b.y)/2)); return; }
+      if(!dg||e.pointerId!==dg.id) return; const dx=e.clientX-dg.x, dy=e.clientY-dg.y;
+      if(!dg.moved&&ZM&&Math.hypot(dx,dy)>5){ dg.moved=true; try{ svg.setPointerCapture(e.pointerId); }catch(_){} box.classList.add("panning"); hideTip(); }
+      if(dg.moved){ const k=dg.v[2]/svg.getBoundingClientRect().width; setVB(clampV([dg.v[0]-dx*k,dg.v[1]-dy*k,dg.v[2],dg.v[3]])); } });
+    const end=e=>{ if(!P.has(e.pointerId)) return; P.delete(e.pointerId);
+      if(pin){ if(P.size<2){ pin=null; dg=null; commit(cur()); } return; }
+      if(gest){ if(!P.size) gest=false; return; }
+      if(!dg||e.pointerId!==dg.id) return; const d=dg; dg=null; box.classList.remove("panning"); const dx=e.clientX-d.x, dy=e.clientY-d.y;
+      if(d.moved){ commit(cur()); return; }
+      if(e.type!=="pointerup"||Math.hypot(dx,dy)>5||d.t.closest(".pt,.zn,.lp")||(ZM&&ZM.k>=KMAX)) return;
+      const [px,py]=toSvg(e.clientX,e.clientY); zoomTo(px,py,(ZM?ZM.k:1)*2.2); };
+    svg.addEventListener("pointerup",end); svg.addEventListener("pointercancel",end);
+    // 휠: 확대한 뒤에는 위로 굴리면 확대 · 아래로 굴리면 축소(네이버 지도처럼). 확대 전에는 페이지 스크롤 그대로.
+    // 트랙패드 핀치는 Ctrl+휠로 들어오므로 확대 전에도 받는다. 끝까지 축소되면 다시 페이지 스크롤로 돌아간다.
+    svg.addEventListener("wheel",e=>{ if(!e.ctrlKey&&!ZM) return; e.preventDefault(); hideTip();
+      const dy=e.deltaY*(e.deltaMode===1?16:e.deltaMode===2?400:1), f=Math.exp(-dy*(e.ctrlKey?.01:.0025));
+      const k=Math.max(1,Math.min(KMAX,base[2]/cur()[2]*f)), p=toSvg(e.clientX,e.clientY);
+      setVB(frame(k,p[0],p[1],e.clientX,e.clientY)); clearTimeout(wt); wt=setTimeout(()=>commit(cur()),160); },{passive:false});
+    box.querySelectorAll("[data-zm]").forEach(b=>b.addEventListener("click",()=>{ const m=b.dataset.zm, cx=vb[0]+vb[2]/2, cy=vb[1]+vb[3]/2;
+      if(m==="reset") mapZoom(null); else { const k=ZM.k*(m==="in"?2.2:1/2.2); zoomTo(cx,cy,k<1.3?1:k); } }));
+  }
+  const tip=box.querySelector(".tip"), bySiteKey=Object.fromEntries(S.map(x=>[x.top.site,x]));
+  box.querySelectorAll(".pt").forEach(c=>{ const show=()=>{ const x=bySiteKey[c.dataset.s], r=x.top, cp=x.cap;
+      const capT=!cp||cp.none?"":cp.txt?cp.txt:[cp.mw!=null?(cp.basis==="수전"?"수전 ":"")+mwf(cp.mw)+"MW":"",cp.it!=null?"IT "+mwf(cp.it)+"MW":""].filter(Boolean).join(" · ");
+      tip.innerHTML=`<div class="t">${esc(x.nm||"(건물명 없음)")}<small>${esc(r.sg)} ${esc(r.dong||"")}</small></div><div class="r"><i class="dot" style="background:${C[x.stage]}"></i><span>${x.stage}</span><b>${x.stage==="준공"?r.apr:x.stage==="공사 중"?"착공 "+r.stc:"허가 "+r.pms}</b></div>${capT?`<div class="r"><i></i><span>용량</span><b>${esc(capT)}</b></div>`:""}<div class="r"><i></i><span>연면적</span><b>${fmt(x.area)}㎡</b></div>${x.rs.length>1?`<div class="r"><i></i><span>같은 대지 인허가</span><b>${x.rs.length}건</b></div>`:""}`;
+      tip.hidden=false; const bb=box.getBoundingClientRect(), cr=c.getBoundingClientRect(), tw=tip.offsetWidth, th=tip.offsetHeight; let left=cr.right-bb.left+8; if(left+tw>bb.width) left=Math.max(0,cr.left-bb.left-8-tw); tip.style.left=left+"px"; tip.style.top=Math.max(0,Math.min(bb.height-th,cr.top-bb.top-10))+"px"; };
+    c.addEventListener("pointerenter",show); c.addEventListener("pointerdown",show); c.addEventListener("pointerleave",()=>{ tip.hidden=true; }); });
+  box.querySelectorAll(".zn").forEach(c=>{ const show=()=>{ const z=Z[+c.dataset.z];
+      tip.innerHTML=`<div class="t">${esc(z.nm)}<small>${esc(z.date.slice(0,7).replace("-","."))} 지정</small></div><div class="r"><i></i><span>구역</span><b>${esc(z.area)}</b></div><div class="r"><i></i><span>유형</span><b>${esc(z.type)}</b></div><div style="margin-top:5px;color:var(--muted);word-break:keep-all">${esc(z.desc)}${z.dc?" · 데이터센터 유치 연계":""}</div>`;
+      tip.hidden=false; const bb=box.getBoundingClientRect(), cr=c.getBoundingClientRect(), tw=tip.offsetWidth, th=tip.offsetHeight; let left=cr.right-bb.left+8; if(left+tw>bb.width) left=Math.max(0,cr.left-bb.left-8-tw); tip.style.left=left+"px"; tip.style.top=Math.max(0,Math.min(bb.height-th,cr.top-bb.top-10))+"px"; };
+    c.addEventListener("pointerenter",show); c.addEventListener("pointerdown",show); c.addEventListener("pointerleave",()=>{ tip.hidden=true; }); });
+  const place=c=>{ tip.hidden=false; const bb=box.getBoundingClientRect(), cr=c.getBoundingClientRect(), tw=tip.offsetWidth, th=tip.offsetHeight; let left=cr.right-bb.left+8; if(left+tw>bb.width) left=Math.max(0,cr.left-bb.left-8-tw); tip.style.left=left+"px"; tip.style.top=Math.max(0,Math.min(bb.height-th,cr.top-bb.top-10))+"px"; };
+  const on=(sel,fn,off)=>box.querySelectorAll(sel).forEach(c=>{ const show=()=>{ fn(c); place(c); }; c.addEventListener("pointerenter",show); c.addEventListener("pointerdown",show); c.addEventListener("pointerleave",()=>{ tip.hidden=true; if(off) off(c); }); });
+  const sq=k=>`<i style="width:11px;height:11px;border-radius:50%;display:inline-block;background:radial-gradient(circle,var(--hr${k}) 0,transparent 72%)"></i>`;
+  on(".sb",c=>{ const b=SB[+c.dataset.b], k=hk(b);
+    tip.innerHTML=`<div class="t">${esc(b.mem.join(" · "))} 변전소<small>345kV</small></div><div class="r">${sq(k)}<span>공급 여유</span><b>${b.mw.toLocaleString()}MW</b></div><div class="r"><i></i><span>관할</span><b style="font-weight:500;max-width:220px;text-align:right">${esc(b.sv.slice(0,6).join(" · "))}${b.sv.length>6?` 외 ${b.sv.length-6}곳`:""}</b></div>${b.mem.length>1?`<div style="margin-top:5px;color:var(--muted)">한전이 ${b.mem.length}개 변전소를 한 묶음으로 공개</div>`:""}${b.approx?`<div style="margin-top:3px;color:var(--muted)">위치는 관할 지역 기준(대략)</div>`:""}`; });
+  const own=s=>{ const a=String(s||"").split(",").map(x=>x.trim()).filter(Boolean); return a.slice(0,4).join(", ")+(a.length>4?` 외 ${a.length-4}`:""); };
+  const hl=(i,v)=>box.querySelectorAll(`.cb[data-c="${i}"]`).forEach(p=>p.classList.toggle("on",v));
+  on(".cbh",c=>{ const k=CB[+c.dataset.c]; hl(c.dataset.c,true);
+    tip.innerHTML=`<div class="t">${esc(k.nm)}<small>${k.planned?`${k.rfs} 개통 예정`:`${k.rfs} 개통`}</small></div><div class="r"><i></i><span>국내 육양</span><b>${esc(k.kr.map(id=>(LPs.find(l=>l.id===id)||{nm:id}).nm).join(" · "))}</b></div><div class="r"><i></i><span>연결</span><b>${esc((k.to||[]).join(" · "))}</b></div>${k.owners?`<div style="margin-top:5px;color:var(--muted);max-width:260px">${esc(own(k.owners))}</div>`:""}`; }, c=>hl(c.dataset.c,false));
+  on(".lp",c=>{ const l=LPs[+c.dataset.l], cs=l.cables.map(id=>CB.find(k=>k.id===id)).filter(Boolean);
+    tip.innerHTML=`<div class="t">${esc(l.nm)} 육양국<small>국제 해저케이블 ${cs.length}개</small></div>${cs.map(k=>`<div class="r"><i></i><span>${esc(k.nm.split("/")[0].replace(/ Cable System$/,"").replace(/\s*\(.*?\)$/,"").slice(0,30))}</span><b>${k.planned?`'${String(k.rfs).slice(2)} 예정`:`'${String(k.rfs).slice(2)}`}</b></div>`).join("")}<div style="margin-top:6px;color:var(--muted);max-width:240px;word-break:keep-all">국제 트래픽은 여기서 국내 기간망을 거쳐 수도권 교환 지점 · 데이터센터로 이어짐</div>`; });
+  const tot=bySite(D.permits.rows.filter(r=>rgMatch(r.sd,rg))).length, cap=S.filter(x=>CAP.has(x.top.sd)).length;
+  const nOk=SB.filter(b=>b.mw>0).length, lpT=LPs.map(l=>`${l.nm.replace("(새만금)","")} ${l.cables.every(id=>(CB.find(c=>c.id===id)||{}).planned)?"예정":l.cables.length}`).join(" · "), hu=yd(LY.hr_updated||"");
+  $("#map-foot").innerHTML=`데이터센터 ${tot}곳(같은 대지의 인허가는 하나로, 원 크기 = 연면적)${mapView==="cap"&&S.length>cap?` · 수도권 밖 ${S.length-cap}곳은 '전국'에서`:""} · 345kV 변전소 ${SB.length}곳 중 여유 있는 곳 ${nOk}곳(한전 ${hu}) · 국제 해저케이블 ${CB.length}개(${esc(lpT)}) · 분산에너지특화지역 ${Z.length}곳: 한전 외 민간 사업자와 전력 직접거래 허용(세부 기준 마련 중) · AI 데이터센터 특구는 2027.3 법 시행 뒤 지정<span class="src">위치: 사업장 법정동 대표점 · 변전소 OpenStreetMap · 해저케이블 TeleGeography Submarine Cable Map(CC BY-NC-SA 3.0) · 경계: 통계청 SGIS · vuski/admdongkor, Natural Earth</span>`;
+}
+
+/* ── 전력 여건 ── */
+const avg=a=>{ const v=a.filter(x=>x!=null); return v.length?v.reduce((x,y)=>x+y,0)/v.length:null; };
+function placeLabels(pts,W,H,m){ // 점 옆에 이름이 서로 겹치지 않게 놓는다(안 되면 가장 덜 겹치는 자리)
+  const boxes=pts.map(p=>({x0:p.px-5,x1:p.px+5,y0:p.py-5,y1:p.py+5})), out=[];
+  const ov=(a,b)=>Math.max(0,Math.min(a.x1,b.x1)-Math.max(a.x0,b.x0))*Math.max(0,Math.min(a.y1,b.y1)-Math.max(a.y0,b.y0));
+  const cost=b=>(b.x0<m.l-2||b.x1>W-m.r||b.y0<m.t||b.y1>H-m.b?1e6:0)+boxes.reduce((s,o)=>s+ov(b,o),0);
+  [...pts].sort((a,b)=>b.y-a.y).forEach(p=>{ const w=p.lb.length*11+2, x=p.px, y=p.py;
+    const cand=[[7,4,"start",x+7,x+7+w,y-8,y+4],[-7,4,"end",x-7-w,x-7,y-8,y+4],[0,-8,"middle",x-w/2,x+w/2,y-19,y-7],[0,16,"middle",x-w/2,x+w/2,y+5,y+17],
+      [-3,-8,"start",x-3,x-3+w,y-19,y-7],[-3,16,"start",x-3,x-3+w,y+5,y+17],[3,-8,"end",x+3-w,x+3,y-19,y-7],[3,16,"end",x+3-w,x+3,y+5,y+17]];
+    let best=null,bc=Infinity; for(const c of cand){ const v=cost({x0:c[3],x1:c[4],y0:c[5],y1:c[6]}); if(v<bc){bc=v;best=c;} if(v===0) break; }
+    if(bc>0&&!CAP.has(p.sd)) return; // 겹치면 이름은 생략(점을 누르면 보임)
+    boxes.push({x0:best[3],x1:best[4],y0:best[5],y1:best[6]}); out.push({p,dx:best[0],dy:best[1],an:best[2]}); });
+  return out;
+}
+function renderHeadroom(){
+  const H=D.permits.headroom; if(!H){ $("#hr-say").textContent="한전 공급 여유 자료를 불러오지 못했습니다."; return; }
+  const SUB=H.subs, uniq=names=>[...new Set(names)], sumOf=ns=>ns.reduce((a,n)=>a+(SUB[n]||0),0);
+  const capN=uniq(["서울","인천","경기"].flatMap(k=>H.sido[k]||[])), capPos=capN.filter(n=>(SUB[n]||0)>0);
+  const allN=Object.keys(SUB), regN=allN.filter(n=>!capN.includes(n)), regSum=sumOf(regN);
+  $("#hr-say").innerHTML=`수도권(서울 · 인천 · 경기)을 맡는 345kV 변전소 <b>${capN.length}곳</b> 중 여유가 남은 곳은 <b>${capPos.length}곳</b>${capPos.length?`(${capPos.map(n=>`${esc(n)} ${fmt(SUB[n])}MW`).join(", ")})`:""}뿐입니다. 비수도권 변전소 여유는 합계 <b>${fmt(regSum)}MW</b>로, 신규 대형 수전은 사실상 비수도권에서만 열려 있습니다.`;
+  const rows=Object.entries(H.sido).map(([sd,ns])=>{ ns=uniq(ns); return {sd,v:sumOf(ns),n:ns.length,p:ns.filter(n=>(SUB[n]||0)>0).length}; }).sort((a,b)=>b.v-a.v||a.sd.localeCompare(b.sd,"ko"));
+  const mx=Math.max(1,...rows.map(r=>r.v));
+  $("#hr-bars").innerHTML=rows.map(r=>`<div><span>${esc(r.sd)}</span><span class="bar"><i style="width:${(r.v/mx*100).toFixed(1)}%;background:${CAP.has(r.sd)?"var(--cap)":"var(--reg)"}"></i></span><span class="v">${fmt(r.v)}MW</span><span class="c">${r.p}/${r.n}곳</span></div>`).join("");
+  const top=allN.filter(n=>(SUB[n]||0)>=400).sort((a,b)=>SUB[b]-SUB[a]);
+  const where=n=>Object.entries(H.sido).filter(([,ns])=>ns.includes(n)).map(([sd])=>sd).join("·");
+  $("#hr-top").innerHTML=top.length?`<span>400MW 이상 남은 변전소:</span>`+top.map(n=>`<span>${esc(n)}(${esc(where(n))}) <b>${fmt(SUB[n])}</b></span>`).join(""):"";
+  $("#hr-note").textContent=`한전 공개 · ${H.updated} 기준 · 오른쪽 n/N = 여유 있는 변전소/전체`;
+}
+function renderScatter(){
+  const S=D.power.self, K=D.kepco, tot12=K.nat.slice(-12).reduce((a,b)=>a+b,0);
+  const pts=Object.keys(S).map(sd=>({sd,lb:sd==="전남광주"?"전남광주":sd,x:S[sd],y:(K.sido[sd]||[]).slice(-12).reduce((a,b)=>a+(b||0),0)/K.hours.slice(-12).reduce((a,b)=>a+b,0)/1e3})).filter(p=>p.y>0);
+  const box=$("#sc-chart"), W=Math.max(300,Math.round(box.clientWidth||520)), H=W<520?380:380, m={l:42,r:12,t:30,b:36}, iw=W-m.l-m.r, ih=H-m.t-m.b;
+  const xmax=Math.ceil(Math.max(...pts.map(p=>p.x))/50)*50, X=v=>m.l+v/xmax*iw;
+  // 세로축: 값이 크게 벌어지면 가운데를 물결선으로 끊어 아래(작은 값)를 크게 보인다
+  const ys=pts.map(p=>p.y).sort((a,b)=>a-b); let cut=-1; for(let i=1;i<ys.length;i++) if(ys[i]>ys[i-1]*2&&ys[i]-ys[i-1]>80&&(cut<0||ys[i]/ys[i-1]>ys[cut]/ys[cut-1])) cut=i;
+  const nice=(v,st)=>Math.ceil(v/st)*st;
+  let Y, ticks=[], brk=null;
+  if(cut>0){ const lst=ys[cut-1]>150?50:20, L1=nice(ys[cut-1]*1.15,lst), ust=100, U0=Math.floor(ys[cut]*.8/ust)*ust, U1=nice(ys[ys.length-1]*1.08,ust);
+    const hb=m.t+ih, hl=ih*.6, gap=ih*.07, hu=ih-hl-gap, yUb=m.t+hu;
+    Y=v=>v<=L1?hb-v/L1*hl:yUb-(v-U0)/(U1-U0)*hu;
+    for(let v=0;v<L1;v+=lst) ticks.push(v); for(let v=U0+ust;v<=U1;v+=ust) ticks.push(v); // 끊는 자리(L1 · U0)는 눈금 생략
+    brk=[yUb,yUb+gap]; }
+  else { const ymx0=ys[ys.length-1]*1.1, st=ymx0>800?200:ymx0>300?100:50, ymax=nice(ymx0,st); Y=v=>m.t+ih-v/ymax*ih; for(let v=0;v<=ymax;v+=st) ticks.push(v); }
+  pts.forEach(p=>{p.px=X(p.x);p.py=Y(p.y);});
+  let s=`<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="시도별 전력자립도와 정보통신업 전력사용량">`;
+  s+=`<rect x="${m.l}" y="${m.t}" width="${X(100)-m.l}" height="${ih}" fill="var(--sf2)" opacity=".7"/><rect x="${X(100)}" y="${m.t}" width="${W-m.r-X(100)}" height="${ih}" fill="var(--sf3)" opacity=".55"/>`;
+  ticks.forEach(v=>{ s+=`<line class="grid" x1="${m.l}" x2="${W-m.r}" y1="${Y(v)}" y2="${Y(v)}" stroke-opacity=".6"/><text class="ax" x="${m.l-6}" y="${Y(v)+4}" text-anchor="end">${v}</text>`; });
+  if(brk){ const [a,b]=brk, wave=y=>{ let d=`M${m.l-8},${y}`; for(let x=m.l-8;x<W-m.r;x+=10) d+=` q2.5,-3.5 5,0 t5,0`; return d; };
+    s+=`<rect x="${m.l-10}" y="${a+1}" width="${W-m.r-m.l+10}" height="${b-a-2}" fill="var(--surface)"/><path d="${wave(a+1)}" fill="none" stroke="var(--muted)" stroke-width="1.1"/><path d="${wave(b-1)}" fill="none" stroke="var(--muted)" stroke-width="1.1"/>`; }
+  for(let v=0;v<=xmax;v+=50) s+=`<text class="ax" x="${X(v)}" y="${H-m.b+15}" text-anchor="middle">${v}%</text>`;
+  s+=`<line x1="${X(100)}" x2="${X(100)}" y1="${m.t}" y2="${H-m.b}" stroke="var(--fg)" stroke-opacity=".55" stroke-dasharray="3 3"/>`;
+  s+=`<text class="ax" x="${X(100)-6}" y="${m.t+13}" text-anchor="end">${W<520?"← 부족":"← 다른 지역 전기를 끌어다 씀"}</text><text class="ax" x="${X(100)+6}" y="${m.t+13}">${W<520?"남음 →":"전기가 남음 →"}</text>`;
+  s+=`<text x="2" y="${m.t-14}" style="font-size:11.5px;font-weight:600;fill:var(--fg)">↑ 세로: 정보통신업 전기 사용량<tspan style="font-weight:400;fill:var(--muted)"> (MW, 최근 12개월 평균)</tspan></text>`;
+  s+=`<text x="${m.l+iw/2}" y="${H-4}" text-anchor="middle" style="font-size:11.5px;font-weight:600;fill:var(--fg)">가로: 전력자립도 →<tspan style="font-weight:400;fill:var(--muted)"> (지역 발전량 ÷ 판매량)</tspan></text>`;
+  pts.forEach(p=>{ const c=CAP.has(p.sd)?"var(--cap)":"var(--reg)"; s+=`<circle cx="${p.px.toFixed(1)}" cy="${p.py.toFixed(1)}" r="${CAP.has(p.sd)?6:5}" fill="${c}" stroke="var(--surface)" stroke-width="1.5"/>`; });
+  placeLabels(pts,W,H,m).forEach(({p,dx,dy,an})=>{ s+=`<text class="lbl${CAP.has(p.sd)?"":" dim"}" x="${(p.px+dx).toFixed(1)}" y="${(p.py+dy).toFixed(1)}" text-anchor="${an}">${p.lb}</text>`; });
+  pts.forEach((p,i)=>{ s+=`<circle class="hit" data-i="${i}" cx="${p.px}" cy="${p.py}" r="14"/>`; });
+  s+=`</svg><div class="tip" hidden></div>`;
+  box.innerHTML=s;
+  const tip=box.querySelector(".tip");
+  box.querySelectorAll(".hit").forEach(h=>{ const show=()=>{ const p=pts[+h.dataset.i];
+      tip.innerHTML=`<div class="t">${p.sd}${CAP.has(p.sd)?"<small>수도권</small>":""}</div><div class="r"><i></i><span>전력자립도</span><b>${fmt(p.x,1)}%</b></div><div class="r"><i></i><span>정보통신업 사용량</span><b>${fmt(p.y)}MW</b></div><div class="r"><i></i><span>전국 대비</span><b>${fmt(p.y*K.hours.slice(-12).reduce((a,b)=>a+b,0)*1e3/tot12*100,1)}%</b></div>`;
+      tip.hidden=false; const r=box.getBoundingClientRect(), k=r.width/W, tw=tip.offsetWidth; let left=p.px*k+12; if(left+tw>r.width) left=p.px*k-12-tw; tip.style.left=left+"px"; tip.style.top=Math.max(0,p.py*k-30)+"px"; };
+    h.addEventListener("pointerenter",show); h.addEventListener("pointerdown",show); h.addEventListener("pointerleave",()=>{ tip.hidden=true; }); });
+  const capU=[...CAP].reduce((a,sd)=>a+(K.sido[sd]||[]).slice(-12).reduce((x,y)=>x+(y||0),0),0);
+  $("#sc-note").textContent=`${D.power.self_year}년 자립도 · 정보통신업 사용량(MW 환산) ${ym(K.latest)}까지 12개월 평균`;
+  $("#sc-foot").textContent=`수도권이 정보통신업 전력 수요의 ${fmt(capU/tot12*100,0)}%를 차지하지만 서울(${fmt(S["서울"],0)}%) · 경기(${fmt(S["경기"],0)}%)는 쓰는 전기 대부분 또는 상당 부분을 다른 지역에서 끌어옵니다. 그래서 수도권 신규 대형 수전은 한전 공급 가능 판정과 전력계통영향평가(데이터센터 통과 기준 수도권 75점 · 비수도권 70점)가 사업의 첫 관문이고, 자립도 100%를 넘는 비수도권은 AI 데이터센터 특별법의 계통영향평가 특례 · 지역별 요금제 논의가 겨냥하는 곳입니다. 인천은 발전소가 많아 자립도는 높지만 수도권 계통 제약을 함께 받습니다. 점 하나가 시 · 도 하나이고, 위로 갈수록 정보통신업(데이터센터 포함) 전기를 많이 쓰는 곳, 오른쪽으로 갈수록 전기가 남는 곳입니다.`;
+}
+
+/* ── 제도 · 일정 · 기사 ── */
+const TLC={"완료":"done","진행 중":"live","계류":"hold","예정":"plan"}, TAGS=["인허가","전력","요금·PPA","재생에너지","입지"];
+const tlKey=d=>{ const m=String(d).match(/^(\d{4})(?:\.(\d{1,2}))?(?:\.(\d{1,2}))?/); return m?`${m[1]}-${(m[2]||"12").padStart(2,"0")}-${(m[3]||(m[2]?"15":"30")).padStart(2,"0")}`:"9999-12-31"; };
+function renderTimeline(){
+  const T=D.timeline||{items:[]}, tag=$("#tl-tag").value||"all", t=today();
+  const items=(T.items||[]).filter(x=>tag==="all"||x.tag===tag).map(x=>({...x,k:tlKey(x.d)})).sort((a,b)=>b.k.localeCompare(a.k));
+  let h="", placed=false; const nowLi=`<li class="now">오늘 ${yd(t)}</li>`;
+  items.forEach(x=>{ if(x.k<=t&&!placed){ h+=nowLi; placed=true; }
+    h+=`<li><span class="d">${esc(yd(x.d))}</span><span><span class="t"><span class="tag">${esc(x.tag)}</span>${esc(x.t)}<span class="pill ${TLC[x.status]||"live"}">${esc(x.status)}</span></span><span class="s">${esc(x.s)}</span>${x.u?`<a class="src" href="${esc(x.u)}" target="_blank" rel="noopener">${esc(x.src||"출처")} ↗</a>`:""}</span></li>`; });
+  if(!placed&&items.length) h+=nowLi;
+  $("#tline").innerHTML=h||`<li class="empty">이 분야 항목이 없습니다.</li>`;
+}
+function renderNews(){
+  const N=(D.policy.news||[]).slice(0,40);
+  $("#news").innerHTML=N.map(n=>`<li><span class="d">${yd(n.d.slice(0,10))}</span><span><a href="${esc(n.u)}" target="_blank" rel="noopener">${esc(n.t)}</a><small>${esc(n.src)}</small></span></li>`).join("")||`<li class="empty">기사가 없습니다.</li>`;
+  $("#news-note").textContent="PF · 착공 · 준공 · 인수 · 인허가 · 전력 키워드 · 매일 갱신";
+}
+
+function drawCharts(){ renderMap(); renderPM(); renderAbsorb(); renderScatter(); }
+function init(d){
+  D=d;
+  rgOptions($("#pm-rg"),D.permits.rows); rgOptions($("#ls-rg"),D.permits.rows);
+  $("#updated").textContent=D.built?`최종 수집 ${D.built} KST`:"수집 시각 정보 없음";
+  $("#pm-note").textContent=`국토교통부 건축HUB · ${String((D.permits.scanned||{}).since||"20200101").slice(0,4)}년 이후 대장 · 매일 자동 갱신`; // since는 매일 변경분 수집 시작일이라 쓰지 않는다
+  const tg=$("#tl-tag"), have=new Set((D.timeline?.items||[]).map(x=>x.tag)); tg.innerHTML=`<option value="all">전체</option>`+TAGS.filter(x=>have.has(x)).map(x=>`<option>${x}</option>`).join("");
+  $("#law-note").textContent=`정부 · 국회 발표와 보도로 확인 · 매주 월요일 재확인`; $("#tl-chk").textContent=`마지막 확인 ${D.timeline?.checked||"–"}`;
+  renderKPI(); renderFunnel(); renderTable(); renderTimeline(); renderNews(); renderDecomp(); renderHeadroom(); drawCharts();
+  tg.addEventListener("change",renderTimeline);
+  document.querySelectorAll("[data-m]").forEach(b=>b.addEventListener("click",()=>{ pmMode=b.dataset.m; document.querySelectorAll("[data-m]").forEach(x=>x.setAttribute("aria-pressed",x===b)); renderPM(); }));
+  $("#pm-rg").addEventListener("change",()=>{ renderMap(); renderPM(); });
+  $("#dl").addEventListener("click",()=>withBtn($("#dl"),dlPermits));
+  document.querySelectorAll("[data-v]").forEach(b=>b.addEventListener("click",()=>{ mapView=b.dataset.v; ZM=null; document.querySelectorAll("[data-v]").forEach(x=>x.setAttribute("aria-pressed",x===b)); renderMap(); }));
+  document.querySelectorAll("[data-ly]").forEach(b=>b.addEventListener("click",()=>{ const k=b.dataset.ly; LAY[k]=!LAY[k]; b.setAttribute("aria-pressed",LAY[k]); renderMap(); }));
+  document.querySelectorAll("[data-st]").forEach(b=>b.addEventListener("click",()=>{ tf.st=b.dataset.st; document.querySelectorAll("[data-st]").forEach(x=>x.setAttribute("aria-pressed",x===b)); renderTable(); }));
+  $("#ls-rg").addEventListener("change",e=>{ tf.rg=e.target.value; renderTable(); });
+  $("#q").addEventListener("input",e=>{ tf.q=e.target.value; renderTable(); });
+  document.querySelectorAll("th[data-k] button").forEach(b=>b.addEventListener("click",()=>{ const k=b.parentElement.dataset.k; if(sortK===k) sortD*=-1; else { sortK=k; sortD=["cap","hr","area","share","pms","stc","apr","newsd"].includes(k)?-1:1; } renderTable(); }));
+  let rz; new ResizeObserver(()=>{ clearTimeout(rz); rz=setTimeout(drawCharts,120); }).observe(document.querySelector(".wrap"));
+}
+if(window.GEO_DATA) GEO=window.GEO_DATA;
+else fetch("data/geo.json").then(r=>r.json()).then(g=>{ GEO=g; if(D) renderMap(); }).catch(()=>{});
+if(window.DASH) init(window.DASH);
+else fetch("data/dash.json",{cache:"no-store"}).then(r=>r.json()).then(init).catch(()=>{ $("#updated").textContent="데이터를 불러오지 못했습니다. 잠시 뒤 새로고침해 주세요."; });
+</script>
+<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "9e39ead60d3543099f51114270ee65ea"}'></script><!-- Cloudflare Pages Analytics --></body>
+</html>

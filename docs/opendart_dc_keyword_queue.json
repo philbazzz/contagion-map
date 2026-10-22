@@ -1,0 +1,203 @@
+{
+  "verification_date": "2026-10-21",
+  "status": "partial_title_scan",
+  "note": "Title-keyword hits from OpenDART list API. Full notes / contingent-liability text review still required before creating ACTIVE edges. Do not treat arrangement headlines as retained exposure.",
+  "firms_scanned": 21,
+  "filings_inspected_approx": 14098,
+  "reporting_period": "20180101-20261021",
+  "hits": [
+    {
+      "firm": "한국투자증권",
+      "corp_code": "00160144",
+      "corp_name": "한국투자증권",
+      "stock_code": "",
+      "title_keyword_hits": [],
+      "hit_count": 0
+    },
+    {
+      "firm": "메리츠증권",
+      "corp_code": "00163682",
+      "corp_name": "메리츠증권",
+      "stock_code": "008560",
+      "title_keyword_hits": [],
+      "hit_count": 0
+    },
+    {
+      "firm": "NH투자증권",
+      "corp_code": "00120182",
+      "corp_name": "NH투자증권",
+      "stock_code": "005940",
+      "title_keyword_hits": [],
+      "hit_count": 0
+    },
+    {
+      "firm": "미래에셋증권",
+      "corp_code": "00311030",
+      "corp_name": "미래에셋증권",
+      "stock_code": "037620",
+      "title_keyword_hits": [],
+      "hit_count": 0
+    },
+    {
+      "firm": "삼성증권",
+      "corp_code": "00104856",
+      "corp_name": "삼성증권",
+      "stock_code": "016360",
+      "title_keyword_hits": [],
+      "hit_count": 0
+    },
+    {
+      "firm": "신한투자증권",
+      "corp_code": "00138321",
+      "corp_name": "신한투자증권",
+      "stock_code": "008670",
+      "title_keyword_hits": [],
+      "hit_count": 0
+    },
+    {
+      "firm": "하나증권",
+      "corp_code": "00113465",
+      "corp_name": "하나증권",
+      "stock_code": "",
+      "title_keyword_hits": [],
+      "hit_count": 0
+    },
+    {
+      "firm": "대신증권",
+      "corp_code": "00110893",
+      "corp_name": "대신증권",
+      "stock_code": "003540",
+      "title_keyword_hits": [],
+      "hit_count": 0
+    },
+    {
+      "firm": "키움증권",
+      "corp_code": "00296290",
+      "corp_name": "키움증권",
+      "stock_code": "039490",
+      "title_keyword_hits": [],
+      "hit_count": 0
+    },
+    {
+      "firm": "현대차증권",
+      "corp_code": "00137997",
+      "corp_name": "현대차증권",
+      "stock_code": "001500",
+      "title_keyword_hits": [],
+      "hit_count": 0
+    },
+    {
+      "firm": "SK증권",
+      "corp_code": "00131850",
+      "corp_name": "SK증권",
+      "stock_code": "001510",
+      "title_keyword_hits": [],
+      "hit_count": 0
+    },
+    {
+      "firm": "교보증권",
+      "corp_code": "00113359",
+      "corp_name": "교보증권",
+      "stock_code": "030610",
+      "title_keyword_hits": [],
+      "hit_count": 0
+    },
+    {
+      "firm": "유안타증권",
+      "corp_code": "00117601",
+      "corp_name": "유안타증권",
+      "stock_code": "003470",
+      "title_keyword_hits": [],
+      "hit_count": 0
+    },
+    {
+      "firm": "한화투자증권",
+      "corp_code": "00148610",
+      "corp_name": "한화투자증권",
+      "stock_code": "003530",
+      "title_keyword_hits": [],
+      "hit_count": 0
+    },
+    {
+      "firm": "다올투자증권",
+      "corp_code": "00156859",
+      "corp_name": "다올투자증권",
+      "stock_code": "030210",
+      "title_keyword_hits": [],
+      "hit_count": 0
+    },
+    {
+      "firm": "LS증권",
+      "corp_code": "00330424",
+      "corp_name": "LS증권",
+      "stock_code": "078020",
+      "title_keyword_hits": [],
+      "hit_count": 0
+    },
+    {
+      "firm": "신영증권",
+      "corp_code": "00136721",
+      "corp_name": "신영증권",
+      "stock_code": "001720",
+      "title_keyword_hits": [],
+      "hit_count": 0
+    },
+    {
+      "firm": "DB증권",
+      "corp_code": "00115694",
+      "corp_name": "DB증권",
+      "stock_code": "016610",
+      "title_keyword_hits": [],
+      "hit_count": 0
+    },
+    {
+      "firm": "BNK투자증권",
+      "corp_code": "00251400",
+      "corp_name": "BNK투자증권",
+      "stock_code": "",
+      "title_keyword_hits": [],
+      "hit_count": 0
+    },
+    {
+      "firm": "부국증권",
+      "corp_code": "00123772",
+      "corp_name": "부국증권",
+      "stock_code": "001270",
+      "title_keyword_hits": [],
+      "hit_count": 0
+    },
+    {
+      "firm": "케이프투자증권",
+      "corp_code": "00684972",
+      "corp_name": "케이프투자증권",
+      "stock_code": "",
+      "title_keyword_hits": [],
+      "hit_count": 0
+    }
+  ],
+  "errors": [
+    {
+      "firm": "KB증권",
+      "error": "corp_code not found",
+      "candidates": 0
+    },
+    {
+      "firm": "IBK투자증권",
+      "error": "corp_code not found",
+      "candidates": 0
+    },
+    {
+      "firm": "유진투자증권",
+      "error": "corp_code not found",
+      "candidates": 0
+    },
+    {
+      "firm": "iM증권",
+      "error": "corp_code not found",
+      "candidates": 0
+    }
+  ],
+  "total_keyword_hits": 0,
+  "body_scan_file": "docs/opendart_body_keyword_hits.json",
+  "opendart_api_configured": true
+}

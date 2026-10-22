@@ -1,0 +1,116 @@
+[
+  {
+    "query": "KB증권",
+    "n": 0,
+    "hits": []
+  },
+  {
+    "query": "케이비증권",
+    "n": 1,
+    "hits": [
+      {
+        "corp_code": "00164876",
+        "corp_name": "케이비증권",
+        "stock_code": "003450",
+        "modify_date": "20260325"
+      }
+    ]
+  },
+  {
+    "query": "KB 증권",
+    "n": 0,
+    "hits": []
+  },
+  {
+    "query": "IBK투자",
+    "n": 0,
+    "hits": []
+  },
+  {
+    "query": "아이비케이투자",
+    "n": 1,
+    "hits": [
+      {
+        "corp_code": "00684918",
+        "corp_name": "아이비케이투자증권",
+        "stock_code": "",
+        "modify_date": "20260701"
+      }
+    ]
+  },
+  {
+    "query": "IBK투자증권",
+    "n": 0,
+    "hits": []
+  },
+  {
+    "query": "유진투자",
+    "n": 1,
+    "hits": [
+      {
+        "corp_code": "00249733",
+        "corp_name": "유진투자선물",
+        "stock_code": "",
+        "modify_date": "20240319"
+      }
+    ]
+  },
+  {
+    "query": "유진투자증권",
+    "n": 0,
+    "hits": []
+  },
+  {
+    "query": "iM증권",
+    "n": 0,
+    "hits": []
+  },
+  {
+    "query": "아이엠증권",
+    "n": 1,
+    "hits": [
+      {
+        "corp_code": "00148665",
+        "corp_name": "아이엠증권",
+        "stock_code": "",
+        "modify_date": "20260730"
+      }
+    ]
+  },
+  {
+    "query": "아이엠 증권",
+    "n": 1,
+    "hits": [
+      {
+        "corp_code": "00148665",
+        "corp_name": "아이엠증권",
+        "stock_code": "",
+        "modify_date": "20260730"
+      }
+    ]
+  },
+  {
+    "query": "현대차증권",
+    "n": 1,
+    "hits": [
+      {
+        "corp_code": "00137997",
+        "corp_name": "현대차증권",
+        "stock_code": "001500",
+        "modify_date": "20240322"
+      }
+    ]
+  },
+  {
+    "query": "현대차 증권",
+    "n": 1,
+    "hits": [
+      {
+        "corp_code": "00137997",
+        "corp_name": "현대차증권",
+        "stock_code": "001500",
+        "modify_date": "20240322"
+      }
+    ]
+  }
+]

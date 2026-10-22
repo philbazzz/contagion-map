@@ -1,0 +1,35 @@
+{
+  "verification_date": "2026-10-21",
+  "added_nodes": [],
+  "added_edges": [],
+  "updated_edges": [
+    "v6_bed_eq_ibk_sec",
+    "dart_eq_ibk_sec_capstone_meta",
+    "dart_eq_korea_inv_sec_capstone_meta",
+    "dart_eq_kiwoom_casequare_jangnim",
+    "dart_eq_hanwha_camsquare_seori",
+    "dart_commit_hanwha_yongin_jigok",
+    "dart_bond_ls_camsquare_ansan",
+    "dart_commit_shinhan_dc_fund",
+    "dart_abs_hana_dc_1st",
+    "dart_eq_eugene_casequare_manus_guro",
+    "dart_eq_kis_value_dc_fund",
+    "dart_eq_kb_casequare_songpa_disposed",
+    "dart_arr_yuanta_camsquare_ansan_abs",
+    "dart_commit_hyundai_fine_dc_fund",
+    "dart_rel_hyundai_casequare_yongsan"
+  ],
+  "added_projects": [],
+  "skipped_narrative_only": [
+    "NH투자증권 AI 데이터센터 IB 서술 (관계 아님)",
+    "키움 구조화금융 일반 Track Record 서술",
+    "교보데이터센터→교보정보통신 합병 역사 (현재 DC PF 아님)",
+    "다올 케이스퀘어세종물류 (물류 PFV — DC 아님, 미반영)"
+  ],
+  "classification_notes": [
+    "유안타 와이케이안산디원 유동화 = FINANCING_ARRANGEMENT / HISTORICAL_ONLY",
+    "하나데이터센터제일차 0% = ABS_SPONSOR / shock_eligible=false",
+    "KB 송파 출자 = TRANSFERRED amount 0",
+    "한화 매입확약 = LIQUIDITY_COMMITMENT contingent"
+  ]
+}

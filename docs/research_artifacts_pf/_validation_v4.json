@@ -1,0 +1,21 @@
+{
+  "errors": [],
+  "warnings": [],
+  "semi": {
+    "nodes": 151,
+    "edges": 128
+  },
+  "pf": {
+    "nodes": 230,
+    "edges": 123
+  },
+  "projects": 144,
+  "fx": {
+    "pair": "USD/KRW",
+    "rate": 1323.7900390625,
+    "source": "Yahoo Finance KRW=X (yfinance)",
+    "formula": "market_cap_krw = market_cap_usd × usd_krw_rate",
+    "threshold_krw": 500000000000,
+    "threshold_usd_equiv": 377703401.0273237
+  }
+}

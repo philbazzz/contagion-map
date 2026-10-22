@@ -1,0 +1,7 @@
+.venv
+__pycache__
+.pytest_cache
+.env
+data/market.db
+data/market.db-*
+data/opendart_cache/
