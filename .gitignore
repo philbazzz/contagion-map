@@ -38,3 +38,5 @@ Thumbs.db
 contagion-checkpoints/
 contagion-zip-verify*/
 *.zip
+# Tracked via gh-pages deploy for now (Actions needs workflow OAuth scope)
+.github/workflows/
