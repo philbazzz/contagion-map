@@ -4,7 +4,7 @@ import type { PfShockForm, PfShockResult, PfProjectsFile } from "../pf/types";
 import {
   CAPEX_PRESETS, CW_DISTRESS, GPU_PRESETS,
   PF_AMOUNT_FILTERS, PF_DIRECTNESS_FILTERS, PF_EVIDENCE_FILTERS,
-  PF_INSTITUTION_FILTERS, PF_INSTRUMENT_FILTERS, PF_ROLE_FILTERS, PF_STAGE_FILTERS, RATE_PRESETS,
+  PF_CLASSES, PF_INSTITUTION_FILTERS, PF_INSTRUMENT_FILTERS, PF_ROLE_FILTERS, PF_STAGE_FILTERS, RATE_PRESETS,
 } from "../pf/scenario";
 import type { CoreWeaveDistress } from "../pf/types";
 import { displayName, projectDisplayName } from "../lib/displayName";
@@ -89,6 +89,7 @@ export function PfScenarioBuilder(p: Props) {
   const [filterAmount, setFilterAmount] = useState<string>("all");
   const [filterDirectness, setFilterDirectness] = useState<string>("all");
   const [hopDepth, setHopDepth] = useState<1 | 2>(1);
+  const [openClass, setOpenClass] = useState<string | null>(null);
   const [activeHit, setActiveHit] = useState(0);
   const composingRef = useRef(false);
   const searchListRef = useRef<HTMLUListElement>(null);
@@ -513,46 +514,17 @@ export function PfScenarioBuilder(p: Props) {
             onSelect={(id) => p.onSelect(id)}
           />
         </section>
-      ) : (
-        <section className="lp-sec">
-          <h3 className="lbl">AI DC 네트워크 <span className="lbl-aside">회사 중심</span></h3>
-          <p className="view-badge" style={{ fontSize: 11, color: "var(--tx-3)", margin: "0 0 8px" }}>
-            현재 보기: <b>한국 AI 데이터센터</b> (모드 선택기와 동일 · 별도 전환 버튼 아님)
-          </p>
-          <p className="note">금융기관·건설사를 선택하면 어느 DC 사업에, 어떤 경로·금액유형으로 연결되는지 표시합니다. 본부 좌표 없이도 관계 그래프에 나타납니다.</p>
-          <label className="chk" style={{ display: "flex", gap: 8, alignItems: "center", fontSize: 12 }}>
-            <input type="checkbox" checked={p.pfShock.showUsKoreaOnly}
-              onChange={(e) => p.onPfShock({ showUsKoreaOnly: e.target.checked })} />
-            US → Korea 경로만 강조
-          </label>
-          <div className="seg seg-wrap" style={{ marginTop: 8 }} role="group" aria-label="노출 등급">
-            {([
-              ["all", "전체"],
-              ["confirmed_dc", "검증 DC금융"],
-              ["general_pf", "일반 PF"],
-              ["sector_only", "섹터·후보"],
-            ] as const).map(([id, lab]) => (
-              <button key={id} type="button" className={p.pfShock.exposureFilter === id ? "is-on" : ""}
-                onClick={() => p.onPfShock({ exposureFilter: id })}>{lab}</button>
-            ))}
-          </div>
-          {p.selectedId ? (
-            <button type="button" className="btn-text" style={{ marginTop: 8 }} onClick={() => p.onClearSelection?.()}>
-              ← 전체 네트워크로
-            </button>
-          ) : null}
-        </section>
-      )}
+      ) : null}
 
       {p.mode !== "shock" ? (
       <section className="lp-sec">
-        <h3 className="lbl">회사 <span className="lbl-aside">{searching ? `${searchHits.length}건 일치` : companyCount}</span></h3>
+        <h3 className="lbl">Network Filter <span className="lbl-aside" data-tip="화면 표시만 바뀌며 계산에는 영향이 없습니다">표시만</span></h3>
         <label className="search" htmlFor="pf-search">
           <IconSearch size={13} />
           <input
             id="pf-search"
             type="search"
-            placeholder="회사 · PFV · 기관 · 티커 검색"
+            placeholder="회사 · PFV · 기관 · 티커"
             value={q}
             autoComplete="off"
             onChange={(e) => setQ(e.target.value)}
@@ -570,7 +542,6 @@ export function PfScenarioBuilder(p: Props) {
               <p className="muted-line">일치하는 회사 없음 · 다른 키워드를 입력하세요</p>
             ) : (
               <>
-                <p className="fine">↑↓ 이동 · Enter 선택 · Esc 지우기 · 클릭 시 맵으로 이동</p>
                 <ul className="pf-search-results" id="pf-search-results" ref={searchListRef} role="listbox">
                   {searchHits.map((h, i) => (
                     <li key={h.id} role="option" aria-selected={i === activeHit || p.selectedId === h.id}>
@@ -589,90 +560,47 @@ export function PfScenarioBuilder(p: Props) {
                     </li>
                   ))}
                 </ul>
-                {searchHits.length >= 48 ? <p className="fine">상위 48건 · 키워드를 더 구체화하세요</p> : null}
                 <button type="button" className="btn-text" onClick={clearSearch}>검색 지우기</button>
               </>
             )}
           </div>
-        ) : null}
-        <label className="f-lbl" style={{ display: "block", marginTop: 6 }}>기관 유형
-          <select className="shock-slider" style={{ width: "100%", height: 28, marginTop: 4 }} value={filterInstitution} onChange={(e) => setFilterInstitution(e.target.value)}>
-            {PF_INSTITUTION_FILTERS.map((r) => <option key={r.id} value={r.id}>{r.label}</option>)}
-          </select>
-        </label>
-        <label className="f-lbl" style={{ display: "block", marginTop: 6 }}>금융 단계
-          <select className="shock-slider" style={{ width: "100%", height: 28, marginTop: 4 }} value={filterStage} onChange={(e) => setFilterStage(e.target.value)}>
-            {PF_STAGE_FILTERS.map((r) => <option key={r.id} value={r.id}>{r.label}</option>)}
-          </select>
-        </label>
-        <label className="f-lbl" style={{ display: "block", marginTop: 6 }}>투자·신용 경로
-          <select className="shock-slider" style={{ width: "100%", height: 28, marginTop: 4 }} value={filterInstrument} onChange={(e) => setFilterInstrument(e.target.value)}>
-            {PF_INSTRUMENT_FILTERS.map((r) => <option key={r.id} value={r.id}>{r.label}</option>)}
-          </select>
-        </label>
-        <label className="f-lbl" style={{ display: "block", marginTop: 6 }}>역할 필터
-          <select className="shock-slider" style={{ width: "100%", height: 28, marginTop: 4 }} value={filterRole} onChange={(e) => setFilterRole(e.target.value)}>
-            {PF_ROLE_FILTERS.map((r) => <option key={r.id} value={r.id}>{r.label}</option>)}
-          </select>
-        </label>
-        <label className="f-lbl" style={{ display: "block", marginTop: 6 }}>근거 · 상태
-          <select className="shock-slider" style={{ width: "100%", height: 28, marginTop: 4 }} value={filterEvidence} onChange={(e) => setFilterEvidence(e.target.value)}>
-            {PF_EVIDENCE_FILTERS.map((r) => <option key={r.id} value={r.id}>{r.label}</option>)}
-          </select>
-        </label>
-        <label className="f-lbl" style={{ display: "block", marginTop: 6 }}>금액 공개
-          <select className="shock-slider" style={{ width: "100%", height: 28, marginTop: 4 }} value={filterAmount} onChange={(e) => setFilterAmount(e.target.value)}>
-            {PF_AMOUNT_FILTERS.map((r) => <option key={r.id} value={r.id}>{r.label}</option>)}
-          </select>
-        </label>
-        <label className="f-lbl" style={{ display: "block", marginTop: 6 }}>직접/간접
-          <select className="shock-slider" style={{ width: "100%", height: 28, marginTop: 4 }} value={filterDirectness} onChange={(e) => setFilterDirectness(e.target.value)}>
-            {PF_DIRECTNESS_FILTERS.map((r) => <option key={r.id} value={r.id}>{r.label}</option>)}
-          </select>
-        </label>
-        {!searching && p.selectedId ? (
-          <div className="seg seg-wrap" style={{ marginTop: 8 }} role="group" aria-label="홉">
-            <button type="button" className={hopDepth === 1 ? "is-on" : ""} onClick={() => setHopDepth(1)}>1홉 상대</button>
-            <button type="button" className={hopDepth === 2 ? "is-on" : ""} onClick={() => setHopDepth(2)}>2홉까지</button>
-          </div>
-        ) : null}
-        {!searching ? (
-          <ul className="ent-list" style={{ marginTop: 8 }}>
-            {entityRows(null)}
-          </ul>
-        ) : null}
-        {selectedCompanyProjects.length ? (
-          <div style={{ marginTop: 12 }}>
-            <h4 className="lbl">선택 회사의 관련 사업 <span className="lbl-aside">{selectedCompanyProjects.length}</span></h4>
-            <p className="fine">주소·시설명은 맥락입니다. 차주 SPC를 누르면 맵 초점이 이동합니다.</p>
-            <ul className="ent-list">
-              {selectedCompanyProjects.map((pr) => (
-                <li key={pr.id}>
-                  <button type="button" className="ent" onClick={() => pr.spv && p.onSelect(pr.spv)}>
-                    <span className="dot g-project_finance" />
-                    <span className="ent-name">{projectDisplayName(pr)}</span>
-                    <span className="ent-tk num">{STAGE_KO[pr.construction_stage]?.slice(0, 4) || pr.country}</span>
-                  </button>
+        ) : (
+          <ul className="cls-list">
+            {PF_CLASSES.map((c) => {
+              const members = p.net.nodes.filter((n) => c.groups.includes(n.group) && isCompanyNode(n));
+              const hidden = c.groups.every((g) => p.hiddenGroups.includes(g));
+              return (
+                <li key={c.id}>
+                  <div className={`cls ${openClass === c.id ? "is-open" : ""}`}>
+                    <input type="checkbox" checked={!hidden} onChange={() => c.groups.forEach((g) => p.onToggleGroup(g))} aria-label={`${c.label} 표시`} />
+                    <button type="button" className="cls-b" onClick={() => setOpenClass((x) => (x === c.id ? null : c.id))} aria-expanded={openClass === c.id}>
+                      <span className={`dot g-${c.groups[0]}`} /><span>{c.label}</span><span className="num cnt">{members.length}</span><IconChevron size={11} className="chev" />
+                    </button>
+                  </div>
+                  {openClass === c.id ? (
+                    <ul className="ent-list">
+                      {members.map((n) => (
+                        <li key={n.id}>
+                          <button type="button" className={`ent ${p.selectedId === n.id ? "is-on" : ""}`} onClick={() => locate(n.id)}>
+                            <span className={`dot g-${n.group}`} />
+                            <span className="ent-name">{displayName(n)}</span>
+                            <span className="ent-tk num">{n.ticker || ((n as { region?: string }).region === "KR" ? "KR" : "비상장")}</span>
+                            <span className="sdot" />
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
                 </li>
-              ))}
-            </ul>
-          </div>
-        ) : null}
-        <div style={{ marginTop: 12 }}>
-          <h4 className="lbl">확인된 사업 (메타) <span className="lbl-aside">{confirmedProjects.length}</span></h4>
-          <p className="fine">맵 노드가 아닌 사업 목록입니다. SPC·스폰서로 이동합니다.</p>
-          <ul className="ent-list">
-            {confirmedProjects.filter((pr) => pr.region === "KR" || pr.country === "KR").slice(0, 40).map((pr) => (
-              <li key={pr.id}>
-                <button type="button" className="ent" onClick={() => (pr.spv || pr.developer) && p.onSelect(pr.spv || pr.developer!)}>
-                  <span className="dot g-project_finance" />
-                  <span className="ent-name">{projectDisplayName(pr)}</span>
-                  <span className="ent-tk num">{pr.spv ? "SPC" : "개발"}</span>
-                </button>
-              </li>
-            ))}
+              );
+            })}
           </ul>
-        </div>
+        )}
+        {p.selectedId ? (
+          <button type="button" className="btn-text" style={{ marginTop: 8 }} onClick={() => p.onClearSelection?.()}>
+            ← 전체 네트워크로
+          </button>
+        ) : null}
       </section>
       ) : null}
 
