@@ -335,12 +335,19 @@ export function PfScenarioBuilder(p: Props) {
       const down = (qq?.change_pct ?? 0) < 0;
       const has = qq?.price != null;
       const delay = qq?.delay_label || (qq?.delay_kind === "close" ? "일간 종가" : qq?.delay_kind === "realtime" ? "실시간/지연" : "");
+      const short = !n.listed
+        ? "비상장"
+        : qq?.status === "not_supported" ? "미지원"
+        : qq?.status === "no_key" ? "키 없음"
+        : qq?.status === "pending" ? "대기"
+        : "미수집";
       return (
         <li key={n.id}>
-          <button type="button" className={`q-row ${p.selectedId === n.id ? "is-on" : ""} ${up ? "is-up" : down ? "is-down" : ""}`}
+          <button type="button" className={`q-row ${has ? "" : "is-empty"} ${p.selectedId === n.id ? "is-on" : ""} ${up ? "is-up" : down ? "is-down" : ""}`}
             onClick={() => p.onSelect(n.id)}>
-            <span className="q-name">{displayName(n)}
-              <span className="tiny muted num"> {qq?.ticker || n.ticker || "—"} · {n.exchange || "—"}{delay ? ` · ${delay}` : ""}</span>
+            <span className="q-name">
+              <span>{displayName(n)}</span>
+              <span className="q-meta num">{qq?.ticker || n.ticker || "—"} · {n.exchange || "—"}{delay ? ` · ${delay}` : ""}</span>
             </span>
             {has ? (
               <>
@@ -348,7 +355,7 @@ export function PfScenarioBuilder(p: Props) {
                 <span className={`q-ch num ${up ? "is-up" : down ? "is-down" : ""}`}>{fmtChg(qq!)}</span>
               </>
             ) : (
-              <span className="q-na tiny muted">{qq?.status_ko || (n.listed ? "시세 없음" : "비상장")}</span>
+              <span className="q-na">{short}</span>
             )}
           </button>
         </li>

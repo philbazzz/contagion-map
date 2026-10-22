@@ -226,6 +226,18 @@ function fmtChg(q: QuoteItem): string {
   return `${s}${Math.abs(q.change_pct).toFixed(2)}%`;
 }
 
+/** Short rail labels — full status_ko stays in the detail panel. */
+function shortQuoteStatus(q: QuoteItem | undefined, listed: boolean): string {
+  if (!listed) return "비상장";
+  const st = q?.status;
+  if (st === "ok" || st === "stale" || st === "partial") return "시세 있음";
+  if (st === "unlisted") return "비상장";
+  if (st === "not_supported") return "미지원";
+  if (st === "no_key") return "키 없음";
+  if (st === "pending") return "대기";
+  return "미수집";
+}
+
 function MarketRail({ p }: { p: Props }) {
   const [q, setQ] = useState("");
   const [sort, setSort] = useState<"pct" | "name" | "abs">("pct");
@@ -292,15 +304,18 @@ function MarketRail({ p }: { p: Props }) {
             const has = qq?.price != null;
             return (
               <li key={n.id}>
-                <button type="button" className={`q-row ${p.selectedId === n.id ? "is-on" : ""} ${up ? "is-up" : down ? "is-down" : ""}`}
+                <button type="button" className={`q-row ${has ? "" : "is-empty"} ${p.selectedId === n.id ? "is-on" : ""} ${up ? "is-up" : down ? "is-down" : ""}`}
                   onClick={() => p.onSelect(n.id)}>
-                  <span className="q-name">{n.name}<span className="tiny muted num"> {qq?.ticker || n.ticker} · {n.exchange}</span></span>
+                  <span className="q-name">
+                    <span>{n.name}</span>
+                    <span className="q-meta num">{qq?.ticker || n.ticker || "—"} · {n.exchange || "—"}</span>
+                  </span>
                   {has ? (
                     <>
                       <span className="q-px num">{fmtPx(qq!)}</span>
                       <span className={`q-ch num ${up ? "is-up" : down ? "is-down" : ""}`}>{fmtChg(qq!)}</span>
                     </>
-                  ) : <span className="q-na tiny muted">{qq?.status_ko || "시세 없음"}</span>}
+                  ) : <span className="q-na">{shortQuoteStatus(qq, !!n.listed)}</span>}
                 </button>
               </li>
             );
