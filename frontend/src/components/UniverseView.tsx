@@ -4,6 +4,7 @@ import { GROUP_COLORS, STATUS_COLORS, Universe } from "../universe/Universe";
 import type { Selection } from "../App";
 import { GROUP_LABEL, REL_EN, SIM_STATUS_KO, STATUS_KO } from "../lib/format";
 import { displayName } from "../lib/displayName";
+import { ko } from "../lib/labels";
 import { IconKey, IconLayers, IconOrbit, IconTarget } from "./Icons";
 
 const dn = (n?: NetNode | null) => (n ? displayName(n) : "—");
@@ -68,6 +69,7 @@ export function UniverseView(p: Props) {
   const [hover, setHover] = useState<Hover>(null);
   const [autoRotate, setAutoRotate] = useState(false);
   const [pop, setPop] = useState<"layers" | "legend" | null>(null);
+  const [renderIssue, setRenderIssue] = useState<"lost" | "slow" | null>(null);
 
   useEffect(() => {
     if (!canvasRef.current) return;
@@ -86,6 +88,7 @@ export function UniverseView(p: Props) {
       onSelectNode: (id) => { setPop(null); cbRef.current.onSelectNode(id); },
       onSelectEdge: (id) => { setPop(null); cbRef.current.onSelectEdge(id); },
       onSelectNone: () => { setPop(null); cbRef.current.onSelectNone(); },
+      onRenderIssue: (k) => setRenderIssue(k === "lost" ? "lost" : k === "slow" ? "slow" : null),
     });
     uRef.current = u;
     const ro = new ResizeObserver(() => u.resize());
@@ -102,9 +105,31 @@ export function UniverseView(p: Props) {
     const topoChanged = prevNetSig.current !== netSig;
     prevNetSig.current = netSig;
     u.setData(p.net.nodes, p.net.edges, p.origin);
-    // Only re-frame camera when the graph topology actually changes — not on every selection/HMR payload.
-    if (topoChanged) u.resetView();
+    u.setCoreIds(coreIdsFor(p.net, p.origin));
+    // First view = focus company + main direct relations (readable). Full map: "전체" button.
+    if (topoChanged) u.coreView();
   }, [netSig]); // eslint-disable-line react-hooks/exhaustive-deps
+  // Keep fit/centering clear of the readout card, the toolbar and any panel drawn over the map.
+  useEffect(() => {
+    const measure = () => {
+      const u = uRef.current, wrap = wrapRef.current;
+      if (!u || !wrap) return;
+      const c = wrap.getBoundingClientRect();
+      const ro = wrap.querySelector(".readout")?.getBoundingClientRect();
+      const tools = wrap.querySelector(".map-tools")?.getBoundingClientRect();
+      let r = tools ? Math.max(0, c.right - tools.left) + 6 : 0;
+      const rp = document.querySelector(".rp") as HTMLElement | null;
+      if (rp && getComputedStyle(rp).position === "fixed" && getComputedStyle(rp).visibility !== "hidden") {
+        const b = rp.getBoundingClientRect();
+        if (b.left < c.right && b.right > c.left) r = Math.max(r, c.right - b.left + 8);
+      }
+      const t = ro && ro.width > 0 && ro.width < c.width * 0.6 ? Math.max(0, ro.bottom - c.top) * 0.6 : 0;
+      u.setInsets({ l: 0, r, t, b: 28 });
+    };
+    measure();
+    const id = window.setInterval(measure, 800);
+    return () => window.clearInterval(id);
+  }, []);
   useEffect(() => { uRef.current?.setSimState(p.visuals, p.activeEdges, "financial", "", p.staged); }, [p.visuals, p.activeEdges, p.staged]);
   // Shock View playback: frame the entities of the current stage (camera moves slowly, never re-lays out the map)
   useEffect(() => { if (p.focusKey && !p.selection) uRef.current?.focusNodes(p.focusIds); }, [p.focusKey]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -134,7 +159,7 @@ export function UniverseView(p: Props) {
       ...(p.selection?.kind === "node" ? [p.selection.id] : []),
     ].filter(Boolean));
   }, [p.pinnedNodeIds, locateId, p.selection]);
-  useEffect(() => { uRef.current?.resetView(); }, [p.resetKey]);
+  useEffect(() => { uRef.current?.coreView(); }, [p.resetKey]);
   useEffect(() => { uRef.current?.setHighlightPath(p.highlight.nodes, p.highlight.edges); }, [p.highlight]);
   useEffect(() => { uRef.current?.setFilters(p.hiddenCats, p.hiddenGroups); }, [p.hiddenCats, p.hiddenGroups]);
   useEffect(() => { uRef.current?.setSpeed(p.speed); }, [p.speed]);
@@ -163,7 +188,8 @@ export function UniverseView(p: Props) {
       </div>
 
       <div className="map-tools" role="toolbar" aria-label="지도 도구">
-        <button type="button" className="mt" onClick={() => uRef.current?.fitAll()} data-tip="Fit All · 전체 네트워크가 보이도록 줌아웃" aria-label="Fit All · 전체 보기"><IconTarget size={14} /></button>
+        <button type="button" className="mt" onClick={() => uRef.current?.coreView()} data-tip="핵심 보기 · 초점 기업과 주요 직접 관계" aria-label="핵심 관계 보기"><IconTarget size={14} /></button>
+        <button type="button" className="mt mt-txt" onClick={() => uRef.current?.fitAll()} data-tip="전체 보기 (Fit All) · 현재 표시 중인 노드를 패널에 가리지 않게 모두 보기" aria-label="전체 관계망 보기">전체</button>
         <button type="button" className={`mt ${autoRotate ? "is-on" : ""}`} onClick={() => setAutoRotate((a) => !a)} data-tip={`자동 회전 ${autoRotate ? "끄기" : "켜기"}`} aria-pressed={autoRotate} aria-label="자동 회전"><IconOrbit size={14} /></button>
         <button type="button" className="mt" onClick={() => uRef.current?.recoverView()} data-tip="시점 복구 · 카메라가 비었을 때" aria-label="시점 복구">↺</button>
         <span className="mt-sep" />
@@ -219,7 +245,16 @@ export function UniverseView(p: Props) {
         </div>
       ) : null}
 
-      <p className="map-hint">Drag 회전 · Wheel 확대 · Hover 직접 관계 강조 · Click 상세</p>
+      <p className="map-hint">드래그 회전 · 휠 확대 · 마우스를 올리면 직접 관계 강조 · 클릭하면 상세 · 「전체」로 관계망 전체 보기</p>
+      {renderIssue ? (
+        <div className="render-issue" role="alert">
+          <p>{renderIssue === "lost" ? "지도 그리기가 중단되었습니다 (브라우저 그래픽 자원 부족)." : "지도 표시가 느려 가벼운 모드로 전환했습니다 (라벨 수·효과 축소)."}</p>
+          <div>
+            <button type="button" className="btn-text" onClick={() => { uRef.current?.setLightMode(true); uRef.current?.recoverView(); uRef.current?.coreView(); setRenderIssue(null); }}>가벼운 모드로 복구</button>
+            {renderIssue === "slow" ? <button type="button" className="btn-text" onClick={() => { uRef.current?.setLightMode(false); setRenderIssue(null); }}>원래 품질로</button> : null}
+          </div>
+        </div>
+      ) : null}
 
       {hover && !p.hidden ? <HoverCard hover={hover} p={p} /> : null}
     </div>
@@ -244,6 +279,7 @@ function HoverCard({ hover, p }: { hover: NonNullable<Hover>; p: Props }) {
   const v = p.visuals?.[n.id];
   const q = p.quotes?.items.find((x) => x.entity === n.id);
   const hasQ = q && q.price !== null && q.price !== undefined;
+  const degree = p.net.edges.filter((e) => e.source === n.id || e.target === n.id).length;
   const rels = [...new Set(p.net.edges.filter((e) => (e.source === p.origin && e.target === n.id) || (e.target === p.origin && e.source === n.id))
     .map((e) => REL_EN[e.relationship_type] || e.relationship_type))];
   return (
@@ -257,10 +293,31 @@ function HoverCard({ hover, p }: { hover: NonNullable<Hover>; p: Props }) {
           </p>
         </>
       ) : n.listed && p.mode === "market" ? <p className="hc-m">{q?.status_ko || "시세 없음"}</p> : null}
-      {n.id !== p.origin ? <p className="hc-m">{dn(p.nodeMap.get(p.origin))} 기준: {rels.length ? rels.join(" / ") : "간접·미연결"}</p> : <p className="hc-m">초점 · {n.role}</p>}
+      {n.id !== p.origin
+        ? <p className="hc-m">{rels.length ? `${dn(p.nodeMap.get(p.origin))}와 직접: ${rels.join(" / ")}` : `${dn(p.nodeMap.get(p.origin))}와 직접 관계 없음 · 이 기업 관계 ${degree}건`}</p>
+        : <p className="hc-m">현재 초점 · {n.role}</p>}
       {v && v.status !== "normal" && (p.mode === "market" || p.mode === "shock") ? (
-        <p className={`hc-s st-${v.status}`}>{v.label || (p.mode === "shock" ? SIM_STATUS_KO[v.status] : "")}</p>
+        <p className={`hc-s st-${v.status}`}>{v.label ? (p.mode === "shock" ? ko(v.label) : v.label) : (p.mode === "shock" ? SIM_STATUS_KO[v.status] : "")}</p>
       ) : null}
     </div>
   );
+}
+
+/** Focus company + its most important direct relations + the best-connected hubs (default framing & label priority). */
+function coreIdsFor(net: Network, origin: string): string[] {
+  const deg = new Map<string, number>();
+  for (const e of net.edges) {
+    deg.set(e.source, (deg.get(e.source) || 0) + 1);
+    deg.set(e.target, (deg.get(e.target) || 0) + 1);
+  }
+  const size = new Map(net.nodes.map((n) => [n.id, n.display_size || 0]));
+  const nb = new Set<string>();
+  for (const e of net.edges) {
+    if (e.source === origin) nb.add(e.target);
+    if (e.target === origin) nb.add(e.source);
+  }
+  const score = (id: string) => (size.get(id) || 0) * 3 + (deg.get(id) || 0);
+  const direct = [...nb].sort((a, b) => score(b) - score(a)).slice(0, 12);
+  const hubs = net.nodes.map((n) => n.id).filter((id) => id !== origin && !nb.has(id)).sort((a, b) => (deg.get(b) || 0) - (deg.get(a) || 0)).slice(0, 8);
+  return [origin, ...direct, ...hubs];
 }

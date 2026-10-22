@@ -19,6 +19,11 @@ import { PfCompanyProjectsBlock, PfProjectFinanceRoster } from "./PfCompanyProje
 import { PfBorrowerPanel } from "./PfBorrowerPanel";
 import { PanelErrorBoundary } from "./PanelErrorBoundary";
 import { isBorrowerNode, type BorrowerEdgeMode, type InstCategoryId } from "../pf/borrowerSummary";
+import { CERTAINTY_KO, CURRENT_KO, amountFacts, isHomepageUrl, sourceRef, statusKo } from "../lib/evidence";
+import { relationState, type RelationState } from "../lib/relationState";
+import { CertTag } from "./PfCompanyProjects";
+import { PfShockDigest, changedInputs } from "./PfShockDigest";
+import { AMOUNT_KIND_KO, EXPOSURE_CLASS_KO, CRISIS_MODE_KO, STRESS_LEVEL_KO, TRANSMISSION_CLASS_KO, CW_DISTRESS_KO, ko, multipleChange, refreshLabel, refreshTip, cleanNote } from "../lib/labels";
 
 const dn = (n?: NetNode | null) => (n ? displayName(n) : "—");
 const STAGE_KO: Record<string, string> = {
@@ -40,6 +45,7 @@ interface Props {
   stats: NetworkStats | null;
   quotes: QuotesOverview | null;
   onRefreshQuotes: () => void;
+  quotesLive?: boolean;
   quotesBusy: boolean;
   selection: Selection;
   run: RunView | null;
@@ -271,8 +277,10 @@ function SourceList({ net, ids }: { net: Network; ids: string[] }) {
     <ul className="srcs">
       {list.map((s) => (
         <li key={s.id}>
-          <a href={s.url} target="_blank" rel="noreferrer">{s.title} <IconLink size={10} /></a>
-          <span className="src-m num">{s.date} · {domainOf(s.url)}</span>
+          {s.url && !isHomepageUrl(s.url)
+            ? <a href={s.url} target="_blank" rel="noreferrer">{s.title} <IconLink size={10} /></a>
+            : <span>{s.title} <span className="muted tiny">· 원문 연결 미확보{s.url ? " (홈페이지 주소만 있음)" : ""}</span></span>}
+          <span className="src-m num">{s.date || "날짜 미기재"}{s.url ? ` · ${domainOf(s.url)}` : ""}</span>
         </li>
       ))}
     </ul>
@@ -325,6 +333,39 @@ function commercialRows(net: Network, entityId?: string): TimelineRow[] {
     }));
 }
 
+/** Research notes can predate the current relationship data — never let an old note contradict it silently. */
+function DescNote({ n, rs }: { n: NetNode; rs: RelationState }) {
+  if (!n.description) return null;
+  const stale = rs.relation.count > 0 && /엣지를 (자동 )?생성하지 않|연결관계 확인 필요|미연결|관계 미확인/.test(n.description);
+  return (
+    <>
+      <p className="dossier-overview">{cleanNote(n.description)}</p>
+      {stale ? <p className="fine warn">이 메모는 이전 조사 단계의 기록입니다. 현재 관계 데이터 {rs.relation.count}건(위 상태 표시)이 우선합니다.</p> : null}
+    </>
+  );
+}
+
+function StateStrip({ rs }: { rs: RelationState }) {
+  const rows: [string, string, string][] = [
+    ["식별", rs.identity.ko, rs.identity.code],
+    ["관계", rs.relation.ko, rs.relation.code],
+    ["금액", rs.amount.ko, rs.amount.code],
+    ["거래", rs.current.ko, rs.current.code],
+    ["충격 경로", rs.shockPath.ko, rs.shockPath.code],
+    ["정량 계산", rs.quant.ko, rs.quant.code],
+  ];
+  return (
+    <div className="state-strip">
+      <p className="state-head">{rs.headline}</p>
+      <dl className="state-grid">
+        {rows.map(([k, v, c]) => (
+          <div key={k} className={`st-${c}`}><dt>{k}</dt><dd>{v}</dd></div>
+        ))}
+      </dl>
+    </div>
+  );
+}
+
 // ---------------------------------------------------------------- panel
 export function DetailPanel(p: Props) {
   let body: ReactNode;
@@ -356,6 +397,7 @@ function NodeView(p: Props & { id: string }) {
   const n = p.nodeMap.get(p.id);
   const originName = dn(p.nodeMap.get(p.origin)) || p.origin;
   const [target, setTarget] = useState("");
+  const [openBuckets, setOpenBuckets] = useState<Set<string>>(() => new Set());
   const edgeMap = useMemo(() => new Map(p.net.edges.map((e) => [e.id, e])), [p.net]);
   const links = useMemo(() => (n ? p.net.edges.filter((e) => e.source === n.id || e.target === n.id) : []), [p.net.edges, n]);
   const neighbors = useMemo(() => {
@@ -369,7 +411,8 @@ function NodeView(p: Props & { id: string }) {
   if (!n) return null;
   const toOrigin = links.filter((e) => e.source === p.origin || e.target === p.origin);
   const instruments = p.net.financials?.instruments || [];
-  const contracts = instruments.filter((x) => n.id === "coreweave" || (x.participants || []).some((q) => q.entity === n.id));
+  const isPfNet = (p.net.meta as { ecosystem?: string }).ecosystem === "datacenter_pf";
+  const contracts = instruments.filter((x) => (n.id === "coreweave" && !isPfNet) || x.borrower === n.id || (x.participants || []).some((q) => q.entity === n.id));
   const a: Assessment | undefined = p.mode === "shock" ? p.run?.result.assessments[n.id] : undefined;
   const relKind = n.id === p.origin ? "origin" : p.entityPath ? (p.entityPath.hops === 1 ? "direct" : "indirect") : "unconfirmed";
   const srcIds = [
@@ -384,17 +427,20 @@ function NodeView(p: Props & { id: string }) {
   const pfProject = p.pfProjects?.find((x) => x.id === n.id);
   const pfStress = p.pfShockResult?.pf.projects.find((x) => x.project_id === n.id);
   const borrower = isBorrowerNode(n);
+  const shockCtx = p.mode === "shock" && p.run
+    ? p.run.kind === "pf_shock"
+      ? { kind: "pf" as const, result: p.run.result }
+      : { kind: "rate" as const, assessments: p.run.result.assessments as Record<string, { category?: string }>, activeIds: new Set(Object.keys(p.run.result.rounds[Math.min(p.stage, p.run.result.rounds.length - 1)]?.node_states || {})) }
+    : null;
+  const rs = relationState(n, (p.pfLedgerNet || p.net).edges, today, shockCtx);
   return (
     <div className="rp-body">
       <header className="ent-head">
         <p className="lbl">{GROUP_LABEL[n.group] || n.group}{n.id === p.origin ? " · FOCUS" : ""}{(n as { region?: string }).region === "KR" ? " · KR" : ""}</p>
         <h2>{dn(n)}</h2>
         <p className="ent-sub num">{n.listed ? `${n.ticker} · ${n.exchange}` : "비상장기업"}{(n as { name_en?: string }).name_en ? ` · ${(n as { name_en?: string }).name_en}` : ""}</p>
-        <p className="ent-sector">{n.sector} · {n.role} · {n.entity_type}</p>
-        {(n as { connection_status?: string }).connection_status ? (
-          <p className="fine">{(n as { connection_status?: string }).connection_status}
-            {(n as { roles?: string[] }).roles?.length ? ` · 역할 ${(n as { roles?: string[] }).roles!.join(", ")}` : ""}</p>
-        ) : null}
+        <p className="ent-sector">{[ko(n.sector, ""), ko(n.role, ""), ko(n.entity_type, "")].filter(Boolean).join(" · ")}</p>
+        <StateStrip rs={rs} />
         {n.id !== p.origin ? (
           <button type="button" className="btn-text" onClick={() => p.onSetOrigin(n.id)} data-tip="이 회사를 네트워크 분석 중심으로 설정">이 회사를 초점으로</button>
         ) : (
@@ -425,21 +471,19 @@ function NodeView(p: Props & { id: string }) {
         <Sec label="PF 위험 설명" aside="회사 기준">
           <dl>
             <KV k="관련 사업" v={[...new Set(links.map((e) => (e as { project_name?: string }).project_name).filter(Boolean))].join(" · ") || "—"} mono={false} />
-            <KV k="확인된 익스포저" v={links.filter((e) => e.source_status === "VERIFIED" && e.impact_channel === "financial").length
-              ? links.filter((e) => e.source_status === "VERIFIED" && e.impact_channel === "financial").map((e) => e.amount_note || e.label).slice(0, 4).join(" · ")
-              : "수치화된 여신·보증 미확인"} mono={false} />
+            <KV k="금액 확인 상태" v={rs.amount.ko} mono={false} />
             <KV k="위험 전이 경로" v={links.map((e) => (e as { stress_direction?: string }).stress_direction).filter(Boolean).slice(0, 3).join(" · ") || "전이 경로 미기재"} mono={false} />
             <KV k="의무 발생 조건" v={links.map((e) => (e as { obligation_trigger?: string }).obligation_trigger).filter(Boolean).slice(0, 3).join(" · ") || "—"} mono={false} />
             <KV k="근거 공시" v={[...new Set(links.map((e) => (e as { source_title?: string; source_url?: string }).source_title || (e as { source_url?: string }).source_url).filter(Boolean))].slice(0, 3).join(" · ") || "—"} mono={false} />
-            <KV k="미확인 사항" v={(n as { connection_status?: string }).connection_status === "연결관계 확인 필요"
-              ? "검증된 DC PF 엣지 부족 — Shock 자동 손실 미부여"
-              : "금액·만기·현재성은 추가 공시 확인이 필요할 수 있음"} mono={false} />
+            <KV k="미확인 사항" v={rs.relation.count === 0
+              ? "현재 확인된 관계 없음 — 충격에서 손실을 부여하지 않음"
+              : rs.amount.code === "confirmed" ? "금액은 확인됨 · 만기·현재성은 최신 공시로 재확인 권장" : "일부 금액·단위·현재 잔액 확인 필요"} mono={false} />
           </dl>
           <p className="fine">부도확률 수치를 만들지 않습니다. 익스포저 규모를 확정할 수 없으면 미확인으로 둡니다.</p>
         </Sec>
-      ) : !borrower && (n as { region?: string }).region === "KR" ? (
+      ) : !borrower && (n as { region?: string }).region === "KR" && rs.relation.count === 0 ? (
         <Sec label="PF 위험 설명">
-          <p className="muted-line">연결관계 확인 필요 — 회사 노드는 유지하되 검증된 DC PF 엣지가 없으면 Shock에서 자동 손실을 부여하지 않습니다.</p>
+          <p className="muted-line">현재 확인된 데이터센터 금융·사업 관계가 없습니다. 회사는 지도에 남기되, 충격 분석에서 손실을 부여하지 않습니다.</p>
         </Sec>
       ) : null}
 
@@ -474,17 +518,17 @@ function NodeView(p: Props & { id: string }) {
           <DossierBlock profile={profile} net={p.net} />
         </Sec>
       ) : !borrower && !pfProject ? (
-        <Sec label="Company dossier">
-          <p className="muted-line">이 기업은 관계·개요 중심으로 수록되어 있으며, CoreWeave 수준의 차입금 Note는 아직 없습니다.</p>
-          <p className="dossier-overview">{n.description}</p>
+        <Sec label="기업 개요">
+          <p className="muted-line">관계·개요 중심으로 수록된 기업입니다 (차입금 주석 수준의 재무 자료 없음).</p>
+          <DescNote n={n} rs={rs} />
         </Sec>
       ) : !borrower ? (
-        <Sec label="Overview">
-          <p className="dossier-overview">{n.description}</p>
+        <Sec label="개요">
+          <DescNote n={n} rs={rs} />
         </Sec>
       ) : n.description ? (
-        <Sec label="개요">
-          <p className="dossier-overview">{n.description}</p>
+        <Sec label="조사 메모">
+          <DescNote n={n} rs={rs} />
         </Sec>
       ) : null}
 
@@ -492,9 +536,9 @@ function NodeView(p: Props & { id: string }) {
       <Sec label="Relationships" aside={`${neighbors.length} edges`}>
         {n.id !== p.origin ? (
           p.entityPath ? <PathFlow path={p.entityPath} edges={edgeMap} nodeMap={p.nodeMap} onSelect={p.onSelectNode} onSelectEdge={p.onSelectEdge} />
-            : <p className="muted-line">{originName} 기준 최단 경로가 공개 관계망에서 확인되지 않음</p>
+            : <p className="muted-line">초점 기업({originName})까지의 공개 관계 경로는 확인되지 않습니다{neighbors.length ? ` — 이 기업 자체의 관계는 아래 ${neighbors.length}건` : ""}.</p>
         ) : <p className="muted-line">초점 기업 · 아래는 직접 연결 {neighbors.length}건 · 2·3-hop은 경로 탐색으로 확인</p>}
-        <p className="fine">{RELATION_KIND_KO[relKind]}{toOrigin.length ? ` · ${originName}와 직접 ${toOrigin.length}건` : ""}</p>
+        <p className="fine">{relKind === "unconfirmed" ? `${originName} 기준 경로 미확인` : RELATION_KIND_KO[relKind]}{toOrigin.length ? ` · ${originName}와 직접 ${toOrigin.length}건` : ""}</p>
         {(["CUSTOMER", "SUPPLIER", "STRATEGIC_PARTNERSHIP", "EQUITY_INVESTMENT", "FINANCING_PARTICIPATION", "LESSOR", "OTHER"] as const).map((bucket) => {
           const rows = neighbors.filter(({ edge }) => {
             const t = edge.relationship_type;
@@ -516,7 +560,7 @@ function NodeView(p: Props & { id: string }) {
             <div key={bucket} style={{ marginTop: 8 }}>
               <p className="lbl">{title} <span className="lbl-aside">{rows.length}</span></p>
               <ul className="ent-list">
-                {rows.slice(0, 16).map(({ id, edge, dir }) => {
+                {(openBuckets.has(bucket) ? rows : rows.slice(0, 5)).map(({ id, edge, dir }) => {
                   const o = p.nodeMap.get(id);
                   if (!o) return null;
                   return (
@@ -530,11 +574,16 @@ function NodeView(p: Props & { id: string }) {
                   );
                 })}
               </ul>
+              {rows.length > 5 ? (
+                <button type="button" className="btn-text" onClick={() => setOpenBuckets((s0) => { const n2 = new Set(s0); if (n2.has(bucket)) n2.delete(bucket); else n2.add(bucket); return n2; })}>
+                  {openBuckets.has(bucket) ? "주요 5건만" : `나머지 ${rows.length - 5}건 펼치기`}
+                </button>
+              ) : null}
             </div>
           );
         })}
         {toOrigin.map((e) => <LinkRow key={`o-${e.id}`} e={e} p={p} />)}
-        {n.id === "coreweave" ? <p className="muted-line">금융계약 {contracts.length}건 — 하단 Lending에서 탐색</p> : null}
+        {n.id === "coreweave" && !isPfNet ? <p className="muted-line">금융계약 {contracts.length}건 — 하단 Lending에서 탐색</p> : null}
         <div className="pathfind">
           <label htmlFor="pf-target" className="f-lbl">최단 관계 경로 (2·3차 연결)</label>
           <select id="pf-target" value={target} onChange={(e) => { setTarget(e.target.value); if (e.target.value) p.onFindPath(n.id, e.target.value); else p.onClearPath(); }}>
@@ -565,9 +614,9 @@ function NodeView(p: Props & { id: string }) {
       )}
 
       {lend.length ? (
-        <Sec label="Lending" aside={`CoreWeave 차입 계약 ${lend.length}건`}>
+        <Sec label="Lending" aside={`${isPfNet ? "미국 PF 프로젝트 차입 계약" : "CoreWeave 차입 계약"} ${lend.length}건`}>
           <Timeline rows={lend} today={today} onSelect={p.onSelectContract}
-            caption="막대 = 체결 → 최종 만기. 금액은 계약 전체 잔액(2026.6.30)이며 이 기관의 보유액이 아닙니다 (기관별 보유액 미공시)." />
+            caption={`막대 = 체결 → 최종 만기. 금액은 계약 전체 잔액(${p.net.financials.as_of} 기준)이며 이 기관의 보유액이 아닙니다 (기관별 보유액 미공시).`} />
           <table className="tbl ltbl">
             <thead><tr><th>계약</th><th>역할</th><th className="r">금리</th><th className="r">만기</th></tr></thead>
             <tbody>
@@ -614,12 +663,12 @@ function NodeView(p: Props & { id: string }) {
 
       {(n.key_drivers || []).length ? (
         <Sec label="Key Drivers">
-          <ol className="drivers">{(n.key_drivers || []).map((d, i) => <li key={d}><span className="num">{String(i + 1).padStart(2, "0")}</span>{d}</li>)}</ol>
+          <ol className="drivers">{(n.key_drivers || []).map((d, i) => <li key={d}><span className="num">{String(i + 1).padStart(2, "0")}</span>{ko(d)}</li>)}</ol>
         </Sec>
       ) : null}
 
       <Sec label="Sources" aside={<StTag s={n.source_status} />}>
-        <p className="prose">{n.description}</p>
+        <p className="prose">{cleanNote(n.description)}</p>
         <SourceList net={p.net} ids={srcIds} />
       </Sec>
     </div>
@@ -703,7 +752,7 @@ function MarketBlock({ p, n }: { p: Props; n: NetNode }) {
         <>
           <p className="muted-line">주가 조회 불가{n.ticker ? ` · ${n.ticker}` : ""}{n.exchange ? ` · ${n.exchange}` : ""}</p>
           {tv && !tv.embeddable && (n.exchange === "KOSPI" || n.exchange === "KOSDAQ" || n.exchange === "KRX") ? (
-            <p className="fine">국내 종목은 일간 종가(FinanceDataReader/yfinance) 스냅샷을 사용합니다. ‘지금 조회’ 또는 start.bat로 갱신하세요.</p>
+            <p className="fine">국내 종목은 일간 종가(FinanceDataReader/yfinance)를 사용합니다. 위 시세 버튼으로 갱신하세요.</p>
           ) : tv && !tv.embeddable ? (
             <p className="fine">TradingView 무료 위젯이 {tv.exchangeLabel} 시세를 임베드하지 않습니다.</p>
           ) : null}
@@ -712,7 +761,7 @@ function MarketBlock({ p, n }: { p: Props; n: NetNode }) {
       {n.listed && n.listing_note ? <p className="fine">{n.listing_note}</p> : null}
       {useTv && has ? <Disclosure label="로컬 시세 상세 (API)">{quoteDetail}</Disclosure> : null}
       {n.listed && !p.quotes?.demo ? (
-        <button type="button" className="btn-text" onClick={p.onRefreshQuotes} disabled={p.quotesBusy}><IconReset size={11} /> {p.quotesBusy ? "조회 중…" : "지금 조회"}</button>
+        <button type="button" className="btn-text" onClick={p.onRefreshQuotes} disabled={p.quotesBusy}><IconReset size={11} /> {refreshLabel(!!p.quotesLive, p.quotesBusy)}</button>
       ) : null}
     </Sec>
   );
@@ -768,6 +817,10 @@ function EdgeView(p: Props & { id: string }) {
   if (!e) return null;
   const s = p.nodeMap.get(e.source)!;
   const t = p.nodeMap.get(e.target)!;
+  const f = amountFacts(e, p.net.meta.as_of);
+  const src = sourceRef(e);
+  const nameOfId = (id: string) => (p.nodeMap.get(id) ? dn(p.nodeMap.get(id)) : null);
+  const tc = (e as { transmission_class?: string }).transmission_class;
   return (
     <div className="rp-body">
       <header className="ent-head">
@@ -787,30 +840,26 @@ function EdgeView(p: Props & { id: string }) {
           <KV k="관련 사업" v={(e as { project_name?: string }).project_name || "—"} mono={false} />
           <KV k="금융 단계" v={FINANCING_STAGE_KO[(e as { financing_stage?: string }).financing_stage || ""] || (e as { financing_stage?: string }).financing_stage || "—"} mono={false} />
           <KV k="자금 경로" v={(e as { participation_path?: string }).participation_path || "투자 경로 미공개"} mono={false} />
-          <KV k="금액 유형" v={AMOUNT_TYPE_KO[(e as { amount_type?: string }).amount_type || ""] || (e as { amount_type?: string }).amount_type || "—"} mono={false} />
+          <KV k="금액 유형" v={f.kindKo} mono={false} />
           <KV k="위험 전이 경로" v={(e as { stress_direction?: string }).stress_direction || "미기재"} mono={false} />
-          <KV k="확인된 익스포저" v={(e as { exposure_kind?: string }).exposure_kind || (e.amount_note || (e.amount_usd_m != null ? usdM(e.amount_usd_m) : "금액 미공개"))} mono={false} />
+          <KV k="충격 전달 분류" v={tc ? (TRANSMISSION_CLASS_KO[tc] || ko(tc)) : "분류 없음"} mono={false} />
           <KV k="조건부 의무" v={(e as { contingent_obligation?: boolean }).contingent_obligation ? "예 — 확약 조건 충족 시에만" : "아니오(또는 미기재)"} mono={false} />
           <KV k="의무 발생 조건" v={(e as { obligation_trigger?: string }).obligation_trigger || "—"} mono={false} />
-          <KV k="근거 상태" v={(e as { evidence_status?: string }).evidence_status || e.source_status} mono={false} />
-          <KV k="관계 상태" v={(e as { relationship_status?: string }).relationship_status || "current"} mono={false} />
-          <KV
-            k="금액"
-            v={(e as { amount_krw_eok?: number | null }).amount_krw_eok != null
-              ? `${Number((e as { amount_krw_eok?: number }).amount_krw_eok).toLocaleString("ko-KR")}억 원`
-              : (e.amount_note?.includes("미공개") || e.amount_note?.includes("미공시") ? "금액 미공개" : (e.amount_usd_m !== null ? usdM(e.amount_usd_m) : "금액 미공개"))}
-            tip={e.amount_usd_m !== null ? korUsd(e.amount_usd_m) : undefined}
-          />
+          <KV k="근거" v={`${ko(e.source_status)}${(e as { evidence_status?: string }).evidence_status ? ` · ${(e as { evidence_status?: string }).evidence_status}` : ""}`} mono={false} />
+          <KV k="현재 거래 상태" v={f.current === "current" ? statusKo((e as { exposure_status?: string }).exposure_status || (e as { relationship_status?: string }).relationship_status) : CURRENT_KO[f.current]} mono={false} />
+          <KV k="금액" v={<>{f.value === null ? "금액 미확인" : f.unit === "억원" ? `${f.value.toLocaleString("ko-KR")}억 원` : usdM(f.value)} <CertTag f={f} /></>}
+            tip={`${CERTAINTY_KO[f.certainty]} · ${f.certaintyReason}`} />
+          {f.asOf ? <KV k="금액 기준일" v={f.asOf} /> : null}
         </dl>
-        {e.amount_note ? <p className="fine">{e.amount_note}</p> : null}
+        {e.amount_note ? <p className="fine">{cleanNote(e.amount_note, nameOfId)}</p> : null}
         {(e as { facility_total_krw_eok?: number | null }).facility_total_krw_eok != null ? (
           <p className="fine">시설·신디케이트 총액 맥락: {Number((e as { facility_total_krw_eok?: number }).facility_total_krw_eok).toLocaleString("ko-KR")}억 — 이 금액을 기관 단독 보유로 보지 않음</p>
         ) : null}
-        {(e as { source_url?: string }).source_url ? (
-          <p className="fine">근거 공시: <a href={(e as { source_url?: string }).source_url!} target="_blank" rel="noreferrer">{(e as { source_title?: string }).source_title || (e as { source_url?: string }).source_url}</a> {(e as { source_date?: string }).source_date || ""}</p>
-        ) : null}
-        <p className="fine">미확인 사항: {(e as { verification_gap?: string }).verification_gap || (e.source_status === "VERIFIED" ? "없음(추가 원문 대조는 권장)" : "근거 보강 필요")}</p>
-        <p className="prose">{e.explanation}</p>
+        <p className="fine">근거 원문: {src.status === "linked"
+          ? <><a href={src.url!} target="_blank" rel="noreferrer">{src.title} <IconLink size={10} /></a>{src.date ? ` · ${src.date}` : ""}{src.filing ? ` · 접수번호 ${src.filing}` : ""}</>
+          : <span className="muted">원문 연결 미확보{src.status === "homepage_only" ? " (기관 홈페이지만 있음 — 근거로 쓰지 않음)" : ""}</span>}</p>
+        <p className="fine">미확인 사항: {cleanNote((e as { verification_gap?: string }).verification_gap, nameOfId) || (e.source_status === "VERIFIED" ? "없음(추가 원문 대조는 권장)" : "근거 보강 필요")}</p>
+        <p className="prose">{cleanNote(e.explanation, nameOfId)}</p>
       </Sec>
       {(e.contract_ids || []).length ? (
         <Sec label="Contracts">
@@ -885,23 +934,32 @@ function RateShockSummary(p: Props & { run: Extract<RunView, { kind: "rate_shock
     (byClass[c] ||= []).push(id);
   }
   const delta = s.total_incremental_interest_usd_m;
-  const labels: Record<string, string> = {
-    direct_computed: "직접 측정",
-    secondary_contagion: "2차 전염",
-    potential_indirect: "잠재 간접",
-    transmission_channel: "전달 채널",
-    insufficient_data: "데이터 부족",
-    qualitative_refi: "정성 · 재발행",
-    qualitative_credit: "정성 · 신용",
-    no_identified_exposure: "노출 미확인",
-  };
+  const labels = EXPOSURE_CLASS_KO;
+  const qual = (s.potential_indirect || 0) + (s.transmission_channels || 0);
   return (
     <div className="rp-body">
       <header className="ent-head">
         <p className="lbl">Interest Rate Shock · 가상 시나리오</p>
         <h2>{r.benchmark.label_en} <span className="arr">{s.shock_bp > 0 ? "+" : ""}{s.shock_bp}bp</span></h2>
-        <p className="ent-sector">{r.benchmark.plain} · 현재 기준(+0bp) 대비 · Stage {rnd.stage}/{r.rounds.length} {SHOCK_STAGES[rnd.round]}</p>
+        <p className="ent-sector">{r.benchmark.plain} · 비교 기준: 추가 충격 없음(+0bp) · 재생 {rnd.stage}/{r.rounds.length}단계</p>
       </header>
+      <section className="rp-sec">
+        <div className="shock-digest">
+          <div className="digest-row"><span className="digest-k">① 바뀐 것</span>
+            <p className="digest-v">{s.shock_bp ? <>{r.benchmark.label_en} <b className="num">{s.baseline_sofr_pct ?? r.params.sofr_pct}% → {s.stressed_sofr_pct ?? "—"}%</b> ({s.shock_bp > 0 ? "+" : ""}{s.shock_bp}bp){s.crisis_mode && s.crisis_mode !== "rate_only" ? ` · 위기 가정: ${CRISIS_MODE_KO[s.crisis_mode] || ko(s.crisis_mode)}` : ""}</> : <b>추가 충격 없음 (비교 기준 상태)</b>}</p></div>
+          <div className="digest-row"><span className="digest-k">② 영향 대상</span>
+            <div className="digest-v">
+              <ul className="digest-split">
+                <li><span className="cert cert-confirmed">정량 계산</span> <b className="num">{s.direct_measurable}</b></li>
+                <li><span className="cert cert-inferred">관계만 확인(금액 미산정)</span> <b className="num">{qual}</b></li>
+                <li><span className="cert cert-unknown">자료 부족</span> <b className="num">{s.insufficient_data}</b></li>
+              </ul>
+              <p className="fine">추가 연간 이자(정량분 합계) {delta === null ? "산정 불가" : money(delta, true)} · 분석용 높은·심각 단계 {s.companies_at_or_above_high ?? 0}개 (부도 판정 아님)</p>
+            </div></div>
+          <div className="digest-row"><span className="digest-k">③ 근거</span>
+            <p className="digest-v">공시된 SOFR 연동 잔액 {usdM(s.floating_sofr_principal_usd_m)} × 금리 변화. 고정금리 차입은 이자 불변. 대주·주선 관계는 손실로 계산하지 않습니다.</p></div>
+        </div>
+      </section>
       <Sec label="Ecosystem Impact" aside="vs +0bp">
         <dl>
           <KV k="현재 기준 (+0bp)" v={`${s.baseline_sofr_pct ?? r.params.sofr_pct}%`} tip="추가 충격 없음 — 절대금리 0%가 아님" />
@@ -911,9 +969,9 @@ function RateShockSummary(p: Props & { run: Extract<RunView, { kind: "rate_shock
           <KV k="네트워크 기업" v={String(s.network_companies)} />
           <KV k="직접 측정 가능" v={String(s.direct_measurable)} tip="공시 잔액으로 연간 이자 변화를 계산한 기업" />
           <KV k="높은·심각 스트레스" v={String(s.companies_at_or_above_high ?? 0)} tip="직접+2차 합산 · 분석용 밴드 — 파산 예측 아님" />
-          <KV k="전염 L1 / L2 / L3+" v={`${s.order1 ?? 0} / ${s.order2 ?? 0} / ${s.order3_plus ?? 0}`} tip={`max order ${s.max_contagion_order ?? 0} · quantified ${s.quantified_contagion ?? 0} · qualitative ${s.qualitative_contagion ?? 0} · pathway ${s.pathway_only ?? 0}`} />
+          <KV k="전염 1차 / 2차 / 3차 이상" v={`${s.order1 ?? 0} / ${s.order2 ?? 0} / ${s.order3_plus ?? 0}`} tip={`최대 ${s.max_contagion_order ?? 0}차 · 정량 ${s.quantified_contagion ?? 0} · 정성 ${s.qualitative_contagion ?? 0} · 경로만 ${s.pathway_only ?? 0}`} />
           <KV k="섹터·SPV" v={String(s.sector_stressed ?? 0)} tip={`심각 ${s.sector_critical ?? 0} · SPV ${s.spv_critical ?? 0} · 모회사 자동 파산 아님`} />
-          <KV k="위기 모드" v={String(s.crisis_mode ?? "rate_only")} tip="rate_only / cw_default / financing / combined" />
+          <KV k="위기 가정" v={CRISIS_MODE_KO[s.crisis_mode ?? "rate_only"] || ko(s.crisis_mode)} mono={false} tip="금리만 / CoreWeave 부도 가정 / 자금조달 경색 / 복합" />
           <KV k="잠재 간접" v={String(s.potential_indirect)} tip="관계는 확인되나 금액 미산정" />
           <KV k="전달 채널" v={String(s.transmission_channels)} tip="대주·주선 — 손실로 자동 해석하지 않음" />
           <KV k="데이터 부족·정성" v={String(s.insufficient_data)} />
@@ -922,20 +980,22 @@ function RateShockSummary(p: Props & { run: Extract<RunView, { kind: "rate_shock
         </dl>
         {r.origin_stress ? (
           <dl style={{ marginTop: 8 }}>
-            <KV k="재무 스트레스" v={r.origin_stress.level} tip={r.origin_stress.metric_trigger || undefined} tone={r.origin_stress.level === "critical" || r.origin_stress.level === "high" ? "warn" : undefined} />
+            <KV k="재무 스트레스 (분석용)" v={STRESS_LEVEL_KO[r.origin_stress.level] || r.origin_stress.level} mono={false} tip={r.origin_stress.metric_trigger || undefined} tone={r.origin_stress.level === "critical" || r.origin_stress.level === "high" ? "warn" : undefined} />
             <KV k="Δ이자/연환산 OCF" v={r.origin_stress.score_delta_over_ocf != null ? `${(r.origin_stress.score_delta_over_ocf * 100).toFixed(1)}%` : "—"} />
-            <KV k="OCF/이자 커버리지" v={r.origin_stress.baseline_coverage != null && r.origin_stress.stressed_coverage != null ? `${r.origin_stress.baseline_coverage.toFixed(2)}x → ${r.origin_stress.stressed_coverage.toFixed(2)}x` : "—"} />
-            <KV k="임계 SOFR (분석용)" v={r.origin_stress.critical_sofr_pct != null ? `${r.origin_stress.critical_sofr_pct.toFixed(2)}%` : "Critical rate cannot be determined from available disclosures."} tip={r.origin_stress.critical_trigger || undefined} />
+            <KV k="OCF/이자 커버리지" v={multipleChange(r.origin_stress.baseline_coverage, r.origin_stress.stressed_coverage) || "—"} mono={false} />
+            <KV k="임계 SOFR (분석용 · 약정 아님)" v={r.origin_stress.critical_sofr_pct != null ? `${r.origin_stress.critical_sofr_pct.toFixed(2)}%` : "공시 자료로 산정 불가"} tip={r.origin_stress.critical_trigger || undefined} />
           </dl>
         ) : null}
         <p className="fine">관계가 있다고 해서 재무 영향을 받은 것으로 세지 않습니다. 행성 파괴는 시나리오 추정이며 부도 판정이 아닙니다.</p>
       </Sec>
-      <Sec label="Formulas">
-        <ul className="log">{r.formulas.map((t, i) => <li key={i}>{t}</li>)}</ul>
-      </Sec>
-      <Sec label={`Stage ${rnd.stage} · ${SHOCK_STAGES[rnd.round]}`}>
-        <ul className="log">{rnd.lines.map((t, i) => <li key={i}>{t}</li>)}</ul>
-      </Sec>
+      <section className="rp-sec">
+        <Disclosure label="계산식">
+          <ul className="log">{r.formulas.map((t, i) => <li key={i}>{t}</li>)}</ul>
+        </Disclosure>
+        <Disclosure label={`재생 단계 로그 · ${rnd.stage}단계 ${rnd.title_ko || ""}`}>
+          <ul className="log">{rnd.lines.map((t, i) => <li key={i}>{t}</li>)}</ul>
+        </Disclosure>
+      </section>
       <Sec label="Exposure Classes">
         {Object.entries(labels).map(([k, lab]) => (
           <div key={k} className="catrow">
@@ -951,17 +1011,19 @@ function RateShockSummary(p: Props & { run: Extract<RunView, { kind: "rate_shock
             {r.instruments.filter((i) => i.exposure_class !== "not_applicable").slice(0, 12).map((i) => (
               <tr key={i.id} data-tip={i.reason}>
                 <td>{i.name}</td>
-                <td className="wrap">{i.exposure_class}</td>
+                <td className="wrap">{EXPOSURE_CLASS_KO[i.exposure_class] || ko(i.exposure_class)}</td>
                 <td className="r num">{i.annual_interest_delta_usd_m === null ? "—" : money(i.annual_interest_delta_usd_m, true)}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </Sec>
-      <Sec label="Notes">
-        <ul className="log">{r.notes.map((t, i) => <li key={i}>{t}</li>)}</ul>
-        {r.warnings.length ? <p className="fine warn">{r.warnings.slice(0, 3).join(" · ")}</p> : null}
-      </Sec>
+      <section className="rp-sec">
+        <Disclosure label="해석 한계 · 주의">
+          <ul className="log">{r.notes.map((t, i) => <li key={i}>{t}</li>)}</ul>
+          {r.warnings.length ? <p className="fine warn">{r.warnings.slice(0, 3).join(" · ")}</p> : null}
+        </Disclosure>
+      </section>
     </div>
   );
 }
@@ -970,59 +1032,83 @@ function PfShockSummary(p: Props & { run: Extract<RunView, { kind: "pf_shock" }>
   const r = p.run.result;
   const pf = r.pf;
   const rnd = r.rounds[Math.min(p.stage, r.rounds.length - 1)];
+  const [allCo, setAllCo] = useState(false);
+  const order = { quantified: 0, contract: 1, assumption: 2 } as const;
+  const ranked = [...pf.affected_companies].sort((a, b) => order[a.basis] - order[b.basis] || a.company_name.localeCompare(b.company_name, "ko"));
+  const shown = allCo ? ranked : ranked.slice(0, 5);
+  const nm = (id: string) => dn(p.nodeMap.get(id)) || id;
+  const intDelta = (pr: PfShockResult["pf"]["projects"][number]) => pr.interest_delta_usd_m == null
+    ? <span className="muted" data-tip="잔액·금리 공시가 없어 계산할 수 없음">산정 불가</span>
+    : pr.interest_delta_usd_m === 0 && !pf.rate_bp && !pf.kr_rate_bp ? <span className="muted">0 (금리 충격 없음)</span>
+      : money(pr.interest_delta_usd_m, true);
+  const dscrTxt = (pr: PfShockResult["pf"]["projects"][number]) => pr.baseline_dscr == null || pr.stressed_dscr == null
+    ? <span className="muted" data-tip="CFADS·원리금 일정 미공시">산정 불가</span>
+    : `${pr.baseline_dscr.toFixed(2)}배 → ${pr.stressed_dscr.toFixed(2)}배`;
   return (
     <div className="rp-body">
       <header className="ent-head">
         <p className="lbl">AI Data Center PF Shock · 가상 시나리오</p>
-        <h2>CW {pf.coreweave_distress || "normal"} · CAPEX {pf.hyperscaler_capex_pct}% · Rates +{pf.rate_bp}bp</h2>
-        <p className="ent-sector">Stage {rnd.stage}/{r.rounds.length} · {PF_SHOCK_STAGES[rnd.round]} · KR +{pf.kr_rate_bp}bp · GPU {pf.gpu_rent_pct}%</p>
+        <h2>{changedInputs(pf).join(" · ") || "추가 충격 없음"}</h2>
+        <p className="ent-sector">비교 기준: 추가 충격 없음 · 재생 {rnd.stage + 1}/{r.rounds.length}단계</p>
       </header>
-      <Sec label="Project stress" aside="이중 집계 없음">
-        <dl>
-          <KV k="계량 프로젝트" v={String(pf.measurable_projects)} />
-          <KV k="DSCR 악화(계산)" v={String(pf.dscr_deterioration)} tip="CFADS 공시분만" />
-          <KV k="유동성 갭(모형)" v={String(pf.liquidity_shortfalls)} />
-          <KV k="US→KR 직접 계약" v={String(pf.korean_verified_exposure)} tip="transmission_class=direct_contract" />
-          <KV k="US→KR 섹터·자금" v={String(pf.korean_sector_sensitivity)} tip="sector_demand / funding_market" />
-          <KV k="신규 PF 제한" v={pf.restrict_new_financing ? "ON" : "OFF"} />
-        </dl>
+      <section className="rp-sec"><PfShockDigest result={r} /></section>
+      <Sec label="주요 영향" aside={`${ranked.length}개 중 ${shown.length}개`}>
+        {ranked.length ? (
+          <ul className="ent-list">
+            {shown.map((c) => (
+              <li key={c.company_id}>
+                <button type="button" className="ent" onClick={() => p.onSelectNode(c.company_id)}>
+                  <span className="ent-name">{c.company_name}</span>
+                  <span className={`cert cert-${c.basis === "quantified" ? "confirmed" : c.basis === "contract" ? "inferred" : "assumed"}`}>{c.basis === "quantified" ? "정량" : c.basis === "contract" ? "계약 근거" : "가정 경로"}</span>
+                </button>
+                <p className="fine">{c.impact_category} · {c.transmission_path}</p>
+              </li>
+            ))}
+          </ul>
+        ) : <p className="muted-line">스트레스가 올라간 기업 없음</p>}
+        {ranked.length > 5 ? <button type="button" className="btn-text" onClick={() => setAllCo((v) => !v)}>{allCo ? "주요 5개만 보기" : `전체 ${ranked.length}개 보기`}</button> : null}
       </Sec>
-      <Sec label="US → Korea paths">
-        <ul className="log">
-          {pf.us_korea_paths.slice(0, 12).map((x) => (
-            <li key={x.edge_id}>
-              <button type="button" className="btn-text" onClick={() => p.onSelectNode(x.from)}>{x.from}</button>
-              {" → "}
-              <button type="button" className="btn-text" onClick={() => p.onSelectNode(x.to)}>{x.to}</button>
-              {" · "}{x.transmission_class}
-            </li>
-          ))}
-        </ul>
-      </Sec>
-      <Sec label={`Stage ${rnd.stage} · ${PF_SHOCK_STAGES[rnd.round]}`}>
-        <ul className="log">{rnd.lines.map((t, i) => <li key={i}>{t}</li>)}</ul>
-      </Sec>
-      <Sec label="Assumptions (user-defined)">
-        <ul className="log">{pf.assumptions.map((t, i) => <li key={i}>{t}</li>)}</ul>
-      </Sec>
-      <Sec label="Limitations">
-        <ul className="log">{pf.limitations.map((t, i) => <li key={i}>{t}</li>)}</ul>
-        {r.warnings.length ? <p className="fine warn">{r.warnings.join(" · ")}</p> : null}
-      </Sec>
-      <Sec label="Projects">
+      <Sec label="사업장" aside="기준 대비 · 계산 가능분만 수치">
         <table className="tbl">
-          <thead><tr><th>Project</th><th>Level</th><th className="r">Δ Interest</th></tr></thead>
+          <thead><tr><th>사업장</th><th>모형 단계</th><th className="r">DSCR</th><th className="r">추가 이자</th></tr></thead>
           <tbody>
-            {pf.projects.map((pr) => (
+            {pf.projects.filter((pr) => pr.level !== "normal" || pr.quantified).map((pr) => (
               <tr key={pr.project_id}>
                 <td><button type="button" className="btn-text" onClick={() => p.onSelectNode(pr.project_id)}>{projectDisplayName({ id: pr.project_id, name: pr.name })}</button></td>
-                <td>{pr.level}</td>
-                <td className="r num">{pr.interest_delta_usd_m == null ? "—" : money(pr.interest_delta_usd_m, true)}</td>
+                <td>{STRESS_LEVEL_KO[pr.level] || pr.level}</td>
+                <td className="r num">{dscrTxt(pr)}</td>
+                <td className="r num">{intDelta(pr)}</td>
               </tr>
             ))}
           </tbody>
         </table>
+        <p className="fine">모형 단계는 분석용 구분이며 실제 재무약정 위반·법적 부도 기준이 아닙니다. DSCR 1.0 미만은 모형상 상환여력 부족 신호입니다.</p>
       </Sec>
+      <Sec label="미국 → 국내 연결" aside="직접 계약과 가정 경로 구분">
+        <ul className="log">
+          {pf.us_korea_paths.filter((x) => x.transmission_class !== "unclassified").slice(0, 12).map((x) => (
+            <li key={x.edge_id}>
+              <button type="button" className="btn-text" onClick={() => p.onSelectNode(x.from)}>{nm(x.from)}</button>
+              {" → "}
+              <button type="button" className="btn-text" onClick={() => p.onSelectNode(x.to)}>{nm(x.to)}</button>
+              {" · "}{TRANSMISSION_CLASS_KO[x.transmission_class] || ko(x.transmission_class)}
+            </li>
+          ))}
+        </ul>
+        {pf.korean_unclassified_links ? <p className="fine">반도체 공급·제휴 등 분류 없는 링크 {pf.korean_unclassified_links}건은 직접 계약으로 세지 않습니다.</p> : null}
+      </Sec>
+      <section className="rp-sec">
+        <Disclosure label={`재생 단계 로그 · ${rnd.stage + 1}단계 ${rnd.title_ko || ""}`}>
+          <ul className="log">{rnd.lines.map((t, i) => <li key={i}>{t}</li>)}</ul>
+        </Disclosure>
+        <Disclosure label="사용자 가정">
+          <ul className="log">{pf.assumptions.map((t, i) => <li key={i}>{t}</li>)}</ul>
+        </Disclosure>
+        <Disclosure label="계산 한계 · 해석 주의">
+          <ul className="log">{pf.limitations.map((t, i) => <li key={i}>{t}</li>)}</ul>
+          {r.warnings.length ? <ul className="log">{r.warnings.map((t, i) => <li key={`w${i}`}>{t}</li>)}</ul> : null}
+        </Disclosure>
+      </section>
     </div>
   );
 }
@@ -1146,11 +1232,12 @@ function MarketOverviewView(p: Props) {
         <p className="lbl">Market View · 관측 시세</p>
         <h2>상장 {items.length}개 · 시세 {priced.length}개</h2>
         <p className="ent-sector">{p.quotes?.note}</p>
+        <p className="fine">가격은 일간 종가(실시간 아님) · {p.quotesLive ? "시세 서버 연결됨" : "저장된 스냅샷"}{p.quotes?.retrieved_at ? ` · 마지막 조회 ${new Date(p.quotes.retrieved_at).toLocaleString("ko-KR")}` : p.quotes?.generated_at ? ` · 스냅샷 생성 ${String(p.quotes.generated_at).replace("T", " ").slice(0, 16)}` : ""}</p>
       </header>
       <Sec label="구분">
         <p className="fine">아래 표는 <b>실제 관측 주가</b>입니다. Shock 탭의 금리 충격·차환 가정과 무관하며, 충격 bp를 바꿔도 이 숫자는 바뀌지 않습니다.</p>
       </Sec>
-      <Sec label="Performance" aside={<button type="button" className="btn-text" onClick={p.onRefreshQuotes} disabled={p.quotesBusy}><IconReset size={11} /> {p.quotesBusy ? "조회 중…" : "지금 조회"}</button>}>
+      <Sec label="Performance" aside={<button type="button" className="btn-text" onClick={p.onRefreshQuotes} disabled={p.quotesBusy} data-tip={refreshTip(!!p.quotesLive)}><IconReset size={11} /> {refreshLabel(!!p.quotesLive, p.quotesBusy)}</button>}>
         <table className="tbl qtbl">
           <thead><tr><th>#</th><th>기업</th><th className="r">가격</th><th className="r">등락</th><th className="r">변동</th><th className="r">기준</th></tr></thead>
           <tbody>
@@ -1189,7 +1276,7 @@ function MarketOverviewView(p: Props) {
       <Sec label="FX" aside={p.quotes?.fx.source}>
         {Object.keys(fx).length ? (
           <dl>{Object.entries(fx).map(([c, r]) => <KV key={c} k={`1 ${c}`} v={`${r.krw_per_unit.toLocaleString("ko-KR", { maximumFractionDigits: 2 })}원`} tip={`${r.obs_date} 고시`} />)}</dl>
-        ) : <p className="muted-line">환율 미수집 — 현지 통화 가격은 표시됩니다. (선택: KOREAEXIM_API_KEY)</p>}
+        ) : <p className="muted-line">환율 미수집 — 현지 통화 가격은 표시됩니다. (환율은 한국수출입은행 API 키가 설정된 경우에만 수집)</p>}
       </Sec>
       {p.quotes?.providers && Object.keys(p.quotes.providers).length ? (
         <Sec label="Providers">
@@ -1208,38 +1295,38 @@ function MarketOverviewView(p: Props) {
 // ---------------------------------------------------------------- lenders & commercial (Overview)
 function LendersSec({ p }: { p: Props }) {
   const rows = useMemo(() => {
-    const m = new Map<string, { id: string; n: number; sum: number; unknown: number; first: string | null; last: string | null; roles: Set<string> }>();
+    const m = new Map<string, { id: string; n: number; names: string[]; first: string | null; last: string | null; roles: Set<string> }>();
     for (const x of p.net.financials.instruments) {
       for (const q of x.participants) {
-        const r = m.get(q.entity) || { id: q.entity, n: 0, sum: 0, unknown: 0, first: null, last: null, roles: new Set<string>() };
+        const r = m.get(q.entity) || { id: q.entity, n: 0, names: [], first: null, last: null, roles: new Set<string>() };
         r.n += 1;
-        if (x.principal_usd_m !== null) r.sum += x.principal_usd_m; else r.unknown += 1;
+        r.names.push(x.name);
         if (x.maturity) { r.first = !r.first || x.maturity < r.first ? x.maturity : r.first; r.last = !r.last || x.maturity > r.last ? x.maturity : r.last; }
         q.roles.forEach((ro) => r.roles.add(ro.replace(/ \(.*\)$/, "")));
         m.set(q.entity, r);
       }
     }
-    return [...m.values()].sort((a, b) => b.sum - a.sum || b.n - a.n);
-  }, [p.net]);
+    return [...m.values()].sort((a, b) => b.n - a.n || dn(p.nodeMap.get(a.id)).localeCompare(dn(p.nodeMap.get(b.id)), "ko"));
+  }, [p.net, p.nodeMap]);
   const [all, setAll] = useState(false);
   const shown = all ? rows : rows.slice(0, 10);
   return (
     <Sec label="Lenders" aside={`${rows.length}개 기관`}>
       <table className="tbl lend">
-        <thead><tr><th>기관</th><th className="r">계약</th><th className="r" data-tip="기관이 참여한 계약의 전체 잔액 합계. 기관 보유액이 아닙니다.">참여 계약 잔액</th><th className="r">만기</th></tr></thead>
+        <thead><tr><th>기관 · 참여 계약</th><th className="r">계약 수</th><th className="r">만기</th></tr></thead>
         <tbody>
           {shown.map((r) => (
             <tr key={r.id} onClick={() => p.onSelectNode(r.id)}>
-              <td>{dn(p.nodeMap.get(r.id))}<div className="tiny muted">{[...r.roles].slice(0, 2).join(", ")}</div></td>
-              <td className="r num">{r.n}</td>
-              <td className="r num" data-tip={korUsd(r.sum)}>{usdM(r.sum)}{r.unknown ? <div className="tiny muted">+{r.unknown}건 미공시</div> : null}</td>
+              <td>{dn(p.nodeMap.get(r.id))}<div className="tiny muted">{[...r.roles].slice(0, 2).map((x) => ko(x)).join(", ")}</div>
+                <div className="tiny muted wrap">{r.names.slice(0, 2).join(" · ")}{r.names.length > 2 ? ` 외 ${r.names.length - 2}건` : ""}</div></td>
+              <td className="r num">{r.n}건</td>
               <td className="r num">{r.first ? (r.first.slice(0, 4) === r.last?.slice(0, 4) ? r.first.slice(0, 4) : `${r.first.slice(0, 4)}~${r.last?.slice(2, 4)}`) : "—"}</td>
             </tr>
           ))}
         </tbody>
       </table>
       {rows.length > 10 ? <button type="button" className="btn-text" onClick={() => setAll((a) => !a)}>{all ? "접기" : `전체 ${rows.length}개 기관 보기`}</button> : null}
-      <p className="fine">공시는 계약 단위 금액과 참여기관 명단만 제공합니다. 은행별로 실제 빌려준 금액(보유액)은 공시되지 않아 표시하지 않습니다.</p>
+      <p className="fine">공시는 계약 단위 금액과 참여기관 명단만 제공합니다. 기관별 보유액은 공시되지 않으며, 같은 계약 총액을 참여기관마다 더하면 중복 집계가 되므로 기관별 금액 합계를 표시하지 않습니다. 계약 금액은 기관을 눌러 계약별로 확인하세요.</p>
     </Sec>
   );
 }
@@ -1266,7 +1353,10 @@ function CommercialSec({ p }: { p: Props }) {
 
 // ---------------------------------------------------------------- overview (Network View, nothing selected)
 function Overview(p: Props) {
+  if ((p.net.meta as { ecosystem?: string }).ecosystem === "datacenter_pf") return <PfOverview {...p} />;
   const f = p.net.financials;
+  const vendor = f.instruments.filter((x) => x.kind === "vendor_financing").length;
+  const netSum = (f.totals.recourse_net_usd_m || 0) + (f.totals.nonrecourse_net_usd_m || 0);
   const max = Math.max(...f.maturities.map((x) => x.usd_m));
   const metric = (id: string) => f.metrics.find((x) => x.id === id);
   return (
@@ -1274,7 +1364,10 @@ function Overview(p: Props) {
       <header className="ent-head">
         <p className="lbl">CoreWeave · Debt Structure</p>
         <h2>총 차입 원금 {usdM(f.totals.principal_usd_m)}</h2>
-        <p className="ent-sector">10-Q 기준일 {f.as_of} · 소구 {usdM(f.totals.recourse_net_usd_m)} · 비소구 {usdM(f.totals.nonrecourse_net_usd_m)} (순액)</p>
+        <p className="ent-sector">대상: CoreWeave 자체 차입 · 10-Q 기준일 {f.as_of} · 소구 {usdM(f.totals.recourse_net_usd_m)} · 비소구 {usdM(f.totals.nonrecourse_net_usd_m)} (순액)</p>
+        {Math.abs(netSum - f.totals.principal_usd_m) > 1 ? (
+          <p className="fine">원금 합계({usdM(f.totals.principal_usd_m)})와 순액 합계({usdM(netSum)})의 차이 {usdM(f.totals.principal_usd_m - netSum)}는 할인·발행비용 차감 등 회계상 순액 처리에서 생깁니다(10-Q 표시 기준).</p>
+        ) : null}
       </header>
       <Sec label="Maturities" aside="원금 상환 예정">
         <ul className="mat">
@@ -1302,7 +1395,8 @@ function Overview(p: Props) {
           })}
         </dl>
       </Sec>
-      <Sec label="Contracts" aside={`${f.instruments.length}건 · 클릭해 계약별 탐색`}>
+      <Sec label="Contracts" aside={`${f.instruments.length}건${vendor ? ` (공급사 금융 ${vendor}건 포함)` : ""}`}>
+        {vendor ? <p className="fine">상단 Contracts 수({f.instruments.length - vendor}건)는 대출·채권·전환사채·리볼버만 셉니다. 아래 목록은 공급사 금융 {vendor}건을 포함한 전체 차입금입니다.</p> : null}
         {f.instruments.map((x) => (
           <button type="button" key={x.id} className="ctr-row" onClick={() => p.onSelectContract(x.id)}>
             <span>{x.name}</span><span className="num">{money(x.principal_usd_m)}</span><em>{x.maturity || "만기 미공시"} · {x.participants.length ? `${x.participants.length}개 기관` : "참여기관 미공시"}</em>
@@ -1317,6 +1411,79 @@ function Overview(p: Props) {
             <li>ASSUMED: 사용자가 시나리오에 입력한 값</li>
             <li>UNKNOWN: 공개자료로 확인되지 않음 — 숫자를 만들지 않음</li>
             <li>{p.stats?.note}</li>
+          </ul>
+        </Disclosure>
+      </section>
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------- AI DC PF overview (nothing selected)
+function PfOverview(p: Props) {
+  const f = p.net.financials;
+  const insts = f.instruments;
+  const byBorrower = new Map<string, Instrument[]>();
+  for (const x of insts) {
+    const k = x.borrower || "차주 미공시";
+    if (!byBorrower.has(k)) byBorrower.set(k, []);
+    byBorrower.get(k)!.push(x);
+  }
+  const nameOf = (id: string) => (p.nodeMap.get(id) ? dn(p.nodeMap.get(id)) : id);
+  const today = p.net.meta.as_of;
+  const kr = p.net.nodes.filter((n) => (n as { region?: string }).region === "KR");
+  const spv = kr.filter((n) => n.entity_type === "spv" || n.group === "project_finance").length;
+  const krIds = new Set(kr.map((n) => n.id));
+  const krLoans = p.net.edges.filter((e) => (krIds.has(e.source) || krIds.has(e.target)) && e.relationship_type === "PROJECT_LOAN");
+  const krLoanCurrent = krLoans.filter((e) => amountFacts(e, today).current === "current");
+  const krLoanConfirmed = krLoanCurrent.filter((e) => amountFacts(e, today).certainty === "confirmed");
+  return (
+    <div className="rp-body">
+      <header className="ent-head">
+        <p className="lbl">AI Data Center PF · 개요</p>
+        <h2>미국 DC 프로젝트 금융계약 {insts.length}건</h2>
+        <p className="ent-sector">대상: {[...byBorrower.keys()].map(nameOf).join(" · ")} (프로젝트 SPC 차주) · 기준 {f.as_of}</p>
+        <p className="fine">이 금액은 각 프로젝트 SPC의 차입이며 <b>CoreWeave 자체 차입금이 아닙니다</b>. CoreWeave는 임차인(고객)으로 연결됩니다. CoreWeave 자체 차입은 AI 반도체 생태계 화면에서 봅니다.</p>
+      </header>
+      <Sec label="차주별 계약" aside="차주 내 계약 잔액 · 비소구">
+        <table className="tbl">
+          <thead><tr><th>차주</th><th className="r">계약</th><th className="r">잔액 합계</th></tr></thead>
+          <tbody>
+            {[...byBorrower.entries()].map(([b, xs]) => {
+              const known = xs.filter((x) => x.principal_usd_m !== null);
+              const sum = known.reduce((s, x) => s + (x.principal_usd_m || 0), 0);
+              return (
+                <tr key={b} onClick={() => p.nodeMap.has(b) && p.onSelectNode(b)}>
+                  <td>{nameOf(b)}</td>
+                  <td className="r num">{xs.length}</td>
+                  <td className="r num" data-tip={korUsd(sum)}>{known.length ? usdM(sum) : "미공시"}{known.length < xs.length ? <div className="tiny muted">미공시 {xs.length - known.length}건 제외</div> : null}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+        <p className="fine">합계는 서로 다른 차주의 독립된 계약을 더한 값({usdM(f.totals.principal_usd_m)})이며, 기준일이 계약마다 다를 수 있습니다. 상단 「US PF 계약」 수와 같은 범위입니다.</p>
+      </Sec>
+      <Sec label="계약 일정" aside="체결 → 최종 만기">
+        <Timeline rows={insts.filter((x) => x.maturity).sort((a, b) => (a.maturity || "").localeCompare(b.maturity || "")).map((x) => ({
+          id: x.id, label: `${nameOf(x.borrower || "")} · ${x.name}`, start: x.signed, end: x.maturity, amount: x.principal_usd_m, amountNote: x.commitment_usd_m !== null ? `약정 ${usdM(x.commitment_usd_m)}` : "잔액 미공시", tone: "debt" as const,
+        }))} today={today} onSelect={p.onSelectContract}
+          caption="각 계약의 잔액 기준일은 계약 상세에서 확인하세요. 분할상환 계약은 만기 전에 잔액이 줄어듭니다." />
+      </Sec>
+      <LendersSec p={p} />
+      <Sec label="국내 PF 관계 요약" aside={`기준 ${today}`}>
+        <dl>
+          <KV k="국내 회사·SPC" v={`${kr.length}개 (SPC·PFV ${spv}개)`} mono={false} />
+          <KV k="국내 PF 대출 관계" v={`현재 ${krLoanCurrent.length}건 · 그중 금액 확인 ${krLoanConfirmed.length}건`} mono={false} />
+        </dl>
+        <p className="fine">국내 대출 금액은 차주(SPC)·대주별 관계에서 확인합니다. 서로 다른 사업·기준일의 금액은 이 화면에서 합산하지 않습니다.</p>
+      </Sec>
+      <section className="rp-sec">
+        <Disclosure label="이 화면의 숫자 구분">
+          <ul className="assm">
+            <li>확인된 금액: 공시·회사 발표로 확인</li>
+            <li>추정·확인 필요: 원문 단위나 현재 잔액이 확인되지 않음 — 합계에 넣지 않음</li>
+            <li>공개자료 추론: 2차 자료 또는 구조상 추론</li>
+            <li>금액 미확인: 숫자를 만들지 않음 (0으로 처리하지 않음)</li>
           </ul>
         </Disclosure>
       </section>

@@ -13,7 +13,7 @@ const CATEGORIES: PfImpactCategory[] = [
 type ViewMode = "summary" | "all" | "paths" | "detail";
 
 function rankScore(c: PfAffectedCompany): number {
-  let s = 0;
+  let s = c.basis === "quantified" ? 60 : c.basis === "contract" ? 30 : 0;
   if (c.directness === "direct") s += 40;
   if (c.impact_category === "대출·투자금 손실 가능") s += 30;
   else if (c.impact_category === "보증·추가 자금부담 가능") s += 25;
@@ -63,26 +63,19 @@ export function PfAffectedCompaniesPanel({
 
   const stats = useMemo(() => {
     const projects = new Set(rows.flatMap((r) => r.projects.map((p) => p.project_id)));
-    let exposureEok = 0;
-    let exposureKnown = 0;
-    let exposureUnknown = 0;
-    const seenAmt = new Set<string>();
+    // Count related deals by evidence level — amounts of different kinds/dates are never added here.
+    const seen = new Set<string>();
+    let amtKnown = 0, amtUnknown = 0;
     for (const r of rows) {
       for (const p of r.projects) {
-        if (p.contingent) continue;
+        if (seen.has(p.edge_id)) continue;
+        seen.add(p.edge_id);
         if (p.amount_type === "facility_total_context" || p.amount_type === "underwrite_commitment") continue;
-        const key = `${p.edge_id}:${p.amount_type}`;
-        if (seenAmt.has(key)) continue;
-        seenAmt.add(key);
-        if (p.amount_krw_eok != null) {
-          exposureEok += p.amount_krw_eok;
-          exposureKnown += 1;
-        } else exposureUnknown += 1;
+        if (p.amount_krw_eok != null && !/추정/.test(p.amount_note || "")) amtKnown += 1; else amtUnknown += 1;
       }
     }
-    const riskUp = rows.filter((r) => !r.default_assessment.includes("자료 부족")).length;
     const maxPath = ranked[0]?.transmission_path || "—";
-    return { projects: projects.size, exposureEok, exposureKnown, exposureUnknown, riskUp, maxPath };
+    return { projects: projects.size, amtKnown, amtUnknown, maxPath };
   }, [rows, ranked]);
 
   if (!result) {
@@ -125,13 +118,12 @@ export function PfAffectedCompaniesPanel({
       </div>
 
       <dl className="pf-shock-kpis">
-        <div><dt>영향 기업</dt><dd className="num">{rows.length}</dd></div>
-        <div><dt>위험도 상승</dt><dd className="num">{stats.riskUp}</dd></div>
-        <div><dt>영향 사업장</dt><dd className="num">{stats.projects}</dd></div>
-        <div><dt>확인된 익스포저</dt><dd className="num">{stats.exposureKnown ? `${Math.round(stats.exposureEok).toLocaleString("ko-KR")}억` : "—"}</dd></div>
-        <div><dt>익스포저 미확인</dt><dd className="num">{stats.exposureUnknown}</dd></div>
+        <div data-tip="충격 입력으로 모형상 스트레스 단계가 '정상'보다 올라간 기업 수(중복 제거). 손실·부도 확인이 아닙니다."><dt>스트레스 상승 기업</dt><dd className="num">{rows.length}</dd></div>
+        <div data-tip="관련 사업장 수(중복 제거)"><dt>관련 사업장</dt><dd className="num">{stats.projects}</dd></div>
+        <div data-tip="공시로 금액이 확인된 관련 거래 수. 유형이 다른 금액은 합산하지 않습니다."><dt>금액 확인 거래</dt><dd className="num">{stats.amtKnown}</dd></div>
+        <div data-tip="금액이 공개되지 않았거나 추정인 관련 거래 수 — 0으로 처리하지 않음"><dt>금액 미확인·추정</dt><dd className="num">{stats.amtUnknown}</dd></div>
       </dl>
-      <p className="fine pf-shock-path"><b>최대 위험 전파 경로</b><br />{stats.maxPath}</p>
+      <p className="fine pf-shock-path"><b>대표 전달 경로</b> <span className="muted">(근거 수준이 가장 높은 순)</span><br />{stats.maxPath}</p>
 
       <div className="pf-mech-block">
         <p className="lbl">공통 충격 경로</p>
@@ -227,7 +219,7 @@ function CompanyRow({
         >
           <span className={`dot ${r.directness === "direct" ? "dot-direct" : "dot-indirect"}`} />
           <span className="ent-name wrap">{r.company_name}</span>
-          <span className="ent-tk num">{r.directness === "direct" ? "직접" : "간접"}</span>
+          <span className={`cert cert-${r.basis === "quantified" ? "confirmed" : r.basis === "contract" ? "inferred" : "assumed"}`}>{r.basis === "quantified" ? "정량" : r.basis === "contract" ? "계약 근거" : "가정 경로"}</span>
         </button>
         <button type="button" className="btn-text pf-aff-expand" onClick={onToggle} aria-expanded={expanded}>
           {expanded ? "접기" : "상세"}
@@ -235,7 +227,7 @@ function CompanyRow({
       </div>
       {expanded ? (
         <div className="pf-aff-detail">
-          <p className="fine"><b>범주</b> {r.impact_category}</p>
+          <p className="fine"><b>범주</b> {r.impact_category} · {r.directness === "direct" ? "직접 관계" : "간접 경로"}</p>
           <p className="fine"><b>경로</b> {r.transmission_path}</p>
           {r.projects.length ? (
             <ul className="pf-aff-proj">
@@ -243,7 +235,7 @@ function CompanyRow({
                 <li key={p.edge_id}>
                   <span className="wrap">{p.project_name}</span>
                   <span className="muted"> · {p.exposure_label}</span>
-                  <span className="num"> · {p.amount_krw_eok != null ? `${p.amount_krw_eok.toLocaleString("ko-KR")}억` : "금액 미공개"}</span>
+                  <span className="num"> · {p.amount_krw_eok != null ? `${p.amount_krw_eok.toLocaleString("ko-KR")}억${/추정/.test(p.amount_note || "") ? " (추정)" : ""}` : "금액 미확인"}</span>
                   {p.contingent ? <span className="warn"> · 조건부</span> : null}
                 </li>
               ))}

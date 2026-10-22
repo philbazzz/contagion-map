@@ -1,7 +1,11 @@
 import type { Network, SourcesResponse } from "../types";
 import { KIND_KO } from "../lib/scenario";
-import { REL_LABEL, STATUS_KO, domainOf, usdM } from "../lib/format";
+import { GROUP_LABEL, REL_LABEL, STATUS_KO, domainOf, usdM } from "../lib/format";
+import { cleanNote } from "../lib/labels";
 import { IconLink } from "./Icons";
+import { amountFacts, isHomepageUrl, CERTAINTY_SHORT } from "../lib/evidence";
+import { SOURCE_STATUS_KO } from "../lib/labels";
+import { findDuplicateProjects } from "../lib/dupCheck";
 
 /** Every number the engine uses (section 6 audit). Kept next to the data so the screen and README agree. */
 export const MODEL_INPUTS: { name: string; meaning: string; value: string; formula: string; basis: string; status: string }[] = [
@@ -28,7 +32,8 @@ type Issue = { project_id: string; kind: string; text: string };
 type Research = { version: string; date: string; method: string; amount_unit: string; principles: string[]; counts: Record<string, number> };
 
 /** 국내 AI DC 조사 현황 — Claude v6 연구 메타 + 숨김 노드. */
-function KrDcResearch({ net, onSelectNode }: { net: Network; onSelectNode: (id: string) => void }) {
+function KrDcResearch({ net, onSelectNode, projects }: { net: Network; onSelectNode: (id: string) => void; projects?: { id: string; name?: string | null; name_ko?: string | null }[] }) {
+  const projName = (id: string) => { const pp = projects?.find((x) => x.id === id); return pp ? (pp.name_ko || pp.name || id) : id.startsWith("kr_permit_") ? "인허가 사업장(명칭 미기재)" : id; };
   const meta = (net.meta as { kr_dc_research?: Research }).kr_dc_research;
   if (!meta) return null;
   const hidden = ((net as { hidden_nodes?: { id: string; name_ko?: string; name: string; group: string; research_status?: string; research_note?: string }[] }).hidden_nodes) || [];
@@ -48,8 +53,8 @@ function KrDcResearch({ net, onSelectNode }: { net: Network; onSelectNode: (id: 
   return (
     <section className="sv-sec">
       <h3>국내 AI DC 조사 현황 ({meta.version} · {meta.date})</h3>
-      <p className="tiny">{meta.method}. 금액 단위 {meta.amount_unit}.</p>
-      <ul className="tiny" style={{ margin: "4px 0 8px", paddingLeft: 16 }}>{meta.principles.map((x) => <li key={x}>{x}</li>)}</ul>
+      <p className="tiny">{cleanNote(meta.method)}. 금액 단위 {meta.amount_unit}.</p>
+      <ul className="tiny" style={{ margin: "4px 0 8px", paddingLeft: 16 }}>{meta.principles.map((x) => <li key={x}>{cleanNote(x)}</li>)}</ul>
       <div className="sv-status">
         {[...byStatus.entries()].map(([st, n]) => (
           <div key={st} className="sv-card"><b className="num">{n}</b><p>{st}</p></div>
@@ -63,7 +68,7 @@ function KrDcResearch({ net, onSelectNode }: { net: Network; onSelectNode: (id: 
             {rows.sort((a, b) => a.status.localeCompare(b.status) || a.name.localeCompare(b.name, "ko")).map((r) => (
               <tr key={r.id}>
                 <td>{r.onMap ? <button type="button" className="linkish" onClick={() => onSelectNode(r.id)}>{r.name}</button> : r.name}</td>
-                <td className="tiny">{r.group}</td>
+                <td className="tiny">{GROUP_LABEL[r.group] || r.group}</td>
                 <td className="tiny">{r.status}</td>
                 <td className="num tiny">{relCount.get(r.id) || 0}</td>
                 <td className="tiny">{r.onMap ? "표시" : "숨김"}</td>
@@ -79,7 +84,7 @@ function KrDcResearch({ net, onSelectNode }: { net: Network; onSelectNode: (id: 
           <div className="table-wrap">
             <table className="sv-table">
               <thead><tr><th>사업</th><th>구분</th><th>내용</th></tr></thead>
-              <tbody>{issues.map((i, k) => <tr key={k}><td className="tiny">{i.project_id}</td><td className="tiny">{i.kind}</td><td className="tiny">{i.text}</td></tr>)}</tbody>
+              <tbody>{issues.map((i, k) => <tr key={k}><td className="tiny">{projName(i.project_id)}</td><td className="tiny">{i.kind}</td><td className="tiny">{cleanNote(i.text)}</td></tr>)}</tbody>
             </table>
           </div>
         </>
@@ -88,16 +93,28 @@ function KrDcResearch({ net, onSelectNode }: { net: Network; onSelectNode: (id: 
   );
 }
 
-export function SourcesView({ net, sources, onSelectNode, onSelectContract }: {
+export function SourcesView({ net, sources, onSelectNode, onSelectContract, projects }: {
   net: Network; sources: SourcesResponse | null; onSelectNode: (id: string) => void; onSelectContract: (id: string) => void;
+  projects?: { id: string; name?: string | null; name_ko?: string | null; address?: string | null }[];
 }) {
-  const names = new Map(net.nodes.map((n) => [n.id, n.name]));
-  const counts = sources?.status_counts || {};
+  const names = new Map(net.nodes.map((n) => [n.id, n.name_ko || n.name]));
+  const isPf = (net.meta as { ecosystem?: string }).ecosystem === "datacenter_pf";
+  const fallbackCounts: Record<string, number> = {};
+  for (const x of [...net.nodes, ...net.edges]) fallbackCounts[x.source_status] = (fallbackCounts[x.source_status] || 0) + 1;
+  const counts = sources?.status_counts && Object.keys(sources.status_counts).length ? sources.status_counts : fallbackCounts;
+  const today = net.meta.as_of;
+  const isScenario = (e: Network["edges"][number]) => (e as { layer?: string }).layer === "scenario" || e.source_status === "ASSUMED";
+  const factEdges = net.edges.filter((e) => !isScenario(e));
+  const scenEdges = net.edges.filter(isScenario);
+  const dups = projects ? findDuplicateProjects(projects) : [];
+  const unlinked = (sources?.sources || net.sources).filter((s) => !s.url || isHomepageUrl(s.url)).length;
   return (
     <div className="sources-view">
       <header className="sv-head">
         <h2>Data &amp; Sources</h2>
-        <p>기업 {net.nodes.length} · 관계 {net.edges.length} · 금융계약 {net.financials.instruments.length} · 출처 {net.sources.length}. 재무 기준일 {net.financials.as_of} (10-Q), 데이터 정리일 {net.meta.as_of}. 확인되지 않은 값은 UNKNOWN으로 두고 숫자를 만들지 않습니다.</p>
+        <p>기업 {net.nodes.length} · 관계 {net.edges.length} · 금융계약 {net.financials.instruments.length} · 출처 {net.sources.length}.
+          {" "}<b>자료 기준일</b>(재무) {net.financials.as_of}{isPf ? "" : " (10-Q)"} · <b>데이터 정리일</b> {net.meta.as_of} · 가격 기준일은 Market 화면에 종목별로 표시합니다.
+          {" "}확인되지 않은 값은 미확인으로 두고 숫자를 만들지 않습니다.</p>
       </header>
       <div className="sv-status">
         {(["VERIFIED", "INFERRED", "ASSUMED", "UNKNOWN"] as const).map((s) => (
@@ -109,10 +126,23 @@ export function SourcesView({ net, sources, onSelectNode, onSelectContract }: {
         ))}
       </div>
 
-      <KrDcResearch net={net} onSelectNode={onSelectNode} />
+      <KrDcResearch net={net} onSelectNode={onSelectNode} projects={projects} />
+
+      {dups.length ? (
+        <section className="sv-sec">
+          <h3>중복 의심 사업명 ({dups.length}그룹) · 자동 병합하지 않음</h3>
+          <p className="tiny muted">한글명·영문명을 정규화했을 때 같은 이름이 되는 사업입니다. 이름이 같아도 다른 사업일 수 있어 자동으로 합치지 않으며, 원문 주소·허가번호로 개별 확인이 필요합니다.</p>
+          <div className="table-wrap">
+            <table className="sv-table">
+              <thead><tr><th>정규화 이름</th><th>해당 사업 수</th><th>표기</th></tr></thead>
+              <tbody>{dups.map((d) => <tr key={d.key}><td className="tiny">{d.key}</td><td className="tiny num" data-tip="개발용 사업 식별자">{d.ids.length}건</td><td className="tiny">{d.names.join(" / ")}</td></tr>)}</tbody>
+            </table>
+          </div>
+        </section>
+      ) : null}
 
       <section className="sv-sec">
-        <h3>Model Inputs · 계산에 쓰는 모든 값</h3>
+        <h3>시나리오 가정 · 계산 입력 (사실 출처와 별도)</h3>
         <div className="table-wrap">
           <table className="sv-table">
             <thead><tr><th>값</th><th>경제적 의미</th><th>현재 값</th><th>적용 식</th><th>근거 · 출처</th><th>구분</th></tr></thead>
@@ -136,7 +166,7 @@ export function SourcesView({ net, sources, onSelectNode, onSelectContract }: {
         <h3>Financing Contracts ({net.financials.instruments.length})</h3>
         <div className="table-wrap">
           <table className="sv-table">
-            <thead><tr><th>계약</th><th>유형</th><th>잔액 (6.30)</th><th>금리</th><th>유효</th><th>만기</th><th>참여기관</th></tr></thead>
+            <thead><tr><th>계약</th><th>유형</th><th>잔액 ({net.financials.as_of})</th><th>금리</th><th>유효</th><th>만기</th><th>참여기관</th></tr></thead>
             <tbody>
               {net.financials.instruments.map((x) => (
                 <tr key={x.id}>
@@ -155,34 +185,52 @@ export function SourcesView({ net, sources, onSelectNode, onSelectContract }: {
       </section>
 
       <section className="sv-sec">
-        <h3>Relationships ({net.edges.length})</h3>
+        <h3>확인·추론된 관계 ({factEdges.length})</h3>
         <div className="table-wrap">
           <table className="sv-table">
             <thead><tr><th>관계</th><th>유형</th><th>역할</th><th>금액</th><th>구분</th></tr></thead>
             <tbody>
-              {net.edges.map((e) => (
+              {factEdges.map((e) => {
+                const f = amountFacts(e, today);
+                return (
                 <tr key={e.id}>
                   <td><button type="button" className="linkish" onClick={() => onSelectNode(e.source)}>{names.get(e.source)}</button> — <button type="button" className="linkish" onClick={() => onSelectNode(e.target)}>{names.get(e.target)}</button><div className="tiny muted">{e.label}</div></td>
                   <td className="tiny">{REL_LABEL[e.relationship_type] || e.relationship_type}</td>
                   <td className="tiny">{(e.roles || []).join(", ") || "—"}</td>
-                  <td className="num tiny">{e.amount_usd_m !== null ? usdM(e.amount_usd_m) : "미공시"}</td>
-                  <td><span className={`st-tag st-${e.source_status}`}>{e.source_status}</span></td>
+                  <td className="num tiny">{f.value === null ? "미확인" : f.unit === "억원" ? `${f.value.toLocaleString("ko-KR")}억` : usdM(f.value)}{f.value !== null && f.certainty !== "confirmed" ? ` (${CERTAINTY_SHORT[f.certainty]})` : ""}<div className="muted">{f.kindKo}</div></td>
+                  <td><span className={`st-tag st-${e.source_status}`} data-tip={SOURCE_STATUS_KO[e.source_status]}>{e.source_status}</span></td>
                 </tr>
-              ))}
+                );
+              })}
             </tbody>
           </table>
         </div>
       </section>
 
+      {scenEdges.length ? (
+        <section className="sv-sec">
+          <h3>시나리오 가정 관계 ({scenEdges.length}) · 사실 근거 아님</h3>
+          <div className="table-wrap">
+            <table className="sv-table">
+              <thead><tr><th>관계</th><th>설명</th></tr></thead>
+              <tbody>{scenEdges.map((e) => <tr key={e.id}><td>{names.get(e.source)} — {names.get(e.target)}</td><td className="tiny">{e.explanation || e.label}</td></tr>)}</tbody>
+            </table>
+          </div>
+        </section>
+      ) : null}
+
       <section className="sv-sec">
-        <h3>Sources ({net.sources.length})</h3>
+        <h3>Sources ({net.sources.length}){unlinked ? ` · 원문 연결 미확보 ${unlinked}건` : ""}</h3>
         <div className="table-wrap">
           <table className="sv-table">
             <thead><tr><th>자료</th><th>발행</th><th>일자</th><th>사용 내용</th></tr></thead>
             <tbody>
               {(sources?.sources || net.sources).map((s) => (
                 <tr key={s.id}>
-                  <td><a href={s.url} target="_blank" rel="noreferrer">{s.title} <IconLink size={11} /></a><div className="tiny muted">{domainOf(s.url)}</div></td>
+                  <td>{s.url && !isHomepageUrl(s.url)
+                    ? <a href={s.url} target="_blank" rel="noreferrer">{s.title} <IconLink size={11} /></a>
+                    : <>{s.title} <span className="tiny muted">· 원문 연결 미확보{s.url ? " (홈페이지 주소만)" : ""}</span></>}
+                    <div className="tiny muted">{s.url ? domainOf(s.url) : "—"}</div></td>
                   <td className="tiny">{s.publisher}</td>
                   <td className="num">{s.date}</td>
                   <td className="tiny">{s.used_for}</td>

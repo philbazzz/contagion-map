@@ -1,9 +1,11 @@
 /** Group a company's verified PF edges by project for the detail panel. */
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import type { Network, NetEdge, NetNode } from "../types";
 import type { PfProject } from "../pf/types";
 import { displayName, projectDisplayName } from "../lib/displayName";
-import { AMOUNT_TYPE_KO, EVIDENCE_STATUS_KO, FINANCING_STAGE_KO, REL_LABEL } from "../lib/format";
+import { EVIDENCE_STATUS_KO, FINANCING_STAGE_KO, REL_LABEL } from "../lib/format";
+import { cleanNote } from "../lib/labels";
+import { CERTAINTY_KO, CURRENT_KO, amountFacts, fmtSum, sourceRef, statusKo, summarizeExposure, type AmountFacts } from "../lib/evidence";
 
 function Sec({ label, aside, children }: { label: string; aside?: ReactNode; children: ReactNode }) {
   return (
@@ -14,17 +16,21 @@ function Sec({ label, aside, children }: { label: string; aside?: ReactNode; chi
   );
 }
 
-function amtDisplay(e: NetEdge): string {
-  const note = e.amount_note || "";
-  const eok = (e as { amount_krw_eok?: number | null }).amount_krw_eok;
-  if (eok != null && !Number.isNaN(eok)) {
-    return `${eok.toLocaleString("ko-KR")}억 원`;
-  }
-  if (note.includes("금액 미공개") || note.includes("미공시") || note.includes("미기재")) {
-    return "금액 미공개";
-  }
-  if (e.amount_usd_m != null) return note || `≈ $${e.amount_usd_m}M`;
-  return note || "금액 미공개";
+/** Amount + certainty in one string, from the shared evidence model. */
+function amtDisplay(e: NetEdge, today: string): string {
+  return amountFacts(e, today).display;
+}
+
+/** Small certainty chip used next to every amount (same wording everywhere). */
+export function CertTag({ f }: { f: AmountFacts }) {
+  if (f.value === null) return <span className="cert cert-unknown" data-tip={f.certaintyReason}>미확인</span>;
+  return <span className={`cert cert-${f.certainty}`} data-tip={`${CERTAINTY_KO[f.certainty]} · ${f.certaintyReason}`}>{CERTAINTY_KO[f.certainty]}</span>;
+}
+
+function SrcCell({ e }: { e: NetEdge }) {
+  const r = sourceRef(e);
+  if (r.status !== "linked") return <span className="muted" data-tip={r.status === "homepage_only" ? "기관 홈페이지 주소는 개별 주장의 근거로 쓰지 않습니다" : undefined}>원문 연결 미확보</span>;
+  return <a href={r.url!} target="_blank" rel="noreferrer" data-tip={[r.publisher, r.filing ? `접수번호 ${r.filing}` : null].filter(Boolean).join(" · ") || undefined}>{r.title}</a>;
 }
 
 function edgeMeta(e: NetEdge) {
@@ -52,6 +58,7 @@ export function PfCompanyProjectsBlock({
   onSelectNode: (id: string) => void;
   onSelectEdge: (id: string) => void;
 }) {
+  const [allProj, setAllProj] = useState(false);
   const nodeMap = new Map(net.nodes.map((n) => [n.id, n]));
   const links = net.edges.filter((e) => e.source === companyId || e.target === companyId);
   const byProject = new Map<string, { meta?: PfProject; edges: NetEdge[] }>();
@@ -86,38 +93,15 @@ export function PfCompanyProjectsBlock({
 
   if (!byProject.size) return null;
 
-  const PAST = new Set(["repaid", "terminated", "historical", "withdrawn", "expired", "refinanced", "transferred",
-    "FULLY_REPAID", "REFINANCED", "TRANSFERRED", "EXPIRED", "HISTORICAL_ONLY"]);
+  const today = net.meta.as_of;
   const ARRANGE = new Set(["ARRANGER", "FINANCING_ARRANGEMENT", "UNDERWRITING_COMMITMENT"]);
-  const LOAN = new Set(["PROJECT_LOAN", "ACQUISITION_LOAN", "CORPORATE_LOAN", "BRIDGE_LOAN", "DIRECT_LOAN", "MORTGAGE_LOAN", "PROJECT_FINANCE_LOAN"]);
-  const EQUITY = new Set(["EQUITY_INVESTMENT", "EQUITY_SPONSOR", "PREFERRED_EQUITY", "SHAREHOLDER_LOAN", "SUBORDINATED_INVESTMENT"]);
-  const GUAR = new Set(["CREDIT_ENHANCEMENT", "COMPLETION_GUARANTEE", "DEBT_ASSUMPTION", "LOAN_GUARANTEE", "FINANCIAL_GUARANTEE", "LIQUIDITY_COMMITMENT", "REFINANCING_UNDERWRITE"]);
-
-  function isPast(e: NetEdge) {
-    const st = (e as { exposure_status?: string }).exposure_status || (e as { relationship_status?: string }).relationship_status || "";
-    return PAST.has(st) || PAST.has(st.toUpperCase());
-  }
-  function sumVerified(pred: (e: NetEdge) => boolean): { eok: number | null; known: number; unknown: number } {
-    let eok = 0; let known = 0; let unknown = 0; let any = false;
-    for (const e of links) {
-      if (!pred(e) || isPast(e)) continue;
-      const amtType = (e as { amount_type?: string }).amount_type;
-      if (amtType === "facility_total_context" || amtType === "fee_paid" || amtType === "underwrite_commitment") continue;
-      any = true;
-      const v = (e as { amount_krw_eok?: number | null }).amount_krw_eok;
-      if (v != null) { eok += v; known += 1; }
-      else unknown += 1;
-    }
-    if (!any) return { eok: null, known: 0, unknown: 0 };
-    return { eok: known ? eok : null, known, unknown };
-  }
-
-  const loan = sumVerified((e) => LOAN.has(e.relationship_type));
-  const equity = sumVerified((e) => EQUITY.has(e.relationship_type));
-  const guar = sumVerified((e) => GUAR.has(e.relationship_type) || !!(e as { contingent_obligation?: boolean }).contingent_obligation);
+  const isPast = (e: NetEdge) => {
+    const c = amountFacts(e, today).current;
+    return c === "past" || c === "superseded";
+  };
+  const sum = summarizeExposure(links, companyId, today);
   const activeProjects = [...byProject.keys()].filter((k) => k !== "_none" && byProject.get(k)!.edges.some((e) => !isPast(e) && !ARRANGE.has(e.relationship_type)));
   const arrangerProjects = [...byProject.keys()].filter((k) => k !== "_none" && byProject.get(k)!.edges.some((e) => ARRANGE.has(e.relationship_type)));
-  const repaid = links.filter((e) => isPast(e)).length;
   const lastVerified = links
     .map((e) => (e as { last_verified_date?: string; source_date?: string }).last_verified_date
       || (e as { source_date?: string }).source_date || "")
@@ -125,29 +109,44 @@ export function PfCompanyProjectsBlock({
     .sort()
     .at(-1) || "—";
 
-  const fmtEok = (s: { eok: number | null; known: number; unknown: number }) => {
-    if (s.known && s.eok != null) {
-      const base = `${Math.round(s.eok).toLocaleString("ko-KR")}억`;
-      return s.unknown ? `${base} (미확인 ${s.unknown}건)` : base;
-    }
-    if (s.unknown) return "미확인";
-    return "해당 없음 / 미확인";
-  };
-
   return (
     <>
-      <Sec label="현재 확인된 데이터센터 금융 익스포저" aside={`${links.length}건`}>
-        <p className="fine">주선·인수 총액은 보유 익스포저에 합산하지 않습니다. 검증된 잔액만 표시하며, Unknown은 0으로 두지 않습니다.</p>
+      <Sec label="현재 데이터센터 금융 포지션" aside={`관계 ${links.length}건`}>
+        <p className="fine">금액은 유형별로 따로 봅니다. <b>확인된 금액</b>만 더하며, 같은 유형·같은 기준일·중복 없는 거래일 때만 합산합니다. 추정 금액과 미확인 건수는 합계에 넣지 않습니다.</p>
+        {sum.kinds.length ? (
+          <table className="tbl pf-exp-tbl">
+            <thead><tr><th>금액 유형</th><th className="r">확인된 금액</th><th className="r">추정 · 미확인</th></tr></thead>
+            <tbody>
+              {sum.kinds.map((k) => (
+                <tr key={k.kind}>
+                  <td>{k.kindKo}</td>
+                  <td className="r num">
+                    {k.confirmed.length ? k.confirmed.map((b) => (
+                      <div key={`${b.asOf}-${b.unit}`}>{fmtSum(b.sum, b.unit)} <span className="tiny muted">{b.count}건{b.asOf ? ` · ${b.asOf} 기준` : ""}</span></div>
+                    )) : <span className="muted">—</span>}
+                    {k.confirmed.length > 1 ? <div className="tiny muted">기준일이 달라 합산하지 않음</div> : null}
+                  </td>
+                  <td className="r num">
+                    {k.estimated.map(({ edgeId, facts }) => (
+                      <div key={edgeId} className="t-warn" data-tip={facts.certaintyReason}>{facts.display}</div>
+                    ))}
+                    {k.unknown ? <div className="muted">금액 미확인 {k.unknown}건</div> : null}
+                    {!k.estimated.length && !k.unknown ? <span className="muted">—</span> : null}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : <p className="muted-line">현재 금액이 있는 금융 포지션 없음</p>}
         <dl>
-          <div className="kv"><dt>대출잔액</dt><dd className="num">{fmtEok(loan)}</dd></div>
-          <div className="kv"><dt>지분투자</dt><dd className="num">{fmtEok(equity)}</dd></div>
-          <div className="kv"><dt>보증·확약</dt><dd className="num">{fmtEok(guar)}</dd></div>
-          <div className="kv"><dt>참여 사업장</dt><dd className="num">{activeProjects.length}</dd></div>
-          <div className="kv"><dt>과거 주선 사업장</dt><dd className="num">{arrangerProjects.length}</dd></div>
-          <div className="kv"><dt>상환·종료 거래</dt><dd className="num">{repaid}</dd></div>
+          <div className="kv"><dt>참여 사업장 (현재)</dt><dd className="num">{activeProjects.length}</dd></div>
+          {arrangerProjects.length ? <div className="kv"><dt>주선·자문 역할 사업장</dt><dd className="num">{arrangerProjects.length} <span className="tiny muted">보유 노출 아님</span></dd></div> : null}
+          {sum.past ? <div className="kv"><dt>상환·종료 거래</dt><dd className="num">{sum.past} <span className="tiny muted">현재 노출 제외</span></dd></div> : null}
+          {sum.maturedUnconfirmed ? <div className="kv"><dt>만기 경과 · 상환 미확인</dt><dd className="num">{sum.maturedUnconfirmed} <span className="tiny muted">상환으로 단정하지 않음</span></dd></div> : null}
+          {sum.superseded ? <div className="kv"><dt>최신 공시로 대체된 기록</dt><dd className="num">{sum.superseded} <span className="tiny muted">중복 집계 제외</span></dd></div> : null}
           <div className="kv"><dt>최종 확인일</dt><dd className="num">{lastVerified}</dd></div>
         </dl>
-        <p className="fine muted">위 항목을 단순 합산한 값을 순위험으로 제시하지 않습니다.</p>
+        <p className="fine muted">유형이 다른 금액(대출 잔액·지분·확약 한도 등)을 더한 값을 순위험으로 제시하지 않습니다.</p>
       </Sec>
       <Sec label="사업장별 포지션" aside={`${byProject.size}건`}>
         <div className="pf-pos-table-wrap">
@@ -165,44 +164,37 @@ export function PfCompanyProjectsBlock({
               {[...byProject.entries()].flatMap(([pid, bucket]) => {
                 const title = bucket.meta
                   ? projectDisplayName(bucket.meta)
-                  : pid === "_none" ? "사업 미기재" : pid;
+                  : pid === "_none" ? "사업 미기재" : ((bucket.edges[0] as { project_name?: string } | undefined)?.project_name || "사업명 미기재");
                 if (!bucket.edges.length) {
                   return [(
                     <tr key={`${pid}-gap`}>
                       <td className="wrap">{title}</td>
                       <td>{(bucket as { participation_roles?: string[] }).participation_roles?.join(", ") || "—"}</td>
-                      <td>N/A</td>
-                      <td>UNVERIFIED</td>
+                      <td>해당 없음</td>
+                      <td>계약 상대 미확인</td>
                       <td>—</td>
                     </tr>
                   )];
                 }
                 return bucket.edges.map((e) => {
                   const m = edgeMeta(e);
-                  const past = isPast(e);
+                  const f = amountFacts(e, today);
                   const arr = ARRANGE.has(e.relationship_type);
-                  const amtType = m.amtType || "";
-                  const status = past
-                    ? ((m.status || "HISTORICAL").toUpperCase())
-                    : arr ? "HISTORICAL_ARRANGEMENT"
-                      : (e as { exposure_status?: string }).exposure_status
-                        || (m.status === "funded" || m.status === "current" || m.status === "committed" ? "ACTIVE_CONFIRMED" : (m.status || "ACTIVE_AMOUNT_UNKNOWN").toUpperCase());
-                  const bal = arr || amtType === "facility_total_context"
-                    ? "N/A (주선·시설총액)"
-                    : past && (m.status === "repaid" || status.includes("REPAID"))
-                      ? "0 (상환)"
-                      : amtDisplay(e);
-                  const src = (e as { source_url?: string }).source_url;
-                  const srcTitle = (e as { source_title?: string }).source_title || "출처";
+                  const hist = f.current === "past" || f.current === "superseded" || arr;
+                  const bal = arr || f.kind === "facility_total_context"
+                    ? "해당 없음 (주선·시설총액)"
+                    : f.current === "past" && (m.status === "repaid" || (e as { exposure_status?: string }).exposure_status === "FULLY_REPAID")
+                      ? "상환 완료"
+                      : f.display;
                   return (
-                    <tr key={e.id} className={past || arr ? "is-hist" : ""}>
+                    <tr key={e.id} className={hist ? "is-hist" : ""}>
                       <td className="wrap">
                         <button type="button" className="link" onClick={() => onSelectEdge(e.id)}>{title}</button>
                       </td>
-                      <td>{REL_LABEL[e.relationship_type] || e.relationship_type}{m.contingent ? " · 조건부" : ""}</td>
-                      <td className="num">{bal}</td>
-                      <td>{status}</td>
-                      <td>{src ? <a href={src} target="_blank" rel="noreferrer">{srcTitle}</a> : (EVIDENCE_STATUS_KO[m.ev || ""] || m.ev || "—")}</td>
+                      <td>{REL_LABEL[e.relationship_type] || e.relationship_type}{m.contingent ? " · 조건부" : ""}<div className="tiny muted">{f.kindKo}</div></td>
+                      <td className="num">{bal}{!arr && f.value !== null ? <div><CertTag f={f} /></div> : null}{f.asOf && f.value !== null ? <div className="tiny muted">{f.asOf} 기준</div> : null}</td>
+                      <td>{arr ? "주선(보유 아님)" : f.current === "current" ? statusKo((e as { exposure_status?: string }).exposure_status) : CURRENT_KO[f.current]}</td>
+                      <td><SrcCell e={e} /></td>
                     </tr>
                   );
                 });
@@ -213,12 +205,12 @@ export function PfCompanyProjectsBlock({
       </Sec>
       <Sec label="관련 사업 · 자금 경로" aside={`${byProject.size}건`}>
         <p className="fine">프로젝트·주소는 맥락입니다. 맵 노드는 회사·PFV만 표시합니다.</p>
-        {[...byProject.entries()].map(([pid, bucket]) => {
+        {[...byProject.entries()].slice(0, allProj ? undefined : 5).map(([pid, bucket]) => {
           const title = bucket.meta
             ? projectDisplayName(bucket.meta)
             : pid === "_none"
               ? "사업 미기재 관계"
-              : pid;
+              : ((bucket.edges[0] as { project_name?: string } | undefined)?.project_name || "사업명 미기재");
           const loc = bucket.meta?.location;
           const gap = (bucket as { participation_gap?: string }).participation_gap;
           const partRoles = (bucket as { participation_roles?: string[] }).participation_roles;
@@ -248,21 +240,15 @@ export function PfCompanyProjectsBlock({
                           {m.seniority ? ` · ${m.seniority}` : ""}
                           {m.contingent ? " · 조건부" : ""}
                         </span>
-                        <span className="lr-v num">{amtDisplay(e)}</span>
+                        <span className="lr-v num">{amtDisplay(e, today)}</span>
                       </button>
-                      {m.amtType ? (
-                        <p className="fine">금액유형: {AMOUNT_TYPE_KO[m.amtType] || m.amtType}
-                          {m.facility != null ? ` · 시설총액 맥락 ${m.facility.toLocaleString("ko-KR")}억` : ""}
-                        </p>
-                      ) : null}
+                      <p className="fine">금액유형: {amountFacts(e, today).kindKo} · <CertTag f={amountFacts(e, today)} />
+                        {m.facility != null ? ` · 시설총액 맥락 ${m.facility.toLocaleString("ko-KR")}억 (기관 보유액 아님)` : ""}
+                      </p>
                       {m.path ? <p className="fine">자금 경로: {m.path}</p> : null}
-                      {e.amount_note ? <p className="fine">{e.amount_note}</p> : null}
-                      {m.ev ? <p className="fine">{EVIDENCE_STATUS_KO[m.ev] || m.ev}{m.status && m.status !== "current" ? ` · ${m.status}` : ""}</p> : null}
-                      {(e as { source_url?: string }).source_url ? (
-                        <p className="fine">근거: <a href={(e as { source_url?: string }).source_url} target="_blank" rel="noreferrer">{(e as { source_title?: string }).source_title || "출처"}</a>
-                          {(e as { source_date?: string }).source_date ? ` · ${(e as { source_date?: string }).source_date}` : ""}
-                        </p>
-                      ) : null}
+                      {e.amount_note ? <p className="fine">{cleanNote(e.amount_note, (id) => (nodeMap.get(id) ? displayName(nodeMap.get(id)!) : null))}</p> : null}
+                      {m.ev ? <p className="fine">{EVIDENCE_STATUS_KO[m.ev] || m.ev}{m.status && m.status !== "current" ? ` · ${statusKo(m.status)}` : ""}</p> : null}
+                      <p className="fine">근거: <SrcCell e={e} />{sourceRef(e).date ? ` · 공시·보도일 ${sourceRef(e).date}` : ""}</p>
                     </li>
                   );
                 })}
@@ -270,6 +256,7 @@ export function PfCompanyProjectsBlock({
             </div>
           );
         })}
+        {byProject.size > 5 ? <button type="button" className="btn-text" onClick={() => setAllProj((v) => !v)}>{allProj ? "주요 5개 사업만" : `나머지 ${byProject.size - 5}개 사업 펼치기`}</button> : null}
       </Sec>
     </>
   );
@@ -290,6 +277,7 @@ export function PfProjectFinanceRoster({
   onSelectEdge: (id: string) => void;
 }) {
   const nodeMap = new Map(net.nodes.map((n) => [n.id, n]));
+  const today = net.meta.as_of;
   const edges = net.edges.filter((e) => {
     if (e.source === spvId || e.target === spvId) return true;
     if (projectId && (e as { project_id?: string }).project_id === projectId) return true;
@@ -311,7 +299,18 @@ export function PfProjectFinanceRoster({
     { id: "ops", label: "운영·임차", test: (e) => ["FACILITY_OPERATION", "TENANT_LEASE", "LEASE_OR_COLOCATION"].includes(e.relationship_type) },
   ];
 
-  const seen = new Set<string>();
+  return (
+    <RosterBody edges={edges} buckets={buckets} spvId={spvId} nodeMap={nodeMap} today={today} onSelectNode={onSelectNode} onSelectEdge={onSelectEdge} />
+  );
+}
+
+function RosterBody({ edges, buckets, spvId, nodeMap, today, onSelectNode, onSelectEdge }: {
+  edges: NetEdge[]; buckets: { id: string; label: string; test: (e: NetEdge) => boolean }[]; spvId: string;
+  nodeMap: Map<string, NetNode>; today: string; onSelectNode: (id: string) => void; onSelectEdge: (id: string) => void;
+}) {
+  const [open, setOpen] = useState<Set<string>>(() => new Set());
+  const seen = new Set<string>(); // rebuilt every render so each relationship lands in exactly one bucket
+  const toggle = (id: string) => setOpen((s0) => { const n = new Set(s0); if (n.has(id)) n.delete(id); else n.add(id); return n; });
   return (
     <Sec label="사업 금융 참여자" aside={`${edges.length}관계`}>
       <p className="fine">같은 사업의 참여자는 사업(차주)을 통해 연결됩니다. 대주↔시공 직접 보증은 기사에 있을 때만 표시합니다.</p>
@@ -323,7 +322,7 @@ export function PfProjectFinanceRoster({
           <div key={b.id} style={{ marginBottom: 10 }}>
             <p className="lbl">{b.label} <span className="lbl-aside">{rows.length}</span></p>
             <ul className="ent-list">
-              {rows.map((e) => {
+              {(open.has(b.id) ? rows : rows.slice(0, 5)).map((e) => {
                 const oid = e.source === spvId ? e.target : e.target === spvId ? e.source : e.source;
                 const other = nodeMap.get(oid);
                 const m = edgeMeta(e);
@@ -336,16 +335,15 @@ export function PfProjectFinanceRoster({
                         </button>
                       </span>
                       <span className="lr-m">{REL_LABEL[e.relationship_type] || e.relationship_type}{m.contingent ? " · 조건부" : ""}</span>
-                      <span className="lr-v num">{amtDisplay(e)}</span>
+                      <span className="lr-v num">{amtDisplay(e, today)}</span>
                     </button>
                     {m.path ? <p className="fine">{m.path}</p> : null}
-                    {(e as { source_url?: string }).source_url ? (
-                      <p className="fine"><a href={(e as { source_url?: string }).source_url} target="_blank" rel="noreferrer">{(e as { source_title?: string }).source_title || "기사"}</a></p>
-                    ) : null}
+                    <p className="fine"><SrcCell e={e} /></p>
                   </li>
                 );
               })}
             </ul>
+            {rows.length > 5 ? <button type="button" className="btn-text" onClick={() => toggle(b.id)}>{open.has(b.id) ? "주요 5건만" : `나머지 ${rows.length - 5}건 펼치기`}</button> : null}
           </div>
         );
       })}
@@ -360,7 +358,7 @@ export function PfProjectFinanceRoster({
                   <button type="button" className="link-row" onClick={() => onSelectEdge(e.id)}>
                     <span className="lr-t">{nodeMap.get(oid) ? displayName(nodeMap.get(oid)!) : oid}</span>
                     <span className="lr-m">{REL_LABEL[e.relationship_type] || e.relationship_type}</span>
-                    <span className="lr-v num">{amtDisplay(e)}</span>
+                    <span className="lr-v num">{amtDisplay(e, today)}</span>
                   </button>
                 </li>
               );

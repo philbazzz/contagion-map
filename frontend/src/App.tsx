@@ -3,7 +3,10 @@ import type { Api, MarketOverview, Network, NetworkStats, NodeVisual, PathResult
 import { TopBar, type Mode, type View } from "./components/TopBar";
 import { ScenarioBuilder } from "./components/ScenarioBuilder";
 import { PfScenarioBuilder } from "./components/PfScenarioBuilder";
-import { EcosystemSelector } from "./components/EcosystemSelector";
+import { EcosystemSelector, type LoadState } from "./components/EcosystemSelector";
+import type { StatDef } from "./components/TopBar";
+import { GuideCard, guideSeen } from "./components/GuideCard";
+import { displayName } from "./lib/displayName";
 import { UniverseView, type Banner } from "./components/UniverseView";
 import { DetailPanel } from "./components/DetailPanel";
 import { BottomBar } from "./components/BottomBar";
@@ -12,13 +15,13 @@ import { MarketPanel } from "./components/Market";
 import { MapErrorBoundary } from "./components/MapErrorBoundary";
 import { defaultForm, defaultShockForm, type RefiForm, type ShockForm } from "./lib/scenario";
 import { usdM } from "./lib/format";
-import { existingRate, STAGES } from "./engine/refinancing";
-import { SHOCK_STAGES, simulateRateShock } from "./engine/rateShock";
+import { existingRate, STAGES_KO } from "./engine/refinancing";
+import { SHOCK_STAGES_KO, simulateRateShock } from "./engine/rateShock";
 import type { EcosystemId, PfBundle, PfShockResult } from "./pf/types";
 import { defaultPfShockForm } from "./pf/scenario";
 import type { PfShockForm } from "./pf/types";
 import { loadPfBundle } from "./pf/load";
-import { PF_SHOCK_STAGES, simulatePfShock } from "./pf/shockEngine";
+import { PF_SHOCK_STAGES_KO, simulatePfShock } from "./pf/shockEngine";
 import { networkStats, shortestPath } from "./engine/relations";
 import { appTitle } from "./lib/appTitle";
 import {
@@ -66,6 +69,8 @@ export default function App({ api }: { api: Api }) {
   const [ecosystem, setEcosystem] = useState<EcosystemId>("semiconductor");
   const [net, setNet] = useState<Network | null>(null);
   const [pfBundle, setPfBundle] = useState<PfBundle | null>(null);
+  const [pfLoad, setPfLoad] = useState<LoadState>({ state: "loading" });
+  const [guideOpen, setGuideOpen] = useState(() => !guideSeen());
   const [loadErr, setLoadErr] = useState<string | null>(null);
   const [view, setView] = useState<View>("map");
   const [mode, setMode] = useState<Mode>("network");
@@ -122,10 +127,15 @@ export default function App({ api }: { api: Api }) {
     api.market().then(setMarket).catch(() => setMarket(null));
     api.quotes().then(setQuotes).catch(() => setQuotes(null));
     api.listRuns().then(setRuns).catch(() => undefined);
-    loadPfBundle()
-      .then((b) => { setPfBundle(b); setPfQuotes(b.quotes); })
-      .catch((e) => console.warn("PF bundle load failed", e));
   }, [api]);
+
+  const loadPf = useCallback(() => {
+    setPfLoad({ state: "loading" });
+    loadPfBundle()
+      .then((b) => { setPfBundle(b); setPfQuotes(b.quotes); setPfLoad({ state: "ready" }); })
+      .catch((e) => { console.warn("PF bundle load failed", e); setPfLoad({ state: "error", message: String(e?.message || e) }); });
+  }, []);
+  useEffect(() => { loadPf(); }, [loadPf]);
 
   const activeNetRaw = ecosystem === "datacenter_pf" ? pfBundle?.network ?? null : net;
   /** Map canvas: hide historical/arranger-only by default; DetailPanel keeps full ledger. */
@@ -366,9 +376,9 @@ export default function App({ api }: { api: Api }) {
       v[id] = { status: s.status, label: s.label, intensity: s.intensity, stress: s.stress, fx_gen: fxGen };
     }
     const used = [...new Set(rounds.flatMap((x) => x.active_edges))];
-    const stageNames = run.kind === "pf_shock" ? PF_SHOCK_STAGES : run.kind === "rate_shock" ? SHOCK_STAGES : STAGES;
+    const stageNames = run.kind === "pf_shock" ? PF_SHOCK_STAGES_KO : run.kind === "rate_shock" ? SHOCK_STAGES_KO : STAGES_KO;
     const b: Banner = {
-      kicker: `STAGE ${rnd.stage}/${rounds.length} · ${stageNames[rnd.round]?.toUpperCase() || ""}`,
+      kicker: `${Math.min(rnd.stage + 1, rounds.length)}/${rounds.length}단계 · ${stageNames[rnd.round] || ""}`,
       title: rnd.title_ko,
       lines: rnd.lines,
       tone: "orange",
@@ -684,7 +694,21 @@ export default function App({ api }: { api: Api }) {
   }
   if (!net || !form || !inst) return (<div className="boot"><div className="wordmark">{title.brand}</div><p className="muted">불러오는 중…</p></div>);
   if (ecosystem === "datacenter_pf" && !pfBundle) {
-    return (<div className="boot"><div className="wordmark">{title.brand}</div><p className="muted">AI Data Center PF 데이터 불러오는 중…</p></div>);
+    return (
+      <div className={`boot ${pfLoad.state === "error" ? "boot-error" : ""}`} role={pfLoad.state === "error" ? "alert" : "status"}>
+        <div className="wordmark">{title.brand}</div>
+        {pfLoad.state === "error" ? (
+          <>
+            <p>국내 AI 데이터센터 PF 데이터를 불러오지 못했습니다.</p>
+            <p className="muted">{pfLoad.message}</p>
+            <div className="boot-actions">
+              <button type="button" className="btn" onClick={loadPf}>다시 시도</button>
+              <button type="button" className="btn-text" onClick={() => switchEcosystem("semiconductor")}>AI 반도체 생태계로 돌아가기</button>
+            </div>
+          </>
+        ) : <p className="muted">국내 AI 데이터센터 PF 데이터 불러오는 중…</p>}
+      </div>
+    );
   }
   if (!activeNet) return (<div className="boot"><div className="wordmark">{title.brand}</div><p className="muted">불러오는 중…</p></div>);
 
@@ -698,6 +722,11 @@ export default function App({ api }: { api: Api }) {
   const summary = `CoreWeave ${inst.name} ${amount !== null && amount !== undefined ? usdM(amount) : "(금액 입력 필요)"}을 ${form.newRate}%로 차환한다고 가정합니다 (${exText}${form.success < 1 ? ` · 성공 ${Math.round(form.success * 100)}%` : ""}).`;
   const stale = !!run && run.kind === "refinancing" && JSON.stringify(run.params) !== JSON.stringify(toParams(form));
   const shockResult = run?.kind === "rate_shock" ? run.result : null;
+  /** Inputs moved but the debounced engine has not produced the new result yet. */
+  const quotesLive = api.kind === "http" || !!api.live;
+  const shockPending = mode === "shock" && (ecosystem === "datacenter_pf"
+    ? !!run && run.kind === "pf_shock" && JSON.stringify(run.params) !== JSON.stringify(pfShock)
+    : !!run && run.kind === "rate_shock" && JSON.stringify(run.params) !== JSON.stringify(shock));
   const pfShockResult = run?.kind === "pf_shock" ? run.result : null;
 
   const idleShock = run?.kind === "pf_shock"
@@ -708,10 +737,32 @@ export default function App({ api }: { api: Api }) {
         ? "PF Shock · 좌측에서 금리·GPU 임대·CAPEX를 조절하세요"
         : "Shock View · 좌측에서 금리 충격을 조절하세요";
 
+  const focusName = displayName(nodeMap.get(origin) || { id: origin, name: origin }) || origin;
+  const isPf = ecosystem === "datacenter_pf";
+  const statDefs: StatDef[] = [
+    { key: "ent", label: isPf ? "기업·SPC" : "Entities", value: stats?.entities,
+      tip: isPf ? "국내 AI 데이터센터 PF 지도에 등록된 회사·SPC·펀드 수 (사업장·허가지는 제외)" : "공개자료로 확인되어 등록된 기업·기관 수 (CoreWeave 포함). 생태계 전체 규모가 아닙니다." },
+    { key: "dir", label: "Direct", value: stats?.direct, tip: `현재 초점(${focusName})과 직접 연결된(1단계) 기업·기관 수` },
+    { key: "ind", label: "Indirect", value: stats?.indirect, tip: `현재 초점(${focusName})과 다른 기업을 거쳐 연결된(2단계 이상) 기업·기관 수` },
+    { key: "ctr", label: isPf ? "US PF 계약" : "Contracts", value: stats?.financing_contracts,
+      tip: isPf
+        ? "미국 AI 데이터센터 프로젝트의 공시 금융계약 수 (차주: Galaxy·Applied Digital·Core Scientific SPC). CoreWeave 자체 차입이 아닙니다. 국내 PF 대출은 관계(엣지)로 별도 표시됩니다."
+        : "CoreWeave 10-Q로 확인된 금융계약(대출·채권·전환사채·리볼버) 수. 공급사 금융 제외. 우측 Contracts 목록은 공급사 금융을 포함할 수 있습니다." },
+    { key: "inds", label: "Industrial", value: stats?.industrial_relationships, tip: "확인된 산업 관계(공급·고객·데이터센터·약정) 수" },
+  ];
+  const scopeText = (
+    <>
+      {isPf ? "국내 AI 데이터센터 PF · 회사 중심 관계망" : "미국 AI 반도체 · CoreWeave 중심 관계망"}
+      {" · 초점 "}<b>{focusName}</b>
+      {activeNet.meta?.as_of ? <> · 자료 기준일 <span className="num">{activeNet.meta.as_of}</span></> : null}
+    </>
+  );
+
   return (
     <div className={`app view-${view} mode-${mode} eco-${ecosystem} ${panelOpen ? "" : "panel-closed"}`}>
-      <TopBar view={view} onView={setView} mode={mode} onMode={setMode} panelOpen={panelOpen} onTogglePanel={() => setPanelOpen((o) => !o)} stats={stats} brand={title.brand} brandSub={title.sub}>
-        <EcosystemSelector value={ecosystem} onChange={switchEcosystem} />
+      <TopBar view={view} onView={setView} mode={mode} onMode={setMode} panelOpen={panelOpen} onTogglePanel={() => setPanelOpen((o) => !o)}
+        statDefs={statDefs} brand={title.brand} brandSub={title.sub} scope={scopeText} onGuide={() => setGuideOpen(true)}>
+        <EcosystemSelector value={ecosystem} onChange={switchEcosystem} pfLoad={pfLoad} />
       </TopBar>
       {ecosystem === "datacenter_pf" && pfBundle ? (
         <PfScenarioBuilder
@@ -732,6 +783,8 @@ export default function App({ api }: { api: Api }) {
           onLocate={locateNode}
           onClearSearchPins={clearSearchPins}
           onClearSelection={() => { setSelection(null); setPathQuery(null); clearSearchPins(); }}
+          shockPending={shockPending}
+          quotesLive={quotesLive}
         />
       ) : (
         <ScenarioBuilder
@@ -752,10 +805,12 @@ export default function App({ api }: { api: Api }) {
           onToggleGroup={(g) => setHiddenGroups((h) => (h.includes(g) ? h.filter((x) => x !== g) : [...h, g]))}
           visuals={visuals} selectedId={selection?.kind === "node" ? selection.id : null} onSelect={selectNode}
           onOpenContract={selectContract}
+          shockPending={shockPending}
+          quotesLive={quotesLive}
         />
       )}
       <main className="stage-area">
-        {view === "sources" ? <SourcesView net={activeNet} sources={ecosystem === "datacenter_pf" ? { sources: activeNet.sources, status_counts: {}, meta: activeNet.meta } : sources} onSelectNode={(id) => { setView("map"); selectNode(id); }} onSelectContract={selectContract} /> : null}
+        {view === "sources" ? <SourcesView net={activeNet} sources={ecosystem === "datacenter_pf" ? { sources: activeNet.sources, status_counts: {}, meta: activeNet.meta } : sources} onSelectNode={(id) => { setView("map"); selectNode(id); }} onSelectContract={selectContract} projects={ecosystem === "datacenter_pf" ? pfBundle?.projects.projects : undefined} /> : null}
         <MapErrorBoundary>
           <UniverseView
             hidden={view === "sources"}
@@ -797,9 +852,11 @@ export default function App({ api }: { api: Api }) {
           />
         </MapErrorBoundary>
         {toast ? <div className="toast" role="status">{toast}</div> : null}
+        {guideOpen ? <GuideCard onClose={() => setGuideOpen(false)} onStartPf={() => { setView("map"); switchEcosystem("datacenter_pf"); }} /> : null}
       </main>
       <DetailPanel
         api={api}
+        quotesLive={quotesLive}
         net={activeNet}
         origin={origin}
         onSetOrigin={(id) => {

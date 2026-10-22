@@ -2,6 +2,7 @@
  * Port of backend/app/engine/rate_shock.py — keep in step with the Python engine.
  */
 import type { Assessment, Instrument, Network, NodeState, RefiRound } from "../types";
+import { CRISIS_MODE_KO } from "../lib/labels";
 import { relationshipSummary } from "./relations";
 import {
   computeOriginStress, stressStatus, STRESS_LABEL_KO, THRESHOLDS, type OriginStress, type StressLevel,
@@ -607,12 +608,12 @@ function buildRounds(
       stress: originStress.level,
     };
     stage0 = [
-      `모드 ${crisisMode} · SOFR ${g(originStress.baseline_sofr_pct)}% → ${g(originStress.stressed_sofr_pct)}% (${signBp}bp)`,
+      `위기 가정 ${CRISIS_MODE_KO[crisisMode] || crisisMode} · SOFR ${g(originStress.baseline_sofr_pct)}% → ${g(originStress.stressed_sofr_pct)}% (${signBp}bp)`,
       hasComputed && applies === "sofr_floating"
         ? `CoreWeave SOFR 연동 ${u(floatingKnown)} → 연간 이자 ${m(computedDelta)}`
         : "직접 이자 민감도: 이번 설정에서 미산정 또는 해당 없음",
       cwDefaultOn ? "CoreWeave 계약 불이행은 시나리오 가정 — 법적 부도 예측 아님" : "",
-      `다단계 전염 엔진 · max order 도달 ${contagion.max_order_reached} · ${contagion.stopped_reason}`,
+      `다단계 전염 · 최대 ${contagion.max_order_reached}차까지 도달`,
     ].filter(Boolean);
   } else if (applies === "sofr_floating") {
     states[ORIGIN] = { status: "insufficient", label: "데이터 부족", category: "relationship_only", intensity: 0.35, stress: "insufficient" };
@@ -696,7 +697,7 @@ function buildRounds(
   }
   const insuffN = (cats.insufficient_data || 0) + (cats.qualitative_refi || 0) + (cats.benchmark_mismatch || 0);
   snap(5, [
-    `네트워크 ${net.nodes.length} · 모드 ${crisisMode} · 전염 max order ${contagion.max_order_reached}`,
+    `네트워크 ${net.nodes.length}개 · 위기 가정 ${CRISIS_MODE_KO[crisisMode] || crisisMode} · 전염 최대 ${contagion.max_order_reached}차`,
     `order1 ${contagion.counts.order1} · order2 ${contagion.counts.order2} · order3+ ${contagion.counts.order3_plus} · quantified ${contagion.counts.quantified} · qualitative ${contagion.counts.qualitative} · pathway ${contagion.counts.pathway}`,
     `심각(critical) hops ${contagion.counts.critical} · 섹터 critical ${sectorList.filter((s) => s.level === "critical").length} · 데이터부족/정성 ${insuffN}`,
     hasComputed ? `CW 추가 연간 이자 ${m(computedDelta)}` : "CW 추가 이자 미산정",

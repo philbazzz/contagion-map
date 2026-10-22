@@ -12,6 +12,9 @@ import { buildSearchIndex, searchCompanies, type SearchHit } from "../lib/compan
 import { IconChevron, IconReset, IconSearch } from "./Icons";
 import { LpResize } from "./LpResize";
 import { PfAffectedCompaniesPanel } from "./PfAffectedCompanies";
+import { PfShockDigest } from "./PfShockDigest";
+import { hasLiveRelation } from "../lib/relationState";
+import { refreshLabel } from "../lib/labels";
 import type { Mode } from "./TopBar";
 
 function fmtPx(q: QuoteItem): string {
@@ -63,6 +66,7 @@ interface Props {
   quotes: QuotesOverview | null;
   quotesBusy: boolean;
   onRefreshQuotes: () => void;
+  quotesLive?: boolean;
   hiddenGroups: string[];
   onToggleGroup: (g: string) => void;
   visuals: Record<string, NodeVisual> | null;
@@ -72,6 +76,8 @@ interface Props {
   onLocate?: (id: string) => void;
   onClearSearchPins?: () => void;
   onClearSelection?: () => void;
+  /** Inputs changed and the result shown is from the previous inputs. */
+  shockPending?: boolean;
 }
 
 const STATUS_DOT: Record<string, string> = {
@@ -154,7 +160,7 @@ export function PfScenarioBuilder(p: Props) {
     const f = PF_ROLE_FILTERS.find((x) => x.id === filterRole);
     if (!f || !f.match.length) return true;
     if (f.match.includes("__connection_pending__")) {
-      return (n as { connection_status?: string }).connection_status === "연결관계 확인 필요";
+      return !hasLiveRelation(n, p.net, p.net.meta.as_of);
     }
     const roles = ((n as { roles?: string[] }).roles || []).map((r) => r.toLowerCase());
     const blob = [n.role, n.entity_type, n.group, ...roles].join(" ").toLowerCase();
@@ -207,7 +213,7 @@ export function PfScenarioBuilder(p: Props) {
   const evidenceMatch = (n: Network["nodes"][number]) => {
     if (filterEvidence === "all") return true;
     if (filterEvidence === "pending") {
-      return (n as { connection_status?: string }).connection_status === "연결관계 확인 필요";
+      return !hasLiveRelation(n, p.net, p.net.meta.as_of);
     }
     const links = nodeLinks(n);
     if (filterEvidence === "verified") {
@@ -315,7 +321,7 @@ export function PfScenarioBuilder(p: Props) {
               <span className={`dot g-${n.group}`} />
               <span className="ent-name">{displayName(n)}</span>
               <span className="ent-tk num">
-                {(n as { connection_status?: string }).connection_status === "연결관계 확인 필요" ? "미연결" : ((n as { region?: string }).region === "KR" ? "KR" : (n.ticker || n.entity_type))}
+                {!hasLiveRelation(n, p.net, p.net.meta.as_of) ? "현재 관계 없음" : ((n as { region?: string }).region === "KR" ? "KR" : (n.ticker || n.entity_type))}
               </span>
               {st && st !== "normal" && p.mode === "shock" ? <span className={`sdot s-${STATUS_DOT[st] || "muted-o"}`} /> : <span className="sdot" />}
             </button>
@@ -375,11 +381,11 @@ export function PfScenarioBuilder(p: Props) {
           </p>
           {p.quotes?.refresh_detail ? <p className="fine">{p.quotes.refresh_detail}</p> : null}
           <button type="button" className="btn-text" onClick={p.onRefreshQuotes} disabled={p.quotesBusy} style={{ marginBottom: 8 }}>
-            <IconReset size={11} /> {p.quotesBusy ? "조회 중…" : "지금 조회"}
+            <IconReset size={11} /> {refreshLabel(!!p.quotesLive, p.quotesBusy)}
           </button>
           <p className="fine num">{priced}/{listed.length} 상장 시세 · 비상장 {unlisted.length} · {p.quotes?.generated_at ? p.quotes.generated_at.replace("T", " ").slice(0, 16) : "스냅샷 없음"}</p>
           <button type="button" className="btn-text" onClick={p.onRefreshQuotes} disabled={p.quotesBusy}>
-            <IconReset size={11} /> {p.quotesBusy ? "조회 중…" : "시세 다시 불러오기"}
+            <IconReset size={11} /> {refreshLabel(!!p.quotesLive, p.quotesBusy)}
           </button>
           {p.quotes?.note ? <p className="hint">{p.quotes.note}</p> : null}
         </section>
@@ -416,7 +422,7 @@ export function PfScenarioBuilder(p: Props) {
       {p.mode === "shock" ? (
         <section className="lp-sec">
           <h3 className="lbl">PF Stress <span className="lbl-aside">US → Korea</span></h3>
-          <p className="note">1차 충격은 CoreWeave 재무 압박과 Big Tech AI CAPEX입니다. 금리·GPU 임대는 2차 변수입니다. 한국 기관 부도를 자동 가정하지 않습니다.</p>
+          <p className="note">1차 충격은 CoreWeave 재무 압박과 빅테크 AI CAPEX입니다. 금리·GPU 임대료는 2차 변수입니다. 국내 기관의 부도를 자동으로 가정하지 않으며, 모든 결과는 「추가 충격 없음」과 비교합니다.</p>
 
           <div className="f-row">
             <span className="f-lbl">1차 A · CoreWeave 재무 스트레스</span>
@@ -426,7 +432,7 @@ export function PfScenarioBuilder(p: Props) {
                   onClick={() => p.onPfShock({ coreweaveDistress: m.id as CoreWeaveDistress })}>{m.label}</button>
               ))}
             </div>
-            <span className="f-lbl" style={{ marginTop: 6 }}>CW→KR 자금시장 전가 (ASSUMED)
+            <span className="f-lbl" style={{ marginTop: 6 }}>CoreWeave→국내 자금시장 전가 (가정)
               <span className="shock-val num">{Math.round((p.pfShock.cwKrFundingPassThrough || 0) * 100)}%</span>
             </span>
             <input className="shock-slider" type="range" min={0} max={100} step={5}
@@ -436,7 +442,7 @@ export function PfScenarioBuilder(p: Props) {
           </div>
 
           <div className="f-row">
-            <span className="f-lbl">1차 B · Big Tech AI CAPEX
+            <span className="f-lbl">1차 B · 빅테크 AI CAPEX
               <span className="shock-val num">{p.pfShock.hyperscalerCapexPct}%</span>
             </span>
             <input className="shock-slider" type="range" min={-50} max={0} step={5}
@@ -447,7 +453,7 @@ export function PfScenarioBuilder(p: Props) {
                   onClick={() => p.onPfShock({ hyperscalerCapexPct: v })}>{v}%</button>
               ))}
             </div>
-            <span className="f-lbl" style={{ marginTop: 6 }}>수요 탄성 (ASSUMED)
+            <span className="f-lbl" style={{ marginTop: 6 }}>수요 탄성 (가정)
               <span className="shock-val num">{Math.round(p.pfShock.capexDemandElasticity * 100)}%</span>
             </span>
             <input className="shock-slider" type="range" min={0} max={100} step={5}
@@ -499,15 +505,7 @@ export function PfScenarioBuilder(p: Props) {
             </div>
           </div>
 
-          {pf ? (
-            <dl className="facts">
-              <div><dt>CW 시나리오</dt><dd className="num">{pf.coreweave_distress || "normal"}</dd></div>
-              <div><dt>계량 프로젝트</dt><dd className="num">{pf.measurable_projects}</dd></div>
-              <div><dt>DSCR 악화(계산)</dt><dd className="num">{pf.dscr_deterioration}</dd></div>
-              <div><dt>영향 기업</dt><dd className="num">{pf.affected_companies?.length ?? 0}</dd></div>
-              <div><dt>US→KR 직접</dt><dd className="num">{pf.korean_verified_exposure}</dd></div>
-            </dl>
-          ) : null}
+          {p.shockResult ? <PfShockDigest result={p.shockResult} pending={p.shockPending} /> : null}
           <ShockImpactBlock
             result={p.shockResult}
             selectedId={p.selectedId}

@@ -5,6 +5,10 @@
 import type { NetEdge, NetNode, Network } from "../types";
 import { displayName } from "../lib/displayName";
 import { REL_LABEL } from "../lib/format";
+import { amountFacts, CERTAINTY_SHORT } from "../lib/evidence";
+
+/** Data as-of used when deciding past/current (set by buildBorrowerSummary). */
+let TODAY = "9999-12-31";
 
 export type BorrowerEdgeMode = "material" | "all" | "by_category";
 
@@ -35,7 +39,7 @@ export const INST_CATEGORY_LABEL: Record<InstCategoryId, string> = {
 
 const PAST = new Set([
   "repaid", "terminated", "historical", "withdrawn", "expired", "refinanced", "transferred",
-  "FULLY_REPAID", "REFINANCED", "TRANSFERRED", "EXPIRED", "HISTORICAL_ONLY",
+  "FULLY_REPAID", "REFINANCED", "TRANSFERRED", "EXPIRED", "HISTORICAL_ONLY", "SUPERSEDED_BY_DART_AUDIT",
 ]);
 const ARRANGE = new Set(["ARRANGER", "FINANCING_ARRANGEMENT", "UNDERWRITING_COMMITMENT"]);
 const NON_EXPOSURE_AMT = new Set(["facility_total_context", "fee_paid", "underwrite_commitment"]);
@@ -109,14 +113,17 @@ export function isArrangerOnly(e: NetEdge): boolean {
   return ARRANGE.has(e.relationship_type);
 }
 
-/** Amount eligible as current lending exposure (never facility total / underwrite / fee). */
+/** Amount eligible as current, confirmed exposure (never facility total / underwrite / fee / estimate). */
 export function exposureEok(e: NetEdge): number | null {
   const x = e as PfEdgeX;
   if (isPastEdge(e) || isArrangerOnly(e)) return null;
   if (NON_EXPOSURE_AMT.has(x.amount_type || "")) return null;
-  if (x.amount_krw_eok != null && Number.isFinite(x.amount_krw_eok)) return x.amount_krw_eok;
-  return null;
+  const f = amountFacts(e, TODAY);
+  if (!f.summable || f.unit !== "억원") return null;
+  return f.value;
 }
+
+const OUTSTANDING_KINDS = new Set(["outstanding_principal", "outstanding_principal_gross", "outstanding", "outstanding_balance"]);
 
 export function exposureStatusLabel(e: NetEdge): string {
   const x = e as PfEdgeX;
@@ -127,6 +134,9 @@ export function exposureStatusLabel(e: NetEdge): string {
   }
   if (isArrangerOnly(e)) return "주선·인수(비보유)";
   if (NON_EXPOSURE_AMT.has(x.amount_type || "")) return "시설총액·약정 맥락";
+  const f = amountFacts(e, TODAY);
+  if (f.current === "matured_unconfirmed") return "만기 경과·상환 미확인";
+  if (f.value !== null && f.certainty !== "confirmed") return "금액 확인 필요";
   if (x.exposure_status === "ACTIVE_CONFIRMED" || exposureEok(e) != null) return "확인됨";
   if (x.exposure_status === "ACTIVE_AMOUNT_UNKNOWN") return "잔액미확인";
   if (e.source_status === "VERIFIED") return "참여확인·잔액미확인";
@@ -194,6 +204,13 @@ export interface BorrowerSummary {
   institutionCount: number;
   visibleInstitutionCount: number;
   knownLoanEok: number | null;
+  /** As-of date of the summed balances (only same-date amounts are added). */
+  knownLoanAsOf: string | null;
+  knownLoanCount: number;
+  /** Confirmed balances with a different as-of date — shown separately, not added. */
+  otherDateLoanCount: number;
+  /** Confirmed loan amounts that are commitments/limits rather than outstanding balances. */
+  nonOutstandingLoanCount: number;
   unknownLoanFacilities: number;
   categoryCounts: { id: InstCategoryId; label: string; count: number }[];
   categories: CategoryBucket[];
@@ -208,15 +225,19 @@ export interface BorrowerSummary {
 }
 
 function balanceLabel(e: NetEdge): string {
-  const eok = exposureEok(e);
-  if (eok != null) return `${Math.round(eok).toLocaleString("ko-KR")}억 원`;
+  const f = amountFacts(e, TODAY);
   if (isPastEdge(e)) {
     const st = ((e as PfEdgeX).exposure_status || "").toUpperCase();
-    if (st.includes("REPAID")) return "0 (상환)";
+    if (st.includes("REPAID")) return "상환 완료";
+    if (st.includes("SUPERSEDED")) return "최신 공시로 대체";
     return "과거·종료";
   }
   if (isArrangerOnly(e) || NON_EXPOSURE_AMT.has((e as PfEdgeX).amount_type || "")) {
-    return "N/A (주선·시설총액)";
+    return "해당 없음 (주선·시설총액)";
+  }
+  if (f.value !== null && f.unit === "억원") {
+    const base = `${Math.round(f.value * 100) / 100 >= 100 ? Math.round(f.value).toLocaleString("ko-KR") : (Math.round(f.value * 100) / 100).toLocaleString("ko-KR")}억 원`;
+    return f.certainty === "confirmed" ? `${base} · ${f.kindKo}` : `${base} (${CERTAINTY_SHORT[f.certainty]}) · ${f.kindKo}`;
   }
   const note = e.amount_note || "";
   if (note.includes("미공개") || note.includes("미공시") || note.includes("미기재")) return "미확인";
@@ -302,6 +323,7 @@ export function buildBorrowerSummary(
     preferEdgeIds?: string[];
   },
 ): BorrowerSummary | null {
+  TODAY = net.meta?.as_of || TODAY;
   const node = net.nodes.find((n) => n.id === borrowerId);
   if (!node || !isBorrowerNode(node)) return null;
 
@@ -359,17 +381,27 @@ export function buildBorrowerSummary(
     });
   }
 
-  // Active loan exposure sum — facility-level, never merges institutions into one amount.
-  // Arranger / facility_total / repaid excluded via balanceEok / past / arranger flags.
-  let loanEok = 0;
-  let loanKnown = 0;
+  // Current outstanding loan balance — confirmed amounts of the same kind and the same as-of date only.
+  // Commitments, estimates, facility totals, arranger roles and repaid/superseded records are kept out.
+  const byAsOf = new Map<string, { sum: number; n: number }>();
   let loanUnknown = 0;
+  let loanOther = 0;
   for (const r of rows) {
     if (r.past || r.arranger) continue;
     if (!LOAN_REL.has(r.relType)) continue;
-    if (r.balanceEok != null) { loanEok += r.balanceEok; loanKnown += 1; }
-    else loanUnknown += 1;
+    const e = net.edges.find((x) => x.id === r.edgeId)!;
+    const f = amountFacts(e, TODAY);
+    if (r.balanceEok == null) { loanUnknown += 1; continue; }
+    if (!OUTSTANDING_KINDS.has(f.kind)) { loanOther += 1; continue; }
+    const k = f.asOf || "기준일 미기재";
+    const cur = byAsOf.get(k) || { sum: 0, n: 0 };
+    cur.sum += r.balanceEok; cur.n += 1;
+    byAsOf.set(k, cur);
   }
+  const groups = [...byAsOf.entries()].sort((a, b) => b[1].n - a[1].n || b[0].localeCompare(a[0]));
+  const main = groups[0];
+  const loanKnown = main ? main[1].n : 0;
+  const loanEok = main ? main[1].sum : 0;
 
   const material = pickMaterialEdges(rows, opts?.preferEdgeIds, 5);
   const activeRows = rows.filter((r) => !r.past && !r.arranger);
@@ -384,6 +416,10 @@ export function buildBorrowerSummary(
     institutionCount: byInst.size,
     visibleInstitutionCount: visibleInst,
     knownLoanEok: loanKnown ? loanEok : null,
+    knownLoanAsOf: main ? main[0] : null,
+    knownLoanCount: loanKnown,
+    otherDateLoanCount: groups.slice(1).reduce((s2, g) => s2 + g[1].n, 0),
+    nonOutstandingLoanCount: loanOther,
     unknownLoanFacilities: loanUnknown,
     categoryCounts: categories.map((c) => ({ id: c.id, label: c.label, count: c.institutionCount })),
     categories,

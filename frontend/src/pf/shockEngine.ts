@@ -9,6 +9,7 @@ import type {
 } from "./types";
 import { displayName } from "../lib/displayName";
 import { REL_LABEL } from "../lib/format";
+import { CW_DISTRESS_KO, MECHANISM_KO, TRANSMISSION_CLASS_KO } from "../lib/labels";
 
 const GPU_OPERATORS = new Set(["coreweave", "lambda", "nebius", "nscale", "crusoe"]);
 const KR_EQUIPMENT = new Set(["ls_electric", "hd_hyundai_electric", "hyosung_heavy", "doosan_enerbility", "lg_electronics"]);
@@ -82,6 +83,7 @@ function buildAffectedCompanies(
     byCompany.set(id, []);
   }
 
+  const nameOf = (x: string) => { const nn = nodeById.get(x); const pp = projById.get(x); return nn ? displayName(nn) : pp ? (pp.name_ko || pp.name) : x; };
   const out: PfAffectedCompany[] = [];
   for (const [companyId, rows] of byCompany) {
     const n = nodeById.get(companyId);
@@ -98,7 +100,7 @@ function buildAffectedCompanies(
       };
       return {
         project_id: r.projectId,
-        project_name: xe?.project_name || pr?.name_ko || pr?.name || r.projectId,
+        project_name: xe?.project_name || pr?.name_ko || pr?.name || nameOf(r.projectId),
         edge_id: r.edgeId,
         relationship_type: e?.relationship_type || "RELATED",
         exposure_label: REL_LABEL[e?.relationship_type || ""] || e?.label || e?.relationship_type || "관계",
@@ -129,11 +131,14 @@ function buildAffectedCompanies(
     const impact_category = classifyImpact(primaryRel, contingent, n.group);
     const isSpv = n.entity_type === "spv" || n.group === "project_finance";
     const hop = st.label.includes("sector") || st.label.includes("funding") ? 2 : 1;
+    const viaAssumption = !deduped.length || st.label.includes("sector") || st.label.includes("funding");
+    const quantifiedHere = !!ps?.quantified && ps.interest_delta_usd_m != null;
+    const basis: PfAffectedCompany["basis"] = quantifiedHere ? "quantified" : viaAssumption ? "assumption" : "contract";
     const pathParts = [
-      form.coreweaveDistress !== "normal" ? `CoreWeave ${form.coreweaveDistress}` : null,
+      form.coreweaveDistress !== "normal" ? `CoreWeave ${CW_DISTRESS_KO[form.coreweaveDistress] || form.coreweaveDistress}` : null,
       form.hyperscalerCapexPct < 0 ? `AI CAPEX ${form.hyperscalerCapexPct}%` : null,
       form.rateBp > 0 || form.krRateBp > 0 ? `금리 +${form.rateBp}/${form.krRateBp}bp` : null,
-      deduped[0] ? `${deduped[0].project_name} · ${deduped[0].exposure_label}` : st.reason,
+      deduped[0] ? `${nameOf(deduped[0].project_name)} · ${deduped[0].exposure_label}` : (MECHANISM_KO[st.label] || "산업·자금시장 가정 경로"),
       displayName(n),
     ].filter(Boolean);
 
@@ -142,6 +147,8 @@ function buildAffectedCompanies(
       company_name: displayName(n),
       role: n.role || n.entity_type,
       impact_category,
+      basis,
+      data_gap: !quantifiedHere,
       directness: hop === 1 && deduped.length ? "direct" : "indirect",
       hop,
       projects: deduped,
@@ -225,7 +232,7 @@ function projectInterestDelta(p: PfProject, rateBp: number, krBp: number): {
   let baselineDs = p.baseline_debt_service_usd_m ?? null;
   if (baselineDs === null && baselineCoupon != null && (p.senior_debt_usd_m ?? 0) > 0) {
     baselineDs = (p.senior_debt_usd_m as number) * (baselineCoupon / 100);
-    reasons.push("Debt service approximated as coupon × senior face (interest-only proxy; amortization not modeled).");
+    reasons.push("원리금은 표면금리 × 선순위 원금으로 근사 (이자만 반영 · 분할상환 미반영).");
   }
 
   if (bp === 0) {
@@ -238,13 +245,13 @@ function projectInterestDelta(p: PfProject, rateBp: number, krBp: number): {
   if (floatP > 0) {
     delta += floatP * (bp / 10000);
     quantified = true;
-    reasons.push(`Floating / construction debt ${floatP} USD m × ${bp}bp (ASSUMED all-in if spread undisclosed; hedges UNKNOWN).`);
+    reasons.push(`변동·공사 차입 ${floatP} USD m × ${bp}bp (가산금리 미공시 시 전액 가정 · 헤지 여부 미확인).`);
   }
   if (fixedP > 0 && bp !== 0) {
-    reasons.push(`Fixed-rate debt ${fixedP} USD m: coupon unchanged until refinance — no automatic +${bp}bp on fixed notes.`);
+    reasons.push(`고정금리 차입 ${fixedP} USD m: 차환 전까지 이자 불변 — 금리 충격 자동 적용 안 함.`);
   }
   if (floatP <= 0 && fixedP <= 0 && (p.senior_debt_usd_m == null)) {
-    reasons.push("Insufficient disclosed debt balances for interest sensitivity.");
+    reasons.push("이자 민감도를 계산할 공시 차입 잔액이 부족합니다.");
     return { delta: null, baselineDs, stressedDs: null, reasons, quantified: false };
   }
 
@@ -278,9 +285,9 @@ function stressProject(p: PfProject, form: PfShockForm): PfProjectStress {
     if (score >= 0.05) { level = "high"; intensity = 0.7; }
     else if (score >= 0.02) { level = "moderate"; intensity = 0.4; }
     else { level = "moderate"; intensity = 0.25; }
-    reasons.push("DSCR not computable (CFADS undisclosed). Stress band uses interest-delta / debt face proxy — not a covenant breach.");
+    reasons.push("CFADS 미공시로 DSCR 산정 불가. 단계 구분은 추가 이자/원금 근사치 기준이며 약정 위반 판단이 아닙니다.");
     quant = true;
-    missing.push("CFADS for true DSCR");
+    missing.push("DSCR 산정용 CFADS");
   } else if (!rateQ && form.gpuRentPct === 0 && form.hyperscalerCapexPct === 0) {
     level = "normal"; intensity = 0;
   }
@@ -294,20 +301,20 @@ function stressProject(p: PfProject, form: PfShockForm): PfProjectStress {
       const hit = Math.abs(form.gpuRentPct) / 100 * pass;
       if (hit >= 0.2) { level = mergeLevel(level, "high"); intensity = Math.max(intensity, 0.55 + hit * 0.3); }
       else if (hit >= 0.08) { level = mergeLevel(level, "moderate"); intensity = Math.max(intensity, 0.35); }
-      reasons.push(`GPU rental ${form.gpuRentPct}% with ASSUMED operator margin pass-through ${Math.round(pass * 100)}% — not equal to lease rate cut.`);
+      reasons.push(`GPU 임대료 ${form.gpuRentPct}% · 운영사 마진 전가 ${Math.round(pass * 100)}% (가정) — 임대차 계약 임대료 인하와 같지 않음.`);
       quant = true;
     } else if (p.gpu_rent_exposure === "indirect_tenant" || (p.gpu_rent_pass_through_pct ?? 0) === 0) {
       gpuImpact = "lease_protected";
-      reasons.push("Long-term lease / hosting: GPU rental decline does not auto-reduce contracted project revenue.");
+      reasons.push("장기 임대·호스팅 계약: GPU 임대료 하락이 계약 매출을 자동으로 줄이지 않음.");
       // Second-order: future demand only if combined with CAPEX cut
       if (form.hyperscalerCapexPct <= -20 && form.restrictNewFinancing) {
         level = mergeLevel(level, "moderate");
         intensity = Math.max(intensity, 0.3);
-        reasons.push("Second-order: weak GPU economics + CAPEX cut may slow expansion / refinancing appetite (qualitative).");
+        reasons.push("2차 영향: GPU 수익성 약화와 CAPEX 감소가 증설·차환 수요를 늦출 수 있음 (정성).");
       }
     } else {
       gpuImpact = "insufficient";
-      reasons.push("GPU exposure path insufficiently disclosed.");
+      reasons.push("GPU 노출 경로가 충분히 공시되지 않음.");
     }
   }
 
@@ -327,7 +334,7 @@ function stressProject(p: PfProject, form: PfShockForm): PfProjectStress {
       // Keep stress at normal for CW/CAPEX — Hostway must not become the KR contagion sink
       level = "normal";
       intensity = 0;
-      reasons.push("Stabilized operating colocation: CAPEX/CW demand shock does not auto-stress lease-backed ops. Not a Korean PF hub.");
+      reasons.push("안정 운영 코로케이션: CAPEX·CoreWeave 수요 충격이 임대 기반 운영을 자동으로 압박하지 않음 (국내 PF 허브 아님).");
     } else if (
       p.hyperscaler_capex_exposure === "demand_for_future_phases"
       || p.hyperscaler_capex_exposure === "future_permit_pipeline"
@@ -345,19 +352,19 @@ function stressProject(p: PfProject, form: PfShockForm): PfProjectStress {
       if (permitOnly) {
         level = mergeLevel(level, "moderate");
         intensity = Math.max(intensity, Math.min(0.28, 0.12 + sev * 0.25));
-        reasons.push(`Permit/development pipeline under CAPEX ${form.hyperscalerCapexPct}% — qualitative demand only; no disclosed PF to impair.`);
+        reasons.push(`인허가·개발 단계 사업 (CAPEX ${form.hyperscalerCapexPct}%) — 정성적 수요 영향만, 손상될 공시 PF 없음.`);
       } else if (form.restrictNewFinancing || sev >= 0.25) {
         level = mergeLevel(level, sev >= 0.35 ? "high" : "moderate");
         intensity = Math.max(intensity, 0.3 + sev * 0.4);
-        reasons.push(`Hyperscaler AI CAPEX ${form.hyperscalerCapexPct}% with ASSUMED demand elasticity ${Math.round(e * 100)}% — future starts / leasing demand; not automatic lease cancel.`);
+        reasons.push(`빅테크 AI CAPEX ${form.hyperscalerCapexPct}% · 수요 탄성 ${Math.round(e * 100)}% (가정) — 향후 착공·임차 수요 영향, 기존 임대차 자동 해지 아님.`);
       } else {
         level = mergeLevel(level, "moderate");
         intensity = Math.max(intensity, 0.2);
-        reasons.push(`Hyperscaler AI CAPEX ${form.hyperscalerCapexPct}% — moderate pipeline sensitivity.`);
+        reasons.push(`빅테크 AI CAPEX ${form.hyperscalerCapexPct}% — 개발 파이프라인 중간 민감도.`);
       }
     } else {
       capexImpact = "qualitative";
-      reasons.push("CAPEX reduction: qualitative demand channel only for this project.");
+      reasons.push("CAPEX 감소: 이 사업은 정성적 수요 경로만 해당.");
     }
   }
 
@@ -368,12 +375,12 @@ function stressProject(p: PfProject, form: PfShockForm): PfProjectStress {
     if (liqGap > 0 && (p.committed_construction_financing_usd_m == null || form.restrictNewFinancing)) {
       level = mergeLevel(level, form.restrictNewFinancing ? "high" : "moderate");
       intensity = Math.max(intensity, form.restrictNewFinancing ? 0.6 : 0.35);
-      reasons.push(`Modeled IDC / interest pressure over ${form.horizonMonths}m ≈ ${liqGap.toFixed(1)} USD m (potential funding need — not automatic default).`);
+      reasons.push(`${form.horizonMonths}개월 이자 부담 증가 모형치 ≈ ${liqGap.toFixed(1)} USD m (추가 자금 필요 가능성 — 자동 부도 아님).`);
     }
   }
 
   if (!quant && level === "insufficient" && (form.rateBp !== 0 || form.gpuRentPct !== 0 || form.hyperscalerCapexPct !== 0 || (form.coreweaveDistress && form.coreweaveDistress !== "normal"))) {
-    reasons.push("Stress visible only qualitatively — key project cash-flow inputs missing.");
+    reasons.push("핵심 현금흐름 자료가 없어 정성적으로만 표시합니다.");
   }
   // Reset only when ALL primary + secondary shocks are idle (include CoreWeave).
   const cwIdle = !form.coreweaveDistress || form.coreweaveDistress === "normal";
@@ -389,7 +396,7 @@ function stressProject(p: PfProject, form: PfShockForm): PfProjectStress {
     } else {
       intensity = Math.min(intensity, 0.35);
       if (level === "high" || level === "critical") level = "moderate";
-      reasons.push("Operating-asset: rate sensitivity only — not a default CW/CAPEX contagion path.");
+      reasons.push("운영 자산: 금리 민감도만 해당 — CoreWeave·CAPEX 전염의 기본 경로 아님.");
     }
   }
 
@@ -416,8 +423,9 @@ function stressProject(p: PfProject, form: PfShockForm): PfProjectStress {
   };
 }
 
+/** Missing class ≠ direct contract: unclassified US↔KR links (e.g. semiconductor supply) are counted separately. */
 function edgeClass(e: NetEdge): string {
-  return (e as NetEdge & { transmission_class?: string }).transmission_class || "direct_contract";
+  return (e as NetEdge & { transmission_class?: string }).transmission_class || "unclassified";
 }
 
 function buildUsKoreaPaths(net: Network): PfShockResult["pf"]["us_korea_paths"] {
@@ -465,7 +473,7 @@ export function simulatePfShock(net: Network, projectsFile: PfProjectsFile, form
   // ---- Stage 0/1 primary: CoreWeave distress ----
   if (cw.rank > 0) {
     setNode("coreweave", cw.level, cw.intensity, "cw_distress", "assumed",
-      `Primary shock A: CoreWeave ${form.coreweaveDistress} (modeled — not a legal finding)`);
+      `1차 충격 A: CoreWeave ${CW_DISTRESS_KO[form.coreweaveDistress] || form.coreweaveDistress} (모형 가정 — 법적 판단 아님)`);
     // US landlords / SPVs with CoreWeave lease credit support
     for (const e of net.edges) {
       if (!(e.source === "coreweave" || e.target === "coreweave")) continue;
@@ -474,7 +482,7 @@ export function simulatePfShock(net: Network, projectsFile: PfProjectsFile, form
       const sev = cw.rank >= 3 ? "high" : cw.rank >= 2 ? "high" : "moderate";
       const inten = cw.intensity * (cw.rank >= 3 ? 0.85 : 0.55);
       setNode(other, sev as StressLevel, inten, "cw_lease_credit", "relationship_only",
-        `CoreWeave is tenant/offtake credit support — distress may impair lease-backed US DC projects (not automatic SPV default)`);
+        `CoreWeave가 임차인(신용 지원)인 미국 DC 사업 — 임대료 기반 상환에 부담 가능 (SPC 자동 부도 아님)`);
     }
   }
 
@@ -483,8 +491,8 @@ export function simulatePfShock(net: Network, projectsFile: PfProjectsFile, form
   for (const ps of projects) {
     setNode(ps.project_id, ps.level, ps.intensity, ps.level, ps.quantified ? "computed" : "relationship_only", ps.reasons[0] || "");
     const proj = projectsFile.projects.find((x) => x.id === ps.project_id);
-    if (proj?.spv) setNode(proj.spv, ps.level, ps.intensity * 0.95, ps.level, ps.quantified ? "computed" : "relationship_only", "SPV linked to project stress");
-    if (proj?.developer) setNode(proj.developer, mergeLevel("moderate", ps.level === "critical" ? "high" : ps.level), ps.intensity * 0.55, "sponsor", "relationship_only", "Sponsor / developer — not automatic parent default");
+    if (proj?.spv) setNode(proj.spv, ps.level, ps.intensity * 0.95, ps.level, ps.quantified ? "computed" : "relationship_only", "사업 스트레스와 연결된 SPC");
+    if (proj?.developer) setNode(proj.developer, mergeLevel("moderate", ps.level === "critical" ? "high" : ps.level), ps.intensity * 0.55, "sponsor", "relationship_only", "시행·스폰서 — 모회사 자동 부도 아님");
   }
 
   if (form.gpuRentPct < 0) {
@@ -493,7 +501,7 @@ export function simulatePfShock(net: Network, projectsFile: PfProjectsFile, form
     const lvl: StressLevel = hit >= 0.25 ? "high" : "moderate";
     for (const id of GPU_OPERATORS) {
       if (nodeById.has(id)) {
-        setNode(id, lvl, clamp01(0.3 + hit), "gpu_rent", "assumed", `ASSUMED GPU rental pass-through ${Math.round(pass * 100)}% on operator margins`);
+        setNode(id, lvl, clamp01(0.3 + hit), "gpu_rent", "assumed", `GPU 임대료 하락의 운영사 마진 전가 ${Math.round(pass * 100)}% (가정)`);
       }
     }
   }
@@ -572,8 +580,8 @@ export function simulatePfShock(net: Network, projectsFile: PfProjectsFile, form
     // Short labels only — long explanations live in the compact SHOCK panel on demand
     setNode(other, lvl, baseInt * (isEnhance ? 0.55 : 0.4), isEnhance ? "보증·확약" : "대출·출자", "relationship_only",
       isEnhance
-        ? `조건부 신용보강·보증 — 발동 시에만 현금 부담 (${edgeClass(e)})`
-        : `검증된 금융 익스포저 — LGD 미계량 (${edgeClass(e)})`);
+        ? `조건부 신용보강·보증 — 발동 시에만 현금 부담 (${TRANSMISSION_CLASS_KO[edgeClass(e)] || edgeClass(e)})`
+        : `계약으로 확인된 금융관계 — 손실률 미산정 (${TRANSMISSION_CLASS_KO[edgeClass(e)] || edgeClass(e)})`);
     impactEdges.push({ edgeId: e.id, companyId: other, projectId: x.project_id || anchorPid, contingent: isEnhance });
   }
 
@@ -592,10 +600,10 @@ export function simulatePfShock(net: Network, projectsFile: PfProjectsFile, form
           && stressedProjects.has(p.id)));
       if (epcEdges.length && touchesStressed) {
         setNode(n.id, "moderate", clamp01(0.35 + sev * 0.35), "kr_epc_verified", "relationship_only",
-          "Verified Korean EPC/completion-guarantee on domestic DC project — construction receivables / contingent completion risk (not US SPV bilateral)");
+          "국내 DC 사업의 확인된 시공·책임준공 — 공사대금·조건부 준공 의무 위험 (미국 SPC와 직접 계약 아님)");
       } else if (exp === "sector_sensitivity" || exp === "general_pf" || KR_EQUIPMENT.has(n.id)) {
         setNode(n.id, "moderate", clamp01(0.2 + sev * 0.35), "sector_kr", "relationship_only",
-          "Korean EPC/equipment: sector demand sensitivity (class B/C) — not a confirmed US SPV contract loss");
+          "국내 시공·장비: 산업 수요 민감도(가정 경로) — 미국 SPC 계약 손실 아님");
       }
     }
   }
@@ -613,7 +621,7 @@ export function simulatePfShock(net: Network, projectsFile: PfProjectsFile, form
         if (id === "coreweave") continue;
         if (!nodeById.has(id)) continue;
         setNode(id, "moderate", clamp01(0.18 + pass * 0.4), "funding_market", "assumed",
-          "Funding-market / refinancing sentiment (class C) via explicit edge — not automatic institutional default");
+          "자금시장·차환 심리(가정 경로) — 기관 자동 부도 아님");
       }
     }
   }
@@ -633,7 +641,7 @@ export function simulatePfShock(net: Network, projectsFile: PfProjectsFile, form
           && e.relationship_type !== "ARRANGER");
         if (hasVerifiedFin) continue;
         setNode(n.id, "moderate", 0.1, "sector_lending_capacity", "assumed",
-          "Level-3 sector channel only — no verified bilateral DC PF edge; not a fabricated Hostway/project link");
+          "산업 경로만 해당 — 확인된 DC PF 직접 계약 없음 (사업 연결을 만들지 않음)");
       }
     }
   }
@@ -643,7 +651,7 @@ export function simulatePfShock(net: Network, projectsFile: PfProjectsFile, form
     for (const id of ["sk_hynix", "samsung", "nvidia"]) {
       if (nodeById.has(id)) {
         setNode(id, "moderate", 0.28, "hbm_demand", "relationship_only",
-          "Qualitative: weaker AI infra cycle may slow accelerator/HBM demand — not equal to GPU rental %");
+          "정성: AI 인프라 투자 둔화가 가속기·HBM 수요를 늦출 수 있음 — GPU 임대료 하락률과 같지 않음");
       }
     }
   }
@@ -655,7 +663,7 @@ export function simulatePfShock(net: Network, projectsFile: PfProjectsFile, form
       relation: { kind: "direct", path: null, direct_edges: [] },
       values: [],
       reason: st.reason,
-      needed: st.level === "insufficient" ? "project CFADS / covenants" : null,
+      needed: st.level === "insufficient" ? "사업 CFADS · 원리금 일정" : null,
       exposure_class: st.category === "computed" ? "measurable" : "potential_indirect",
       mechanism: st.label,
     };
@@ -696,7 +704,7 @@ export function simulatePfShock(net: Network, projectsFile: PfProjectsFile, form
 
   const rounds: RefiRound[] = [
     round(0, "Primary US shocks", "0단계 · 1차 충격 (CoreWeave · CAPEX)", [
-      `CoreWeave: ${form.coreweaveDistress} · Big Tech AI CAPEX ${form.hyperscalerCapexPct}%`,
+      `CoreWeave: ${CW_DISTRESS_KO[form.coreweaveDistress] || form.coreweaveDistress} · 빅테크 AI CAPEX ${form.hyperscalerCapexPct}%`,
       `2차 변수: 금리 +${form.rateBp}bp · KR +${effectiveKrBp(form).toFixed(0)}bp · GPU ${form.gpuRentPct}%`,
       form.restrictNewFinancing ? "신규 프로젝트 금융 제한: ON" : "신규 PF 제한: OFF",
       "분석 단계이며 예측·확정 부도가 아닙니다.",
@@ -704,22 +712,22 @@ export function simulatePfShock(net: Network, projectsFile: PfProjectsFile, form
     round(1, "US infra & project stress", "1단계 · US 인프라·프로젝트", [
       `CoreWeave 및 임차 신용이 연결된 US DC/SPV`,
       `계량 프로젝트: ${projects.filter((p) => p.quantified && p.level !== "normal").length}`,
-      "고정 임차 ≠ GPU 현물가 1:1",
+      "고정 임대료는 GPU 시장 임대료와 1:1로 움직이지 않습니다.",
     ], stage1, (id) => stage1.includes(id)),
     round(2, "Verified financial counterparties", "2단계 · 검증된 금융 상대방", [
       "대주·보증·인수확약 — 관계가 곧 전액 손실이 아닙니다.",
       `금융 노드: ${stage2.length}`,
     ], [...stage1, ...stage2], (id) => stage1.includes(id) || stage2.includes(id)),
     round(3, "Korean EPC / operators / equipment", "3단계 · 한국 EPC·운영·장비", [
-      "검증 EPC(책임준공)와 섹터 수요(class B)를 구분합니다.",
+      "계약으로 확인된 시공(책임준공)과 산업 수요 가정 경로를 구분합니다.",
       `한국 산업 노드: ${stage3.length}`,
     ], [...stage1, ...stage2, ...stage3], (id) => stage1.includes(id) || stage2.includes(id) || stage3.includes(id)),
     round(4, "Korean PF funding market", "4단계 · 한국 DC PF 자금시장", [
-      `ASSUMED CW→KR 전가 ${Math.round((form.cwKrFundingPassThrough || 0) * 100)}% · 검증 크로스보더 여신 없음`,
+      `CoreWeave→국내 자금시장 전가 ${Math.round((form.cwKrFundingPassThrough || 0) * 100)}% (가정) · 확인된 국경 간 직접 여신 없음`,
       `자금시장·협동금융 노드: ${stage4.length}`,
     ], [...stage1, ...stage2, ...stage3, ...stage4], (id) => !stage5.includes(id) && allStressed.includes(id)),
     round(5, "Further lending capacity (conditional)", "5단계 · 추가 여신 여력(조건부)", [
-      "Path E: 허브가 고스트레스일 때만 general_pf에 정성 압력 — 은행 간 허위 여신 없음",
+      "주요 사업이 높은 스트레스일 때만 일반 PF 대주에 정성적 압력을 표시합니다 — 은행 간 여신을 만들지 않습니다.",
       `추가 노드: ${stage5.length}`,
     ], allStressed, (id) => allStressed.includes(id)),
   ];
@@ -734,7 +742,16 @@ export function simulatePfShock(net: Network, projectsFile: PfProjectsFile, form
   const measurable = projects.filter((p) => p.quantified).length;
   const dscrDet = projects.filter((p) => p.stressed_dscr != null && p.baseline_dscr != null && (p.stressed_dscr as number) < (p.baseline_dscr as number) - 0.01).length;
   const liq = projects.filter((p) => (p.liquidity_gap_usd_m || 0) > 0).length;
-  const krVer = usKorea.filter((p) => p.transmission_class === "direct_contract").length;
+  const krVer = usKorea.filter((p) => p.transmission_class === "direct_contract" || p.transmission_class === "direct").length;
+  const krUncls = usKorea.filter((p) => p.transmission_class === "unclassified").length;
+  const breakdown = {
+    unique_companies: new Set(affectedCompanies.map((c) => c.company_id)).size,
+    quantified: affectedCompanies.filter((c) => c.basis === "quantified").length,
+    contract: affectedCompanies.filter((c) => c.basis === "contract").length,
+    assumption: affectedCompanies.filter((c) => c.basis === "assumption").length,
+    data_gap: affectedCompanies.filter((c) => c.data_gap).length,
+    stress_raised: affectedCompanies.length,
+  };
   const krSec = usKorea.filter((p) => p.transmission_class === "sector_demand" || p.transmission_class === "funding_market").length;
 
   const totalDelta = projects.reduce((s, p) => s + (p.interest_delta_usd_m || 0), 0);
@@ -747,7 +764,7 @@ export function simulatePfShock(net: Network, projectsFile: PfProjectsFile, form
     baseline_dscr: null, stressed_dscr: null, dscr_delta: null, interest_delta_usd_m: null,
     debt_service_baseline_usd_m: null, debt_service_stressed_usd_m: null, liquidity_gap_usd_m: null,
     gpu_revenue_impact: "assumed_operator" as const, capex_demand_impact: "none" as const,
-    quantified: false, qualitative: cw.rank > 0, reasons: [`CoreWeave distress scenario: ${form.coreweaveDistress}`],
+    quantified: false, qualitative: cw.rank > 0, reasons: [`CoreWeave 스트레스 시나리오: ${CW_DISTRESS_KO[form.coreweaveDistress] || form.coreweaveDistress}`],
     missing: [], source_ids: [],
   } : undefined);
 
@@ -838,7 +855,7 @@ export function simulatePfShock(net: Network, projectsFile: PfProjectsFile, form
       exposure_class: i.rate_type === "floating" ? "floating_sensitive" : "fixed_coupon",
       annual_interest_delta_usd_m: i.rate_type === "floating" && i.principal_usd_m
         ? i.principal_usd_m * (form.rateBp / 10000) : 0,
-      reason: i.rate_type === "fixed" ? "Fixed coupon unchanged" : "ASSUMED bp on floating / undisclosed spread",
+      reason: i.rate_type === "fixed" ? "고정금리 — 이자 불변" : "변동금리에 가정 bp 적용 · 가산금리 미공시",
       formula: i.rate_type === "floating" ? "principal × shock_bp / 10000" : null,
     })),
     rounds,
@@ -850,9 +867,9 @@ export function simulatePfShock(net: Network, projectsFile: PfProjectsFile, form
       "Hyperscaler CAPEX % × demand elasticity (ASSUMED) → future phases / order-book sensitivity",
     ],
     warnings: [
-      "SPV distress ≠ parent bankruptcy",
-      "DSCR < 1.0 is modeled covenant pressure, not confirmed legal default",
-      "Korean sector edges are not fabricated bilateral losses",
+      "SPC 스트레스는 보증 근거 없이 모회사 부도로 전파하지 않습니다.",
+      "DSCR 1.0 미만은 모형상 상환여력 부족 신호이며 실제 대출약정 위반·법적 부도 기준이 아닙니다.",
+      "한국 산업·자금시장 경로는 가정 경로이며 기관별 손실을 만들지 않습니다.",
     ],
     notes: [
       "PF engine is isolated from CoreWeave semiconductor rateShock calculations.",
@@ -887,28 +904,30 @@ export function simulatePfShock(net: Network, projectsFile: PfProjectsFile, form
       liquidity_shortfalls: liq,
       korean_verified_exposure: krVer,
       korean_sector_sensitivity: krSec,
+      korean_unclassified_links: krUncls,
+      impact_breakdown: breakdown,
       us_korea_paths: usKorea,
       affected_companies: affectedCompanies,
       impact_edge_ids: impactEdgeIds,
       assumptions: [
-        `CoreWeave distress = ${form.coreweaveDistress} (primary A)`,
-        `Hyperscaler AI CAPEX ${form.hyperscalerCapexPct}% (primary B)`,
-        `CW→KR funding pass-through ${Math.round((form.cwKrFundingPassThrough || 0) * 100)}% (ASSUMED)`,
-        `GPU operator margin pass-through ${Math.round(form.gpuOperatorMarginPassThrough * 100)}% (ASSUMED)`,
-        `CAPEX demand elasticity ${Math.round(form.capexDemandElasticity * 100)}% (ASSUMED)`,
-        `KR rate linkage ${Math.round(form.krRateLinkPct * 100)}% of US shock (user-defined)`,
-        "Comparison baseline = no additional shock (+0bp / CAPEX 0% / CW normal)",
+        `CoreWeave 상태: ${CW_DISTRESS_KO[form.coreweaveDistress] || form.coreweaveDistress} (1차 충격 A · 사용자 선택)`,
+        `빅테크 AI CAPEX ${form.hyperscalerCapexPct}% (1차 충격 B · 사용자 선택)`,
+        `CoreWeave→국내 자금시장 전가 ${Math.round((form.cwKrFundingPassThrough || 0) * 100)}% (가정)`,
+        `GPU 운영사 마진 전가 ${Math.round(form.gpuOperatorMarginPassThrough * 100)}% (가정)`,
+        `CAPEX 수요 탄성 ${Math.round(form.capexDemandElasticity * 100)}% (가정)`,
+        `국내 금리 연동 ${Math.round(form.krRateLinkPct * 100)}% (사용자 설정)`,
+        "비교 기준 = 추가 충격 없음 (+0bp · CAPEX 0% · CoreWeave 정상)",
       ],
       limitations: [
-        "Most projects lack public CFADS → DSCR often UNKNOWN",
-        "No verified CoreWeave bilateral loan to Korean banks",
-        "Arranger / underwrite ≠ retained principal; LGD not fabricated",
-        "Classes 3–5 Korean entities are not confirmed AI DC counterparties",
-        "SPV distress ≠ parent default without documented guarantee",
-        "영향 확인 / 부도위험 판단 자료 부족 — unknown exposure is not zero",
+        "대부분 사업장은 CFADS(원리금 상환 가능 현금흐름)가 공시되지 않아 DSCR을 산정할 수 없습니다.",
+        "CoreWeave와 국내 금융기관 사이의 확인된 직접 여신은 없습니다.",
+        "주선·인수 금액은 보유 원금이 아니며, 손실률(LGD)을 만들지 않습니다.",
+        "SPC 스트레스는 보증 근거 없이 모회사 부도로 보지 않습니다.",
+        "금액 미확인은 0이 아닙니다 — '영향 규모 판단 불가'로 남깁니다.",
       ],
     },
   };
 }
 
 export const PF_SHOCK_STAGES = ["us_shock", "us_projects", "lenders", "kr_industry", "kr_funding", "lending_capacity"];
+export const PF_SHOCK_STAGES_KO = ["1차 충격", "미국 사업장", "금융 상대방", "국내 시공·운영", "국내 자금시장", "여신 여력"];

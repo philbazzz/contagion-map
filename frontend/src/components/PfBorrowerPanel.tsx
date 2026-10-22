@@ -17,7 +17,7 @@ import { FINANCING_STAGE_KO } from "../lib/format";
 function fmtLoan(eok: number | null, unknown: number): string {
   if (eok != null) {
     const base = `${Math.round(eok).toLocaleString("ko-KR")}억 원`;
-    return unknown ? `${base} (잔액미확인 ${unknown}건 제외)` : base;
+    return unknown ? `${base} (금액 미확인 ${unknown}건 제외)` : base;
   }
   if (unknown) return "미확인";
   return "해당 없음 / 미확인";
@@ -174,15 +174,19 @@ export function PfBorrowerPanel({
           </dd>
         </div>
         <div>
-          <dt>확인된 대출잔액</dt>
-          <dd className="num">{fmtLoan(summary.knownLoanEok, summary.unknownLoanFacilities)}</dd>
+          <dt>확인된 대출 실행잔액</dt>
+          <dd className="num">{fmtLoan(summary.knownLoanEok, summary.unknownLoanFacilities)}
+            {summary.knownLoanEok != null ? <span className="fine"> · {summary.knownLoanCount}건{summary.knownLoanAsOf ? ` · ${summary.knownLoanAsOf} 기준` : ""}</span> : null}
+            {summary.otherDateLoanCount ? <span className="fine"> · 기준일 다른 {summary.otherDateLoanCount}건 별도</span> : null}
+            {summary.nonOutstandingLoanCount ? <span className="fine"> · 약정·한도 {summary.nonOutstandingLoanCount}건 미합산</span> : null}
+          </dd>
         </div>
         <div>
           <dt>대출약정·트랜치</dt>
           <dd className="num">활성 {summary.activeFacilityCount} · 전체 {summary.facilityCount}</dd>
         </div>
       </dl>
-      <p className="fine">주선·인수·시설총액은 잔액에 합산하지 않습니다. Unknown은 0으로 두지 않습니다.</p>
+      <p className="fine">주선·인수·시설총액·약정한도·추정 금액은 잔액에 합산하지 않습니다. 같은 기준일의 확인된 잔액만 더하며, 금액 미확인은 0으로 두지 않습니다.</p>
 
       <p className="lbl" style={{ marginTop: 6 }}>금융기관 유형별 현황</p>
       <ul className="pfb-cats">

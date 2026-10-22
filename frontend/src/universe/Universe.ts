@@ -16,6 +16,8 @@ export interface UniverseCallbacks {
   onSelectNode?: (id: string) => void;
   onSelectEdge?: (id: string) => void;
   onSelectNone?: () => void;
+  /** Rendering trouble: "lost" (canvas context lost), "restored", "slow" (sustained low frame rate → light mode). */
+  onRenderIssue?: (kind: "lost" | "restored" | "slow" | "ok") => void;
 }
 
 export const GROUP_COLORS: Record<string, string> = {
@@ -229,6 +231,16 @@ export class Universe {
   /** Soft floor / hard ceiling for orbit distance. Ceiling scales with network radius so large PF maps can fully fit. */
   private minDist = 220;
   private maxDist = 12000;
+  /** Screen areas covered by overlays (readout card, toolbar, overlay panels) — fit & centering avoid them. */
+  private insets = { l: 0, r: 0, t: 0, b: 0 };
+  /** Nodes framed by the default "core" view (focus company + main direct relations). */
+  private coreIds: string[] = [];
+  /** Sustained slow frames → light mode (fewer labels, no nebula, lower DPR). */
+  private light = false;
+  private frameAvg = 16;
+  private slowSince = -1;
+  private ctxLost = false;
+  private labelWidthCache = new Map<string, number>();
 
   constructor(canvas: HTMLCanvasElement, cb: UniverseCallbacks = {}) {
     this.canvas = canvas;
@@ -407,8 +419,8 @@ export class Universe {
     if (!pts.length) return;
     const c = mul(pts.reduce((acc, p) => add(acc, p), { x: 0, y: 0, z: 0 }), 1 / pts.length);
     const rad = Math.max(160, ...pts.map((p) => len(sub(p, c))));
-    const half = 0.5 * Math.min(this.W, this.H);
-    const dist = Math.max(560, Math.min(this.maxDist, rad * (this.focal / half) * 1.55 + 320));
+    const half = this.usableHalf();
+    const dist = Math.max(560, Math.min(this.maxDist, rad * (this.focal / half) * 1.3 + 320));
     this.goal = { target: c, dist, pitch: Math.min(0.22, this.pitch), slow: true };
     this.idleSince = this.time;
   }
@@ -476,11 +488,42 @@ export class Universe {
     this.idleSince = this.time;
   }
 
+  private cx() { return (this.insets.l + this.W - this.insets.r) / 2; }
+  private cy() { return (this.insets.t + this.H - this.insets.b) / 2; }
+  private usableHalf() {
+    const w = Math.max(160, this.W - this.insets.l - this.insets.r);
+    const h = Math.max(160, this.H - this.insets.t - this.insets.b);
+    return Math.max(120, Math.min(w * 0.46, h * 0.42));
+  }
+
+  /** Overlay rectangles (px) covering the canvas edges. */
+  setInsets(ins: { l: number; r: number; t: number; b: number }) {
+    const c = (x: number, max: number) => Math.max(0, Math.min(max * 0.45, Number.isFinite(x) ? x : 0));
+    this.insets = { l: c(ins.l, this.W), r: c(ins.r, this.W), t: c(ins.t, this.H), b: c(ins.b, this.H) };
+  }
+
+  /** Which nodes the default view frames and labels first. */
+  setCoreIds(ids: string[]) { this.coreIds = ids.filter((id) => this.nodeMap.has(id)); }
+
+  /** Default view: focus company + its main direct relations, readable labels. Full map stays on fitAll(). */
+  coreView() {
+    const ids = this.coreIds.length ? this.coreIds : [this.origin];
+    const pts = ids.map((id) => this.nodeMap.get(id)).filter((r) => r && this.nodeVisible(r)).map((r) => r!.pos);
+    if (pts.length < 2) { this.fitAll(); return; }
+    const c = mul(pts.reduce((acc, p) => add(acc, p), { x: 0, y: 0, z: 0 }), 1 / pts.length);
+    const rad = Math.max(220, ...pts.map((p) => len(sub(p, c))));
+    const dist = Math.max(this.minDist, Math.min(this.maxDist, rad * (this.focal / this.usableHalf()) * 1.25 + 260));
+    this.goal = { target: c, dist, pitch: 0.2, slow: false };
+    this.idleSince = this.time;
+  }
+
   /** Distance that fits the full network radius into the canvas with vertical padding. */
   private fitDist() {
     // Use height more aggressively — top clipping was caused by under-weighting H vs W.
-    const halfH = Math.max(120, this.H * 0.42);
-    const halfW = Math.max(120, this.W * 0.46);
+    const w = Math.max(160, this.W - this.insets.l - this.insets.r);
+    const h = Math.max(160, this.H - this.insets.t - this.insets.b);
+    const halfH = Math.max(120, h * 0.42);
+    const halfW = Math.max(120, w * 0.46);
     const half = Math.min(halfW, halfH);
     const pad = 1.28; // padding so labels / topmost nodes stay inside
     const raw = this.radius * (this.focal / half) * pad + 280;
@@ -496,9 +539,10 @@ export class Universe {
       return;
     }
     const c = mul(pts.reduce((acc, p) => add(acc, p), { x: 0, y: 0, z: 0 }), 1 / pts.length);
-    const rad = Math.max(this.radius * 0.85, ...pts.map((p) => len(sub(p, c))));
-    const half = Math.max(120, Math.min(this.W * 0.46, this.H * 0.42));
-    const dist = Math.max(this.minDist, 700, Math.min(this.maxDist, rad * (this.focal / half) * 1.32 + 320));
+    // Fit what is actually shown (filters applied), not the whole data radius.
+    const rad = Math.max(160, ...pts.map((p) => len(sub(p, c))));
+    const half = this.usableHalf();
+    const dist = Math.max(this.minDist, Math.min(this.maxDist, rad * (this.focal / half) * 1.18 + 260));
     this.goal = { target: c, dist, pitch: 0.18, yaw: this.yaw, slow: false };
     this.idleSince = this.time;
   }
@@ -537,7 +581,7 @@ export class Universe {
   resize = () => {
     const rect = this.canvas.getBoundingClientRect();
     // Cap DPR for large PF graphs — 2× on 4K + 300 nodes overwhelms 2D canvas fillText.
-    const nodeBudget = this.nodes.length > 200 ? 1.5 : 2;
+    const nodeBudget = this.light ? 1 : this.nodes.length > 200 ? 1.5 : 2;
     this.dpr = Math.min(window.devicePixelRatio || 1, nodeBudget);
     const prevW = this.W, prevH = this.H;
     this.W = Math.max(1, rect.width);
@@ -720,8 +764,8 @@ export class Universe {
     if (z < 8 || !Number.isFinite(z)) return { sx: 0, sy: 0, z, s: 0, ok: false };
     const s = this.focal / z;
     if (!Number.isFinite(s) || s <= 0) return { sx: 0, sy: 0, z, s: 0, ok: false };
-    const sx = this.W / 2 + dot(d, this.right) * s;
-    const sy = this.H / 2 - dot(d, this.up) * s;
+    const sx = this.cx() + dot(d, this.right) * s;
+    const sy = this.cy() - dot(d, this.up) * s;
     if (!Number.isFinite(sx) || !Number.isFinite(sy)) return { sx: 0, sy: 0, z, s: 0, ok: false };
     return { sx, sy, z, s, ok: true };
   }
@@ -737,7 +781,13 @@ export class Universe {
     c.addEventListener("pointerleave", this.onLeave);
     window.addEventListener("resize", this.resize);
     window.addEventListener("contagion:lp-resize", this.resize as EventListener);
+    c.addEventListener("contextlost", this.onCtxLost as EventListener);
+    c.addEventListener("contextrestored", this.onCtxRestored as EventListener);
   }
+  private onCtxLost = () => { this.ctxLost = true; this.cb.onRenderIssue?.("lost"); };
+  private onCtxRestored = () => { this.ctxLost = false; this.labelWidthCache.clear(); this.resize(); this.cb.onRenderIssue?.("restored"); };
+  /** Public: user asked to leave light mode / retry full quality. */
+  setLightMode(on: boolean) { this.light = on; this.slowSince = -1; this.frameAvg = 16; this.resize(); }
   private unbind() {
     const c = this.canvas;
     c.removeEventListener("pointerdown", this.onDown);
@@ -748,6 +798,8 @@ export class Universe {
     c.removeEventListener("pointerleave", this.onLeave);
     window.removeEventListener("resize", this.resize);
     window.removeEventListener("contagion:lp-resize", this.resize as EventListener);
+    c.removeEventListener("contextlost", this.onCtxLost as EventListener);
+    c.removeEventListener("contextrestored", this.onCtxRestored as EventListener);
   }
   private local(ev: PointerEvent | WheelEvent) {
     const r = this.canvas.getBoundingClientRect();
@@ -858,9 +910,19 @@ export class Universe {
 
   // ================= frame =================
   private frame = (now: number) => {
-    const dt = Math.min(0.05, (now - this.last) / 1000);
+    const raw = now - this.last;
+    const dt = Math.min(0.05, raw / 1000);
     this.last = now;
     this.time += dt;
+    // Performance watchdog: ~3 s of frames slower than ~12 fps (while visible) → light mode + notify.
+    if (raw > 0 && raw < 2000 && document.visibilityState === "visible") {
+      this.frameAvg = this.frameAvg * 0.95 + raw * 0.05;
+      if (!this.light && this.frameAvg > 85) {
+        if (this.slowSince < 0) this.slowSince = this.time;
+        else if (this.time - this.slowSince > 3) { this.light = true; this.resize(); this.cb.onRenderIssue?.("slow"); }
+      } else this.slowSince = -1;
+    }
+    if (this.ctxLost) { this.raf = requestAnimationFrame(this.frame); return; }
     try {
       this.step(dt);
       this.draw();
@@ -927,7 +989,7 @@ export class Universe {
       let dim = 1;
       if (this.hoverNode) dim = neighbors.has(r.n.id) ? 1 : 0.16;
       else if (usePath) dim = this.pathNodes.has(r.n.id) ? 1 : 0.28;
-      else if (this.selectedNode) dim = neighbors.has(r.n.id) ? 1 : 0.35;
+      else if (this.selectedNode) dim = neighbors.has(r.n.id) ? 1 : 0.2;
       else if (this.focusSet.size) dim = this.focusSet.has(r.n.id) ? 1 : 0.3;
       if (!this.nodeVisible(r)) dim = 0;
       r.dim = lerp(r.dim, dim, k);
@@ -938,7 +1000,7 @@ export class Universe {
       const touchesFocus = focusId && (er.e.source === focusId || er.e.target === focusId);
       if (this.hoverNode) dim = touchesFocus ? 1 : 0.07;
       else if (usePath) dim = this.pathEdges.has(er.e.id) ? 1 : 0.12;
-      else if (this.selectedNode) dim = touchesFocus ? 1 : 0.25;
+      else if (this.selectedNode) dim = touchesFocus ? 1 : 0.08;
       else if (this.focusSet.size) dim = this.activeEdges.has(er.e.id) || (this.focusSet.has(er.e.source) && this.focusSet.has(er.e.target)) ? 1 : 0.35;
       if (er.e.id === this.hoverEdge || er.e.id === this.selectedEdge) dim = 1.4;
       if (!this.edgeVisible(er)) dim = 0;
@@ -970,7 +1032,7 @@ export class Universe {
     this.updateCamera();
 
     ctx.globalCompositeOperation = "lighter";
-    if (!interacting) {
+    if (!interacting && !this.light) {
       this.drawNebula();
       this.drawStars();
     } else {
@@ -1246,6 +1308,17 @@ export class Universe {
   private drawNodes() {
     const { ctx } = this;
     const order = this.nodes.filter((r) => r.proj.ok && r.dim > 0.02).sort((a, b) => b.proj.z - a.proj.z);
+    const lblFocus = this.hoverNode || this.selectedNode;
+    const lblNb = new Set<string>();
+    if (lblFocus) {
+      for (const er of this.edges) {
+        if (!this.edgeVisible(er)) continue;
+        if (er.e.source === lblFocus) lblNb.add(er.e.target);
+        if (er.e.target === lblFocus) lblNb.add(er.e.source);
+      }
+    }
+    const lblCore = new Set(this.coreIds);
+    const labelJobs: { sx: number; sy: number; R: number; fs: number; labA: number; text: string | null; badge: string | null; st: string; prio: number }[] = [];
     for (const r of order) {
       const p = r.proj;
       const st = r.visual.status;
@@ -1332,56 +1405,104 @@ export class Universe {
         ctx.stroke();
         ctx.setLineDash([]);
       }
-      // Zoom-dependent labels: abbreviate at low zoom; full name on hover/selection.
-      // While orbiting, only selected/hover labels — mass fillText on 300+ nodes freezes the canvas.
+      // Labels are queued with a priority and placed after all nodes, skipping any that would overlap.
       const zoomRaw = Math.sqrt(Math.max(0.15, Number.isFinite(p.s) ? p.s : 0.15));
       const zoom = Number.isFinite(zoomRaw) ? zoomRaw : 0.4;
-      const focus = r.n.id === this.hoverNode || r.n.id === this.selectedNode;
-      const interacting = this.pointers.size > 0;
-      const showName = interacting
-        ? focus
-        : focus || zoom >= 0.55 || (r.n.display_size || 0) >= 8 || (st !== "normal" && zoom >= 0.4);
-      const fs = Math.max(9, Math.min(15, (focus ? 12 : 10) * zoom * 1.15)) || 11;
       if (!Number.isFinite(sx) || !Number.isFinite(sy) || !Number.isFinite(R) || R <= 0) continue;
-      ctx.font = `600 ${fs}px Pretendard, Inter, "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", system-ui, sans-serif`;
-      ctx.textAlign = "center";
-      ctx.textBaseline = "top";
-      const labA = Math.min(1, a * (focus || (r.n.display_size || 0) >= 7 || st !== "normal" ? 1 : 0.72));
-      ctx.fillStyle = `rgba(226,234,250,${(0.92 * labA).toFixed(3)})`;
-      if (showName) {
+      const id = r.n.id;
+      const isFocus = id === this.hoverNode || id === this.selectedNode;
+      const onPath = this.pathNodes.has(id);
+      const isNb = !isFocus && lblNb.has(id);
+      const isOrigin = id === this.origin;
+      const isCore = !lblFocus && lblCore.has(id);
+      const big = (r.n.display_size || 0) >= 8;
+      const stressed = st !== "normal" && !MARKET(st);
+      const prio = isFocus ? 1000 : onPath ? 900 : isOrigin ? 850 : isNb ? 800 + (r.n.display_size || 0)
+        : isCore ? 700 + (r.n.display_size || 0) : stressed ? 500 + rank * 50 : big ? 400 + (r.n.display_size || 0)
+          : 100 + (r.n.display_size || 0) * 5 + zoom * 100;
+      const interactingL = this.pointers.size > 0;
+      const wantName = interactingL ? isFocus
+        : isFocus || onPath || isNb || isOrigin || isCore || big || (stressed && zoom >= 0.4) || zoom >= 0.55;
+      const important = prio >= 700;
+      if ((wantName && (a > 0.3 || important)) || (r.visual.label && !interactingL)) {
         const ko = (r.n.name_ko || "").trim();
         const full = (ko && /[가-힣]/.test(ko)) ? ko : String(r.n.name || r.n.id || "");
-        const lab = (focus || zoom >= 0.85) ? full
-          : full.length > 6 ? `${full.slice(0, 4)}…` : full;
-        if (lab) ctx.fillText(lab, sx, sy + R * 1.7 + 3);
+        const text = !wantName ? null : (important || zoom >= 0.85) ? full : full.length > 6 ? `${full.slice(0, 4)}…` : full;
+        const fs = Math.max(9, Math.min(15, (isFocus ? 12 : important ? 11 : 10) * zoom * 1.15)) || 11;
+        const labA = Math.min(1, Math.max(important ? 0.75 : 0, a) * (isFocus || important || big || stressed ? 1 : 0.72));
+        const vlabel = typeof r.visual.label === "string" ? r.visual.label : "";
+        const badge = !interactingL && vlabel && (isFocus || zoom >= 0.5 || (STRESS_RANK[st] || 0) >= 2)
+          ? (vlabel.length > 8 ? (st === "stress_critical" ? "심각" : st === "stress_high" ? "높음" : st === "stress_moderate" ? "중간" : vlabel.slice(0, 6)) : vlabel)
+          : null;
+        labelJobs.push({ sx, sy, R, fs, labA, text, badge, st, prio });
       }
-      // Compact stress badge only (short Korean) — never long mechanism text on canvas
-      const vlabel = typeof r.visual.label === "string" ? r.visual.label : "";
-      if (!interacting && vlabel && (focus || zoom >= 0.5 || (STRESS_RANK[st] || 0) >= 2)) {
-        const short = vlabel.length > 8
-          ? (st === "stress_critical" ? "심각" : st === "stress_high" ? "높음" : st === "stress_moderate" ? "중간" : vlabel.slice(0, 6))
-          : vlabel;
-        const bf = Math.max(8.5, fs - 1.5);
-        ctx.font = `600 ${bf}px Pretendard, Inter, "Noto Sans KR", "Malgun Gothic", system-ui, sans-serif`;
+      ctx.globalCompositeOperation = "lighter";
+    }
+    this.drawLabels(labelJobs);
+  }
+
+  /** Greedy label placement: highest priority first, skip overlaps, cap the count (lower in light mode). */
+  private drawLabels(jobs: { sx: number; sy: number; R: number; fs: number; labA: number; text: string | null; badge: string | null; st: string; prio: number }[]) {
+    const { ctx } = this;
+    ctx.globalCompositeOperation = "source-over";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "top";
+    const placed: [number, number, number, number][] = [];
+    const hit = (x0: number, y0: number, x1: number, y1: number) => placed.some(([a0, b0, a1, b1]) => x0 < a1 && x1 > a0 && y0 < b1 && y1 > b0);
+    const budget = this.light ? 25 : 70;
+    let n = 0;
+    const font = (fs: number) => `600 ${fs}px Pretendard, Inter, "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", system-ui, sans-serif`;
+    const width = (t: string, fs: number) => {
+      const k = `${fs}|${t}`;
+      let w = this.labelWidthCache.get(k);
+      if (w === undefined) { ctx.font = font(fs); w = ctx.measureText(t).width; if (this.labelWidthCache.size > 4000) this.labelWidthCache.clear(); this.labelWidthCache.set(k, w); }
+      return w;
+    };
+    jobs.sort((a, b) => b.prio - a.prio);
+    for (const j of jobs) {
+      if (n >= budget && j.prio < 800) break;
+      const y0 = j.sy + j.R * 1.7 + 3;
+      let h = 0, w = 0;
+      if (j.text) { w = width(j.text, j.fs); h += j.fs + 2; }
+      const bf = Math.max(8.5, j.fs - 1.5);
+      const bw = j.badge ? width(j.badge, bf) + 12 : 0;
+      if (j.badge) h += bf + 8;
+      const ww = Math.max(w, bw);
+      if (!ww) continue;
+      const x0 = j.sx - ww / 2 - 2, x1 = j.sx + ww / 2 + 2, y1 = y0 + h;
+      if (j.prio < 1000 && hit(x0, y0, x1, y1)) continue;
+      placed.push([x0, y0, x1, y1]);
+      n += 1;
+      if (j.text) {
+        ctx.font = font(j.fs);
+        // dark halo keeps names legible over bright glows
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = `rgba(4,7,16,${(0.75 * j.labA).toFixed(3)})`;
+        ctx.strokeText(j.text, j.sx, y0);
+        ctx.fillStyle = `rgba(226,234,250,${(0.94 * j.labA).toFixed(3)})`;
+        ctx.fillText(j.text, j.sx, y0);
+      }
+      if (j.badge) {
+        const st = j.st;
+        ctx.font = font(bf);
         const lc = st === "stress_critical" ? "232,93,76" : st === "stress_high" ? "255,107,53" : st === "stress_moderate" ? "255,176,32"
           : st === "contract_party" ? "242,193,78" : st === "assumed" ? "255,196,100" : st === "potential" ? "170,182,210"
-          : st === "mk_up" ? "250,130,125" : st === "mk_down" ? "120,170,250" : st === "mk_flat" || st === "mk_na" ? "160,172,195" : "255,176,120";
-        const tw = ctx.measureText(short).width;
-        if (!Number.isFinite(tw)) continue;
-        const by = sy + R * 1.7 + 6 + (showName ? fs : 0);
-        ctx.fillStyle = `rgba(6,10,22,${(0.82 * labA).toFixed(3)})`;
-        roundRect(ctx, sx - tw / 2 - 6, by - 2, tw + 12, bf + 6, 4);
+            : st === "mk_up" ? "250,130,125" : st === "mk_down" ? "120,170,250" : st === "mk_flat" || st === "mk_na" ? "160,172,195" : "255,176,120";
+        const by = y0 + 3 + (j.text ? j.fs : 0);
+        const tw = bw - 12;
+        ctx.fillStyle = `rgba(6,10,22,${(0.82 * j.labA).toFixed(3)})`;
+        roundRect(ctx, j.sx - tw / 2 - 6, by - 2, tw + 12, bf + 6, 4);
         ctx.fill();
-        ctx.strokeStyle = `rgba(${lc},${(0.55 * labA).toFixed(3)})`;
+        ctx.strokeStyle = `rgba(${lc},${(0.55 * j.labA).toFixed(3)})`;
         ctx.lineWidth = 1;
         ctx.setLineDash(st === "potential" || st === "contract_party" || st === "mk_na" ? [2, 2] : []);
         ctx.stroke();
         ctx.setLineDash([]);
-        ctx.fillStyle = `rgba(${lc},${(0.98 * labA).toFixed(3)})`;
-        ctx.fillText(short, sx, by + 1);
+        ctx.fillStyle = `rgba(${lc},${(0.98 * j.labA).toFixed(3)})`;
+        ctx.fillText(j.badge, j.sx, by + 1);
       }
-      ctx.globalCompositeOperation = "lighter";
     }
+    ctx.globalCompositeOperation = "lighter";
   }
 
   /** Cracks + optional shatter fragments. Damage scales with stress rank (financially gated). */

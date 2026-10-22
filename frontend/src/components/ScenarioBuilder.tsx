@@ -8,7 +8,10 @@ import { compareStress, STRESS_LABEL_KO, THRESHOLDS, type OriginStress } from ".
 import type { CrisisMode, FundingAvail } from "../engine/sectorContagion";
 import { IconChevron, IconInfo, IconReset, IconSearch } from "./Icons";
 import { LpResize } from "./LpResize";
+import { multipleChange } from "../lib/labels";
+import { displayName } from "../lib/displayName";
 import type { Mode } from "./TopBar";
+import { refreshLabel, refreshTip } from "../lib/labels";
 
 interface Props {
   mode: Mode;
@@ -16,6 +19,8 @@ interface Props {
   quotes: QuotesOverview | null;
   quotesBusy: boolean;
   onRefreshQuotes: () => void;
+  /** true = button fetches from a quote server; false = re-reads the stored snapshot. */
+  quotesLive?: boolean;
   shock: ShockForm;
   onShock: (p: Partial<ShockForm>) => void;
   shockResult: RateShockResult | null;
@@ -27,6 +32,7 @@ interface Props {
   hiddenGroups: string[]; onToggleGroup: (g: string) => void;
   visuals: Record<string, NodeVisual> | null; selectedId: string | null; onSelect: (id: string) => void;
   onOpenContract: (id: string) => void;
+  shockPending?: boolean;
 }
 
 const STATUS_DOT: Record<string, string> = {
@@ -173,10 +179,10 @@ function EcosystemSummary({ res, net }: { res: RateShockResult | null; net: Netw
       {st ? (
         <div className="stress-card">
           <div className={`stress-pill stress-${st.level}`}>{STRESS_LABEL_KO[st.level]}</div>
-          {st.level === "critical" ? <p className="fine warn-line">Critical Financial Distress — Scenario Estimate (파산·부도 판정 아님)</p> : null}
+          {st.level === "critical" ? <p className="fine warn-line">심각한 재무 압박 — 시나리오 추정 (파산·부도 판정 아님)</p> : null}
           <dl className="facts">
             <div><dt>Δ이자 / 연환산 OCF</dt><dd className="num">{st.score_delta_over_ocf != null ? `${(st.score_delta_over_ocf * 100).toFixed(1)}%` : "—"}</dd></div>
-            <div><dt>OCF/이자 커버리지</dt><dd className="num">{st.baseline_coverage != null && st.stressed_coverage != null ? `${st.baseline_coverage.toFixed(2)}x → ${st.stressed_coverage.toFixed(2)}x` : "—"}</dd></div>
+            <div><dt>OCF/이자 커버리지</dt><dd className="num">{multipleChange(st.baseline_coverage, st.stressed_coverage) || "—"}</dd></div>
             <div><dt>임계 SOFR (분석용)</dt><dd className="num">{st.critical_sofr_pct != null ? `${st.critical_sofr_pct.toFixed(2)}% (+${st.critical_shock_bp?.toFixed(0)}bp)` : "산정 불가"}</dd></div>
             <div><dt>임계까지</dt><dd className="num">{st.bp_to_critical != null ? `${st.bp_to_critical > 0 ? "+" : ""}${st.bp_to_critical.toFixed(0)}bp` : "—"}</dd></div>
           </dl>
@@ -198,12 +204,12 @@ function EcosystemSummary({ res, net }: { res: RateShockResult | null; net: Netw
               <div><dt>선택 시나리오</dt><dd className="num">{s.shock_bp > 0 ? "+" : ""}{s.shock_bp}bp · {s.stressed_sofr_pct ?? "—"}%</dd></div>
               <div><dt>현재 대비 변화 (bp)</dt><dd className="num">{vsBaseline.dBp > 0 ? "+" : ""}{vsBaseline.dBp}bp</dd></div>
               <div><dt>현재 대비 추가 이자</dt><dd className="num">{vsBaseline.dInt > 0 ? "+" : ""}{usdM(vsBaseline.dInt)}</dd></div>
-              <div><dt>커버리지 변화 (pp)</dt><dd className="num">{vsBaseline.covDeltaPp == null ? "—" : `${vsBaseline.covDeltaPp > 0 ? "+" : ""}${vsBaseline.covDeltaPp.toFixed(2)}pp`}</dd></div>
-              <div><dt>Δ이자/OCF 상대변화</dt><dd className="num">{vsBaseline.scoreRelPct == null ? (vsBaseline.zeroChange ? "0%" : "분모 0 — 표시 불가") : `${vsBaseline.scoreRelPct > 0 ? "+" : ""}${vsBaseline.scoreRelPct.toFixed(1)}%`}</dd></div>
+              <div><dt>OCF/이자 커버리지</dt><dd className="num">{multipleChange(vsBaseline.baseline.origin_stress?.baseline_coverage, vsBaseline.scenario.origin_stress?.stressed_coverage) || "산정 불가"}</dd></div>
+              {vsBaseline.scoreRelPct != null ? <div><dt>Δ이자/OCF 상대변화</dt><dd className="num">{`${vsBaseline.scoreRelPct > 0 ? "+" : ""}${vsBaseline.scoreRelPct.toFixed(1)}%`}</dd></div> : null}
               <div><dt>CoreWeave 스트레스</dt><dd>{STRESS_LABEL_KO[vsBaseline.baseline.origin_stress?.level || "insufficient"]} → {STRESS_LABEL_KO[vsBaseline.scenario.origin_stress?.level || "insufficient"]}</dd></div>
               <div><dt>심각 기업 수</dt><dd className="num">{vsBaseline.critBase} → {vsBaseline.critScen}</dd></div>
               <div><dt>섹터 스트레스</dt><dd className="num">{vsBaseline.sectorBase} → {vsBaseline.sectorScen}</dd></div>
-              <div><dt>신규 critical (vs 0bp)</dt><dd>{vsBaseline.newlyCrit.length ? vsBaseline.newlyCrit.slice(0, 6).join(", ") : "없음"}</dd></div>
+              <div><dt>새로 '심각' 단계 (vs 0bp)</dt><dd>{vsBaseline.newlyCrit.length ? vsBaseline.newlyCrit.slice(0, 6).map((id) => { const x = net.nodes.find((n) => n.id === id); return x ? displayName(x) : id; }).join(", ") : "없음"}</dd></div>
             </dl>
             {vsBaseline.zeroChange ? <p className="fine">+0bp 선택 — 현재 기준 대비 변화는 0입니다.</p> : null}
             <p className="eco-lead">{vsBaseline.diff.summary_ko}</p>
@@ -278,8 +284,8 @@ function MarketRail({ p }: { p: Props }) {
         <h3 className="lbl">Market Performance <span className="lbl-aside">관측 시세</span></h3>
         <p className="note">AI 인프라 생태계 상장사의 <b>실제 주가</b>입니다. 금리 충격·차환 시나리오와 무관합니다.</p>
         <p className="fine num">{priced}/{rows.length} 시세 · {p.quotes?.generated_at ? p.quotes.generated_at.replace("T", " ").slice(0, 16) : "—"}</p>
-        <button type="button" className="btn-text" onClick={p.onRefreshQuotes} disabled={p.quotesBusy}>
-          <IconReset size={11} /> {p.quotesBusy ? "조회 중…" : "시세 다시 불러오기"}
+        <button type="button" className="btn-text" onClick={p.onRefreshQuotes} disabled={p.quotesBusy} data-tip={refreshTip(!!p.quotesLive)}>
+          <IconReset size={11} /> {refreshLabel(!!p.quotesLive, p.quotesBusy)}
         </button>
         <div className="seg seg-wrap" role="group" aria-label="거래소">
           {([["all", "전체"], ["US", "US"], ["KR", "KR"]] as const).map(([id, lab]) => (
@@ -454,7 +460,8 @@ export function ScenarioBuilder(p: Props) {
           <div><dt>스트레스 기준금리</dt><dd className="num">{(p.shockResult?.summary.baseline_sofr_pct ?? fin.market_inputs.sofr_pct)}% → {p.shockResult?.summary.stressed_sofr_pct ?? "—"}%</dd></div>
         </dl>
 
-        <EcosystemSummary res={p.shockResult} net={p.net} />
+        {p.shockPending ? <p className="digest-pending">입력이 바뀌어 다시 계산 중입니다 — 아래는 직전 입력의 결과입니다.</p> : null}
+        <div className={p.shockPending ? "is-pending" : ""}><EcosystemSummary res={p.shockResult} net={p.net} /></div>
       </section>
       ) : (
         <section className="lp-sec">

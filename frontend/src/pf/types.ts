@@ -152,6 +152,10 @@ export interface PfAffectedCompany {
   company_name: string;
   role: string;
   impact_category: PfImpactCategory;
+  /** Why this company is listed: computed numbers / a documented contract / an assumed industry-funding path. */
+  basis: "quantified" | "contract" | "assumption";
+  /** True when the impact cannot be quantified from public data. */
+  data_gap: boolean;
   directness: "direct" | "indirect";
   hop: number;
   projects: Array<{
@@ -193,6 +197,11 @@ export type PfShockResult = RateShockResult & {
     liquidity_shortfalls: number;
     korean_verified_exposure: number;
     korean_sector_sensitivity: number;
+    /** US↔KR links with no transmission class (e.g. semiconductor supply) — not direct contracts. */
+    korean_unclassified_links: number;
+    impact_breakdown: {
+      unique_companies: number; quantified: number; contract: number; assumption: number; data_gap: number; stress_raised: number;
+    };
     us_korea_paths: Array<{
       from: string; to: string; edge_id: string; transmission_class: string; explanation: string;
     }>;

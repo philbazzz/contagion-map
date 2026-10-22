@@ -2,7 +2,10 @@ import type { CSSProperties } from "react";
 import type { RunView } from "../App";
 import { STAGES } from "../engine/refinancing";
 import { SHOCK_STAGES } from "../engine/rateShock";
-import { PF_SHOCK_STAGES } from "../pf/shockEngine";
+import { PF_SHOCK_STAGES_KO } from "../pf/shockEngine";
+import { SHOCK_STAGES_KO } from "../engine/rateShock";
+import { STAGES_KO } from "../engine/refinancing";
+import { CW_DISTRESS_KO } from "../lib/labels";
 import { korUsd, usdM } from "../lib/format";
 import { IconNext, IconPause, IconPlay, IconPrev, IconReset } from "./Icons";
 
@@ -19,18 +22,17 @@ export function BottomBar(p: {
 }) {
   const r = p.run;
   const kpis: Kpi[] = [];
-  const stages = r?.kind === "pf_shock" ? PF_SHOCK_STAGES : r?.kind === "rate_shock" ? SHOCK_STAGES : STAGES;
+  const stages = r?.kind === "pf_shock" ? PF_SHOCK_STAGES_KO : r?.kind === "rate_shock" ? SHOCK_STAGES_KO : STAGES_KO;
 
   if (r?.kind === "pf_shock") {
     const pf = r.result.pf;
     const s = r.result.summary;
     kpis.push(
-      { k: "CW", v: String(pf.coreweave_distress || "normal"), tip: "Primary shock A — CoreWeave distress ladder (modeled)" },
-      { k: "CAPEX", v: `${pf.hyperscaler_capex_pct}%`, tip: "Primary shock B — Big Tech AI CAPEX scenario" },
-      { k: "Rates/GPU", v: `+${pf.rate_bp}bp / ${pf.gpu_rent_pct}%`, tip: "Secondary: USD PF rates & GPU rental" },
-      { k: "Measurable", v: String(pf.measurable_projects), tip: "Projects with quantified interest or operator stress" },
-      { k: "US→KR", v: `${pf.korean_verified_exposure}/${pf.korean_sector_sensitivity}`, tip: "Direct contract paths / sector·funding paths" },
-      { k: "Crit", v: String(s.companies_critical ?? 0), tip: "Modeled critical — not confirmed legal default" },
+      { k: "CoreWeave", v: CW_DISTRESS_KO[pf.coreweave_distress || "normal"] || String(pf.coreweave_distress), tip: "1차 충격 A — CoreWeave 상태 (모형 가정)" },
+      { k: "AI CAPEX", v: `${pf.hyperscaler_capex_pct}%`, tip: "1차 충격 B — 빅테크 AI CAPEX 변화 (사용자 선택)" },
+      { k: "금리/GPU", v: `+${pf.rate_bp}bp / ${pf.gpu_rent_pct}%`, tip: "2차 변수: 미국 PF 금리 · GPU 임대료" },
+      { k: "정량/계약/가정", v: `${pf.impact_breakdown.quantified}/${pf.impact_breakdown.contract}/${pf.impact_breakdown.assumption}`, tip: "스트레스가 올라간 기업을 근거별로: 정량 계산 / 계약 근거 정성 / 산업·자금시장 가정" },
+      { k: "US→KR 직접", v: `${pf.korean_verified_exposure}`, tip: `실제 직접 계약만. 산업·자금시장 경로 ${pf.korean_sector_sensitivity}건은 별도` },
     );
   } else if (r?.kind === "rate_shock") {
     const s = r.result.summary;
@@ -41,9 +43,9 @@ export function BottomBar(p: {
         tone: delta && delta > 0 ? "warn" : undefined,
         tip: "+0bp(현재 조건) 대비. 원금 × bp / 10,000. +0bp면 변화 0" },
       { k: "Direct", v: String(s.direct_measurable), tip: "연간 이자 변화를 숫자로 계산한 기업 수" },
-      { k: "L1/L2/L3+", v: `${s.order1 ?? 0}/${s.order2 ?? 0}/${s.order3_plus ?? 0}`, tip: `전염 order · max ${s.max_contagion_order ?? 0} · quantified ${s.quantified_contagion ?? 0} · pathway ${s.pathway_only ?? 0}` },
+      { k: "전염 1/2/3+차", v: `${s.order1 ?? 0}/${s.order2 ?? 0}/${s.order3_plus ?? 0}`, tip: `최대 ${s.max_contagion_order ?? 0}차 · 정량 ${s.quantified_contagion ?? 0} · 경로만 ${s.pathway_only ?? 0}` },
       { k: "Sector", v: String(s.sector_stressed ?? 0), tip: `섹터(비-홉) · 심각 ${s.sector_critical ?? 0} · SPV ${s.spv_critical ?? 0}` },
-      { k: "Crit", v: String(s.companies_critical ?? 0), tip: "모델상 critical (확정 부도 아님)" },
+      { k: "심각(모형)", v: String(s.companies_critical ?? 0), tip: "모형상 '심각' 단계 기업 수 (확정 부도 아님)" },
     );
   } else if (r?.kind === "refinancing") {
     const m = r.result.result;
@@ -73,7 +75,7 @@ export function BottomBar(p: {
         <select id="speed" className="speed num" value={p.speed} onChange={(e) => p.onSpeed(Number(e.target.value))} aria-label="재생 속도" data-tip="애니메이션 재생 속도 (계산에는 영향 없음)">
           {SPEEDS.map((s) => <option key={s} value={s}>{s.toFixed(1)}×</option>)}
         </select>
-        <button type="button" className="ibtn" onClick={p.onReset} disabled={!r} data-tip="충격 초기화 (+100bp SOFR)" aria-label="초기화"><IconReset size={14} /></button>
+        <button type="button" className="ibtn" onClick={p.onReset} disabled={!r} data-tip="충격 입력을 기본값으로 초기화" aria-label="충격 초기화"><IconReset size={14} /></button>
       </div>
 
       <div className="bb-timeline">
@@ -83,7 +85,7 @@ export function BottomBar(p: {
         <div className="ticks">
           {stages.map((s, i) => (
             <button type="button" key={s} disabled={!r} className={`${r && i <= p.stage ? "is-past" : ""} ${r && i === p.stage ? "is-cur" : ""}`} onClick={() => p.onSeek(i)} data-tip={s}>
-              S{i + 1}<span className="tk-l"> {s.split(" ")[0]}</span>
+              {i + 1}<span className="tk-l"> {s}</span>
             </button>
           ))}
         </div>

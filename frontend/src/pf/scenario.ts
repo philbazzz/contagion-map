@@ -98,7 +98,7 @@ export const PF_ROLE_FILTERS: { id: string; label: string; match: string[] }[] =
   { id: "mutual_aid", label: "공제회", match: ["mutual_aid", "cooperative"] },
   { id: "infra", label: "장비·인프라", match: ["power", "cooling", "infrastructure", "equipment"] },
   { id: "am_invest", label: "운용사·투자", match: ["asset_manager", "investment", "pe", "sponsor", "equity_investor", "reit"] },
-  { id: "isolated", label: "연결관계 확인 필요", match: ["__connection_pending__"] },
+  { id: "isolated", label: "현재 확인된 관계 없음", match: ["__connection_pending__"] },
 ];
 
 /** Evidence status filters for PF network list (not map category nodes). */
@@ -106,7 +106,7 @@ export const PF_EVIDENCE_FILTERS: { id: string; label: string }[] = [
   { id: "all", label: "근거 전체" },
   { id: "verified", label: "기사상 참여 확인" },
   { id: "inferred", label: "추론(INFERRED)" },
-  { id: "pending", label: "연결관계 확인 필요" },
+  { id: "pending", label: "현재 확인된 관계 없음" },
 ];
 
 export const PF_AMOUNT_FILTERS: { id: string; label: string }[] = [
